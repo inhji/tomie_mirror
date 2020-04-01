@@ -58,10 +58,10 @@ config :tomie_web, TomieWeb.Endpoint,
 config :tomie_web, TomieWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/tomie_web/(live|views)/.*(ex)$",
-      ~r"lib/tomie_web/templates/.*(eex)$"
+      ~r"apps/tomie_web/priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"apps/tomie_web/priv/gettext/.*(po)$",
+      ~r"apps/tomie_web/lib/tomie_web/(live|views)/.*(ex)$",
+      ~r"apps/tomie_web/lib/tomie_web/templates/.*(eex)$"
     ]
   ]
 
