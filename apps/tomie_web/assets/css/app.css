@@ -3,6 +3,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "alerts";
 @import "navigation";
 
 form input, form label {

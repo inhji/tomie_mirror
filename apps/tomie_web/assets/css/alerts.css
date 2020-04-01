@@ -1,0 +1,20 @@
+section.alerts {
+  @apply mt-16;
+}
+
+section.alerts p {
+  @apply text-center text-white font-bold p-3;
+}
+
+section.alerts p.info {
+  @apply bg-blue-500;
+}
+
+section.alerts p.error {
+  @apply bg-red-500;
+}
+
+
+section.alerts p:empty {
+  display: none;
+}
