@@ -1,0 +1,14 @@
+@charset "utf-8";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "navigation";
+
+form input, form label {
+	@apply block p-3 w-full;
+}
+
+form input {
+	@apply mb-3 border-b-2 border-green-500 border-solid bg-green-200;
+}

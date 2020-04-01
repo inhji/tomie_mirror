@@ -1,0 +1,21 @@
+<h1 class="p-1 mb-1 text-3xl border-b-2 border-green-200">Sign in</h1>
+
+<%= form_for @changeset, @action, [as: :user], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <div>
+    <%= submit "Login", class: "px-5 py-3 bg-green-200 border-1 text-green-700 w-full md:w-auto" %>
+  </div>
+<% end %>
