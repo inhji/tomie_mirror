@@ -46,8 +46,7 @@ defmodule TomieWeb.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:pow, "~> 1.0.19"},
-      {:tomie, in_umbrella: true},
-      {:db, in_umbrella: true}
+      {:tomie, in_umbrella: true}
     ]
   end
 
@@ -56,6 +55,8 @@ defmodule TomieWeb.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
+    [
+      # test: ["test"]
+    ]
   end
 end
