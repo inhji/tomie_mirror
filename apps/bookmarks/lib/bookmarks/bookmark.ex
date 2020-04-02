@@ -3,6 +3,8 @@ defmodule Bookmarks.Bookmark do
   import Ecto.Changeset
 
   schema "posts" do
+    field(:type, :string, default: "bookmark")
+
     field(:source, :string)
     field(:title, :string)
     field(:content, :string)

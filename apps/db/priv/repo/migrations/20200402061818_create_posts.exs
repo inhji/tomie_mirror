@@ -3,9 +3,17 @@ defmodule Db.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:posts) do
+      add :type, :string
+
       add :title, :string
       add :content, :text
       add :source, :string
+
+      add :is_favorite, :boolean
+      add :is_archived, :boolean
+      add :is_published, :boolean
+
+      add :viewed_at, :naive_datetime
 
       timestamps()
     end
