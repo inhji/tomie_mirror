@@ -1,0 +1,5 @@
+<%= for bookmark <- @bookmarks do %>
+  <article class="bookmark">
+    <%= bookmark.source %>
+  </article>
+<% end %>
