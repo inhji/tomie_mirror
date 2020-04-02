@@ -34,4 +34,12 @@ defmodule BookmarksTest do
 
     assert [%Bookmarks.Bookmark{}, %Bookmarks.Bookmark{}] = Bookmarks.list_bookmarks()
   end
+
+  test "visit_bookmark/1 increments visits and updates visited_at" do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    {:ok, viewed_bookmark} = Bookmarks.visit_bookmark(bookmark.id)
+
+    assert viewed_bookmark.views == bookmark.views + 1
+    assert viewed_bookmark.viewed_at
+  end
 end

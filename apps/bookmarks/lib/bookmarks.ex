@@ -42,12 +42,21 @@ defmodule Bookmarks do
 
   """
   def list_bookmarks do
-    query =
-      from(b in Bookmark,
+    Repo.all(
+      from b in Bookmark,
         select: b,
         order_by: [desc: b.inserted_at]
-      )
+    )
+  end
 
-    Repo.all(query)
+  def visit_bookmark(id) do
+    bookmark = get_bookmark!(id)
+
+    bookmark
+    |> Bookmark.changeset(%{
+      views: bookmark.views + 1,
+      viewed_at: DateTime.utc_now()
+    })
+    |> Repo.update()
   end
 end

@@ -1,5 +1,7 @@
-<%= for bookmark <- @bookmarks do %>
-  <article class="bookmark">
-    <%= bookmark.source %>
+<section>
+  <%= for bookmark <- @bookmarks do %>
+  <article class="bookmark p-3 bg-gray-200">
+    <%= link bookmark.source, to: bookmark.source %>
   </article>
-<% end %>
+  <% end %>
+</section>

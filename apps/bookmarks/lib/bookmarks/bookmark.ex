@@ -10,12 +10,15 @@ defmodule Bookmarks.Bookmark do
     field(:title, :string)
     field(:content, :string)
 
+    field(:views, :integer, default: 0)
+    field(:viewed_at, :naive_datetime)
+
     timestamps()
   end
 
   def changeset(bookmark, attrs \\ %{}) do
     bookmark
-    |> cast(attrs, [:source, :title, :content])
+    |> cast(attrs, [:source, :title, :content, :views, :viewed_at])
     |> validate_required([:source, :type])
   end
 end
