@@ -10,7 +10,7 @@
 use Mix.Config
 
 # Configure Mix tasks and generators
-config :tomie,
+config :db,
   ecto_repos: [Db.Repo]
 
 config :tomie_web,
@@ -37,7 +37,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
