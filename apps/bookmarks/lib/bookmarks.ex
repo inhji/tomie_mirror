@@ -2,6 +2,7 @@ defmodule Bookmarks do
   @moduledoc """
   Documentation for `Bookmarks`.
   """
+  import Ecto.Query, warn: false
   alias Bookmarks.Bookmark
   alias Db.Repo
 
@@ -30,4 +31,23 @@ defmodule Bookmarks do
 
   """
   def get_bookmark(id), do: Repo.get(Bookmark, id)
+
+  @doc """
+  Lists bookmarks ordered by insertion date
+
+  ## Examples
+
+    list_bookmarks()
+    iex> [%Bookmarks.Bookmark{}]
+
+  """
+  def list_bookmarks do
+    query =
+      from(b in Bookmark,
+        select: b,
+        order_by: b.inserted_at
+      )
+
+    Repo.all(query)
+  end
 end
