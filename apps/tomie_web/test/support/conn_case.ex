@@ -28,7 +28,22 @@ defmodule TomieWeb.ConnCase do
     end
   end
 
-  setup do
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+  setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Db.Repo)
+
+    unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(Db.Repo, {:shared, self()})
+    end
+
+    conn =
+      if tags[:logged_in] do
+        conn = Phoenix.ConnTest.build_conn()
+        user = %Tomie.Users.User{email: "test@example.com", id: 1}
+        Pow.Plug.assign_current_user(conn, user, [])
+      else
+        Phoenix.ConnTest.build_conn()
+      end
+
+    {:ok, conn: conn}
   end
 end

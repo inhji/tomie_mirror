@@ -47,7 +47,8 @@ defmodule TomieWeb.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:pow, "~> 1.0.19"},
       {:tomie, in_umbrella: true},
-      {:bookmarks, in_umbrella: true}
+      {:bookmarks, in_umbrella: true},
+      {:db, in_umbrella: true, only: :test}
     ]
   end
 

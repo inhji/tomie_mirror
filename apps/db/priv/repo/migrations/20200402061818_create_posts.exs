@@ -14,6 +14,7 @@ defmodule Db.Repo.Migrations.CreatePosts do
       add :is_published, :boolean
 
       add :viewed_at, :naive_datetime
+      add :views, :integer
 
       timestamps()
     end
