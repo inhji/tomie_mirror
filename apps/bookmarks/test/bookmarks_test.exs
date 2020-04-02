@@ -3,6 +3,7 @@ defmodule BookmarksTest do
   doctest Bookmarks
 
   @source "https://inhji.de"
+  @post_type "bookmark"
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Db.Repo)
@@ -14,9 +15,11 @@ defmodule BookmarksTest do
     :ok
   end
 
-  test "create_bookmark/1 creates a new bookmark" do
-    bookmark = Bookmarks.create_bookmark(%{source: @source})
-    assert {:ok, %Bookmarks.Bookmark{}} = bookmark
+  test "create_bookmark/1 creates a new bookmark and has required fields" do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    assert %Bookmarks.Bookmark{} = bookmark
+    assert bookmark.source == @source
+    assert bookmark.type == @post_type
   end
 
   test "get_bookmark/1 returns a bookmark by its id" do
@@ -25,11 +28,10 @@ defmodule BookmarksTest do
     assert Bookmarks.get_bookmark(bookmark.id) == bookmark
   end
 
-  test "list_bookmarks/0 lists bookmarks ordered by insertion date" do
-    {:ok, first_bookmark} = Bookmarks.create_bookmark(%{source: @source, title: "First"})
+  test "list_bookmarks/0 lists bookmarks" do
+    {:ok, _first_bookmark} = Bookmarks.create_bookmark(%{source: @source, title: "First"})
     {:ok, _second_bookmark} = Bookmarks.create_bookmark(%{source: @source, title: "Second"})
 
-    bookmarks = Bookmarks.list_bookmarks()
-    assert Enum.at(bookmarks, 0).title == first_bookmark.title
+    assert [%Bookmarks.Bookmark{}, %Bookmarks.Bookmark{}] = Bookmarks.list_bookmarks()
   end
 end

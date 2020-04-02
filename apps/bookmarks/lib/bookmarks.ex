@@ -45,7 +45,7 @@ defmodule Bookmarks do
     query =
       from(b in Bookmark,
         select: b,
-        order_by: b.inserted_at
+        order_by: [desc: b.inserted_at]
       )
 
     Repo.all(query)
