@@ -25,7 +25,7 @@ defmodule BookmarksTest do
   test "get_bookmark/1 returns a bookmark by its id" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
 
-    assert Bookmarks.get_bookmark(bookmark.id) == bookmark
+    assert Bookmarks.get_bookmark!(bookmark.id) == bookmark
   end
 
   test "list_bookmarks/0 lists bookmarks" do

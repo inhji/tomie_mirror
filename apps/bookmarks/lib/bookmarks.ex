@@ -30,7 +30,7 @@ defmodule Bookmarks do
     iex> {:ok, %Bookmarks.Bookmark{}}
 
   """
-  def get_bookmark(id), do: Repo.get(Bookmark, id)
+  def get_bookmark!(id), do: Repo.get!(Bookmark, id)
 
   @doc """
   Lists bookmarks ordered by insertion date

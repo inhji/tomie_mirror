@@ -17,13 +17,18 @@ defmodule TomieWeb.BookmarkController do
 
   def create(conn, %{"bookmark" => bookmark_params}) do
     case Bookmarks.create_bookmark(bookmark_params) do
-      {:ok, _bookmark} ->
+      {:ok, bookmark} ->
         conn
         |> put_flash(:info, @bookmark_created)
-        |> redirect(to: Routes.bookmark_path(conn, :index))
+        |> redirect(to: Routes.bookmark_path(conn, :show, bookmark))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def show(conn, %{"id" => id}) do
+    bookmark = Bookmarks.get_bookmark!(id)
+    render(conn, "show.html", bookmark: bookmark)
   end
 end
