@@ -40,6 +40,6 @@ defmodule BookmarksTest do
     {:ok, viewed_bookmark} = Bookmarks.visit_bookmark(bookmark.id)
 
     assert viewed_bookmark.views == bookmark.views + 1
-    assert viewed_bookmark.viewed_at
+    assert viewed_bookmark.viewed_at != bookmark.viewed_at
   end
 end

@@ -31,4 +31,11 @@ defmodule TomieWeb.BookmarkController do
     bookmark = Bookmarks.get_bookmark!(id)
     render(conn, "show.html", bookmark: bookmark)
   end
+
+  def visit(conn, %{"id" => id}) do
+    {:ok, bookmark} = Bookmarks.visit_bookmark(id)
+
+    conn
+    |> redirect(external: bookmark.source)
+  end
 end

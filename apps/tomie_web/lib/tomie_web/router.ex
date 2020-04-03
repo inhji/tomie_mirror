@@ -25,6 +25,8 @@ defmodule TomieWeb.Router do
     pipe_through [:browser, :protected]
 
     get "/", PageController, :index
+
     resources "/bookmarks", BookmarkController, only: [:index, :new, :create, :show]
+    get "/bookmarks/:id/visit", BookmarkController, :visit
   end
 end

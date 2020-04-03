@@ -1,7 +1,7 @@
 <section>
   <%= for bookmark <- @bookmarks do %>
   <article class="bookmark p-3 bg-gray-200">
-    <%= link bookmark.source, to: bookmark.source %>
+    <%= link bookmark.source, to: Routes.bookmark_path(@conn, :visit, bookmark) %> - <%= bookmark.views %> Views
   </article>
   <% end %>
 </section>
