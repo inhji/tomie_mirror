@@ -49,6 +49,15 @@ defmodule Bookmarks do
     )
   end
 
+  @doc """
+  Registers a visit of the bookmarks url by updating `views` and `viewed_at`
+
+  ## Examples
+
+    visit_bookmark(1)
+    iex> {:ok, %Bookmarks.Bookmark{}}
+    
+  """
   def visit_bookmark(id) do
     bookmark = get_bookmark!(id)
 
