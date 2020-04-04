@@ -1,7 +1,11 @@
 <section>
   <%= for bookmark <- @bookmarks do %>
-  <article class="bookmark p-3 bg-gray-200">
-    <%= link bookmark.source, to: Routes.bookmark_path(@conn, :visit, bookmark) %> - <%= bookmark.views %> Views
+  <article class="bookmark p-3 shadow my-3 bg-green-200">
+    <h1 class="text-3xl">
+      <%= link bookmark.source, to: Routes.bookmark_path(@conn, :visit, bookmark) %>
+    </h1>
+    <span class="text-gray-600"><%= bookmark.views %> Views</span>
+    <span class="text-gray-600">Tags: <%= tags(bookmark) %></span>
   </article>
   <% end %>
 </section>

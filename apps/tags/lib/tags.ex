@@ -42,7 +42,7 @@ defmodule Tags do
       unique: true
 
   """
-  def update_tags_for_entity(%{id: id} = entity, tags) when is_list(tags) do
+  def update_tags_for_entity(%{id: _id} = entity, tags) when is_list(tags) do
     new_tags =
       tags
       |> Enum.map(&Tags.create_or_get_tag(&1))
