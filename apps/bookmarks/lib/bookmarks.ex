@@ -3,7 +3,7 @@ defmodule Bookmarks do
   Documentation for `Bookmarks`.
   """
   import Ecto.Query, warn: false
-  alias Bookmarks.Bookmark
+  alias Bookmarks.{Bookmark, BookmarkTag}
   alias Db.Repo
 
   @doc """
@@ -21,6 +21,14 @@ defmodule Bookmarks do
     |> Repo.insert()
   end
 
+  def add_tag_to_bookmark(bookmark_id, tag) do
+    {:ok, tag} = Tags.create_or_get_tag(tag)
+
+    %BookmarkTag{}
+    |> BookmarkTag.changeset(%{post_id: bookmark_id, tag_id: tag.id})
+    |> Repo.insert()
+  end
+
   @doc """
   Gets a bookmark by its id
 
@@ -30,7 +38,7 @@ defmodule Bookmarks do
     iex> {:ok, %Bookmarks.Bookmark{}}
 
   """
-  def get_bookmark!(id), do: Repo.get!(Bookmark, id)
+  def get_bookmark!(id), do: Repo.get!(Bookmark, id) |> Repo.preload([:tags])
 
   @doc """
   Lists bookmarks ordered by insertion date
@@ -45,7 +53,8 @@ defmodule Bookmarks do
     Repo.all(
       from b in Bookmark,
         select: b,
-        order_by: [desc: b.inserted_at]
+        order_by: [desc: b.inserted_at],
+        preload: [:tags]
     )
   end
 
@@ -56,7 +65,7 @@ defmodule Bookmarks do
 
     visit_bookmark(1)
     iex> {:ok, %Bookmarks.Bookmark{}}
-    
+
   """
   def visit_bookmark(id) do
     bookmark = get_bookmark!(id)

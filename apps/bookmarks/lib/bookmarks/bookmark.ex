@@ -13,6 +13,10 @@ defmodule Bookmarks.Bookmark do
     field(:views, :integer, default: 0)
     field(:viewed_at, :naive_datetime)
 
+    many_to_many :tags, Tags.Tag,
+      join_through: "posts_tags",
+      join_keys: [post_id: :id, tag_id: :id]
+
     timestamps()
   end
 

@@ -3,7 +3,12 @@ defmodule Tags do
   Documentation for `Tags`.
   """
 
-  def add(entity_id, tag) when is_binary(tag) do
+  def add(%{id: id}, join_module, tag) when is_binary(tag) do
+    {:ok, tag} = create_or_get_tag(tag)
+
+    struct(join_module)
+    |> join_module.changeset(%{post_id: id, tag_id: tag.id})
+    |> Repo.insert()
   end
 
   def create_tag(name) do
