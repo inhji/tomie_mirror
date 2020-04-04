@@ -21,17 +21,36 @@ defmodule Bookmarks do
   end
 
   @doc """
+  Updates a bookmark's tags
+
+  ## Examples
+
+    update_tags(["foo", "bar"], 1)
+    iex> {:ok, %Bookmarks.Bookmark{}}
+
+  """
+  def update_tags(tags, bookmark_id) when is_list(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark_id)
+
+    tags
+    |> Tags.update_tags_for_entity(bookmark)
+  end
+
+  @doc """
   Updates a bookmarks tags
 
   ## Examples
 
-    update_tags(%Bookmarks.Bookmark{})
-    |> {:ok, %Bookmarks.Bookmark{}}
+  update_tags("foo, bar", 1)
+  iex> {:ok, %Bookmarks.Bookmark{}}
 
   """
-  def update_tags(bookmark_id, tags) when is_list(tags) do
+  def update_tags(tags, bookmark_id) when is_binary(tags) do
     bookmark = Bookmarks.get_bookmark!(bookmark_id)
-    Tags.update_tags_for_entity(bookmark, tags)
+
+    tags
+    |> Tags.from_string()
+    |> Tags.update_tags_for_entity(bookmark)
   end
 
   @doc """

@@ -52,4 +52,9 @@ defmodule TagsTest do
     {:ok, existing_tag} = Tags.create_or_get_tag("Foo bar")
     assert tag.name == existing_tag.name
   end
+
+  test "from_string/1 splits comma-separated list and trims items" do
+    assert Tags.from_string("foo, bar, baz") == ["foo", "bar", "baz"]
+    assert Tags.from_string("Foo,     BAR, baz") == ["Foo", "BAR", "baz"]
+  end
 end

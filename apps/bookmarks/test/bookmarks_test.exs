@@ -47,13 +47,13 @@ defmodule BookmarksTest do
 
   test "update_tags updates the tags for a given entity" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
-    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo"])
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark.id)
     assert Enum.count(updated_bookmark.tags) == 1
 
-    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo", "bar"])
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "bar"], bookmark.id)
     assert Enum.count(updated_bookmark.tags) == 2
 
-    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo"])
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark.id)
     assert Enum.count(updated_bookmark.tags) == 1
   end
 end

@@ -42,7 +42,7 @@ defmodule Tags do
       unique: true
 
   """
-  def update_tags_for_entity(%{id: _id} = entity, tags) when is_list(tags) do
+  def update_tags_for_entity(tags, %{id: _id} = entity) when is_list(tags) do
     new_tags =
       tags
       |> Enum.map(&Tags.create_or_get_tag(&1))
@@ -52,5 +52,11 @@ defmodule Tags do
     |> entity.__struct__.changeset(%{})
     |> Ecto.Changeset.put_assoc(:tags, new_tags)
     |> Db.Repo.update()
+  end
+
+  def from_string(tags) when is_binary(tags) do
+    tags
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
   end
 end
