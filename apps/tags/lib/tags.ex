@@ -3,14 +3,6 @@ defmodule Tags do
   Documentation for `Tags`.
   """
 
-  def add(%{id: id}, join_module, tag) when is_binary(tag) do
-    {:ok, tag} = create_or_get_tag(tag)
-
-    struct(join_module)
-    |> join_module.changeset(%{post_id: id, tag_id: tag.id})
-    |> Repo.insert()
-  end
-
   def create_tag(name) do
     %Tags.Tag{}
     |> Tags.Tag.changeset(%{name: name})
@@ -33,6 +25,32 @@ defmodule Tags do
 
   def get_tag_by_slug(slug), do: Db.Repo.get_by(Tags.Tag, slug: slug)
 
-  def add_tag_relation(entity_id, topic_id) do
+  @doc """
+  Updates tags for a given entity
+
+  The entity is expected
+  * to be a ecto struct
+  * to have a many-to-many relation to tags
+  * to exist in the `posts` table
+
+  The many-to-many relation should be configured like so:
+
+    many_to_many :tags, Tags.Tag,
+      join_through: "posts_tags",
+      join_keys: [post_id: :id, tag_id: :id],
+      on_replace: :delete,
+      unique: true
+
+  """
+  def update_tags_for_entity(%{id: id} = entity, tags) when is_list(tags) do
+    new_tags =
+      tags
+      |> Enum.map(&Tags.create_or_get_tag(&1))
+      |> Enum.reduce([], fn {:ok, tag}, tag_list -> [tag | tag_list] end)
+
+    entity
+    |> entity.__struct__.changeset(%{})
+    |> Ecto.Changeset.put_assoc(:tags, new_tags)
+    |> Db.Repo.update()
   end
 end

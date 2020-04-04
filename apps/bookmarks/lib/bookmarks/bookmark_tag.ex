@@ -6,8 +6,6 @@ defmodule Bookmarks.BookmarkTag do
   schema "posts_tags" do
     belongs_to :bookmark, Bookmarks.Bookmark, foreign_key: :post_id
     belongs_to :tag, Tags.Tag
-
-    timestamps()
   end
 
   @doc false

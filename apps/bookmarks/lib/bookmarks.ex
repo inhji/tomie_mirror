@@ -3,8 +3,7 @@ defmodule Bookmarks do
   Documentation for `Bookmarks`.
   """
   import Ecto.Query, warn: false
-  alias Bookmarks.{Bookmark, BookmarkTag}
-  alias Db.Repo
+  alias Bookmarks.{Bookmark}
 
   @doc """
   Creates a bookmark from the given attributes.
@@ -18,15 +17,21 @@ defmodule Bookmarks do
   def create_bookmark(attrs \\ %{}) do
     %Bookmark{}
     |> Bookmark.changeset(attrs)
-    |> Repo.insert()
+    |> Db.Repo.insert()
   end
 
-  def add_tag_to_bookmark(bookmark_id, tag) do
-    {:ok, tag} = Tags.create_or_get_tag(tag)
+  @doc """
+  Updates a bookmarks tags
 
-    %BookmarkTag{}
-    |> BookmarkTag.changeset(%{post_id: bookmark_id, tag_id: tag.id})
-    |> Repo.insert()
+  ## Examples
+
+    update_tags(%Bookmarks.Bookmark{})
+    |> {:ok, %Bookmarks.Bookmark{}}
+
+  """
+  def update_tags(bookmark_id, tags) when is_list(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark_id)
+    Tags.update_tags_for_entity(bookmark, tags)
   end
 
   @doc """
@@ -38,7 +43,7 @@ defmodule Bookmarks do
     iex> {:ok, %Bookmarks.Bookmark{}}
 
   """
-  def get_bookmark!(id), do: Repo.get!(Bookmark, id) |> Repo.preload([:tags])
+  def get_bookmark!(id), do: Db.Repo.get!(Bookmark, id) |> Db.Repo.preload([:tags])
 
   @doc """
   Lists bookmarks ordered by insertion date
@@ -50,7 +55,7 @@ defmodule Bookmarks do
 
   """
   def list_bookmarks do
-    Repo.all(
+    Db.Repo.all(
       from b in Bookmark,
         select: b,
         order_by: [desc: b.inserted_at],
@@ -75,6 +80,6 @@ defmodule Bookmarks do
       views: bookmark.views + 1,
       viewed_at: DateTime.utc_now()
     })
-    |> Repo.update()
+    |> Db.Repo.update()
   end
 end

@@ -4,7 +4,6 @@ defmodule BookmarksTest do
 
   @source "https://inhji.de"
   @post_type "bookmark"
-  @tag_name "some tag"
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Db.Repo)
@@ -46,19 +45,15 @@ defmodule BookmarksTest do
     assert viewed_bookmark.viewed_at != bookmark.viewed_at
   end
 
-  test "add_tag_to_bookmark/2 adds a tag to a bookmark" do
+  test "update_tags updates the tags for a given entity" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
-    {:ok, bookmark_tag} = Bookmarks.add_tag_to_bookmark(bookmark.id, @tag_name)
-    updated_bookmark = Bookmarks.get_bookmark!(bookmark.id)
+    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo"])
+    assert Enum.count(updated_bookmark.tags) == 1
 
-    assert bookmark_tag.post_id == bookmark.id
-    assert bookmark.id == updated_bookmark.id
-    assert [%Tags.Tag{name: @tag_name}] = updated_bookmark.tags
-  end
+    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo", "bar"])
+    assert Enum.count(updated_bookmark.tags) == 2
 
-  test "add_tag_to_bookmark/2 does not add the same tag twice" do
-    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
-    {:ok, _bookmark_tag} = Bookmarks.add_tag_to_bookmark(bookmark.id, @tag_name)
-    {:error, _} = Bookmarks.add_tag_to_bookmark(bookmark.id, @tag_name)
+    {:ok, updated_bookmark} = Bookmarks.update_tags(bookmark.id, ["foo"])
+    assert Enum.count(updated_bookmark.tags) == 1
   end
 end

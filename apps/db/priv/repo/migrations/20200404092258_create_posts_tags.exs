@@ -3,10 +3,8 @@ defmodule Db.Repo.Migrations.CreatePostsTags do
 
   def change do
     create table(:posts_tags) do
-      add :post_id, :integer
-      add :tag_id, :integer
-
-      timestamps()
+      add :post_id, references(:posts)
+      add :tag_id, references(:tags)
     end
 
     create index(:posts_tags, [:post_id])

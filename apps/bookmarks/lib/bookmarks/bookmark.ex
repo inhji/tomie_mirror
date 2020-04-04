@@ -15,7 +15,9 @@ defmodule Bookmarks.Bookmark do
 
     many_to_many :tags, Tags.Tag,
       join_through: "posts_tags",
-      join_keys: [post_id: :id, tag_id: :id]
+      join_keys: [post_id: :id, tag_id: :id],
+      on_replace: :delete,
+      unique: true
 
     timestamps()
   end
