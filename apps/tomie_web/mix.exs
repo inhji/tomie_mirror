@@ -14,7 +14,8 @@ defmodule TomieWeb.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -47,6 +48,7 @@ defmodule TomieWeb.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:pow, "~> 1.0.19"},
       {:que, "~> 0.10.1"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
       {:db, in_umbrella: true}

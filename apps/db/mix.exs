@@ -12,7 +12,8 @@ defmodule Db.MixProject do
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -28,6 +29,7 @@ defmodule Db.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.1"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:postgrex, ">= 0.0.0"}
     ]
   end

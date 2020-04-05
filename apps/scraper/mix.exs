@@ -11,7 +11,8 @@ defmodule Scraper.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -27,6 +28,7 @@ defmodule Scraper.MixProject do
     [
       {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"},
       {:httpoison, "~> 1.6"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:floki, "~> 0.26.0"}
     ]
   end

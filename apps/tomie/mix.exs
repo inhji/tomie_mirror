@@ -13,7 +13,8 @@ defmodule Tomie.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -39,6 +40,7 @@ defmodule Tomie.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:jason, "~> 1.0"},
       {:pow, "~> 1.0.19"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:db, in_umbrella: true}
     ]
   end

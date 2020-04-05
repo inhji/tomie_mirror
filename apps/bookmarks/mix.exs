@@ -11,7 +11,8 @@ defmodule Bookmarks.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -27,6 +28,7 @@ defmodule Bookmarks.MixProject do
     [
       {:que, "~> 0.10.1"},
       {:ecto_sql, "~> 3.1"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:db, in_umbrella: true},
       {:tags, in_umbrella: true},
       {:scraper, in_umbrella: true}

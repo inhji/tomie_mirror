@@ -11,7 +11,8 @@ defmodule Tags.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -27,6 +28,7 @@ defmodule Tags.MixProject do
     [
       {:ecto_sql, "~> 3.1"},
       {:ecto_autoslug_field, "~> 2.0"},
+      {:excoveralls, "~> 0.12.3", only: :test},
       {:db, in_umbrella: true}
     ]
   end
