@@ -1,5 +1,7 @@
 <section class="pt-3">
-  <%= link "Add new Bookmark", to: Routes.bookmark_path(@conn, :new), class: "p-3 bg-green-200" %>
+  <%= link "Add new Bookmark",
+    to: Routes.bookmark_path(@conn, :new),
+    class: "block p-3 bg-green-200 hover:bg-green-500 hover:text-white uppercase" %>
 </section>
 
 <section>
