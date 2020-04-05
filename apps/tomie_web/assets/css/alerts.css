@@ -1,7 +1,3 @@
-section.alerts {
-  @apply pt-16;
-}
-
 section.alerts p {
   @apply text-center text-white font-bold p-3;
 }
