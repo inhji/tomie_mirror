@@ -18,6 +18,8 @@ defmodule TomieWeb.BookmarkController do
   def create(conn, %{"bookmark" => bookmark_params}) do
     case Bookmarks.create_bookmark(bookmark_params) do
       {:ok, bookmark} ->
+        Que.add(Bookmarks.Worker, bookmark)
+
         conn
         |> put_flash(:info, @bookmark_created)
         |> redirect(to: Routes.bookmark_path(conn, :show, bookmark))
@@ -33,7 +35,8 @@ defmodule TomieWeb.BookmarkController do
   end
 
   def visit(conn, %{"id" => id}) do
-    {:ok, bookmark} = Bookmarks.visit_bookmark(id)
+    bookmark = Bookmarks.get_bookmark!(id)
+    {:ok, _visited_bookmark} = Bookmarks.visit_bookmark(bookmark)
 
     conn
     |> redirect(external: bookmark.source)

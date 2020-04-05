@@ -24,7 +24,7 @@ defmodule Scraper do
     end
   end
 
-  def get_title(html) do
+  def get_title!(html) do
     {:ok, document} = Floki.parse_document(html)
 
     document

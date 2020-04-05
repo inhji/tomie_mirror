@@ -8,11 +8,6 @@ defmodule Bookmarks do
   @doc """
   Creates a bookmark from the given attributes.
 
-  ## Examples
-
-    create_bookmark(%{source: "https://inhji.de"})
-    iex> {:ok, %Bookmarks.Bookmark{}}
-
   """
   def create_bookmark(attrs \\ %{}) do
     %Bookmark{}
@@ -21,57 +16,24 @@ defmodule Bookmarks do
   end
 
   @doc """
-  Updates a bookmark's tags
-
-  ## Examples
-
-    update_tags(["foo", "bar"], 1)
-    iex> {:ok, %Bookmarks.Bookmark{}}
-
+  Updates a bookmarks with the given attributes
   """
-  def update_tags(tags, bookmark_id) when is_list(tags) do
-    bookmark = Bookmarks.get_bookmark!(bookmark_id)
-
-    tags
-    |> Tags.update_tags_for_entity(bookmark)
-  end
-
-  @doc """
-  Updates a bookmarks tags
-
-  ## Examples
-
-  update_tags("foo, bar", 1)
-  iex> {:ok, %Bookmarks.Bookmark{}}
-
-  """
-  def update_tags(tags, bookmark_id) when is_binary(tags) do
-    bookmark = Bookmarks.get_bookmark!(bookmark_id)
-
-    tags
-    |> Tags.from_string()
-    |> Tags.update_tags_for_entity(bookmark)
+  def update_bookmark(bookmark, attrs) do
+    bookmark
+    |> Bookmark.changeset(attrs)
+    |> Db.Repo.update()
   end
 
   @doc """
   Gets a bookmark by its id
-
-  ## Examples
-
-    get_bookmark(1)
-    iex> {:ok, %Bookmarks.Bookmark{}}
-
   """
-  def get_bookmark!(id), do: Db.Repo.get!(Bookmark, id) |> Db.Repo.preload([:tags])
+  def get_bookmark!(id),
+    do:
+      Db.Repo.get!(Bookmark, id)
+      |> Db.Repo.preload([:tags])
 
   @doc """
   Lists bookmarks ordered by insertion date
-
-  ## Examples
-
-    list_bookmarks()
-    iex> [%Bookmarks.Bookmark{}]
-
   """
   def list_bookmarks do
     Db.Repo.all(
@@ -84,21 +46,38 @@ defmodule Bookmarks do
 
   @doc """
   Registers a visit of the bookmarks url by updating `views` and `viewed_at`
-
-  ## Examples
-
-    visit_bookmark(1)
-    iex> {:ok, %Bookmarks.Bookmark{}}
-
   """
-  def visit_bookmark(id) do
-    bookmark = get_bookmark!(id)
-
+  def visit_bookmark(bookmark) do
     bookmark
     |> Bookmark.changeset(%{
       views: bookmark.views + 1,
       viewed_at: DateTime.utc_now()
     })
     |> Db.Repo.update()
+  end
+
+  @doc """
+  Updates a bookmark's tags
+
+  Bookmark is reloaded to ensure it's tags are loaded
+  """
+  def update_tags(tags, bookmark) when is_list(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark.id)
+
+    tags
+    |> Tags.update_tags_for_entity(bookmark)
+  end
+
+  @doc """
+  Updates a bookmarks tags.
+
+  Bookmark is reloaded to ensure it's tags are loaded
+  """
+  def update_tags(tags, bookmark) when is_binary(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark.id)
+
+    tags
+    |> Tags.from_string()
+    |> Tags.update_tags_for_entity(bookmark)
   end
 end

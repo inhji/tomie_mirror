@@ -3,6 +3,7 @@ defmodule BookmarksTest do
   doctest Bookmarks
 
   @source "https://inhji.de"
+  @title "some title"
   @post_type "bookmark"
 
   setup tags do
@@ -22,6 +23,13 @@ defmodule BookmarksTest do
     assert bookmark.type == @post_type
   end
 
+  test "update_bookmark/2 updates a bookmarks with the given attributes" do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    {:ok, updated_bookmark} = Bookmarks.update_bookmark(bookmark, %{title: @title})
+    assert bookmark.title != updated_bookmark.title
+    assert updated_bookmark.title == @title
+  end
+
   test "get_bookmark/1 returns a bookmark by its id" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
     new_bookmark = Bookmarks.get_bookmark!(bookmark.id)
@@ -39,7 +47,7 @@ defmodule BookmarksTest do
 
   test "visit_bookmark/1 increments visits and updates visited_at" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
-    {:ok, viewed_bookmark} = Bookmarks.visit_bookmark(bookmark.id)
+    {:ok, viewed_bookmark} = Bookmarks.visit_bookmark(bookmark)
 
     assert viewed_bookmark.views == bookmark.views + 1
     assert viewed_bookmark.viewed_at != bookmark.viewed_at
@@ -47,13 +55,14 @@ defmodule BookmarksTest do
 
   test "update_tags updates the tags for a given entity" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
-    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark.id)
+
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
 
-    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "bar"], bookmark.id)
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "bar"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 2
 
-    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark.id)
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
   end
 end
