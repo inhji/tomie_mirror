@@ -31,4 +31,11 @@ defmodule Scraper do
     |> Floki.find("head title")
     |> Floki.text()
   end
+
+  def parse(html) do
+    title = get_title!(html)
+    og = OpenGraphExtended.parse(html)
+
+    Map.merge(%{title: title}, og)
+  end
 end
