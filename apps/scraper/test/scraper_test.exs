@@ -7,10 +7,15 @@ defmodule ScraperTest do
     assert Scraper.get_title!(html) == "Example Domain"
   end
 
-  test "parse/1 extracts the title and opengraph properties" do
+  test "parse/1 extracts the title and og properties when og properties are present" do
     html = File.read!("./test/data/github.com.html")
     {:ok, result} = Scraper.parse(html)
-
     assert result.title == "sheharyarn/que"
+  end
+
+  test "parse/1 extracts the title and og properties when og properties are not present" do
+    html = File.read!("./test/data/example.com.html")
+    {:ok, result} = Scraper.parse(html)
+    assert result.title == "Example Domain"
   end
 end
