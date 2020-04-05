@@ -25,6 +25,7 @@ defmodule Scraper.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"},
       {:httpoison, "~> 1.6"},
       {:floki, "~> 0.26.0"},
       {:fast_html, "~> 1.0"}
