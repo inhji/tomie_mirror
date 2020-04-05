@@ -3,6 +3,12 @@ defmodule Bookmarks.Bookmark do
   use Bookmarks.Constants
   import Ecto.Changeset
 
+  defimpl String.Chars do
+    def to_string(%{source: source}) do
+      "Bookmark<#{source}>"
+    end
+  end
+
   schema "posts" do
     field(:type, :string, default: @post_type)
 
