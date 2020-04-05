@@ -13,6 +13,9 @@ use Mix.Config
 config :db,
   ecto_repos: [Db.Repo]
 
+config :tomie,
+  user_agent: "Tomie/0.x (https://inhji.de)"
+
 config :tomie_web,
   ecto_repos: [Db.Repo],
   generators: [context_app: :tomie]
@@ -37,6 +40,9 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Use fast-html for HTML parsing
+config :floki, :html_parser, Floki.HTMLParser.FastHtml
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

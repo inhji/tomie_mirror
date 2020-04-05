@@ -27,7 +27,8 @@ defmodule Bookmarks.MixProject do
     [
       {:ecto_sql, "~> 3.1"},
       {:db, in_umbrella: true},
-      {:tags, in_umbrella: true}
+      {:tags, in_umbrella: true},
+      {:scraper, in_umbrella: true}
     ]
   end
 end
