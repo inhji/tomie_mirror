@@ -9,6 +9,7 @@ defmodule Bookmarks.Bookmark do
     end
   end
 
+  @derive {Jason.Encoder, only: [:title, :source]}
   schema "posts" do
     field(:type, :string, default: @post_type)
 

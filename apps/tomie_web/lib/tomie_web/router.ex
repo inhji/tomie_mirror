@@ -10,6 +10,10 @@ defmodule TomieWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated,
       error_handler: Pow.Phoenix.PlugErrorHandler
@@ -28,5 +32,9 @@ defmodule TomieWeb.Router do
 
     resources "/bookmarks", BookmarkController, only: [:index, :new, :create, :show]
     get "/bookmarks/:id/visit", BookmarkController, :visit
+  end
+
+  scope "/api", TomieWeb do
+    get "/bookmarks", BookmarkController, :index_json
   end
 end

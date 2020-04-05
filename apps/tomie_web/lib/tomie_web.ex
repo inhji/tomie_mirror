@@ -40,6 +40,8 @@ defmodule TomieWeb do
 
       import TomieWeb.ErrorHelpers
       import TomieWeb.Gettext
+      import PhoenixFormAwesomplete
+
       alias TomieWeb.Router.Helpers, as: Routes
     end
   end

@@ -4,6 +4,19 @@
     class: "block p-3 bg-green-200 hover:bg-green-500 hover:text-white uppercase" %>
 </section>
 
+<section class="my-3">
+  <%= awesomplete(:user, :country,
+        [class: "bg-green-200 w-full p-3", placeholder: "Search bookmarks.."],
+        [ url: "/api/bookmarks",
+          loadall: true,
+          prepop: true,
+          minChars: 1,
+          maxItems: 8,
+          value: "title",
+          label: "title"
+        ]) %>
+</section>
+
 <section>
   <%= for bookmark <- @bookmarks do %>
   <article class="bookmark p-3 shadow my-3 bg-green-200">

@@ -3,6 +3,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "awesomeplete";
 @import "alerts";
 @import "navigation";
 
@@ -13,3 +14,13 @@ form input, form label {
 form input {
 	@apply mb-3 border-b-2 border-green-500 border-solid bg-green-200;
 }
+
+div.awesomplete {display: block}
+
+div.awesomplete ul li p {display: block; font-size: small; margin-left: 1em}
+
+div.awesomplete .awe-found {border: 2px solid green}
+
+.hide-not-found div.awesomplete .awe-not-found {border-color: lightblue}
+
+div.awesomplete .awe-not-found {border: 2px solid red}

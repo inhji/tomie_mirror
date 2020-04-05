@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= assigns[:page_title] || "Tomie · Phoenix Framework" %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/awesomeplete/awesomeplete.js") %>"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/awesomeplete/awesomeplete-util.js") %>"></script>
+
     <%= csrf_meta_tag() %>
   </head>
   <body class="mt-16">

@@ -9,6 +9,11 @@ defmodule TomieWeb.BookmarkController do
     render(conn, "index.html", bookmarks: bookmarks)
   end
 
+  def index_json(conn, _params) do
+    bookmarks = Bookmarks.list_bookmarks()
+    json(conn, bookmarks)
+  end
+
   def new(conn, _params) do
     changeset = Bookmark.changeset(%Bookmark{})
 
