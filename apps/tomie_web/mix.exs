@@ -49,7 +49,7 @@ defmodule TomieWeb.MixProject do
       {:que, "~> 0.10.1"},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
-      {:db, in_umbrella: true, only: :test}
+      {:db, in_umbrella: true}
     ]
   end
 
