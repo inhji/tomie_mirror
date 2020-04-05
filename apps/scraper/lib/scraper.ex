@@ -35,7 +35,8 @@ defmodule Scraper do
   def parse(html) do
     title = get_title!(html)
     og = OpenGraphExtended.parse(html)
+    result = Map.merge(%{title: title}, og, fn _k, v1, v2 -> v2 || v1 end)
 
-    Map.merge(%{title: title}, og)
+    {:ok, result}
   end
 end

@@ -9,7 +9,7 @@ defmodule ScraperTest do
 
   test "parse/1 extracts the title and opengraph properties" do
     html = File.read!("./test/data/github.com.html")
-    result = Scraper.parse(html)
+    {:ok, result} = Scraper.parse(html)
 
     assert result.title == "sheharyarn/que"
   end

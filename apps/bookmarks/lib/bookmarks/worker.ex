@@ -3,8 +3,7 @@ defmodule Bookmarks.Worker do
 
   def perform(%Bookmarks.Bookmark{source: source} = bookmark) do
     {:ok, html} = Scraper.get_html(source)
-
-    title = Scraper.get_title!(html)
-    Bookmarks.update_bookmark(bookmark, %{title: title})
+    {:ok, result} = Scraper.parse(html)
+    Bookmarks.update_bookmark(bookmark, %{title: result.title})
   end
 end
