@@ -13,6 +13,7 @@
       <ul>
         <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
         <li><%= link "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
+        <li><%= link "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
         <%= if Pow.Plug.current_user(@conn) do %>
           <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>

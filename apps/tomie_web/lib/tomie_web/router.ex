@@ -28,5 +28,7 @@ defmodule TomieWeb.Router do
 
     resources "/bookmarks", BookmarkController, only: [:index, :new, :create, :show]
     get "/bookmarks/:id/visit", BookmarkController, :visit
+
+    resources "/tags", TagController, only: [:index, :new, :create]
   end
 end

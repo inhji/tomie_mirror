@@ -6,10 +6,18 @@
 @import "alerts";
 @import "navigation";
 
-form input, form label {
+form input, form label, form textarea, form button[type=submit], .error-tag {
 	@apply block p-3 w-full;
 }
 
-form input {
+form input, form textarea {
 	@apply mb-3 border-b-2 border-green-500 border-solid bg-green-200;
+}
+
+form button[type=submit] {
+	@apply bg-green-200;
+}
+
+form .error-tag {
+	@apply bg-red-200 border-b-2 border-red-500 border-solid;
 }

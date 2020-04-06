@@ -51,6 +51,7 @@ defmodule TomieWeb.MixProject do
       {:excoveralls, "~> 0.12.3", only: :test},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
+      {:tags, in_umbrella: true},
       {:db, in_umbrella: true}
     ]
   end
