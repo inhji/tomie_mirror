@@ -5,21 +5,21 @@ defmodule RulesTest do
     entity = %{title: "A cool project on github"}
     tags = [%{name: "github", rules: "title::contains::github\ntitle::contains::project"}]
 
-    assert ["github"] = Tags.Rules.parse(entity, tags)
+    assert ["github"] = Tags.Rules.parse(tags, entity)
   end
 
   test "parse_tag/2 correctly parses a contains rule" do
     entity = %{title: "A cool project on github"}
     tag = %{name: "github", rules: "title::contains::github"}
 
-    assert ["github"] = Tags.Rules.parse_tag(entity, tag)
+    assert ["github"] = Tags.Rules.parse_tag(tag, entity)
   end
 
   test "parse_tag/2 correctly parses a matches rule" do
     entity = %{title: "A cool project on github", source: "https://github.com/inhji/akedia"}
     tag = %{name: "github", rules: "source::matches::.+github.com.+"}
 
-    assert ["github"] = Tags.Rules.parse_tag(entity, tag)
+    assert ["github"] = Tags.Rules.parse_tag(tag, entity)
   end
 
   test "parse_rule/1 parses a rule" do

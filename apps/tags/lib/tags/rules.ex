@@ -11,14 +11,14 @@ defmodule Tags.Rules do
 
   """
 
-  def parse(entity, tags) do
+  def parse(tags, entity) do
     tags
-    |> Enum.map(&parse_tag(entity, &1))
+    |> Enum.map(&parse_tag(&1, entity))
     |> List.flatten()
     |> Enum.uniq()
   end
 
-  def parse_tag(entity, %{rules: rules, name: name}) do
+  def parse_tag(%{rules: rules, name: name}, entity) do
     rules
     |> String.split("\n")
     |> Enum.map(&parse_rule/1)
