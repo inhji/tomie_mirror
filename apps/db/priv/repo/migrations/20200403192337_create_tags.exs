@@ -5,6 +5,7 @@ defmodule Db.Repo.Migrations.CreateTags do
     create table(:tags) do
       add :name, :string
       add :slug, :string
+      add :rules, :text
 
       timestamps()
     end
