@@ -9,6 +9,12 @@ defmodule TomieWeb.TagController do
     render(conn, "index.html", tags: tags)
   end
 
+  def show(conn, %{"id" => id}) do
+    tag = Tags.get_tag!(id)
+
+    render(conn, "show.html", tag: tag)
+  end
+
   def new(conn, _params) do
     changeset = Tag.changeset(%Tag{})
 
@@ -24,6 +30,27 @@ defmodule TomieWeb.TagController do
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def edit(conn, %{"id" => id}) do
+    tag = Tags.get_tag!(id)
+    changeset = Tag.changeset(tag)
+
+    render(conn, "edit.html", tag: tag, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "tag" => tag_params}) do
+    tag = Tags.get_tag!(id)
+
+    case Tags.update_tag(tag, tag_params) do
+      {:ok, _tag} ->
+        conn
+        |> put_flash(:info, @tag_updated)
+        |> redirect(to: Routes.tag_path(conn, :index))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", changeset: changeset)
     end
   end
 end

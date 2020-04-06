@@ -15,6 +15,12 @@ defmodule Tags do
     |> Db.Repo.insert()
   end
 
+  def update_tag(tag, attrs) do
+    tag
+    |> Tag.changeset(attrs)
+    |> Db.Repo.update()
+  end
+
   def list_tags() do
     Tags.Tag
     |> Db.Repo.all()
@@ -26,6 +32,8 @@ defmodule Tags do
       tag -> {:ok, tag}
     end
   end
+
+  def get_tag!(id), do: Db.Repo.get!(Tag, id)
 
   def get_tag_by_slug!(slug), do: Db.Repo.get_by!(Tag, slug: slug)
 
