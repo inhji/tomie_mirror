@@ -2,4 +2,4 @@
 
 ## Architecture
 
-![Tomie's Architecture](docs/arch.png)
+![Tomie's Architecture](media/arch.png)
