@@ -17,7 +17,7 @@ defmodule TomieWeb.TagController do
 
   def create(conn, %{"tag" => tag_params}) do
     case Tags.create_tag(tag_params) do
-      {:ok, tag} ->
+      {:ok, _tag} ->
         conn
         |> put_flash(:info, @tag_created)
         |> redirect(to: Routes.tag_path(conn, :index))
