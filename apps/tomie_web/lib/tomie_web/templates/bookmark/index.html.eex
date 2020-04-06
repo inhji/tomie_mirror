@@ -1,12 +1,12 @@
 <section class="pt-3">
   <%= link "Add new Bookmark",
     to: Routes.bookmark_path(@conn, :new),
-    class: "block p-3 bg-green-200 hover:bg-green-500 hover:text-white uppercase" %>
+    class: "button block uppercase" %>
 </section>
 
 <section>
   <%= for bookmark <- @bookmarks do %>
-  <article class="bookmark p-3 shadow my-3 bg-green-200">
+  <article class="bookmark p-3 shadow my-3">
     <h1 class="text-3xl">
       <%= link bookmark.title || bookmark.source, to: Routes.bookmark_path(@conn, :visit, bookmark) %>
     </h1>

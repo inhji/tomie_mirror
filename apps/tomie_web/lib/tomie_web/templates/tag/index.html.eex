@@ -1,9 +1,13 @@
-<section class="pt-3">
+<section class="pt-3 mb-3">
   <%= link "Add new Tag",
     to: Routes.tag_path(@conn, :new),
-    class: "block p-3 bg-green-200 hover:bg-green-500 hover:text-white uppercase" %>
+    class: "button block uppercase" %>
 </section>
 
 <%= for tag <- @tags do %>
-  <%= tag.name %>
+  <article class="shadow p-3">
+    <h1>
+      <%= link tag.name, to: Routes.tag_path(@conn, :show, tag), class: "block" %>
+    </h1>
+  </article>
 <% end %>

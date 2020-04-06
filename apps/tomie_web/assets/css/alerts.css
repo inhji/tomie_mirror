@@ -1,15 +1,14 @@
 section.alerts p {
-  @apply text-center text-white font-bold p-3;
+  @apply text-center font-bold p-3;
 }
 
 section.alerts p.info {
-  @apply bg-blue-500;
+  @apply bg-info text-on-info;
 }
 
 section.alerts p.error {
-  @apply bg-red-500;
+  @apply bg-danger text-on-danger;
 }
-
 
 section.alerts p:empty {
   display: none;

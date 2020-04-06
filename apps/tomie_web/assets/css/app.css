@@ -6,18 +6,26 @@
 @import "alerts";
 @import "navigation";
 
+body {
+	@apply bg-surface text-on-surface;
+}
+
+h1 {
+	@apply py-1 mb-3 text-3xl;
+}
+
 form input, form label, form textarea, form button[type=submit], .error-tag {
 	@apply block p-3 w-full;
 }
 
 form input, form textarea {
-	@apply mb-3 border-b-2 border-green-500 border-solid bg-green-200;
+	@apply mb-3 border-primary border-b-2 border-solid;
 }
 
-form button[type=submit] {
-	@apply bg-green-200;
+form button[type=submit], .button {
+	@apply p-3 bg-primary text-on-primary transition-all duration-300 inline-block;
 }
 
 form .error-tag {
-	@apply bg-red-200 border-b-2 border-red-500 border-solid;
+	@apply bg-danger text-on-danger;
 }

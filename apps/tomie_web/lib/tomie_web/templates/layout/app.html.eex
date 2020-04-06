@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
-  <body class="mt-16">
+  <body class="mt-16 transition duration-500" data-theme="light">
     <nav role="navigation">
       <ul>
         <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
         <li><%= link "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
         <li><%= link "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
+        <li><a href="#" class="theme-toggle">Theme</a></li>
         <%= if Pow.Plug.current_user(@conn) do %>
           <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
         <% else %>

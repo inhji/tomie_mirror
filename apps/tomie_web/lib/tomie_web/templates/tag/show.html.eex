@@ -1,0 +1,11 @@
+<h1><%= @tag.name %></h1>
+
+<ul>
+  <%= for rule <- String.split(@tag.rules, "\n") do %>
+    <li><%= rule %></li>
+  <% end %>
+</ul>
+
+<div>
+  <%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag), class: "button" %>
+</div>
