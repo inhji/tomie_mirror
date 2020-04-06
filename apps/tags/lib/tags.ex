@@ -3,9 +3,15 @@ defmodule Tags do
   Documentation for `Tags`.
   """
 
-  def create_tag(name) do
-    %Tags.Tag{}
-    |> Tags.Tag.changeset(%{name: name})
+  alias Tags.Tag
+
+  def create_tag(name) when is_binary(name) do
+    create_tag(%{name: name})
+  end
+
+  def create_tag(attrs) when is_map(attrs) do
+    %Tag{}
+    |> Tag.changeset(attrs)
     |> Db.Repo.insert()
   end
 
@@ -21,9 +27,9 @@ defmodule Tags do
     end
   end
 
-  def get_tag_by_slug!(slug), do: Db.Repo.get_by!(Tags.Tag, slug: slug)
+  def get_tag_by_slug!(slug), do: Db.Repo.get_by!(Tag, slug: slug)
 
-  def get_tag_by_slug(slug), do: Db.Repo.get_by(Tags.Tag, slug: slug)
+  def get_tag_by_slug(slug), do: Db.Repo.get_by(Tag, slug: slug)
 
   @doc """
   Updates tags for a given entity
