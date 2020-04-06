@@ -28,7 +28,7 @@ defmodule Tags.Rules do
 
       case f do
         "contains" ->
-          if String.contains?(property, s),
+          if property |> String.downcase() |> String.contains?(s),
             do: tags ++ [name],
             else: tags
 

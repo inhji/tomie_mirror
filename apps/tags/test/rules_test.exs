@@ -3,9 +3,11 @@ defmodule RulesTest do
 
   test "parse/2 returns a list of tags from a set of rules and an entity" do
     entity = %{title: "A cool project on github"}
+    entity2 = %{title: "GITHUB sucks!"}
     tags = [%{name: "github", rules: "title::contains::github\ntitle::contains::project"}]
 
     assert ["github"] = Tags.Rules.parse(tags, entity)
+    assert ["github"] = Tags.Rules.parse(tags, entity2)
   end
 
   test "parse_tag/2 correctly parses a contains rule" do
