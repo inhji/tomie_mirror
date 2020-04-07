@@ -2,6 +2,7 @@
   <fieldset>
     <%= label f, :source, "Bookmark Source" %>
     <%= url_input f, :source %>
+    <%= error_tag f, :source %>
   </fieldset>
 
   <%= submit "submit" %>
