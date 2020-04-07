@@ -16,14 +16,18 @@ const mainTheme = new Theme()
 
     'info': '#4299E1',
     'on-info': '#BEE3F8',
-    'danger': '#F56565',
-    'on-danger': '#FFF5F5'
-  });
+    'danger': '#FED7D7',
+    'on-danger': '#C53030'
+  })
+  .opacityVariant('muted', .8, ['on-surface'])
 
 const darkTheme = new Theme()
   .colors({
     'on-surface': '#CBD5E0',
-    'surface': '#2D3748'
+    'surface': '#2D3748',
+
+    'danger': '#9B2C2C',
+    'on-danger': '#FEB2B2'
   });
 
 module.exports = new ThemeBuilder()
