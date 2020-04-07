@@ -14,12 +14,16 @@ h1 {
 	@apply py-1 mb-3 text-3xl;
 }
 
-form input, form label, form textarea, form button[type=submit], .error-tag {
-	@apply block p-3 w-full;
+form label {
+	@apply block py-3;
 }
 
 form input, form textarea {
-	@apply mb-3 border-primary border-b-2 border-solid;
+	@apply mb-3 border-primary border-b-2 border-solid text-on-surface bg-surface;
+}
+
+form input, form textarea, form button[type=submit], .error-tag {
+	@apply block p-3 w-full;
 }
 
 form button[type=submit], .button {
@@ -27,5 +31,9 @@ form button[type=submit], .button {
 }
 
 form .error-tag {
-	@apply bg-danger text-on-danger;
+	@apply bg-danger text-on-danger mb-3;
+}
+
+.card {
+	@apply shadow p-2 my-2;
 }

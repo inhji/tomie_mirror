@@ -1,1 +1,2 @@
-<%= @bookmark.source %>
+<h1><%= @bookmark.title %></h1>
+<%= link @bookmark.source, to: Routes.bookmark_path(@conn, :visit, @bookmark) %>
