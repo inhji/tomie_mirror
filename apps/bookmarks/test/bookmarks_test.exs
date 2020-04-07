@@ -64,5 +64,8 @@ defmodule BookmarksTest do
 
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
+
+    {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "foo"], bookmark)
+    assert Enum.count(updated_bookmark.tags) == 1
   end
 end

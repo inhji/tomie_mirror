@@ -59,6 +59,7 @@ defmodule Tags do
   def update_tags_for_entity(tags, %{id: _id} = entity) when is_list(tags) do
     new_tags =
       tags
+      |> Enum.uniq()
       |> Enum.map(&Tags.create_or_get_tag(&1))
       |> Enum.reduce([], fn {:ok, tag}, tag_list -> [tag | tag_list] end)
 
