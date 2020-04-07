@@ -6,12 +6,16 @@
 
 <section>
   <%= for bookmark <- @bookmarks do %>
-  <article class="bookmark p-3 shadow my-3">
-    <h1 class="text-3xl">
-      <%= link bookmark.title || bookmark.source, to: Routes.bookmark_path(@conn, :visit, bookmark) %>
-    </h1>
-    <span class="text-gray-600"><%= bookmark.views %> Views</span>
-    <span class="text-gray-600">Tags: <%= tags(bookmark) %></span>
+  <article class="card">
+    <%= link to: Routes.bookmark_path(@conn, :show, bookmark), class: "block" do %>
+      <h2 class="font-bold">
+        <%= bookmark.title || bookmark.source %>
+      </h2>
+      <div class="text-on-surface-muted">
+        <span><%= bookmark.views %> Views</span>
+        <span>Tags: <%= tags(bookmark) %></span>
+      </div>
+    <% end %>
   </article>
   <% end %>
 </section>
