@@ -2,10 +2,7 @@ defmodule TomieWeb.LayoutView do
   use TomieWeb, :view
 
   def theme(conn) do
-    user = Pow.Plug.current_user(conn)
-    IO.inspect(user)
-
-    case user do
+    case Pow.Plug.current_user(conn) do
       nil -> "light"
       user -> user.theme
     end
