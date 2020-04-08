@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
-  <body class="mt-16 transition duration-500" data-theme="light">
+  <body class="mt-16 transition duration-500" data-theme="<%= theme(@conn) %>">
     <nav role="navigation">
       <ul>
         <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>

@@ -18,12 +18,16 @@ form label {
 	@apply block py-3;
 }
 
-form input, form textarea {
+form input, form textarea, form select {
 	@apply mb-3 border-primary border-b-2 border-solid text-on-surface bg-surface;
 }
 
-form input, form textarea, form button[type=submit], .error-tag {
+form input, form textarea, form select, form button[type=submit], .error-tag {
 	@apply block p-3 w-full;
+}
+
+form input[type=checkbox] {
+	@apply inline-block;
 }
 
 form button[type=submit], .button {

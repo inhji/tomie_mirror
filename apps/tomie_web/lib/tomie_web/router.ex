@@ -30,5 +30,6 @@ defmodule TomieWeb.Router do
     get "/bookmarks/:id/visit", BookmarkController, :visit
 
     resources "/tags", TagController
+    resources "/profiles", ProfileController, only: [:show, :edit, :update]
   end
 end
