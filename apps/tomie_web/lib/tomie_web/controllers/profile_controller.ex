@@ -3,8 +3,9 @@ defmodule TomieWeb.ProfileController do
 
   defp sync_user(conn, user), do: Pow.Plug.create(conn, user)
 
-  def show(conn, %{"id" => id}) do
-    render(conn, "show.html")
+  def index(conn, _params) do
+    user = Pow.Plug.current_user(conn)
+    render(conn, "index.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -22,7 +23,7 @@ defmodule TomieWeb.ProfileController do
         conn
         |> sync_user(user)
         |> put_flash(:info, @tag_updated)
-        |> redirect(to: Routes.profile_path(conn, :show, user))
+        |> redirect(to: Routes.profile_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "edit.html", changeset: changeset)

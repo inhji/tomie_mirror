@@ -29,7 +29,7 @@ config :tomie_web, TomieWeb.Endpoint,
   live_view: [signing_salt: "kRH3u6Gz"]
 
 config :tomie_web, :pow,
-  user: Tomie.Users.User,
+  user: Users.User,
   repo: Db.Repo,
   web_module: TomieWeb
 

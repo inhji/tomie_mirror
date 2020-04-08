@@ -15,13 +15,27 @@
         <li><%= link "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
         <li><%= link "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
-        <li><a href="#" class="theme-toggle">Theme</a></li>
         <%= if Pow.Plug.current_user(@conn) do %>
           <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
         <% else %>
           <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
           <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
         <% end %>
+        <li class="spacer" />
+        <li>
+          <a href="#" class="theme-toggle">
+            <svg class="fill-current w-4 h-4 mx-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M7 13.33a7 7 0 1 1 6 0V16H7v-2.67zM7 17h6v1.5c0 .83-.67 1.5-1.5 1.5h-3A1.5 1.5 0 0 1 7 18.5V17zm2-5.1V14h2v-2.1a5 5 0 1 0-2 0z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="<%= Routes.profile_path(@conn, :index) %>">
+            <svg class="fill-current w-4 h-4 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/>
+            </svg>
+          </a>
+        </li>
       </ul>
     </nav>
     <section class="alerts">
