@@ -4,7 +4,8 @@
 @import "tailwindcss/utilities";
 
 @import "alerts";
-@import "navigation";
+
+/* Overrides */
 
 body {
 	@apply bg-surface text-on-surface;
@@ -13,6 +14,18 @@ body {
 h1 {
 	@apply py-1 mb-3 text-3xl;
 }
+
+a {
+	@apply outline-none;
+}
+
+/* General Styles */
+
+.card {
+	@apply shadow p-2 my-2;
+}
+
+/* Forms */
 
 form label {
 	@apply block py-3;
@@ -38,6 +51,42 @@ form .error-tag {
 	@apply bg-danger text-on-danger mb-3;
 }
 
-.card {
-	@apply shadow p-2 my-2;
+/* Navbar */
+
+nav {
+	@apply fixed top-0 h-16 bg-navbar w-full;
+}
+
+nav > ul {
+	@apply flex items-center text-center h-16 text-on-navbar font-semibold uppercase px-3;
+}
+
+nav > ul > li {
+	@apply flex-auto;
+}
+
+nav > ul > li > a:hover {
+	@apply bg-on-navbar text-navbar;
+}
+
+nav > ul > li > a {
+	@apply p-5 h-16 inline-block;
+}
+
+nav > ul > li > a .icon {
+	@apply inline-block w-4 h-4;
+}
+
+nav > ul > li > a .icon svg {
+	@apply fill-current w-4 h-4;
+}
+
+@screen sm {
+	nav > ul > li {
+		@apply flex-none;
+	}
+
+	nav .spacer {
+		@apply flex-auto;
+	}
 }
