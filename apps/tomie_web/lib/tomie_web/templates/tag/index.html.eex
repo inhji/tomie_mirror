@@ -4,6 +4,7 @@
     class: "button block uppercase" %>
 </section>
 
+<section class="list">
 <%= for tag <- @tags do %>
   <article class="card">
     <%= link to: Routes.tag_path(@conn, :show, tag), class: "block" do %>
@@ -16,3 +17,4 @@
     <% end %>
   </article>
 <% end %>
+</section>

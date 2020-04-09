@@ -1,8 +1,8 @@
 <h1><%= @tag.name %></h1>
 
-<ul>
+<ul class="list">
   <%= for rule <- rules(@tag) do %>
-    <li><%= rule %></li>
+    <li class="card"><%= rule %></li>
   <% end %>
 </ul>
 

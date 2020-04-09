@@ -21,8 +21,12 @@ a {
 
 /* General Styles */
 
+.list .card:last-child {
+	@apply border-none;
+}
+
 .card {
-	@apply shadow p-2 my-2;
+	@apply pb-2 mt-2 border-primary border-solid border-b-2;
 }
 
 /* Forms */

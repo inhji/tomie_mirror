@@ -4,7 +4,7 @@
     class: "button block uppercase" %>
 </section>
 
-<section>
+<section class="list">
   <%= for bookmark <- @bookmarks do %>
   <article class="card">
     <%= link to: Routes.bookmark_path(@conn, :show, bookmark), class: "block" do %>
@@ -13,7 +13,9 @@
       </h2>
       <div class="text-on-surface-muted">
         <span><%= bookmark.views %> Views</span>
-        <span>Tags: <%= tags(bookmark) %></span>
+        <%= for tag <- bookmark.tags do %>
+          <span><%= tag.name %></span>
+        <% end %>
       </div>
     <% end %>
   </article>
