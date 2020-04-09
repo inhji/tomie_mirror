@@ -41,4 +41,28 @@ defmodule TomieWeb.BookmarkController do
     conn
     |> redirect(external: bookmark.source)
   end
+
+  def bookmarklet(conn, %{"url" => url, "token" => token}) do
+    user = Pow.Plug.current_user(conn)
+
+    if user.token == token do
+      case Bookmarks.create_bookmark(%{source: url}) do
+        {:ok, bookmark} ->
+          Que.add(Bookmarks.Worker, bookmark)
+
+          conn
+          |> put_flash(:info, @bookmark_created)
+          |> redirect(external: url)
+
+        {:error, _changeset} ->
+          conn
+          |> put_flash(:error, "Could not create bookmark")
+          |> render(PageView, "index.html")
+      end
+    else
+      conn
+      |> put_flash(:error, "Wrong token")
+      |> render(PageView, "index.html")
+    end
+  end
 end
