@@ -5,6 +5,7 @@ defmodule Bookmarks.Constants do
 
       @bookmark_created "Bookmark created!"
       @bookmark_updated "Bookmark updated!"
+      @bookmark_deleted "Bookmark deleted!"
     end
   end
 end

@@ -28,7 +28,7 @@ defmodule TomieWeb.Router do
 
     get "/bookmarks/:id/visit", BookmarkController, :visit
     get "/bookmarks/save", BookmarkController, :bookmarklet
-    resources "/bookmarks", BookmarkController, except: [:delete]
+    resources "/bookmarks", BookmarkController
 
     resources "/tags", TagController
 

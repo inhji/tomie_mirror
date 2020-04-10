@@ -2,3 +2,4 @@
 
 <%= link "Visit URL", to: Routes.bookmark_path(@conn, :visit, @bookmark), class: "button" %>
 <%= link "Edit", to: Routes.bookmark_path(@conn, :edit, @bookmark), class: "button" %>
+<%= link "Delete", to: Routes.bookmark_path(@conn, :delete, @bookmark), method: :delete, data: [confirm: "Are you sure?"], class: "button" %>

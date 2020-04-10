@@ -55,6 +55,20 @@ defmodule TomieWeb.BookmarkController do
     end
   end
 
+  def delete(conn, %{"id" => id}) do
+    bookmark = Bookmarks.get_bookmark!(id)
+
+    case Bookmarks.delete_bookmark(bookmark) do
+      {:ok, _bookmark} ->
+        conn
+        |> put_flash(:info, @bookmark_deleted)
+        |> redirect(to: Routes.bookmark_path(conn, :index))
+
+      {:error, _changeset} ->
+        render(conn, "show.html", bookmark: bookmark)
+    end
+  end
+
   def visit(conn, %{"id" => id}) do
     bookmark = Bookmarks.get_bookmark!(id)
     {:ok, _visited_bookmark} = Bookmarks.visit_bookmark(bookmark)
