@@ -20,6 +20,29 @@ defmodule TomieWeb.BookmarkControllerTest do
   end
 
   @tag :logged_in
+  test "GET /bookmarks/new", %{conn: conn} do
+    conn = get(conn, Routes.bookmark_path(conn, :new))
+    assert html_response(conn, 200)
+  end
+
+  @tag :logged_in
+  test "GET /bookmarks/:id/edit", %{conn: conn} do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    conn = get(conn, Routes.bookmark_path(conn, :edit, bookmark))
+    assert html_response(conn, 200)
+  end
+
+  @tag :logged_in
+  test "POST /bookmarks/:id", %{conn: conn} do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+
+    params = %{bookmark: %{source: "https://new_source.de"}}
+    conn = put(conn, Routes.bookmark_path(conn, :update, bookmark), params)
+
+    assert redirected_to(conn) == Routes.bookmark_path(conn, :index)
+  end
+
+  @tag :logged_in
   test "GET /bookmarks/:id", %{conn: conn} do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
     conn = get(conn, Routes.bookmark_path(conn, :show, bookmark.id))

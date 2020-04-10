@@ -34,6 +34,27 @@ defmodule TomieWeb.BookmarkController do
     render(conn, "show.html", bookmark: bookmark)
   end
 
+  def edit(conn, %{"id" => id}) do
+    bookmark = Bookmarks.get_bookmark!(id)
+    changeset = Bookmark.changeset(bookmark)
+
+    render(conn, "edit.html", bookmark: bookmark, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "bookmark" => bookmark_params}) do
+    bookmark = Bookmarks.get_bookmark!(id)
+
+    case Bookmarks.update_bookmark(bookmark, bookmark_params) do
+      {:ok, _bookmark} ->
+        conn
+        |> put_flash(:info, @bookmark_updated)
+        |> redirect(to: Routes.bookmark_path(conn, :index))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", changeset: changeset)
+    end
+  end
+
   def visit(conn, %{"id" => id}) do
     bookmark = Bookmarks.get_bookmark!(id)
     {:ok, _visited_bookmark} = Bookmarks.visit_bookmark(bookmark)

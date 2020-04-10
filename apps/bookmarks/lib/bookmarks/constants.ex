@@ -4,6 +4,7 @@ defmodule Bookmarks.Constants do
       @post_type "bookmark"
 
       @bookmark_created "Bookmark created!"
+      @bookmark_updated "Bookmark updated!"
     end
   end
 end
