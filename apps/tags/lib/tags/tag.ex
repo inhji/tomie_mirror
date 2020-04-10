@@ -30,8 +30,8 @@ defmodule Tags.Tag do
 
   def do_add_default_rule(changeset) do
     case get_change(changeset, :name) do
-      nil -> nil
-      name -> "name::contains::#{name}"
+      nil -> get_field(changeset, :rules, nil)
+      name -> "title::contains::#{name}"
     end
   end
 end
