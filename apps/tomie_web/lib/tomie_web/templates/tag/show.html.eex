@@ -1,10 +1,10 @@
 <h1><%= @tag.name %></h1>
 
-<ul class="list">
-  <%= for rule <- rules(@tag) do %>
-    <li class="card"><%= rule %></li>
-  <% end %>
-</ul>
+<pre>
+<%= for rule <- rules(@tag) do %>
+  <%= rule %>
+<% end %>
+</pre>
 
 <div>
   <%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag), class: "button" %>
