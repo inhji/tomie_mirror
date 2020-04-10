@@ -36,19 +36,27 @@ form label {
 }
 
 form input, form textarea, form select {
-	@apply mb-3 border-on-surface-barely border-b-2 border-solid text-on-surface bg-surface;
+	@apply mb-3 border-on-surface-barely border-b-2 border-solid text-on-surface bg-surface transition-all duration-300;
+}
+
+form textarea {
+	rows: 5;
 }
 
 form input:focus, form textarea:focus {
-	@apply border-primary;
+	@apply border-primary bg-primary-dark;
 }
 
 form input:invalid, form textarea:invalid {
 	@apply border-danger bg-danger-barely shadow-none;
 }
 
+form input[required]:valid, form textarea[required]:valid {
+	@apply border-success bg-success-barely shadow-none;
+}
+
 form input, form textarea, form select, form button[type=submit], .error-tag {
-	@apply block p-3 w-full;
+	@apply block p-3 w-full rounded-sm;
 }
 
 form input:disabled,
@@ -63,11 +71,11 @@ form input[type=checkbox] {
 }
 
 form button[type=submit], .button {
-	@apply p-3 bg-primary-light text-on-primary transition-all duration-300 inline-block uppercase ;
+	@apply p-3 bg-primary-light text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
 form button[type=submit]:hover, .button:hover {
-	@apply bg-primary-light-muted tracking-wider;
+	@apply bg-primary-light-muted;
 }
 
 form .error-tag {

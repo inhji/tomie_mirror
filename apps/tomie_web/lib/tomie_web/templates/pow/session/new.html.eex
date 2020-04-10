@@ -7,13 +7,17 @@
     </div>
   <% end %>
 
-  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <fieldset>
+    <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+    <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), required: true %>
+    <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  </fieldset>
 
-  <%= label f, :password %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
+  <fieldset>
+    <%= label f, :password %>
+    <%= password_input f, :password, required: true %>
+    <%= error_tag f, :password %>
+  </fieldset>
 
   <div>
     <%= submit "Login", class: "uppercase" %>
