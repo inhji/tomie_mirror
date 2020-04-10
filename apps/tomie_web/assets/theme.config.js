@@ -19,7 +19,8 @@ const mainTheme = new Theme()
     'danger': '#FED7D7',
     'on-danger': '#C53030'
   })
-  .opacityVariant('muted', .8, ['on-surface'])
+  .opacityVariant('muted', .8)
+  .opacityVariant('barely', .4)
   .colorVariant('hover', '#EDF2F7', 'navbar')
   .colorVariant('hover', '#4C51BF', 'on-navbar')
 

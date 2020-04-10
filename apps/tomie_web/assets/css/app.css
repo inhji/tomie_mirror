@@ -36,7 +36,15 @@ form label {
 }
 
 form input, form textarea, form select {
-	@apply mb-3 border-primary border-b-2 border-solid text-on-surface bg-surface;
+	@apply mb-3 border-on-surface-barely border-b-2 border-solid text-on-surface bg-surface;
+}
+
+form input:focus, form textarea:focus {
+	@apply border-primary;
+}
+
+form input:invalid, form textarea:invalid {
+	@apply border-danger bg-danger-barely shadow-none;
 }
 
 form input, form textarea, form select, form button[type=submit], .error-tag {
@@ -55,7 +63,11 @@ form input[type=checkbox] {
 }
 
 form button[type=submit], .button {
-	@apply p-3 bg-primary text-on-primary transition-all duration-300 inline-block;
+	@apply p-3 bg-primary-light text-on-primary transition-all duration-300 inline-block uppercase ;
+}
+
+form button[type=submit]:hover, .button:hover {
+	@apply bg-primary-light-muted tracking-wider;
 }
 
 form .error-tag {
