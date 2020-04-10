@@ -12,6 +12,20 @@ defmodule TomieWeb.TagControllerTest do
   end
 
   @tag :logged_in
+  test "GET /tags/new", %{conn: conn} do
+    conn = get(conn, Routes.tag_path(conn, :new))
+    assert html_response(conn, 200)
+  end
+
+  @tag :logged_in
+  test "GET /tags/:id/edit", %{conn: conn} do
+    {:ok, tag} = Tags.create_tag(@some_tag)
+
+    conn = get(conn, Routes.tag_path(conn, :edit, tag))
+    assert html_response(conn, 200)
+  end
+
+  @tag :logged_in
   test "POST /tags", %{conn: conn} do
     conn = post(conn, Routes.tag_path(conn, :create), tag: @some_tag)
 
