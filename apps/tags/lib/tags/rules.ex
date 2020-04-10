@@ -1,4 +1,6 @@
 defmodule Tags.Rules do
+  require Logger
+
   @doc """
   Parses autotagging-rules attached to Tags.
 
@@ -28,9 +30,16 @@ defmodule Tags.Rules do
 
       case f do
         "contains" ->
-          if property |> String.downcase() |> String.contains?(s),
-            do: tags ++ [name],
-            else: tags
+          if !!property do
+            if property |> String.downcase() |> String.contains?(s) do
+              tags ++ [name]
+            else
+              tags
+            end
+          else
+            Logger.warn("Rule for Tag<#{name}> contains unknown property [#{p}]!")
+            tags
+          end
 
         "matches" ->
           if Regex.compile!(s) |> Regex.match?(property),
