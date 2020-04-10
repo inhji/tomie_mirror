@@ -22,7 +22,7 @@ defmodule TomieWeb.ProfileController do
       {:ok, user} ->
         conn
         |> sync_user(user)
-        |> put_flash(:info, @tag_updated)
+        |> put_flash(:info, "Profile updated!")
         |> redirect(to: Routes.profile_path(conn, :show))
 
       {:error, changeset} ->

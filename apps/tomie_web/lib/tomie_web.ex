@@ -23,6 +23,7 @@ defmodule TomieWeb do
       import Plug.Conn
       import TomieWeb.Gettext
       alias TomieWeb.Router.Helpers, as: Routes
+      alias TomieWeb.Worker
     end
   end
 

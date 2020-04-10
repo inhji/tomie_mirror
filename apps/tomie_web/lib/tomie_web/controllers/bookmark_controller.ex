@@ -18,7 +18,7 @@ defmodule TomieWeb.BookmarkController do
   def create(conn, %{"bookmark" => bookmark_params}) do
     case Bookmarks.create_bookmark(bookmark_params) do
       {:ok, bookmark} ->
-        Que.add(Bookmarks.Worker, bookmark)
+        Worker.run(bookmark)
 
         conn
         |> put_flash(:info, @bookmark_created)
@@ -69,7 +69,7 @@ defmodule TomieWeb.BookmarkController do
     if user.token == token do
       case Bookmarks.create_bookmark(%{source: url}) do
         {:ok, bookmark} ->
-          Que.add(Bookmarks.Worker, bookmark)
+          Worker.run(bookmark)
 
           conn
           |> put_flash(:info, @bookmark_created)
