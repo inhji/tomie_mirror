@@ -11,9 +11,9 @@
   <body class="mt-16 transition duration-500" data-theme="<%= theme(@conn) %>">
     <nav role="navigation">
       <ul>
-        <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
-        <li><%= link "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
-        <li><%= link "Tags", to: Routes.tag_path(@conn, :index) %></li>
+        <li><%= active_link @conn, "Home", to: Routes.page_path(@conn, :index) %></li>
+        <li><%= active_link @conn, "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
+        <li><%= active_link @conn, "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
         <li>
           <a href="#" class="theme-toggle">
@@ -25,17 +25,17 @@
           </a>
         </li>
         <%= unless Pow.Plug.current_user(@conn) do %>
-          <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
-          <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+          <li><%= active_link @conn, "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+          <li><%= active_link @conn, "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
         <% else %>
           <li>
-            <a href="<%= Routes.profile_path(@conn, :show) %>">
+            <%= active_link @conn, to: Routes.profile_path(@conn, :show) do %>
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/>
                 </svg>
               </span>
-            </a>
+            <% end %>
           </li>
         <% end %>
       </ul>
