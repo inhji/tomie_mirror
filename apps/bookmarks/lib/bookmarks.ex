@@ -56,6 +56,10 @@ defmodule Bookmarks do
     |> Db.Repo.update()
   end
 
+  def delete_bookmark(bookmark) do
+    Db.Repo.delete(bookmark)
+  end
+
   @doc """
   Updates a bookmark's tags
 

@@ -68,4 +68,14 @@ defmodule BookmarksTest do
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
   end
+
+  test "delete_bookmark/1 deletes a bookmark" do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    Bookmarks.update_tags(["foo", "bar"], bookmark)
+    Bookmarks.delete_bookmark(bookmark)
+
+    assert_raise Ecto.NoResultsError, fn ->
+      Bookmarks.get_bookmark!(bookmark.id)
+    end
+  end
 end
