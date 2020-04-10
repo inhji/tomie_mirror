@@ -18,8 +18,7 @@ config :tomie,
 
 config :tomie_web,
   ecto_repos: [Db.Repo],
-  generators: [context_app: :tomie],
-  disable_workers: false
+  generators: [context_app: :tomie]
 
 # Configures the endpoint
 config :tomie_web, TomieWeb.Endpoint,
