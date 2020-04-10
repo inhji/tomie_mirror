@@ -43,6 +43,13 @@ form input, form textarea, form select, form button[type=submit], .error-tag {
 	@apply block p-3 w-full;
 }
 
+form input:disabled,
+form input:read-only,
+form textarea:disabled,
+form textarea:read-only {
+	@apply text-on-surface-muted;
+}
+
 form input[type=checkbox] {
 	@apply inline-block;
 }
