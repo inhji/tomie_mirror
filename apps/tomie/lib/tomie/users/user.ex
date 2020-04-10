@@ -16,6 +16,7 @@ defmodule Users.User do
   def profile_changeset(user, attrs \\ %{}) do
     user
     |> cast(attrs, [:theme, :token, :reset_token])
+    |> validate_inclusion(:theme, ["dark", "light"])
     |> maybe_reset_token()
   end
 
@@ -27,6 +28,8 @@ defmodule Users.User do
   end
 
   defp token(length) do
-    :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
+    :crypto.strong_rand_bytes(length)
+    |> Base.url_encode64()
+    |> binary_part(0, length)
   end
 end
