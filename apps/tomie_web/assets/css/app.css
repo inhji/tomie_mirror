@@ -21,12 +21,24 @@ a {
 
 /* General Styles */
 
+.list .card {
+	@apply border-primary-muted border-solid border-b-2;
+}
+
 .list .card:last-child {
-	@apply border-none;
+	@apply border-none shadow-lg;
+}
+
+.list:not(:first-child) {
+	@apply mt-6;
 }
 
 .card {
-	@apply pb-2 mt-2 border-primary border-solid border-b-2;
+	@apply p-4 transition-all duration-300;
+}
+
+.card:hover, .card:focus, .card:active {
+	@apply bg-primary-alt-barely;
 }
 
 /* Forms */
@@ -44,7 +56,7 @@ form textarea {
 }
 
 form input:focus, form textarea:focus {
-	@apply border-primary bg-primary-dark;
+	@apply border-primary bg-primary-alt;
 }
 
 form input:invalid, form textarea:invalid {
@@ -71,11 +83,11 @@ form input[type=checkbox] {
 }
 
 form button[type=submit], .button {
-	@apply p-3 bg-primary-light text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
+	@apply p-3 bg-primary-alt text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
 form button[type=submit]:hover, .button:hover {
-	@apply bg-primary-light-muted;
+	@apply bg-primary-alt-muted;
 }
 
 form .error-tag {

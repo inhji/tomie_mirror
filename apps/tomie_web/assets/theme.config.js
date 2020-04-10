@@ -4,8 +4,7 @@ const mainTheme = new Theme()
   .default()
   .colors({
     'primary': '#4C51BF',
-    'primary-light': '#667EEA',
-    'primary-dark': '#434190',
+    'primary-alt': '#667EEA',
     'on-primary': '#EDF2F7',
 
     'surface': '#EDF2F7',
@@ -23,11 +22,14 @@ const mainTheme = new Theme()
   })
   .opacityVariant('muted', .8)
   .opacityVariant('barely', .4)
+  .opacityVariant('not-even', .05)
   .colorVariant('hover', '#EDF2F7', 'navbar')
   .colorVariant('hover', '#4C51BF', 'on-navbar')
 
 const darkTheme = new Theme()
   .colors({
+    'primary-alt': '#434190',
+
     'on-surface': '#CBD5E0',
     'surface': '#2D3748',
 
