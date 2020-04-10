@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 
-<%= link "Edit Profile", to: Routes.profile_path(@conn, :edit, Pow.Plug.current_user(@conn)), class: "button" %>
+<%= link "Edit Profile", to: Routes.profile_path(@conn, :edit), class: "button" %>
 <%= link "Edit User", to: Routes.pow_registration_path(@conn, :edit), class: "button" %>
 <%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "button" %>
 

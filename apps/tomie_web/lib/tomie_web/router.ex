@@ -28,9 +28,12 @@ defmodule TomieWeb.Router do
 
     get "/bookmarks/:id/visit", BookmarkController, :visit
     get "/bookmarks/save", BookmarkController, :bookmarklet
-    resources "/bookmarks", BookmarkController, only: [:index, :new, :create, :show]
+    resources "/bookmarks", BookmarkController, except: [:delete]
 
     resources "/tags", TagController
-    resources "/profiles", ProfileController, only: [:index, :edit, :update]
+
+    resources "/profile", ProfileController,
+      only: [:show, :edit, :update],
+      singleton: true
   end
 end

@@ -3,27 +3,27 @@ defmodule TomieWeb.ProfileController do
 
   defp sync_user(conn, user), do: Pow.Plug.create(conn, user)
 
-  def index(conn, _params) do
+  def show(conn, _params) do
     user = Pow.Plug.current_user(conn)
-    render(conn, "index.html", user: user)
+    render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
+  def edit(conn, _params) do
+    user = Pow.Plug.current_user(conn)
     changeset = Users.User.profile_changeset(user)
 
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Users.get_user!(id)
+  def update(conn, %{"user" => user_params}) do
+    user = Pow.Plug.current_user(conn)
 
     case Users.update_profile(user, user_params) do
       {:ok, user} ->
         conn
         |> sync_user(user)
         |> put_flash(:info, @tag_updated)
-        |> redirect(to: Routes.profile_path(conn, :index))
+        |> redirect(to: Routes.profile_path(conn, :show))
 
       {:error, changeset} ->
         render(conn, "edit.html", changeset: changeset)
