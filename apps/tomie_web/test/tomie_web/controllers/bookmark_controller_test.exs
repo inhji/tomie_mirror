@@ -26,4 +26,26 @@ defmodule TomieWeb.BookmarkControllerTest do
 
     assert html_response(conn, 200) =~ @source
   end
+
+  @tag :logged_in
+  test "GET /bookmarks/:id/visit", %{conn: conn} do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+    conn = get(conn, Routes.bookmark_path(conn, :visit, bookmark.id))
+
+    updated_bookmark = Bookmarks.get_bookmark!(bookmark.id)
+
+    assert redirected_to(conn) == @source
+    assert bookmark.views + 1 == updated_bookmark.views
+  end
+
+  @tag :logged_in
+  test "GET /bookmarks/bookmarklet", %{conn: conn} do
+    conn =
+      get(conn, Routes.bookmark_path(conn, :bookmarklet), %{
+        url: @source,
+        token: Pow.Plug.current_user(conn).token
+      })
+
+    assert redirected_to(conn) == @source
+  end
 end
