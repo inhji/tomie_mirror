@@ -41,6 +41,14 @@ a {
 	@apply bg-primary-alt-barely;
 }
 
+.card:hover .tag, .card:focus .tag, .card:active .tag {
+	@apply bg-surface-barely;
+}
+
+.tag {
+	@apply text-sm uppercase bg-primary-alt-barely px-2 py-1 shadow;
+}
+
 /* Forms */
 
 form label {

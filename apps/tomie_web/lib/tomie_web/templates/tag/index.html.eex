@@ -8,12 +8,12 @@
 <%= for tag <- @tags do %>
   <article class="card">
     <%= link to: Routes.tag_path(@conn, :show, tag), class: "block" do %>
-      <h2 class="font-bold">
+      <h2 class="font-bold mb-2">
         <%= tag.name %>
       </h2>
-      <div class="text-on-surface-muted">
-        <span><%= rule_count(tag) %> Rules</span>
-      </div>
+      <span class="text-on-surface-muted tag">
+        <%= rule_count(tag) %> Rules
+      </span>
     <% end %>
   </article>
 <% end %>

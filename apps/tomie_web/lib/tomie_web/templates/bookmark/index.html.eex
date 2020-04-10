@@ -8,14 +8,21 @@
   <%= for bookmark <- @bookmarks do %>
   <article class="card">
     <%= link to: Routes.bookmark_path(@conn, :show, bookmark), class: "block" do %>
-      <h2 class="font-bold">
+      <h2 class="font-bold mb-2">
         <%= bookmark.title || bookmark.source %>
       </h2>
-      <div class="text-on-surface-muted">
-        <span><%= bookmark.views %> Views</span>
-        <%= for tag <- bookmark.tags do %>
-          <span><%= tag.name %></span>
-        <% end %>
+      <div class="flex text-on-surface-muted">
+        <span class="flex-1">
+          <!-- JANKY HACK H8-->
+          <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
+          <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
+        </span>
+        <span class="flex-auto"></span>
+        <span class="flex-1 text-right tags">
+          <%= for tag <- bookmark.tags do %>
+          <span class="tag ml-1"><%= tag.name %></span>
+          <% end %>
+        </span>
       </div>
     <% end %>
   </article>

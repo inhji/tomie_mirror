@@ -50,6 +50,7 @@ defmodule TomieWeb.MixProject do
       {:pow, "~> 1.0.19"},
       {:que, "~> 0.10.1"},
       {:excoveralls, "~> 0.12.3", only: :test},
+      {:timex, "~> 3.5"},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
       {:tags, in_umbrella: true},
