@@ -82,7 +82,7 @@ nav > ul > li > a {
 
 nav > ul > li > a:hover,
 nav > ul > li > a.active {
-	@apply bg-on-navbar text-navbar;
+	@apply bg-navbar-hover text-on-navbar-hover;
 }
 
 nav > ul > li > a .icon {
