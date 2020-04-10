@@ -1,7 +1,7 @@
 <%= form_for @changeset, @action, fn f -> %>
   <fieldset>
     <%= label f, :source, "Bookmark Source" %>
-    <%= url_input f, :source %>
+    <%= url_input f, :source, autofocus: true %>
     <%= error_tag f, :source %>
   </fieldset>
 
