@@ -20,6 +20,7 @@ defmodule Bookmarks do
   """
   def update_bookmark(bookmark, attrs) do
     bookmark
+    |> Db.Repo.preload(:tags)
     |> Bookmark.changeset(attrs)
     |> Db.Repo.update()
   end
@@ -49,6 +50,7 @@ defmodule Bookmarks do
   """
   def visit_bookmark(bookmark) do
     bookmark
+    |> Db.Repo.preload(:tags)
     |> Bookmark.changeset(%{
       views: bookmark.views + 1,
       viewed_at: DateTime.utc_now()

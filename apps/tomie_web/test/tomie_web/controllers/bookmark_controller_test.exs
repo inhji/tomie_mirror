@@ -36,7 +36,7 @@ defmodule TomieWeb.BookmarkControllerTest do
   test "POST /bookmarks/:id", %{conn: conn} do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
 
-    params = %{bookmark: %{source: "https://new_source.de"}}
+    params = %{bookmark: %{source: "https://new_source.de", tag_string: "foo,bar"}}
     conn = put(conn, Routes.bookmark_path(conn, :update, bookmark), params)
 
     assert redirected_to(conn) == Routes.bookmark_path(conn, :index)

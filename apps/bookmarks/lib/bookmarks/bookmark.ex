@@ -25,7 +25,7 @@ defmodule Bookmarks.Bookmark do
       on_replace: :delete,
       unique: true
 
-    field :tag_string, :string, virtual: true
+    field :tag_string, :string, virtual: true, default: ""
 
     timestamps()
   end
