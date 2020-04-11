@@ -21,27 +21,31 @@ a {
 
 /* General Styles */
 
+.list {
+	@apply shadow-lg;
+}
+
 .list .card {
-	@apply border-primary-muted border-solid border-b-2;
+	@apply p-4 transition-all duration-300 border-primary-barely border-solid border-b-2;
 }
 
 .list .card:last-child {
-	@apply border-none shadow-lg;
+	@apply border-none;
 }
 
 .list:not(:first-child) {
 	@apply mt-6;
 }
 
-.card {
-	@apply p-4 transition-all duration-300;
-}
-
-.card:hover, .card:focus, .card:active {
+.list .card:hover,
+.list .card:focus,
+.list .card:active {
 	@apply bg-primary-alt-barely;
 }
 
-.card:hover .tag, .card:focus .tag, .card:active .tag {
+.list .card:hover .tag,
+.list .card:focus .tag,
+.list .card:active .tag {
 	@apply bg-surface-barely;
 }
 

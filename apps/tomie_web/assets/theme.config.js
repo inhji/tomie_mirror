@@ -25,13 +25,14 @@ const mainTheme = new Theme()
   .opacityVariant('not-even', .05)
   .colorVariant('hover', '#EDF2F7', 'navbar')
   .colorVariant('hover', '#4C51BF', 'on-navbar')
+  .colorVariant('alt', '#F7FAFC', 'surface')
 
 const darkTheme = new Theme()
   .colors({
     'primary-alt': '#434190',
 
-    'on-surface': '#CBD5E0',
     'surface': '#2D3748',
+    'on-surface': '#CBD5E0',
 
     'navbar': '#4C51BF',
     'on-navbar': '#EDF2F7',
@@ -41,6 +42,7 @@ const darkTheme = new Theme()
   })
   .colorVariant('hover', '#2D3748', 'navbar')
   .colorVariant('hover', '#CBD5E0', 'on-navbar')
+  .colorVariant('alt', '#1A202C', 'surface')
 
 module.exports = new ThemeBuilder()
   .asDataThemeAttribute()
