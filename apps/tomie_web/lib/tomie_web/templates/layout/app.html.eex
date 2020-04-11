@@ -11,7 +11,15 @@
   <body class="mt-16 transition duration-500" data-theme="<%= theme(@conn) %>">
     <nav role="navigation">
       <ul>
-        <li><%= active_link @conn, "Home", to: Routes.page_path(@conn, :index) %></li>
+        <li>
+          <%= active_link @conn, to: Routes.page_path(@conn, :index) do %>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z"/>
+              </svg>
+            </span>
+          <% end %>
+        </li>
         <li><%= active_link @conn, "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
         <li><%= active_link @conn, "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
