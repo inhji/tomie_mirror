@@ -8,9 +8,9 @@
 <%= for tag <- @tags do %>
   <article class="card">
     <%= link to: Routes.tag_path(@conn, :show, tag), class: "block" do %>
-      <h2 class="font-bold mb-2">
+      <h3>
         <%= tag.name %>
-      </h2>
+      </h3>
       <span class="text-on-surface-muted tag">
         <%= rule_count(tag) %> Rules
       </span>

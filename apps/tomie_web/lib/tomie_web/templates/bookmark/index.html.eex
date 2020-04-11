@@ -8,9 +8,9 @@
   <%= for bookmark <- @bookmarks do %>
   <article class="card">
     <%= link to: Routes.bookmark_path(@conn, :show, bookmark), class: "block" do %>
-      <h2 class="font-bold mb-4">
+      <h3 class="text-xl">
         <%= bookmark.title || bookmark.source %>
-      </h2>
+      </h3>
       <div class="flex text-xs text-on-surface-muted">
         <span class="flex-1">
           <!-- JANKY HACK H8-->

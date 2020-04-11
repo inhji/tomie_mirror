@@ -10,6 +10,8 @@ const mainTheme = new Theme()
     'surface': '#EDF2F7',
     'on-surface': '#2D3748',
 
+    'divider': '#CBD5E0',
+
     'navbar': '#4C51BF',
     'on-navbar': '#EDF2F7',
 
@@ -33,6 +35,8 @@ const darkTheme = new Theme()
 
     'surface': '#2D3748',
     'on-surface': '#CBD5E0',
+
+    'divider': '#4A5568',
 
     'navbar': '#4C51BF',
     'on-navbar': '#EDF2F7',
