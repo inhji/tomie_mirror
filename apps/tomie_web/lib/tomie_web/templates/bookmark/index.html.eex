@@ -11,14 +11,13 @@
       <h3 class="text-xl">
         <%= bookmark.title || bookmark.source %>
       </h3>
-      <div class="flex text-xs text-on-surface-muted">
-        <span class="flex-1">
+      <div class="text-xs text-on-surface-muted">
+        <span>
           <!-- JANKY HACK H8-->
           <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
           <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
         </span>
-        <span class="sm:flex-auto"></span>
-        <span class="flex-1 text-right tags">
+        <span class="tags">
           <%= for tag <- bookmark.tags do %>
           <span class="tag ml-1"><%= tag.name %></span>
           <% end %>
