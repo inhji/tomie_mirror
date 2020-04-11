@@ -38,14 +38,19 @@ defmodule TomieWeb.BookmarkController do
     bookmark = Bookmarks.get_bookmark!(id)
     changeset = Bookmark.changeset(bookmark)
 
-    render(conn, "edit.html", bookmark: bookmark, changeset: changeset)
+    render(conn, "edit.html",
+      bookmark: bookmark,
+      changeset: changeset
+    )
   end
 
-  def update(conn, %{"id" => id, "bookmark" => bookmark_params}) do
+  def update(conn, %{"id" => id, "bookmark" => %{"tag_string" => tags} = bookmark_params}) do
     bookmark = Bookmarks.get_bookmark!(id)
 
     case Bookmarks.update_bookmark(bookmark, bookmark_params) do
-      {:ok, _bookmark} ->
+      {:ok, bookmark} ->
+        Bookmarks.update_tags(tags, bookmark)
+
         conn
         |> put_flash(:info, @bookmark_updated)
         |> redirect(to: Routes.bookmark_path(conn, :index))
