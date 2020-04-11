@@ -1,3 +1,10 @@
+<nav>
+  <ul>
+    <li><%= link "Back", to: Routes.tag_path(@conn, :index) %></li>
+    <li><%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag) %></li>
+  </ul>
+</nav>
+
 <h1><%= @tag.name %></h1>
 
 <pre>
@@ -5,7 +12,3 @@
   <%= rule %>
 <% end %>
 </pre>
-
-<div>
-  <%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag), class: "button" %>
-</div>

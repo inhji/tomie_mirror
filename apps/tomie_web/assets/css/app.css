@@ -34,11 +34,10 @@ a {
 /* General Styles */
 
 .list {
-	@apply shadow-2xl;
 }
 
 .list .card {
-	@apply p-4 transition-all duration-300 border-divider border-solid border-b;
+	@apply p-4 transition duration-300 mb-4 shadow;
 }
 
 .list .card:last-child {
@@ -52,13 +51,7 @@ a {
 .list .card:hover,
 .list .card:focus,
 .list .card:active {
-	@apply bg-primary-alt-barely;
-}
-
-.list .card:hover .tag,
-.list .card:focus .tag,
-.list .card:active .tag {
-	@apply bg-surface-barely;
+	@apply bg-surface-alt shadow-none;
 }
 
 .tag {
@@ -110,7 +103,9 @@ form button[type=submit], .button {
 	@apply p-3 bg-primary-alt text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
-form button[type=submit]:hover, .button:hover {
+form button[type=submit]:hover, .button:hover,
+form button[type=submit]:focus, .button:focus,
+form button[type=submit]:active, .button:active {
 	@apply bg-primary-alt-muted;
 }
 
@@ -121,11 +116,11 @@ form .error-tag {
 /* Navbar */
 
 nav {
-	@apply fixed top-0 h-16 bg-navbar w-full;
+	@apply h-16 bg-navbar w-full;
 }
 
 nav > ul {
-	@apply flex items-center text-center h-16 text-on-navbar font-semibold uppercase px-3;
+	@apply flex text-center h-16  font-semibold uppercase;
 }
 
 nav > ul > li {
@@ -133,12 +128,7 @@ nav > ul > li {
 }
 
 nav > ul > li > a {
-	@apply p-5 h-16 inline-block;
-}
-
-nav > ul > li > a:hover,
-nav > ul > li > a.active {
-	@apply bg-navbar-hover text-on-navbar-hover;
+	@apply p-5 h-16 block transition-all duration-150 ease-in-out;
 }
 
 nav > ul > li > a .icon {
@@ -157,4 +147,32 @@ nav > ul > li > a .icon svg {
 	nav .spacer {
 		@apply flex-auto;
 	}
+}
+
+nav#main {
+	@apply fixed top-0 text-on-navbar;
+}
+
+nav#main > ul > li > a:hover,
+nav#main > ul > li > a:focus,
+nav#main > ul > li > a.active {
+	@apply bg-navbar-hover text-on-navbar-hover;
+}
+
+main nav {
+	@apply bg-surface text-on-surface py-3 mb-8;
+}
+
+main nav > ul > li {
+	@apply shadow mr-6;
+}
+
+main nav > ul > li:last-child {
+	@apply mr-0;
+}
+
+main nav > ul > li > a:hover,
+main nav > ul > li > a:focus,
+main nav > ul > li > a.active {
+	@apply bg-primary-alt shadow-none;
 }

@@ -9,7 +9,7 @@
     <%= csrf_meta_tag() %>
   </head>
   <body class="mt-16 transition duration-500" data-theme="<%= theme(@conn) %>">
-    <nav role="navigation">
+    <nav role="navigation" id="main">
       <ul>
         <li>
           <%= active_link @conn, to: Routes.page_path(@conn, :index) do %>

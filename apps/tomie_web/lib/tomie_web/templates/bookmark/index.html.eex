@@ -1,8 +1,8 @@
-<section class="pt-3">
-  <%= link "Add new Bookmark",
-    to: Routes.bookmark_path(@conn, :new),
-    class: "button block uppercase" %>
-</section>
+<nav>
+  <ul>
+    <li><%= link "Add new Bookmark", to: Routes.bookmark_path(@conn, :new) %></li>
+  </ul>
+</nav>
 
 <section class="list">
   <%= for bookmark <- @bookmarks do %>
@@ -13,7 +13,7 @@
       </h3>
       <div class="text-xs text-on-surface-muted">
         <span>
-          <!-- JANKY HACK H8-->
+          <!-- JANKY HACK M8-->
           <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
           <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
         </span>

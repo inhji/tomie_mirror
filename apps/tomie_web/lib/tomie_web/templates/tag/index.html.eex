@@ -1,8 +1,8 @@
-<section class="pt-3 mb-3">
-  <%= link "Add new Tag",
-    to: Routes.tag_path(@conn, :new),
-    class: "button block uppercase" %>
-</section>
+<nav>
+  <ul>
+    <li><%= link "Add new Tag", to: Routes.tag_path(@conn, :new) %></li>
+  </ul>
+</nav>
 
 <section class="list">
 <%= for tag <- @tags do %>
