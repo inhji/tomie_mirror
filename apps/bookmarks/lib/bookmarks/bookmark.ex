@@ -37,7 +37,9 @@ defmodule Bookmarks.Bookmark do
     |> validate_required([:source, :type])
   end
 
-  def maybe_set_tag_string(changeset) do
+  # This function requires tags to be preloaded!
+  # See Bookmarks.update_bookmark/2 or Bookmarks.visit_bookmark/1
+  defp maybe_set_tag_string(changeset) do
     case get_field(changeset, :tags) do
       nil ->
         changeset
