@@ -2,9 +2,11 @@
 
 ## Screenshots
 
-![Dark Theme](media/dark.png)
+| Light Theme                         | Dark Theme                        | 
+| ----------------------------------- | --------------------------------- |
+| ![Light Theme](media/light.png)     | ![Dark Theme](media/dark.png)     |
 
-![Light Theme](media/light.png)
+
 
 ## Architecture
 
