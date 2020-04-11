@@ -17,6 +17,7 @@ defmodule Users.User do
     user
     |> cast(attrs, [:theme, :token, :reset_token])
     |> validate_inclusion(:theme, ["dark", "light"])
+    |> maybe_create_token()
     |> maybe_reset_token()
   end
 
@@ -24,6 +25,13 @@ defmodule Users.User do
     case get_change(changeset, :reset_token, false) do
       true -> put_change(changeset, :token, token(20))
       false -> changeset
+    end
+  end
+
+  defp maybe_create_token(changeset) do
+    case get_field(changeset, :token, nil) do
+      nil -> put_change(changeset, :token, token(20))
+      _token -> changeset
     end
   end
 
