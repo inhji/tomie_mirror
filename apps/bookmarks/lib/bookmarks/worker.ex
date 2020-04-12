@@ -1,5 +1,5 @@
 defmodule Bookmarks.Worker do
-  use Que.Worker
+  use Que.Worker, concurrency: 4
 
   def perform(%Bookmarks.Bookmark{source: source} = bookmark) do
     with {:ok, html} <- Scraper.get_html(source),
