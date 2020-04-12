@@ -30,8 +30,15 @@ defmodule TomieWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/bookmarks", BookmarkController, only: [:index, :new, :create, :show]
     get "/bookmarks/:id/visit", BookmarkController, :visit
+    get "/bookmarks/save", BookmarkController, :bookmarklet
+    resources "/bookmarks", BookmarkController
+
+    resources "/tags", TagController
+
+    resources "/profile", ProfileController,
+      only: [:show, :edit, :update],
+      singleton: true
   end
 
   scope "/api", TomieWeb do

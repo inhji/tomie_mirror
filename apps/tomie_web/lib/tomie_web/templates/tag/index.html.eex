@@ -1,0 +1,20 @@
+<nav>
+  <ul>
+    <li><%= link "Add new Tag", to: Routes.tag_path(@conn, :new) %></li>
+  </ul>
+</nav>
+
+<section class="list">
+<%= for tag <- @tags do %>
+  <article class="card">
+    <%= link to: Routes.tag_path(@conn, :show, tag), class: "block" do %>
+      <h3>
+        <%= tag.name %>
+      </h3>
+      <span class="text-on-surface-muted tag">
+        <%= rule_count(tag) %> Rules
+      </span>
+    <% end %>
+  </article>
+<% end %>
+</section>

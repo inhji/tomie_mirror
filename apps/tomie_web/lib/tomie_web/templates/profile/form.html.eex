@@ -1,0 +1,21 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <fieldset>
+    <%= label f, :theme, "Frontend Theme" %>
+    <%= select f, :theme, ["light", "dark"] %>
+    <%= error_tag f, :theme %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :token, "API Token" %>
+    <%= text_input f, :token, readonly: true %>
+    <%= error_tag f, :token %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :reset_token, "Reset API Token" %>
+    <%= checkbox f, :reset_token %>
+    <%= error_tag f, :reset_token %>
+  </fieldset>
+
+  <%= submit "submit" %>
+<% end %>

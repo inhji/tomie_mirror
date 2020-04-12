@@ -38,8 +38,16 @@ defmodule TomieWeb.ConnCase do
     conn =
       if tags[:logged_in] do
         conn = Phoenix.ConnTest.build_conn()
-        user = %Tomie.Users.User{email: "test@example.com", id: 1}
-        Pow.Plug.assign_current_user(conn, user, [])
+
+        user = %Users.User{
+          id: 1,
+          email: "test@example.com",
+          token: "token"
+        }
+
+        conn
+        |> Pow.Plug.put_config([])
+        |> Pow.Plug.assign_current_user(user, [])
       else
         Phoenix.ConnTest.build_conn()
       end

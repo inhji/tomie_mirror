@@ -3,10 +3,22 @@ defmodule Tags do
   Documentation for `Tags`.
   """
 
-  def create_tag(name) do
-    %Tags.Tag{}
-    |> Tags.Tag.changeset(%{name: name})
+  alias Tags.Tag
+
+  def create_tag(name) when is_binary(name) do
+    create_tag(%{name: name})
+  end
+
+  def create_tag(attrs) when is_map(attrs) do
+    %Tag{}
+    |> Tag.changeset(attrs)
     |> Db.Repo.insert()
+  end
+
+  def update_tag(tag, attrs) do
+    tag
+    |> Tag.changeset(attrs)
+    |> Db.Repo.update()
   end
 
   def list_tags() do
@@ -21,9 +33,11 @@ defmodule Tags do
     end
   end
 
-  def get_tag_by_slug!(slug), do: Db.Repo.get_by!(Tags.Tag, slug: slug)
+  def get_tag!(id), do: Db.Repo.get!(Tag, id)
 
-  def get_tag_by_slug(slug), do: Db.Repo.get_by(Tags.Tag, slug: slug)
+  def get_tag_by_slug!(slug), do: Db.Repo.get_by!(Tag, slug: slug)
+
+  def get_tag_by_slug(slug), do: Db.Repo.get_by(Tag, slug: slug)
 
   @doc """
   Updates tags for a given entity
@@ -45,6 +59,7 @@ defmodule Tags do
   def update_tags_for_entity(tags, %{id: _id} = entity) when is_list(tags) do
     new_tags =
       tags
+      |> Enum.uniq()
       |> Enum.map(&Tags.create_or_get_tag(&1))
       |> Enum.reduce([], fn {:ok, tag}, tag_list -> [tag | tag_list] end)
 

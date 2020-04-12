@@ -1,0 +1,15 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <fieldset>
+    <%= label f, :name, "Tag Name" %>
+    <%= text_input f, :name, autofocus: true, required: true %>
+    <%= error_tag f, :name %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :rules, "Rules" %>
+    <%= textarea f, :rules, placeholder: "ex. title::contains::github", rows: 5 %>
+    <%= error_tag f, :rules %>
+  </fieldset>
+
+  <%= submit "submit" %>
+<% end %>

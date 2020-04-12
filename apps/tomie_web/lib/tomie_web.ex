@@ -23,6 +23,7 @@ defmodule TomieWeb do
       import Plug.Conn
       import TomieWeb.Gettext
       alias TomieWeb.Router.Helpers, as: Routes
+      alias TomieWeb.Worker
     end
   end
 
@@ -37,6 +38,9 @@ defmodule TomieWeb do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      # Import external modules
+      import PhoenixActiveLink
 
       import TomieWeb.ErrorHelpers
       import TomieWeb.Gettext

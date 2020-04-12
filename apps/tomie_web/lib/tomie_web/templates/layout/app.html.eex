@@ -11,17 +11,52 @@
 
     <%= csrf_meta_tag() %>
   </head>
-  <body class="mt-16">
-    <nav role="navigation">
+  <body class="mt-16 transition duration-500" data-theme="<%= theme(@conn) %>">
+    <nav role="navigation" id="main">
       <ul>
-        <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
-        <li><%= link "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
+        <li>
+          <%= active_link @conn, to: Routes.page_path(@conn, :index) do %>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z"/>
+              </svg>
+            </span>
+          <% end %>
+        </li>
+        <li><%= active_link @conn, "Bookmarks", to: Routes.bookmark_path(@conn, :index) %></li>
+        <li><%= active_link @conn, "Tags", to: Routes.tag_path(@conn, :index) %></li>
         <li class="spacer" />
-        <%= if Pow.Plug.current_user(@conn) do %>
-          <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="theme-toggle">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M7 13.33a7 7 0 1 1 6 0V16H7v-2.67zM7 17h6v1.5c0 .83-.67 1.5-1.5 1.5h-3A1.5 1.5 0 0 1 7 18.5V17zm2-5.1V14h2v-2.1a5 5 0 1 0-2 0z"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <%= unless Pow.Plug.current_user(@conn) do %>
+          <li><%= active_link @conn, "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+          <li><%= active_link @conn, "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
         <% else %>
-          <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
-          <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+          <li>
+            <%= active_link @conn, to: Routes.profile_path(@conn, :show) do %>
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/>
+                </svg>
+              </span>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </nav>
@@ -29,7 +64,7 @@
       <p class="info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="error" role="alert"><%= get_flash(@conn, :error) %></p>
     </section>
-    <main role="main" class="px-1 sm:px-4">
+    <main role="main" class="px-3 py-2 sm:px-6 sm:py-4">
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>

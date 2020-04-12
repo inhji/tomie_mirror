@@ -44,14 +44,17 @@ defmodule TomieWeb.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_form_awesomplete, "~> 0.1"},
+      {:phoenix_active_link, "~> 0.3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:pow, "~> 1.0.19"},
       {:que, "~> 0.10.1"},
       {:excoveralls, "~> 0.12.3", only: :test},
+      {:timex, "~> 3.5"},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
+      {:tags, in_umbrella: true},
       {:db, in_umbrella: true}
     ]
   end

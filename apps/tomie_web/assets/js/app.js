@@ -15,3 +15,14 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+
+const toggleButton = document.querySelector('.theme-toggle')
+
+toggleButton.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  const body = document.querySelector('body')
+  const theme = body.dataset.theme
+
+  body.dataset.theme = (theme === 'light' ? 'dark' : 'light')
+})
