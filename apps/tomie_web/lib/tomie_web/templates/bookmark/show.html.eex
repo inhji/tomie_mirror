@@ -8,3 +8,7 @@
 </nav>
 
 <h1><%= @bookmark.title || @bookmark.source %></h1>
+
+<p>
+  <%= @bookmark.content %>
+</p>
