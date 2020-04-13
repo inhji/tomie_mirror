@@ -57,8 +57,11 @@ defmodule Tags do
 
   """
   def update_tags_for_entity(tags, %{id: _id} = entity) when is_list(tags) do
+    IO.inspect(tags)
+
     new_tags =
       tags
+      |> Enum.filter(fn tag -> String.length(tag) > 0 end)
       |> Enum.uniq()
       |> Enum.map(&Tags.create_or_get_tag(&1))
       |> Enum.reduce([], fn {:ok, tag}, tag_list -> [tag | tag_list] end)
