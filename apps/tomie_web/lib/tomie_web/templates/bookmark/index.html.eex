@@ -5,7 +5,7 @@
 </nav>
 
 <form class="search">
-  <input class="border-none shadow rounded-none text-lg bg-surface-alt text-on-surface" type="text" name="query" placeholder="Search...">
+  <input class="border-none shadow rounded-none text-lg bg-surface-alt text-on-surface focus:text-surface font-bold p-4" type="text" name="query" placeholder="Search...">
 </form>
 
 <section class="list">

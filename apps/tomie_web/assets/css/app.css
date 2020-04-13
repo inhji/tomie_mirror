@@ -52,7 +52,7 @@ a {
 .list .card:hover,
 .list .card:focus,
 .list .card:active {
-	@apply bg-surface-alt shadow-none;
+	@apply bg-surface-alt shadow-lg;
 }
 
 .tag {
@@ -60,6 +60,10 @@ a {
 }
 
 /* Forms */
+
+form:not(.search) {
+	@apply px-4;
+}
 
 form label {
 	@apply block py-3;
@@ -114,6 +118,12 @@ form .error-tag {
 	@apply bg-danger text-on-danger mb-3;
 }
 
+@screen sm {
+	form {
+		@apply px-0;
+	}
+}
+
 /* Navbar */
 
 nav {
@@ -161,11 +171,15 @@ nav#main > ul > li > a.active {
 }
 
 main nav {
-	@apply bg-surface text-on-surface py-3 mb-8;
+	@apply bg-surface text-on-surface mb-6 h-auto;
+}
+
+main nav > ul {
+	@apply h-auto;
 }
 
 main nav > ul > li {
-	@apply shadow mr-6;
+	@apply shadow mr-6 h-auto;
 }
 
 main nav > ul > li:last-child {
@@ -179,5 +193,5 @@ main nav > ul > li > a {
 main nav > ul > li > a:hover,
 main nav > ul > li > a:focus,
 main nav > ul > li > a.active {
-	@apply bg-primary-alt shadow-none;
+	@apply bg-primary-alt text-surface shadow-none;
 }
