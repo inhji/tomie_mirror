@@ -4,6 +4,7 @@
 import css from "../css/app.css"
 
 import "phoenix_html"
+import NProgress from "nprogress"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
@@ -26,3 +27,7 @@ toggleButton.addEventListener("click", function (e) {
 
   body.dataset.theme = (theme === "light" ? "dark" : "light")
 })
+
+// Show progress bar on live navigation and form submits
+window.addEventListener("phx:page-loading-start", info => NProgress.start())
+window.addEventListener("phx:page-loading-stop", info => NProgress.done())
