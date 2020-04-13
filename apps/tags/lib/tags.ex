@@ -71,6 +71,8 @@ defmodule Tags do
 
   def from_string(tags) when is_binary(tags) do
     tags
+    |> String.trim()
+    |> String.trim(",")
     |> String.split(",")
     |> Enum.map(&String.trim/1)
   end
