@@ -5,7 +5,7 @@ defmodule TomieWeb.BookmarkLive.Index do
   def render(assigns), do: TomieWeb.BookmarkView.render("index.html", assigns)
 
   def mount(_params, _session, socket) do
-    bookmarks = Bookmarks.list_bookmarks()
+    bookmarks = Bookmarks.list_bookmarks(10)
 
     {:ok, assign(socket, changeset: changeset(), bookmarks: bookmarks)}
   end

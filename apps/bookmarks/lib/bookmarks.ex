@@ -36,12 +36,13 @@ defmodule Bookmarks do
   @doc """
   Lists bookmarks ordered by insertion date
   """
-  def list_bookmarks do
+  def list_bookmarks(limit \\ 999) do
     Db.Repo.all(
       from b in Bookmark,
         select: b,
         order_by: [desc: b.inserted_at],
-        preload: [:tags]
+        preload: [:tags],
+        limit: ^limit
     )
   end
 
