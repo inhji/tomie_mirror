@@ -42,6 +42,15 @@ defmodule TagsTest do
     assert [%Tag{}, %Tag{}] = Tags.list_tags()
   end
 
+  test "delete_tag/1 deletes a tag" do
+    {:ok, tag} = Tags.create_or_get_tag(@name)
+    {:ok, deleted_tag} = Tags.delete_tag(tag)
+
+    assert_raise Ecto.NoResultsError, fn ->
+      Tags.get_tag!(deleted_tag.id)
+    end
+  end
+
   test "create_or_get_tag/1 creates an new tag" do
     {:ok, tag} = Tags.create_or_get_tag(@name)
     assert tag.name == @name

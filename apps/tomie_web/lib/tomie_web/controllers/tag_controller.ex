@@ -58,4 +58,18 @@ defmodule TomieWeb.TagController do
         render(conn, "edit.html", changeset: changeset)
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    tag = Tags.get_tag!(id)
+
+    case Tags.delete_tag(tag) do
+      {:ok, _bookmark} ->
+        conn
+        |> put_flash(:info, @tag_deleted)
+        |> redirect(to: Routes.tag_path(conn, :index))
+
+      {:error, _changeset} ->
+        render(conn, "show.html", tag: tag)
+    end
+  end
 end

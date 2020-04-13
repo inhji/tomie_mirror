@@ -2,6 +2,7 @@
   <ul>
     <li><%= link "Back", to: Routes.tag_path(@conn, :index) %></li>
     <li><%= link "Edit", to: Routes.tag_path(@conn, :edit, @tag) %></li>
+    <li><%= link "Delete", to: Routes.tag_path(@conn, :delete, @tag), method: :delete, data: [confirm: "Are you sure?"] %></li>
   </ul>
 </nav>
 

@@ -21,6 +21,10 @@ defmodule Tags do
     |> Db.Repo.update()
   end
 
+  def delete_tag(tag) do
+    Db.Repo.delete(tag)
+  end
+
   def list_tags() do
     Tags.Tag
     |> Db.Repo.all()
@@ -57,8 +61,6 @@ defmodule Tags do
 
   """
   def update_tags_for_entity(tags, %{id: _id} = entity) when is_list(tags) do
-    IO.inspect(tags)
-
     new_tags =
       tags
       |> Enum.filter(fn tag -> String.length(tag) > 0 end)
