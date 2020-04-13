@@ -11,6 +11,9 @@
       <h3 class="text-xl">
         <%= bookmark.title || bookmark.source %>
       </h3>
+      <p class="text-on-surface-muted mb-2">
+        <%= bookmark.source %>
+      </p>
       <div class="text-xs text-on-surface-muted">
         <span>
           <!-- JANKY HACK M8-->
