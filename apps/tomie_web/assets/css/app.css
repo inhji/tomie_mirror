@@ -119,7 +119,7 @@ form .error-tag {
 }
 
 @screen sm {
-	form {
+	form:not(.search) {
 		@apply px-0;
 	}
 }
