@@ -3,6 +3,7 @@ defmodule Tags.Tag do
   import Ecto.Changeset
   alias Tags.Slug
 
+  @derive {Jason.Encoder, only: [:name]}
   schema "tags" do
     field :name, :string
     field :slug, Slug.Type

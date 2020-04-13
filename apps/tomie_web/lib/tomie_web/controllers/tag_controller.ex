@@ -9,6 +9,11 @@ defmodule TomieWeb.TagController do
     render(conn, "index.html", tags: tags)
   end
 
+  def index_json(conn, _params) do
+    tags = Tags.list_tags()
+    json(conn, tags)
+  end
+
   def show(conn, %{"id" => id}) do
     tag = Tags.get_tag!(id)
 
