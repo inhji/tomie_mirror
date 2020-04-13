@@ -1,13 +1,13 @@
 defmodule TomieWeb.Router do
   use TomieWeb, :router
-  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_root_layout, {TomieWeb.LayoutView, :root}
   end
 
   pipeline :api do
@@ -30,9 +30,12 @@ defmodule TomieWeb.Router do
 
     get "/", PageController, :index
 
+    live "/bookmarks", BookmarkLive.Index
+    live "/bookmarks/new", BookmarkLive.New
+    live "/bookmarks/:id", BookmarkLive.Show
+    live "/bookmarks/:id/edit", BookmarkLive.Edit
     get "/bookmarks/:id/visit", BookmarkController, :visit
     get "/bookmarks/save", BookmarkController, :bookmarklet
-    resources "/bookmarks", BookmarkController
 
     resources "/tags", TagController
 

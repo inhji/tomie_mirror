@@ -45,6 +45,15 @@ defmodule Bookmarks do
     )
   end
 
+  def query_bookmarks(search_string) do
+    Db.Repo.all(
+      from b in Bookmark,
+        select: b,
+        where: ilike(b.title, ^"%#{search_string}%"),
+        preload: [:tags]
+    )
+  end
+
   @doc """
   Registers a visit of the bookmarks url by updating `views` and `viewed_at`
   """

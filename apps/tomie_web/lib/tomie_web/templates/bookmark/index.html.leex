@@ -1,17 +1,21 @@
 <nav>
   <ul>
-    <li><%= link "Add new Bookmark", to: Routes.bookmark_path(@conn, :new) %></li>
+    <li><%= live_patch "Add new Bookmark", to: Routes.live_path(@socket, BookmarkLive.New) %></li>
   </ul>
 </nav>
 
-<form class="search">
-  <input class="border-none shadow rounded-none text-lg bg-surface-alt text-on-surface focus:text-surface font-bold p-4" type="text" name="query" placeholder="Search...">
+<%= f = form_for @changeset, "#", [as: :search, phx_change: :search, class: "search"] %>
+  <%= text_input f, :query,
+    class: "border-none shadow rounded-none text-lg bg-surface-alt text-on-surface focus:text-surface font-bold p-4",
+    placeholder: "Search...",
+    phx_debounce: 200
+  %>
 </form>
 
 <section class="list">
   <%= for bookmark <- @bookmarks do %>
   <article class="card">
-    <%= link to: Routes.bookmark_path(@conn, :show, bookmark), class: "block" do %>
+    <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
       <h3 class="text-xl">
         <%= bookmark.title || bookmark.source %>
       </h3>

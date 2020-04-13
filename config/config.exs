@@ -26,7 +26,7 @@ config :tomie_web, TomieWeb.Endpoint,
   secret_key_base: "vA2gj8nBFMrN/nH0bjo09DfxDovTsbUZJbpnsawqXsTneL/F0nWEY5PfY5uptNra",
   render_errors: [view: TomieWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: TomieWeb.PubSub, adapter: Phoenix.PubSub.PG2],
-  live_view: [signing_salt: "kRH3u6Gz"]
+  live_view: [signing_salt: "La8TeKsJi1aZt2Bhp8vXfx9HOOFpP/JY"]
 
 config :tomie_web, :pow,
   user: Users.User,

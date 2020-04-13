@@ -22,8 +22,16 @@ defmodule TomieWeb do
       use Phoenix.Controller, namespace: TomieWeb
       import Plug.Conn
       import TomieWeb.Gettext
+      import Phoenix.LiveView.Controller
       alias TomieWeb.Router.Helpers, as: Routes
       alias TomieWeb.Worker
+    end
+  end
+
+  def live do
+    quote do
+      use Phoenix.LiveView
+      alias TomieWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -35,6 +43,7 @@ defmodule TomieWeb do
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
+      import Phoenix.LiveView.Helpers
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
@@ -53,8 +62,10 @@ defmodule TomieWeb do
   def router do
     quote do
       use Phoenix.Router
+      use Pow.Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

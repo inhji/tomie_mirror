@@ -3,26 +3,26 @@
 // its own CSS file.
 import css from "../css/app.css"
 
-// webpack automatically bundles all modules in your
-// entry points. Those entry points can be configured
-// in "webpack.config.js".
-//
-// Import dependencies
-//
 import "phoenix_html"
+import {Socket} from "phoenix"
+import LiveSocket from "phoenix_live_view"
 
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 
-const toggleButton = document.querySelector('.theme-toggle')
+liveSocket.connect()
 
-toggleButton.addEventListener('click', function (e) {
+window.liveSocket = liveSocket
+
+// Theme Switch
+
+const toggleButton = document.querySelector(".theme-toggle")
+
+toggleButton.addEventListener("click", function (e) {
   e.preventDefault()
 
-  const body = document.querySelector('body')
+  const body = document.querySelector("body")
   const theme = body.dataset.theme
 
-  body.dataset.theme = (theme === 'light' ? 'dark' : 'light')
+  body.dataset.theme = (theme === "light" ? "dark" : "light")
 })
