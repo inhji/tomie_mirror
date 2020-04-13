@@ -50,8 +50,12 @@ defmodule Bookmarks do
     Db.Repo.all(
       from b in Bookmark,
         select: b,
+        order_by: [desc: b.inserted_at],
         where: ilike(b.title, ^"%#{search_string}%"),
-        preload: [:tags]
+        or_where: ilike(b.content, ^"%#{search_string}%"),
+        or_where: ilike(b.source, ^"%#{search_string}%"),
+        preload: [:tags],
+        limit: 10
     )
   end
 
