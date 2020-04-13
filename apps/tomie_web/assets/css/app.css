@@ -38,7 +38,7 @@ a {
 }
 
 .list .card {
-	@apply p-4 transition duration-300 mb-4 shadow;
+	@apply p-4 transition duration-300 mb-4 shadow bg-surface-alt;
 }
 
 .list .card:last-child {
@@ -170,6 +170,10 @@ main nav > ul > li {
 
 main nav > ul > li:last-child {
 	@apply mr-0;
+}
+
+main nav > ul > li > a {
+	@apply bg-surface-alt;
 }
 
 main nav > ul > li > a:hover,
