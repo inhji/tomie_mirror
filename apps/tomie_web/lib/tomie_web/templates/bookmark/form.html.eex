@@ -6,8 +6,30 @@
   </fieldset>
 
   <fieldset>
-    <%= label f, :tag_string %>
-    <%= text_input f, :tag_string %>
+    <%= label f, :title %>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :description %>
+    <%= textarea f, :description %>
+    <%= error_tag f, :description %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :tag_string, "Tags" %>
+    <%= awesomplete(f, :tag_string,
+      [class: "", placeholder: "Search tags.."],
+      [ url: "/api/tags",
+        loadall: true,
+        prepop: true,
+        minChars: 1,
+        maxItems: 8,
+        value: "name",
+        label: "name",
+        multiple: ","
+      ]) %>
     <%= error_tag f, :tag_string %>
   </fieldset>
 

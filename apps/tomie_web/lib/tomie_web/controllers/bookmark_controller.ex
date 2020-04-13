@@ -3,6 +3,20 @@ defmodule TomieWeb.BookmarkController do
   use Bookmarks.Constants
   alias Bookmarks.Bookmark
 
+  plug :check_token when :action in [:bookmarklet]
+
+  def check_token(%{params: %{"token" => token}} = conn, _params) do
+    user = Pow.Plug.current_user(conn)
+
+    if user.token == token do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Wrong token")
+      |> render(PageView, "index.html")
+    end
+  end
+
   def index(conn, _params) do
     bookmarks = Bookmarks.list_bookmarks()
 
@@ -87,27 +101,14 @@ defmodule TomieWeb.BookmarkController do
     |> redirect(external: bookmark.source)
   end
 
-  def bookmarklet(conn, %{"url" => url, "token" => token}) do
-    user = Pow.Plug.current_user(conn)
+  def bookmarklet(conn, %{"url" => url, "content" => content, "name" => name} = params) do
+    changeset =
+      Bookmark.changeset(%Bookmark{}, %{
+        source: url,
+        description: content,
+        title: name
+      })
 
-    if user.token == token do
-      case Bookmarks.create_bookmark(%{source: url}) do
-        {:ok, bookmark} ->
-          Worker.run(bookmark)
-
-          conn
-          |> put_flash(:info, @bookmark_created)
-          |> redirect(external: url)
-
-        {:error, _changeset} ->
-          conn
-          |> put_flash(:error, "Could not create bookmark")
-          |> render(PageView, "index.html")
-      end
-    else
-      conn
-      |> put_flash(:error, "Wrong token")
-      |> render(PageView, "index.html")
-    end
+    render(conn, "new.html", changeset: changeset)
   end
 end

@@ -4,19 +4,6 @@
   </ul>
 </nav>
 
-<section class="my-3">
-  <%= awesomplete(:user, :country,
-        [class: "bg-green-200 w-full p-3", placeholder: "Search bookmarks.."],
-        [ url: "/api/bookmarks",
-          loadall: true,
-          prepop: true,
-          minChars: 1,
-          maxItems: 8,
-          value: "title",
-          label: "title"
-        ]) %>
-</section>
-
 <section class="list">
   <%= for bookmark <- @bookmarks do %>
   <article class="card">

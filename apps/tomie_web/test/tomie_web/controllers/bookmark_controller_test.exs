@@ -66,9 +66,11 @@ defmodule TomieWeb.BookmarkControllerTest do
     conn =
       get(conn, Routes.bookmark_path(conn, :bookmarklet), %{
         url: @source,
+        name: "Some title",
+        content: "some content",
         token: Pow.Plug.current_user(conn).token
       })
 
-    assert redirected_to(conn) == @source
+    assert html_response(conn, 200)
   end
 end
