@@ -12,9 +12,9 @@
   </fieldset>
 
   <fieldset>
-    <%= label f, :description %>
-    <%= textarea f, :description %>
-    <%= error_tag f, :description %>
+    <%= label f, :content %>
+    <%= textarea f, :content %>
+    <%= error_tag f, :content %>
   </fieldset>
 
   <fieldset>
