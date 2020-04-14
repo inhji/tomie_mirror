@@ -28,6 +28,7 @@ toggleButton.addEventListener("click", function (e) {
   body.dataset.theme = (theme === "light" ? "dark" : "light")
 })
 
+NProgress.configure({ showSpinner: false })
 // Show progress bar on live navigation and form submits
 window.addEventListener("phx:page-loading-start", info => NProgress.start())
 window.addEventListener("phx:page-loading-stop", info => NProgress.done())
