@@ -57,7 +57,7 @@ a {
 }
 
 .tag {
-	@apply text-sm uppercase bg-primary-alt-barely px-2 py-1 shadow;
+	@apply text-sm uppercase bg-secondary-barely px-2 py-1 shadow;
 }
 
 /* Forms */

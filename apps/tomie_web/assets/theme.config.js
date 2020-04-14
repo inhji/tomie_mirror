@@ -7,6 +7,8 @@ const mainTheme = new Theme()
     'primary-alt': '#667EEA',
     'on-primary': '#EDF2F7',
 
+    'secondary': '#dd3344',
+
     'surface': '#EDF2F7',
     'on-surface': '#2D3748',
 
