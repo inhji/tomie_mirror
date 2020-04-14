@@ -1,6 +1,7 @@
 <nav>
   <ul>
     <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
+    <li><a href="<%= @bookmark.source %>">Visit</a></li>
     <li><%= live_patch "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
     <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id %></li>
   </ul>
