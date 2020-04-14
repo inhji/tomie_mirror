@@ -79,7 +79,7 @@ form textarea {
 }
 
 form input:focus, form textarea:focus {
-	@apply border-primary bg-primary-alt;
+	@apply border-primary;
 }
 
 form input:invalid, form textarea:invalid {

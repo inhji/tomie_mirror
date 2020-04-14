@@ -6,7 +6,7 @@
 
 <%= f = form_for @changeset, "#", [as: :search, phx_change: :search, class: "search"] %>
   <%= text_input f, :query,
-    class: "border-none shadow rounded-none text-lg bg-surface-alt text-on-surface focus:text-surface font-bold p-4",
+    class: "border-none shadow rounded-none text-lg bg-surface-alt text-on-surface font-bold p-4",
     placeholder: "Search...",
     phx_debounce: 200
   %>
