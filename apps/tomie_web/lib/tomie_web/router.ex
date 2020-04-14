@@ -34,8 +34,7 @@ defmodule TomieWeb.Router do
     live "/bookmarks/new", BookmarkLive.New
     live "/bookmarks/:id", BookmarkLive.Show
     live "/bookmarks/:id/edit", BookmarkLive.Edit
-    get "/bookmarks/:id/visit", BookmarkController, :visit
-    get "/bookmarks/save", BookmarkController, :bookmarklet
+    live "/bookmarks/:id/visit", BookmarkLive.Visit
 
     resources "/tags", TagController
 
