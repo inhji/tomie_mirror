@@ -2,8 +2,7 @@ defmodule TomieWeb.ProfileView do
   use TomieWeb, :view
 
   def bookmarklet(conn) do
-    # url = Routes.bookmark_url(conn, :new)
-    url = "dummy.url"
+    url = Routes.live_url(TomieWeb.Endpoint, TomieWeb.BookmarkLive.New)
     user = Pow.Plug.current_user(conn)
 
     """

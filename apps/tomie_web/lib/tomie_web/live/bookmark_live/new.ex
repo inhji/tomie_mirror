@@ -5,6 +5,17 @@ defmodule TomieWeb.BookmarkLive.New do
 
   def render(assigns), do: BookmarkView.render("new.html", assigns)
 
+  def mount(%{"content" => content, "name" => name, "url" => url}, _session, socket) do
+    changeset =
+      Bookmark.changeset(%Bookmark{}, %{
+        title: name,
+        content: content,
+        source: url
+      })
+
+    {:ok, assign(socket, changeset: changeset)}
+  end
+
   def mount(_params, _session, socket) do
     changeset = Bookmark.changeset(%Bookmark{})
     {:ok, assign(socket, changeset: changeset)}
