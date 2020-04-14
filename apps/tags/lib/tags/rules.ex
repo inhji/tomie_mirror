@@ -28,25 +28,31 @@ defmodule Tags.Rules do
       atom_prop = String.to_existing_atom(p)
       property = Map.get(entity, atom_prop)
 
+      # TODO: Refactor
       case f do
-        "contains" ->
-          if !!property do
-            if property |> String.downcase() |> String.contains?(s) do
-              tags ++ [name]
-            else
-              tags
-            end
-          else
-            Logger.warn("Rule for Tag<#{name}> contains unknown property [#{p}]!")
-            tags
-          end
-
-        "matches" ->
-          if Regex.compile!(s) |> Regex.match?(property),
-            do: tags ++ [name],
-            else: tags
+        "contains" -> rule_contains(tags, property, name, s)
+        "matches" -> rule_matches(tags, property, name, s)
       end
     end)
+  end
+
+  def rule_contains(tags, property, name, search_string) do
+    if property do
+      if property |> String.downcase() |> String.contains?(search_string) do
+        tags ++ [name]
+      else
+        tags
+      end
+    else
+      Logger.warn("Rule for Tag<#{name}> contains unknown property [#{p}]!")
+      tags
+    end
+  end
+
+  def rule_matches(tags, property, name, search_string) do
+    if Regex.compile!(search_string) |> Regex.match?(property),
+      do: tags ++ [name],
+      else: tags
   end
 
   def parse_rule(rule) do
