@@ -36,7 +36,7 @@ defmodule Tags.Rules do
     end)
   end
 
-  def rule_contains(nil, _, _, _), do: tags
+  def rule_contains(nil, tags, _, _), do: tags
 
   def rule_contains(property, tags, name, search_string) do
     contains_search_string? = property
