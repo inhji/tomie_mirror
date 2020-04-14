@@ -24,43 +24,39 @@ defmodule Tags.Rules do
     rules
     |> String.split("\n")
     |> Enum.map(&parse_rule/1)
-    |> Enum.reduce([], fn %{property: p, function: f, search_string: s}, tags ->
-      atom_prop = String.to_existing_atom(p)
-      property = Map.get(entity, atom_prop)
+    |> Enum.reduce([], fn %{property: p, function: f, argument: a}, tags ->
+      property = String.to_existing_atom(p)
+      value = Map.get(entity, property)
 
-      # TODO: Refactor
-      case f do
-        "contains" -> rule_contains(property, tags, name, s)
-        "matches" -> rule_matches(property, tags, name, s)
-      end
+      if rule_match?(f, value, a),
+        do: tags ++ [name],
+        else: tags
     end)
   end
 
-  def rule_contains(nil, tags, _, _), do: tags
+  def rule_match?(_, nil, _), do: false
 
-  def rule_contains(property, tags, name, search_string) do
-    contains_search_string? = property
-      |> String.downcase()
-      |> String.contains?(search_string)
-      
-    if contains_search_string?, 
-      do: tags ++ [name],
-      else: tags
+  def rule_match?("contains", value, argument) do
+    value
+    |> String.downcase()
+    |> String.contains?(argument)
   end
 
-  def rule_matches(tags, property, name, search_string) do
-    if Regex.compile!(search_string) |> Regex.match?(property),
-      do: tags ++ [name],
-      else: tags
+  def rule_match?("matches", value, argument) do
+    argument
+    |> Regex.compile!()
+    |> Regex.match?(value)
   end
+
+  def rule_match(_, _, _), do: false
 
   def parse_rule(rule) do
-    [property, function, search_string] = String.split(rule, "::")
+    [property, function, argument] = String.split(rule, "::")
 
     %{
       property: property,
       function: function,
-      search_string: search_string
+      argument: argument
     }
   end
 end

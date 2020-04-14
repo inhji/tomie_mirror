@@ -25,7 +25,7 @@ defmodule RulesTest do
   end
 
   test "parse_rule/1 parses a rule" do
-    assert %{property: "title", function: "contains", search_string: "github"} =
+    assert %{property: "title", function: "contains", argument: "github"} =
              Tags.Rules.parse_rule("title::contains::github")
   end
 end
