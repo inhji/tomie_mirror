@@ -28,6 +28,7 @@ defmodule Tags.Rules do
       atom_prop = String.to_existing_atom(p)
       property = Map.get(entity, atom_prop)
 
+      # TODO: Refactor
       case f do
         "contains" ->
           if !!property do

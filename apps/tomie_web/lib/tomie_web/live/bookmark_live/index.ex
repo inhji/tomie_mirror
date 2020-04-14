@@ -13,7 +13,6 @@ defmodule TomieWeb.BookmarkLive.Index do
   def handle_event("search", %{"search" => %{"query" => query}}, socket) do
     bookmarks = Bookmarks.query_bookmarks(query)
 
-    IO.inspect(query)
     {:noreply, assign(socket, bookmarks: bookmarks)}
   end
 
