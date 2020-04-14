@@ -5,8 +5,7 @@ defmodule Bookmarks.Worker do
     with {:ok, html} <- Scraper.get_html(source),
          {:ok, result} <- Scraper.parse(html),
          {:ok, updated_bookmark} <- Bookmarks.update_bookmark(bookmark, %{title: result.title}) do
-      Tags.list_tags()
-      |> Enum.filter(fn %{rules: rules} -> not is_nil(rules) end)
+      Tags.list_tags_with_rules()
       |> Tags.Rules.parse(updated_bookmark)
       |> Bookmarks.update_tags(updated_bookmark)
 

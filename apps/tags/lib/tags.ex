@@ -3,6 +3,7 @@ defmodule Tags do
   Documentation for `Tags`.
   """
 
+  import Ecto.Query, warn: false
   alias Tags.Tag
 
   def create_tag(name) when is_binary(name) do
@@ -27,6 +28,12 @@ defmodule Tags do
 
   def list_tags() do
     Tags.Tag
+    |> Db.Repo.all()
+  end
+
+  def list_tags_with_rules() do
+    Tags.Tag
+    |> where([t], not is_nil(t.rules))
     |> Db.Repo.all()
   end
 
