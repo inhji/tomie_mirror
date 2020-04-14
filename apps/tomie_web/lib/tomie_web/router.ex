@@ -44,7 +44,6 @@ defmodule TomieWeb.Router do
   end
 
   scope "/api", TomieWeb do
-    get "/bookmarks", BookmarkController, :index_json
     get "/tags", TagController, :index_json
   end
 end
