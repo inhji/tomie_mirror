@@ -28,7 +28,7 @@ defmodule TomieWeb.Router do
   scope "/", TomieWeb do
     pipe_through [:browser, :protected]
 
-    get "/", PageController, :index
+    live "/", PageLive.Index
 
     live "/bookmarks", BookmarkLive.Index
     live "/bookmarks/new", BookmarkLive.New
