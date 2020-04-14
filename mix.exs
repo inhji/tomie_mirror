@@ -4,6 +4,7 @@ defmodule Tomie.Umbrella.MixProject do
   def project do
     [
       apps_path: "apps",
+      version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
@@ -12,6 +13,18 @@ defmodule Tomie.Umbrella.MixProject do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
+      ],
+      releases: [
+        tomie: [
+          applications: [
+            tomie: :permanent,
+            tomie_web: :permanent,
+            db: :permanent,
+            bookmarks: :permanent,
+            scraper: :permanent,
+            tags: :permanent
+          ]
+        ]
       ]
     ]
   end
