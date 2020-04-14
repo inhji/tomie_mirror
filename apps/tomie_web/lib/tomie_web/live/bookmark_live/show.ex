@@ -4,7 +4,16 @@ defmodule TomieWeb.BookmarkLive.Show do
   alias TomieWeb.{BookmarkLive, BookmarkView}
 
   def render(assigns), do: BookmarkView.render("show.html", assigns)
-  def mount(_params, _session, socket), do: {:ok, socket}
+
+  def mount(%{"id" => id}, _session, socket) do
+    TomieWeb.Endpoint.subscribe("Bookmarks.Worker:#{id}", [])
+
+    {:ok, socket}
+  end
+
+  def handle_info(%{event: :updated, bookmark: bookmark} = message, socket) do
+    {:noreply, socket |> assign(bookmark: bookmark)}
+  end
 
   def handle_params(%{"id" => id}, _uri, socket) do
     {:noreply, socket |> assign(id: id) |> fetch()}

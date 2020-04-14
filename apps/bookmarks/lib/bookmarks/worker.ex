@@ -9,6 +9,11 @@ defmodule Bookmarks.Worker do
       |> Tags.Rules.parse(updated_bookmark)
       |> Bookmarks.update_tags(updated_bookmark)
 
+      Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Bookmarks.Worker:#{bookmark.id}", %{
+        event: :updated,
+        bookmark: updated_bookmark
+      })
+
       :ok
     else
       _ -> :error

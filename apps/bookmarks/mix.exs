@@ -19,6 +19,7 @@ defmodule Bookmarks.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Bookmarks.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -28,6 +29,7 @@ defmodule Bookmarks.MixProject do
     [
       {:que, "~> 0.10.1"},
       {:ecto_sql, "~> 3.1"},
+      {:phoenix_pubsub, "~> 1.1"},
       {:mock, "~> 0.3.0", only: :test},
       {:excoveralls, "~> 0.12.3", only: :test},
       {:db, in_umbrella: true},

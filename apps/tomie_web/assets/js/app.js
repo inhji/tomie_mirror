@@ -8,6 +8,8 @@ import NProgress from "nprogress"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
+// Live Socket
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 
@@ -28,7 +30,8 @@ toggleButton.addEventListener("click", function (e) {
   body.dataset.theme = (theme === "light" ? "dark" : "light")
 })
 
+// NProgress
+
 NProgress.configure({ showSpinner: false })
-// Show progress bar on live navigation and form submits
 window.addEventListener("phx:page-loading-start", info => NProgress.start())
 window.addEventListener("phx:page-loading-stop", info => NProgress.done())
