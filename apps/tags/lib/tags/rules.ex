@@ -30,23 +30,22 @@ defmodule Tags.Rules do
 
       # TODO: Refactor
       case f do
-        "contains" -> rule_contains(tags, property, name, s)
-        "matches" -> rule_matches(tags, property, name, s)
+        "contains" -> rule_contains(property, tags, name, s)
+        "matches" -> rule_matches(property, tags, name, s)
       end
     end)
   end
 
-  def rule_contains(tags, property, name, search_string) do
-    if property do
-      if property |> String.downcase() |> String.contains?(search_string) do
-        tags ++ [name]
-      else
-        tags
-      end
-    else
-      Logger.warn("Rule for Tag<#{name}> contains unknown property [#{p}]!")
-      tags
-    end
+  def rule_contains(nil, _, _, _), do: tags
+
+  def rule_contains(property, tags, name, search_string) do
+    contains_search_string? = property
+      |> String.downcase()
+      |> String.contains?(search_string)
+      
+    if contains_search_string?, 
+      do: tags ++ [name],
+      else: tags
   end
 
   def rule_matches(tags, property, name, search_string) do
