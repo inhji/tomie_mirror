@@ -16,6 +16,15 @@ defmodule BookmarksTest do
     :ok
   end
 
+  def has_tags?(bookmark, tags) do
+    existing =
+      bookmark.tags
+      |> Enum.map(&Map.get(&1, :name))
+      |> Enum.sort()
+
+    existing == Enum.sort(tags)
+  end
+
   test "create_bookmark/1 creates a new bookmark and has required fields" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
     assert %Bookmarks.Bookmark{} = bookmark
@@ -53,20 +62,36 @@ defmodule BookmarksTest do
     assert viewed_bookmark.viewed_at != bookmark.viewed_at
   end
 
-  test "update_tags updates the tags for a given entity" do
+  test "update_tags merges the existing tags with the supplied tags for a given bookmark" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
 
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
+    assert has_tags?(updated_bookmark, ["foo"])
 
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "bar"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 2
+    assert has_tags?(updated_bookmark, ["foo", "bar"])
 
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo"], bookmark)
-    assert Enum.count(updated_bookmark.tags) == 1
+    assert Enum.count(updated_bookmark.tags) == 2
+    assert has_tags?(updated_bookmark, ["foo", "bar"])
 
     {:ok, updated_bookmark} = Bookmarks.update_tags(["foo", "foo"], bookmark)
+    assert Enum.count(updated_bookmark.tags) == 2
+    assert has_tags?(updated_bookmark, ["foo", "bar"])
+  end
+
+  test "set_tags sets new tags for the given bookmark" do
+    {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
+
+    {:ok, updated_bookmark} = Bookmarks.set_tags(["foo"], bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
+    assert has_tags?(updated_bookmark, ["foo"])
+
+    {:ok, updated_bookmark} = Bookmarks.set_tags(["bar"], bookmark)
+    assert Enum.count(updated_bookmark.tags) == 1
+    assert has_tags?(updated_bookmark, ["bar"])
   end
 
   test "delete_bookmark/1 deletes a bookmark" do

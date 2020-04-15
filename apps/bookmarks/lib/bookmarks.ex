@@ -77,18 +77,6 @@ defmodule Bookmarks do
   end
 
   @doc """
-  Updates a bookmark's tags
-
-  Bookmark is reloaded to ensure it's tags are loaded
-  """
-  def update_tags(tags, bookmark) when is_list(tags) do
-    bookmark = Bookmarks.get_bookmark!(bookmark.id)
-
-    tags
-    |> Tags.update_tags_for_entity(bookmark)
-  end
-
-  @doc """
   Updates a bookmarks tags.
 
   Bookmark is reloaded to ensure it's tags are loaded
@@ -98,6 +86,26 @@ defmodule Bookmarks do
 
     tags
     |> Tags.from_string()
+    |> update_tags(bookmark)
+  end
+
+  @doc """
+  Updates a bookmark's tags
+
+  Bookmark is reloaded to ensure it's tags are loaded
+  """
+  def update_tags(tags, bookmark) when is_list(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark.id)
+
+    bookmark.tags
+    |> Enum.map(&Map.get(&1, :name))
+    |> Enum.concat(tags)
     |> Tags.update_tags_for_entity(bookmark)
+  end
+
+  def set_tags(tags, bookmark) when is_list(tags) do
+    bookmark = Bookmarks.get_bookmark!(bookmark.id)
+
+    Tags.update_tags_for_entity(tags, bookmark)
   end
 end
