@@ -1,0 +1,16 @@
+[Unit]
+Description=Tomie
+
+[Service]
+Type=forking
+User=tomie
+Group=tomie
+Restart=on-failure
+
+EnvironmentFile=/opt/tomie/.env
+WorkingDirectory=/opt/tomie/_build/prod/rel/dagon/bin
+ExecStart=/opt/tomie/_build/prod/rel/tomie/bin/dagon start
+ExecStop=/opt/tomie/_build/prod/rel/tomie/bin/dagon stop
+
+[Install]
+WantedBy=multi-user.target
