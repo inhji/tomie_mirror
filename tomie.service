@@ -8,9 +8,9 @@ Group=tomie
 Restart=on-failure
 
 EnvironmentFile=/opt/tomie/.env
-WorkingDirectory=/opt/tomie/_build/prod/rel/dagon/bin
-ExecStart=/opt/tomie/_build/prod/rel/tomie/bin/dagon start
-ExecStop=/opt/tomie/_build/prod/rel/tomie/bin/dagon stop
+WorkingDirectory=/opt/tomie/_build/prod/rel/tomie/bin
+ExecStart=/opt/tomie/_build/prod/rel/tomie/bin/tomie start
+ExecStop=/opt/tomie/_build/prod/rel/tomie/bin/tomie stop
 
 [Install]
 WantedBy=multi-user.target
