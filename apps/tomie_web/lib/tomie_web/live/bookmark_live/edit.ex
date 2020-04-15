@@ -27,7 +27,7 @@ defmodule TomieWeb.BookmarkLive.Edit do
   def handle_event("save", %{"bookmark" => %{"tag_string" => tags} = params}, socket) do
     case Bookmarks.update_bookmark(socket.assigns.bookmark, params) do
       {:ok, bookmark} ->
-        Bookmarks.update_tags(tags, bookmark)
+        Bookmarks.set_tags(tags, bookmark)
 
         {:noreply,
          push_redirect(socket, to: Routes.live_path(socket, BookmarkLive.Show, bookmark))}
