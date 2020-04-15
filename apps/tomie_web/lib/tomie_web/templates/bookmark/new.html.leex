@@ -1,1 +1,9 @@
+<nav>
+  <ul>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
+  </ul>
+</nav>
+
+<h1>New Bookmark</h1>
+
 <%= render "form.html", assigns %>
