@@ -2,7 +2,7 @@
 Description=Tomie
 
 [Service]
-Type=forking
+Type=simple
 User=tomie
 Group=tomie
 Restart=on-failure
