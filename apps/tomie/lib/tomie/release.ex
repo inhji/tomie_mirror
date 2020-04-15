@@ -1,4 +1,4 @@
-defmodule MyApp.Release do
+defmodule Tomie.Release do
   @app :db
 
   def migrate do
