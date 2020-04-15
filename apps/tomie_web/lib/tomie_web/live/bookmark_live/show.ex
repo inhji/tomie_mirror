@@ -1,6 +1,5 @@
 defmodule TomieWeb.BookmarkLive.Show do
   use TomieWeb, :live
-  alias Bookmarks.Bookmark
   alias TomieWeb.{BookmarkLive, BookmarkView}
 
   def render(assigns), do: BookmarkView.render("show.html", assigns)
@@ -11,7 +10,7 @@ defmodule TomieWeb.BookmarkLive.Show do
     {:ok, socket}
   end
 
-  def handle_info(%{event: :updated, bookmark: bookmark} = message, socket) do
+  def handle_info(%{event: :updated, bookmark: bookmark}, socket) do
     {:noreply, socket |> assign(bookmark: bookmark)}
   end
 
