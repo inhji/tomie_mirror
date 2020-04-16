@@ -57,8 +57,12 @@ a {
 	@apply bg-surface-alt shadow-lg;
 }
 
+.meta {
+	@apply mb-2;
+}
+
 .tag {
-	@apply text-sm uppercase bg-secondary-barely px-2 py-1 shadow;
+	@apply text-xs uppercase text-on-surface-muted bg-secondary-barely px-2 py-1 shadow;
 }
 
 /* Forms */
