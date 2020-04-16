@@ -20,17 +20,7 @@
 
   <fieldset>
     <%= label f, :tag_string, "Tags" %>
-    <%= awesomplete(f, :tag_string,
-      [class: "", placeholder: "Search tags.."],
-      [ url: "/api/tags",
-        loadall: true,
-        prepop: true,
-        minChars: 1,
-        maxItems: 8,
-        value: "name",
-        label: "name",
-        multiple: ","
-      ]) %>
+    <%= text_input f, :tag_string %>
     <%= error_tag f, :tag_string %>
   </fieldset>
 
