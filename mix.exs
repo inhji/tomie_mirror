@@ -1,10 +1,12 @@
 defmodule Tomie.Umbrella.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       apps_path: "apps",
-      version: "0.1.0",
+      version: @version,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
@@ -45,7 +47,8 @@ defmodule Tomie.Umbrella.MixProject do
     [
       {:excoveralls, "~> 0.12.3", only: :test},
       {:credo, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:git_ops, "~> 2.0.0", only: [:dev]}
     ]
   end
 end
