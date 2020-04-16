@@ -30,9 +30,10 @@ defmodule TomieWeb.BookmarkLive.New do
     {:noreply, assign(socket, changeset: changeset)}
   end
 
-  def handle_event("save", %{"bookmark" => params}, socket) do
+  def handle_event("save", %{"bookmark" => %{"tag_string" => tags} = params}, socket) do
     case Bookmarks.create_bookmark(params) do
       {:ok, bookmark} ->
+        Bookmarks.set_tags(tags, bookmark)
         TomieWeb.Worker.run(bookmark)
 
         {:noreply,

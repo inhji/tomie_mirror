@@ -103,9 +103,14 @@ defmodule Bookmarks do
     |> Tags.update_tags_for_entity(bookmark)
   end
 
-  def set_tags(tags, bookmark) when is_list(tags) do
+  @doc """
+  Sets a bookmark tags overwriting existing tags
+  """
+  def set_tags(tags, bookmark) when is_binary(tags) do
     bookmark = Bookmarks.get_bookmark!(bookmark.id)
 
-    Tags.update_tags_for_entity(tags, bookmark)
+    tags
+    |> Tags.from_string()
+    |> Tags.update_tags_for_entity(bookmark)
   end
 end

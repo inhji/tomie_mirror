@@ -85,11 +85,11 @@ defmodule BookmarksTest do
   test "set_tags sets new tags for the given bookmark" do
     {:ok, bookmark} = Bookmarks.create_bookmark(%{source: @source})
 
-    {:ok, updated_bookmark} = Bookmarks.set_tags(["foo"], bookmark)
+    {:ok, updated_bookmark} = Bookmarks.set_tags("foo", bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
     assert has_tags?(updated_bookmark, ["foo"])
 
-    {:ok, updated_bookmark} = Bookmarks.set_tags(["bar"], bookmark)
+    {:ok, updated_bookmark} = Bookmarks.set_tags("bar", bookmark)
     assert Enum.count(updated_bookmark.tags) == 1
     assert has_tags?(updated_bookmark, ["bar"])
   end
