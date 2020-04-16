@@ -9,6 +9,14 @@
 
 <h1><%= @bookmark.title || @bookmark.source %></h1>
 
+<div class="text-xs text-on-surface-muted">
+  <span class="tags">
+    <%= for tag <- @bookmark.tags do %>
+    <span class="tag ml-1"><%= tag.name %></span>
+    <% end %>
+  </span>
+</div>
+
 <p class="markdown">
   <%= raw(@bookmark.content_html) %>
 </p>
