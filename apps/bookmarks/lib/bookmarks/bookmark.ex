@@ -42,12 +42,19 @@ defmodule Bookmarks.Bookmark do
 
   defp maybe_set_content_html(changeset) do
     case get_change(changeset, :content) do
-      nil ->
-        changeset
+      nil -> changeset
+      content -> maybe_render_markdown(changeset, content)
+    end
+  end
 
-      content ->
-        {:ok, html, _} = Earmark.as_html(content)
+  defp maybe_render_markdown(changeset, content) do
+    case Earmark.as_html(content) do
+      {:ok, html, _} ->
         put_change(changeset, :content_html, html)
+
+      {:error, _, errors} ->
+        {_level, _line, message} = errors |> List.first()
+        add_error(changeset, :content, "Error while rendering markdown: #{message}")
     end
   end
 
