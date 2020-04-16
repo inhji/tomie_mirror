@@ -39,7 +39,7 @@ defmodule Tags.Rules do
   def rule_match?("contains", value, argument) do
     value
     |> String.downcase()
-    |> String.contains?(argument)
+    |> String.contains?(String.downcase(argument))
   end
 
   def rule_match?("matches", value, argument) do
