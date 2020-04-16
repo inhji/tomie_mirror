@@ -32,9 +32,17 @@ a {
 	@apply outline-none;
 }
 
-/* General Styles */
+/* Markdown Styles */
 
-.markdown {}
+.markdown p{
+	@apply mb-4;
+}
+
+.markdown pre {
+	@apply mb-4 p-2 bg-on-surface-muted text-surface-muted;
+}
+
+/* General Styles */
 
 .list {
 }
