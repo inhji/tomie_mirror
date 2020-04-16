@@ -28,6 +28,7 @@ defmodule Bookmarks.MixProject do
   defp deps do
     [
       {:que, "~> 0.10.1"},
+      {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},
       {:phoenix_pubsub, "~> 1.1"},
       {:mock, "~> 0.3.0", only: :test},

@@ -16,6 +16,7 @@ defmodule Bookmarks.Bookmark do
     field :source, :string
     field :title, :string
     field :content, :string
+    field :content_html, :string
 
     field :views, :integer, default: 0
     field :viewed_at, :naive_datetime
@@ -35,7 +36,19 @@ defmodule Bookmarks.Bookmark do
     bookmark
     |> cast(attrs, [:source, :title, :content, :views, :viewed_at])
     |> maybe_set_tag_string()
+    |> maybe_set_content_html()
     |> validate_required([:source, :type])
+  end
+
+  defp maybe_set_content_html(changeset) do
+    case get_change(changeset, :content) do
+      nil ->
+        changeset
+
+      content ->
+        {:ok, html, _} = Earmark.as_html(content)
+        put_change(changeset, :content_html, html)
+    end
   end
 
   # This function requires tags to be preloaded!

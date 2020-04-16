@@ -9,6 +9,6 @@
 
 <h1><%= @bookmark.title || @bookmark.source %></h1>
 
-<p>
-  <%= @bookmark.content %>
+<p class="markdown">
+  <%= raw(@bookmark.content_html) %>
 </p>
