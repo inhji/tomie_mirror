@@ -5,17 +5,16 @@
 Write your commit messages according to [Conventional Commits](https://www.conventionalcommits.org), use prefixes like:
 
 * build
-* ci
 * chore
+* ci
 * docs
 * feat
 * fix
+* improvement
 * perf
 * refactor
-* revert
 * style
 * test
-
 
 To deploy a release, use `mix git_opts.release`, then run `deploy.sh`.
 
