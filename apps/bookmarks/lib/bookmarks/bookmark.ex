@@ -21,6 +21,10 @@ defmodule Bookmarks.Bookmark do
     field :views, :integer, default: 0
     field :viewed_at, :naive_datetime
 
+    field :is_favorite, :boolean, default: false
+    field :is_published, :boolean, default: false
+    field :is_archived, :boolean, default: false
+
     many_to_many :tags, Tags.Tag,
       join_through: "posts_tags",
       join_keys: [post_id: :id, tag_id: :id],
