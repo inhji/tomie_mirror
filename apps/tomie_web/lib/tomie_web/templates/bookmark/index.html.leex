@@ -1,40 +1,54 @@
-<nav>
-  <ul>
-    <li><%= live_patch "Add new Bookmark", to: Routes.live_path(@socket, BookmarkLive.New) %></li>
-  </ul>
-</nav>
+<div class="grid grid-cols-4 gap-4">
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><%= live_patch "Home", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
+        <li><%= live_patch "Recently Added", to: Routes.live_path(@socket, BookmarkLive.Index, page: :recent) %></li>
+        <li><%= live_patch "Favorites", to: Routes.live_path(@socket, BookmarkLive.Index, page: :favorites) %></li>
+      </ul>
+    </nav>
+  </aside>
 
-<%= f = form_for @changeset, "#", [as: :search, phx_change: :search, class: "search"] %>
-  <%= text_input f, :query,
-    class: "border-none shadow rounded-none text-lg bg-surface-alt text-on-surface font-bold p-4",
-    placeholder: "Search...",
-    phx_debounce: 200
-  %>
-</form>
+  <div class="col-span-3">
+    <nav>
+      <ul>
+        <li><%= live_patch "Add new Bookmark", to: Routes.live_path(@socket, BookmarkLive.New) %></li>
+      </ul>
+    </nav>
 
-<section class="list">
-  <%= for bookmark <- @bookmarks do %>
-  <article class="card">
-    <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
-      <h3 class="text-xl">
-        <%= bookmark.title || bookmark.source %>
-      </h3>
-      <p class="text-on-surface-muted mb-2">
-        <%= bookmark.source %>
-      </p>
-      <div class="meta">
-        <span>
-          <!-- JANKY HACK M8-->
-          <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
-          <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
-        </span>
-        <span class="tags">
-          <%= for tag <- bookmark.tags do %>
-          <span class="tag ml-1"><%= tag.name %></span>
-          <% end %>
-        </span>
-      </div>
-    <% end %>
-  </article>
-  <% end %>
-</section>
+    <%= f = form_for @changeset, "#", [as: :search, phx_change: :search, class: "search"] %>
+      <%= text_input f, :query,
+        class: "border-none shadow rounded-none text-lg bg-surface-alt text-on-surface font-bold p-4",
+        placeholder: "Search...",
+        phx_debounce: 200
+      %>
+    </form>
+
+    <section class="list">
+      <%= for bookmark <- @bookmarks do %>
+      <article class="card">
+        <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
+          <h3 class="text-xl">
+            <%= bookmark.title || bookmark.source %>
+          </h3>
+          <p class="text-on-surface-muted mb-2">
+            <%= bookmark.source %>
+          </p>
+          <div class="meta">
+            <span>
+              <!-- JANKY HACK M8-->
+              <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
+              <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
+            </span>
+            <span class="tags">
+              <%= for tag <- bookmark.tags do %>
+              <span class="tag ml-1"><%= tag.name %></span>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+      </article>
+      <% end %>
+    </section>
+  </div>
+</div>
