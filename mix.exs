@@ -48,7 +48,7 @@ defmodule Tomie.Umbrella.MixProject do
       {:excoveralls, "~> 0.12.3", only: :test},
       {:credo, "~> 1.3", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:git_ops, "~> 2.0.0", only: [:dev]}
+      {:git_ops, "~> 2.0.0", only: [:dev, :test]}
     ]
   end
 end
