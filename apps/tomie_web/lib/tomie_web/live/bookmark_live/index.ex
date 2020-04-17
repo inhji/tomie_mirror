@@ -5,15 +5,40 @@ defmodule TomieWeb.BookmarkLive.Index do
   def render(assigns), do: TomieWeb.BookmarkView.render("index.html", assigns)
 
   def mount(_params, _session, socket) do
-    bookmarks = Bookmarks.list_bookmarks(10)
+    {:ok, socket |> assign(changeset: changeset(), query: "")}
+  end
 
-    {:ok, assign(socket, changeset: changeset(), bookmarks: bookmarks)}
+  def handle_params(%{"page" => page} = params, url, socket) do
+    bookmarks = Bookmarks.list_bookmarks(socket.assigns.query, page)
+
+    {:noreply,
+     socket
+     |> assign(
+       page: page,
+       bookmarks: bookmarks
+     )}
+  end
+
+  def handle_params(_, url, socket) do
+    bookmarks = Bookmarks.list_bookmarks(socket.assigns.query)
+
+    {:noreply,
+     socket
+     |> assign(
+       page: nil,
+       bookmarks: bookmarks
+     )}
   end
 
   def handle_event("search", %{"search" => %{"query" => query}}, socket) do
-    bookmarks = Bookmarks.query_bookmarks(query)
+    bookmarks = Bookmarks.list_bookmarks(query, socket.assigns.page)
 
-    {:noreply, assign(socket, bookmarks: bookmarks)}
+    {:noreply,
+     socket
+     |> assign(
+       bookmarks: bookmarks,
+       changeset: changeset(%{query: query})
+     )}
   end
 
   def changeset(attrs \\ %{}) do
@@ -21,6 +46,5 @@ defmodule TomieWeb.BookmarkLive.Index do
 
     {%{}, types}
     |> Ecto.Changeset.cast(attrs, Map.keys(types))
-    |> Ecto.Changeset.validate_required([:query])
   end
 end

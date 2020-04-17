@@ -35,44 +35,51 @@ defmodule Bookmarks do
       Db.Repo.get!(Bookmark, id)
       |> Db.Repo.preload(@preloads)
 
-  @doc """
-  Lists bookmarks ordered by insertion date
-  """
-  def list_bookmarks(limit \\ 999) do
+  def list_bookmarks(query \\ "", page \\ nil)
+
+  def list_bookmarks(query, "recent") do
     Db.Repo.all(
-      from b in Bookmark,
-        select: b,
-        order_by: [desc: b.inserted_at],
-        preload: ^@preloads,
-        limit: ^limit
+      from b in bookmark_query(query),
+        order_by: [desc: b.inserted_at]
     )
   end
 
-  def list_bookmarks_by_tag(tag) do
+  def list_bookmarks(query, "favorites") do
     Db.Repo.all(
-      from b in Bookmarks.Bookmark,
-        join: t in assoc(b, :tags),
-        select: b,
-        where: t.name == ^tag,
-        or_where: t.slug == ^tag,
-        preload: ^@preloads
+      from b in bookmark_query(query),
+        where: b.is_favorite == true,
+        order_by: [desc: b.inserted_at]
     )
   end
 
-  def query_bookmarks(search_string) do
+  def list_bookmarks(query, _page) do
     Db.Repo.all(
-      from b in Bookmark,
-        join: t in assoc(b, :tags),
-        select: b,
-        order_by: [desc: b.inserted_at],
-        where: ilike(b.title, ^"%#{search_string}%"),
-        or_where: ilike(b.content, ^"%#{search_string}%"),
-        or_where: ilike(b.source, ^"%#{search_string}%"),
-        or_where: t.name == ^search_string,
-        or_where: t.slug == ^search_string,
-        preload: ^@preloads,
-        limit: 10
+      from b in bookmark_query(query),
+        order_by: [
+          desc: b.views,
+          desc: b.is_favorite,
+          asc: b.is_archived
+        ]
     )
+  end
+
+  def bookmark_query(""), do: bookmark_query()
+
+  def bookmark_query(query) do
+    from b in bookmark_query(),
+      join: t in assoc(b, :tags),
+      where: ilike(b.title, ^"%#{query}%"),
+      or_where: ilike(b.content, ^"%#{query}%"),
+      or_where: ilike(b.source, ^"%#{query}%"),
+      or_where: t.name == ^query,
+      or_where: t.slug == ^query,
+      distinct: false
+  end
+
+  def bookmark_query() do
+    from b in Bookmark,
+      select: b,
+      preload: ^@preloads
   end
 
   @doc """
