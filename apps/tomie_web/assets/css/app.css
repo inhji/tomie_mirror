@@ -47,7 +47,7 @@ a {
 .list {
 }
 
-.list .card {
+.card {
 	@apply p-4 transition duration-300 mb-4 shadow bg-surface-alt;
 }
 

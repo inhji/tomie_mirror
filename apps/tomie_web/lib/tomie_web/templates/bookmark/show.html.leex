@@ -10,21 +10,23 @@
   </ul>
 </nav>
 
-<h1><%= @bookmark.title || @bookmark.source %></h1>
+<article class="card">
+  <h1><%= @bookmark.title || @bookmark.source %></h1>
 
-<div class="meta">
-  <span>
-    <!-- JANKY HACK M8-->
-    <span class="tag"><%= @bookmark.views %> Views</span>&nbsp;
-    <span class="tag"><%= Timex.from_now(@bookmark.inserted_at) %></span>
-  </span>
-  <span class="tags">
-    <%= for tag <- @bookmark.tags do %>
-    <span class="tag ml-1"><%= tag.name %></span>
-    <% end %>
-  </span>
-</div>
+  <div class="markdown md:w-2/4 mb-4">
+    <%= raw(@bookmark.content_html) %>
+  </div>
 
-<div class="markdown md:w-2/4">
-  <%= raw(@bookmark.content_html) %>
-</div>
+  <div class="meta">
+    <span>
+      <!-- JANKY HACK M8-->
+      <span class="tag"><%= @bookmark.views %> Views</span>&nbsp;
+      <span class="tag"><%= Timex.from_now(@bookmark.inserted_at) %></span>
+    </span>
+    <span class="tags">
+      <%= for tag <- @bookmark.tags do %>
+      <span class="tag ml-1"><%= tag.name %></span>
+      <% end %>
+    </span>
+  </div>
+</article>

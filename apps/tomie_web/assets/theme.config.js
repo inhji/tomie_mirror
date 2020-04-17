@@ -30,6 +30,7 @@ const mainTheme = new Theme()
   .colorVariant('hover', '#EDF2F7', 'navbar')
   .colorVariant('hover', '#4C51BF', 'on-navbar')
   .colorVariant('alt', '#F7FAFC', 'surface')
+  .colorVariant('border', '#EEEEEE', 'surface')
 
 const darkTheme = new Theme()
   .colors({
