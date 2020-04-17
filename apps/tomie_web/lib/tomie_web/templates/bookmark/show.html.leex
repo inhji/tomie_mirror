@@ -1,7 +1,10 @@
 <nav>
   <ul>
     <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
-    <li><%= live_patch "Visit", to: Routes.live_path(@socket, BookmarkLive.Visit, @bookmark) %></li>
+    <li><%= link "Visit",
+      to: Routes.link_path(TomieWeb.Endpoint, :redirect, Slugger.slugify(@bookmark.source), @bookmark),
+      target: "_blank"
+    %></li>
     <li><%= live_patch "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
     <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id %></li>
   </ul>

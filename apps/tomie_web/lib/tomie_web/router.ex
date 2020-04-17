@@ -34,16 +34,13 @@ defmodule TomieWeb.Router do
     live "/bookmarks/new", BookmarkLive.New
     live "/bookmarks/:id", BookmarkLive.Show
     live "/bookmarks/:id/edit", BookmarkLive.Edit
-    live "/bookmarks/:id/visit", BookmarkLive.Visit
+
+    get "/r/:slug/:id", LinkController, :redirect
 
     resources "/tags", TagController
 
     resources "/profile", ProfileController,
       only: [:show, :edit, :update],
       singleton: true
-  end
-
-  scope "/api", TomieWeb do
-    get "/tags", TagController, :index_json
   end
 end
