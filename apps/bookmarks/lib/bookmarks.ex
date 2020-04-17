@@ -5,6 +5,8 @@ defmodule Bookmarks do
   import Ecto.Query, warn: false
   alias Bookmarks.{Bookmark}
 
+  @preloads [:tags]
+
   @doc """
   Creates a bookmark from the given attributes.
 
@@ -20,7 +22,7 @@ defmodule Bookmarks do
   """
   def update_bookmark(bookmark, attrs) do
     bookmark
-    |> Db.Repo.preload(:tags)
+    |> Db.Repo.preload(@preloads)
     |> Bookmark.changeset(attrs)
     |> Db.Repo.update()
   end
@@ -31,7 +33,7 @@ defmodule Bookmarks do
   def get_bookmark!(id),
     do:
       Db.Repo.get!(Bookmark, id)
-      |> Db.Repo.preload([:tags])
+      |> Db.Repo.preload(@preloads)
 
   @doc """
   Lists bookmarks ordered by insertion date
@@ -41,20 +43,34 @@ defmodule Bookmarks do
       from b in Bookmark,
         select: b,
         order_by: [desc: b.inserted_at],
-        preload: [:tags],
+        preload: ^@preloads,
         limit: ^limit
+    )
+  end
+
+  def list_bookmarks_by_tag(tag) do
+    Db.Repo.all(
+      from b in Bookmarks.Bookmark,
+        join: t in assoc(b, :tags),
+        select: b,
+        where: t.name == ^tag,
+        or_where: t.slug == ^tag,
+        preload: ^@preloads
     )
   end
 
   def query_bookmarks(search_string) do
     Db.Repo.all(
       from b in Bookmark,
+        join: t in assoc(b, :tags),
         select: b,
         order_by: [desc: b.inserted_at],
         where: ilike(b.title, ^"%#{search_string}%"),
         or_where: ilike(b.content, ^"%#{search_string}%"),
         or_where: ilike(b.source, ^"%#{search_string}%"),
-        preload: [:tags],
+        or_where: t.name == ^search_string,
+        or_where: t.slug == ^search_string,
+        preload: ^@preloads,
         limit: 10
     )
   end
