@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.4.0](https://git.inhji.de/inhji/tomie/compare/0.3.0...v0.4.0) (2020-04-17)
+
+
+
+
+### Features:
+
+* preserve search query when switching filters in sidebar
+
+* add is_favorite, is_published, is_archived fields to bookmark
+
+* initial sidebar for bookmark index
+
+* favicon
+
 ## [v0.3.0](https://git.inhji.de/inhji/tomie/compare/0.2.2...v0.3.0) (2020-04-17)
 
 
