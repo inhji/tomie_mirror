@@ -53,7 +53,7 @@
       </ul>
     </nav>
 
-    <main role="main" class="px-0 py-6 sm:p-6">
+    <main role="main" id="content" class="px-0 py-6 sm:p-6">
       <%= @inner_content %>
     </main>
 
