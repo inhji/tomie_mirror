@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.5.1](https://git.inhji.de/inhji/tomie/compare/0.5.0...v0.5.1) (2020-04-18)
+
+
+
+
+### Bug Fixes:
+
+* rename home to popular
+
 ## [v0.5.0](https://git.inhji.de/inhji/tomie/compare/0.4.0...v0.5.0) (2020-04-18)
 
 
