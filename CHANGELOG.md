@@ -5,6 +5,31 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.5.0](https://git.inhji.de/inhji/tomie/compare/0.4.0...v0.5.0) (2020-04-18)
+
+
+
+
+### Features:
+
+* add inbox which shows untagged/unviewed bookmarks
+
+* add icons to sidebar, hide text on smol devices
+
+### Bug Fixes:
+
+* add .button to all submit buttons to prevent stripping their styles
+
+* incorrect App name in systemd service
+
+### Improvements:
+
+* swap id and slug in visit route
+
+### Performance Improvements:
+
+* run npm run deply with node env production
+
 ## [v0.4.0](https://git.inhji.de/inhji/tomie/compare/0.3.0...v0.4.0) (2020-04-17)
 
 
