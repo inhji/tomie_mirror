@@ -3,6 +3,16 @@
     <nav>
       <ul>
         <li>
+          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index) do %>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M10 0a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm2 8v5H8v-5H5l5-5 5 5h-3z"/>
+            </svg>
+          </span>
+          <span class="hidden md:inline">Popular</span>
+          <% end %>
+        </li>
+        <li>
           <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :inbox) do %>
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -10,16 +20,6 @@
               </svg>
             </div>
             <span class="hidden md:inline">Inbox</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index) do %>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z"/>
-              </svg>
-            </span>
-            <span class="hidden md:inline">Home</span>
           <% end %>
         </li>
         <li>
