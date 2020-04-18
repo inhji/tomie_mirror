@@ -2,7 +2,7 @@
   <ul>
     <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
     <li><%= link "Visit",
-      to: Routes.link_path(TomieWeb.Endpoint, :redirect, Slugger.slugify(@bookmark.source), @bookmark),
+      to: Routes.link_path(TomieWeb.Endpoint, :redirect, @bookmark, Slugger.slugify(@bookmark.source)),
       target: "_blank"
     %></li>
     <li><%= live_patch "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
