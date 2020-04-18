@@ -1,10 +1,37 @@
 <div class="grid grid-cols-4 gap-4">
-  <aside class="sidebar">
+  <aside id="sidebar">
     <nav>
       <ul>
-        <li><%= live_patch "Home", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
-        <li><%= live_patch "Recently Added", to: Routes.live_path(@socket, BookmarkLive.Index, page: :recent) %></li>
-        <li><%= live_patch "Favorites", to: Routes.live_path(@socket, BookmarkLive.Index, page: :favorites) %></li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index) do %>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z"/>
+              </svg>
+            </span>
+            <span class="hidden md:inline">Home</span>
+          <% end %>
+        </li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :recent) do %>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-7.59V4h2v5.59l3.95 3.95-1.41 1.41L9 10.41z"/>
+              </svg>
+            </div>
+            <span class="hidden md:inline">Recently</span>
+          <% end %>
+        </li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :favorites) do %>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
+              </svg>
+            </div>
+            <span class="hidden md:inline">Favorites</span>
+          <% end %>
+        </li>
       </ul>
     </nav>
   </aside>
