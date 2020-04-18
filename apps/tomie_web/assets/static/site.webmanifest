@@ -1,6 +1,6 @@
 {
-   "name":"",
-   "short_name":"",
+   "name":"Tomie",
+   "short_name":"Tomie",
    "icons":[
       {
          "src":"/images/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
          "type":"image/png"
       }
    ],
-   "theme_color":"#ffffff",
-   "background_color":"#ffffff",
+   "theme_color":"#4C51BF",
+   "background_color":"#4C51BF",
    "display":"standalone"
 }
