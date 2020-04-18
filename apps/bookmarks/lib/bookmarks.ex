@@ -44,6 +44,14 @@ defmodule Bookmarks do
     )
   end
 
+  def list_bookmarks(query, "inbox") do
+    Db.Repo.all(
+      from [b, t] in bookmark_query(query),
+        order_by: [desc: b.inserted_at],
+        where: b.views == 0 or is_nil(t.id)
+    )
+  end
+
   def list_bookmarks(query, "favorites") do
     Db.Repo.all(
       from b in bookmark_query(query),
@@ -66,19 +74,19 @@ defmodule Bookmarks do
   def bookmark_query(""), do: bookmark_query()
 
   def bookmark_query(query) do
-    from b in bookmark_query(),
-      join: t in assoc(b, :tags),
+    from [b, t] in bookmark_query(),
       where: ilike(b.title, ^"%#{query}%"),
       or_where: ilike(b.content, ^"%#{query}%"),
       or_where: ilike(b.source, ^"%#{query}%"),
       or_where: t.name == ^query,
-      or_where: t.slug == ^query,
-      distinct: false
+      or_where: t.slug == ^query
   end
 
   def bookmark_query() do
     from b in Bookmark,
+      left_join: t in assoc(b, :tags),
       select: b,
+      distinct: true,
       preload: ^@preloads
   end
 
