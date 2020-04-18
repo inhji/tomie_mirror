@@ -11,5 +11,5 @@
     <%= error_tag f, :rules %>
   </fieldset>
 
-  <%= submit "submit" %>
+  <%= submit "submit", class: "button" %>
 <% end %>

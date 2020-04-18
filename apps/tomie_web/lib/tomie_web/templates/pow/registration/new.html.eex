@@ -20,7 +20,7 @@
   <%= error_tag f, :password_confirmation %>
 
   <div>
-    <%= submit "Register" %>
+    <%= submit "Register", class: "button" %>
   </div>
 <% end %>
 

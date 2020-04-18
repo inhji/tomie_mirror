@@ -103,7 +103,7 @@ form input[required]:valid, form textarea[required]:valid {
 	@apply border-success bg-success-barely shadow-none;
 }
 
-form input, form textarea, form select, form button[type=submit], .error-tag {
+form input, form textarea, form select, .error-tag {
 	@apply block p-3 w-full rounded-sm;
 }
 
@@ -118,13 +118,13 @@ form input[type=checkbox] {
 	@apply inline-block;
 }
 
-form button[type=submit], .button {
+.button {
 	@apply p-3 bg-primary-alt text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
-form button[type=submit]:hover, .button:hover,
-form button[type=submit]:focus, .button:focus,
-form button[type=submit]:active, .button:active {
+.button:hover,
+.button:focus,
+.button:active {
 	@apply bg-primary-alt-muted;
 }
 

@@ -24,7 +24,6 @@
   <%= error_tag f, :password_confirmation %>
 
   <div>
-    <%= submit "Update" %>
+    <%= submit "Update", class: "button" %>
   </div>
 <% end %>
-

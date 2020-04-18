@@ -20,6 +20,6 @@
   </fieldset>
 
   <div>
-    <%= submit "Login", class: "uppercase" %>
+    <%= submit "Login", class: "button" %>
   </div>
 <% end %>
