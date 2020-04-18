@@ -9,7 +9,7 @@ Restart=on-failure
 
 EnvironmentFile=/opt/tomie/.env
 WorkingDirectory=/opt/tomie/_build/prod/rel/tomie/bin
-ExecStartPre=/opt/tomie/_build/prod/rel/tomie/bin/tomie eval "MyApp.Release.migrate"
+ExecStartPre=/opt/tomie/_build/prod/rel/tomie/bin/tomie eval "Tomie.Release.migrate"
 ExecStart=/opt/tomie/_build/prod/rel/tomie/bin/tomie start
 ExecStop=/opt/tomie/_build/prod/rel/tomie/bin/tomie stop
 
