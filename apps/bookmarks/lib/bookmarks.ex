@@ -6,6 +6,7 @@ defmodule Bookmarks do
   alias Bookmarks.{Bookmark}
 
   @preloads [:tags]
+  @default_page "recent"
 
   @doc """
   Creates a bookmark from the given attributes.
@@ -60,7 +61,7 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, _page) do
+  def list_bookmarks(query, "popular") do
     Db.Repo.all(
       from b in bookmark_query(query),
         order_by: [
@@ -69,6 +70,10 @@ defmodule Bookmarks do
           asc: b.is_archived
         ]
     )
+  end
+
+  def list_bookmarks(query, _page) do
+    list_bookmarks(query, @default_page)
   end
 
   def bookmark_query(""), do: bookmark_query()

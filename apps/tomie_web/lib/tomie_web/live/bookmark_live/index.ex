@@ -20,14 +20,9 @@ defmodule TomieWeb.BookmarkLive.Index do
   end
 
   def handle_params(_, url, socket) do
-    bookmarks = Bookmarks.list_bookmarks(socket.assigns.query)
-
     {:noreply,
      socket
-     |> assign(
-       page: nil,
-       bookmarks: bookmarks
-     )}
+     |> push_patch(to: Routes.live_path(socket, TomieWeb.BookmarkLive.Index, page: "recent"))}
   end
 
   def handle_event("search", %{"search" => %{"query" => query}}, socket) do
