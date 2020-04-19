@@ -1,4 +1,4 @@
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-5 gap-4">
   <aside id="sidebar">
     <nav>
       <ul>
@@ -46,7 +46,7 @@
     </nav>
   </aside>
 
-  <div class="col-span-3">
+  <div class="col-span-4">
     <nav>
       <ul>
         <li><%= live_patch "Add new Bookmark", to: Routes.live_path(@socket, BookmarkLive.New) %></li>
@@ -65,11 +65,11 @@
       <%= for bookmark <- @bookmarks do %>
       <article class="card">
         <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
-          <h3 class="text-xl">
-            <%= bookmark.title || bookmark.source %>
+          <h3 class="text-xl hyphens">
+            <%= bookmark.title || domain(bookmark.source) %>
           </h3>
-          <p class="text-on-surface-muted mb-2">
-            <%= bookmark.source %>
+          <p class="text-on-surface-muted mb-2 hypens">
+            <%= domain(bookmark.source) %>
           </p>
           <div class="meta">
             <span>
