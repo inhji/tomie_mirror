@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.7.0](https://git.inhji.de/inhji/tomie/compare/0.6.1...v0.7.0) (2020-04-19)
+
+
+
+
+### Features:
+
+* add favorite action for bookmark
+
+### Bug Fixes:
+
+* expand scope of .icon class
+
+* use Phoenix.PubSub.subscribe/3
+
 ## [v0.6.1](https://git.inhji.de/inhji/tomie/compare/0.6.0...v0.6.1) (2020-04-19)
 
 
