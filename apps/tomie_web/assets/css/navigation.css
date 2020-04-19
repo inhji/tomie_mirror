@@ -16,14 +16,6 @@ nav > ul > li > a {
 	@apply p-5 h-16 block transition-all duration-150 ease-in-out;
 }
 
-nav > ul > li > a .icon {
-	@apply inline-block w-4 h-4;
-}
-
-nav > ul > li > a .icon svg {
-	@apply fill-current w-4 h-4;
-}
-
 @screen sm {
 	nav > ul > li {
 		@apply flex-none;
