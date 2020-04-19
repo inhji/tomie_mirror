@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.6.0](https://git.inhji.de/inhji/tomie/compare/0.5.1...v0.6.0) (2020-04-19)
+
+
+
+
+### Features:
+
+* add telemetry and live_dashboard :))
+
+* update to Phoenix 1.5 RC0 :))
+
+### Improvements:
+
+* show recent page as default
+
+* only show host of bookmark source, hyphenate source & title
+
 ## [v0.5.1](https://git.inhji.de/inhji/tomie/compare/0.5.0...v0.5.1) (2020-04-18)
 
 
