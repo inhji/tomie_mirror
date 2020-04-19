@@ -38,7 +38,16 @@ defmodule Bookmarks.Bookmark do
 
   def changeset(bookmark, attrs \\ %{}) do
     bookmark
-    |> cast(attrs, [:source, :title, :content, :views, :viewed_at])
+    |> cast(attrs, [
+      :source,
+      :title,
+      :content,
+      :views,
+      :viewed_at,
+      :is_favorite,
+      :is_published,
+      :is_archived
+    ])
     |> maybe_set_tag_string()
     |> maybe_set_content_html()
     |> validate_required([:source, :type])

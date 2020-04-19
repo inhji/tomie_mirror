@@ -22,6 +22,15 @@ defmodule TomieWeb.BookmarkLive.Show do
     assign(socket, bookmark: Bookmarks.get_bookmark!(id))
   end
 
+  def handle_event("toggle_favorite", %{"id" => id}, socket) do
+    {:ok, bookmark} =
+      id
+      |> Bookmarks.get_bookmark!()
+      |> Bookmarks.toggle_bookmark_flag(:is_favorite)
+
+    {:noreply, socket |> assign(bookmark: bookmark)}
+  end
+
   def handle_event("delete_bookmark", %{"id" => id}, socket) do
     Bookmarks.get_bookmark!(id)
     |> Bookmarks.delete_bookmark()

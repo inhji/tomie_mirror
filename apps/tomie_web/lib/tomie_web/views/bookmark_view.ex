@@ -7,4 +7,12 @@ defmodule TomieWeb.BookmarkView do
     |> URI.parse()
     |> Map.get(:host)
   end
+
+  def favorite_action(bookmark) do
+    if bookmark.is_favorite do
+      "Unfavorite"
+    else
+      "Favorite"
+    end
+  end
 end

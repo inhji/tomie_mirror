@@ -108,6 +108,12 @@ defmodule Bookmarks do
     |> Db.Repo.update()
   end
 
+  def toggle_bookmark_flag(bookmark, flag)
+      when flag in [:is_favorite, :is_published, :is_archived] do
+    flag_value = Map.get(bookmark, flag, false)
+    update_bookmark(bookmark, %{flag => !flag_value})
+  end
+
   def delete_bookmark(bookmark) do
     Db.Repo.delete(bookmark)
   end

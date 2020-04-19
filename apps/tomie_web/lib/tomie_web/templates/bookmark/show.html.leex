@@ -6,12 +6,22 @@
       target: "_blank"
     %></li>
     <li><%= live_patch "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
+    <li><%= link favorite_action(@bookmark), to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id %></li>
     <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id %></li>
   </ul>
 </nav>
 
 <article class="card">
-  <h1><%= @bookmark.title || @bookmark.source %></h1>
+  <h1>
+    <%= if @bookmark.is_favorite do %>
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+      </svg>
+    </span>
+    <% end %>
+    <%= @bookmark.title || @bookmark.source %>
+  </h1>
 
   <div class="markdown md:w-2/4 mb-4">
     <%= raw(@bookmark.content_html) %>
