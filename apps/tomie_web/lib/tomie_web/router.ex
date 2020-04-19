@@ -1,5 +1,6 @@
 defmodule TomieWeb.Router do
   use TomieWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -23,6 +24,12 @@ defmodule TomieWeb.Router do
     pipe_through :browser
 
     pow_routes()
+  end
+
+  scope "/" do
+    pipe_through [:browser, :protected]
+
+    live_dashboard "/dashboard", metrics: TomieWeb.Telemetry
   end
 
   scope "/", TomieWeb do

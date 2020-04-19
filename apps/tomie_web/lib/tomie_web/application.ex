@@ -10,6 +10,7 @@ defmodule TomieWeb.Application do
     children = [
       # Start the endpoint when the application starts
       TomieWeb.Endpoint,
+      TomieWeb.Telemetry,
       # Starts a worker by calling: TomieWeb.Worker.start_link(arg)
       {Phoenix.PubSub, name: TomieWeb.PubSub}
     ]
