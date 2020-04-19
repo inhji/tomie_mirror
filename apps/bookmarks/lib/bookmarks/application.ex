@@ -3,7 +3,7 @@ defmodule Bookmarks.Application do
 
   def start(_type, _args) do
     children = [
-      {Phoenix.PubSub.PG2, name: Bookmarks.PubSub}
+      {Phoenix.PubSub, name: Bookmarks.PubSub}
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one, name: Bookmarks.Supervisor)

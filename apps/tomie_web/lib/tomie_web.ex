@@ -22,16 +22,15 @@ defmodule TomieWeb do
       use Phoenix.Controller, namespace: TomieWeb
       import Plug.Conn
       import TomieWeb.Gettext
-      import Phoenix.LiveView.Controller
       alias TomieWeb.Router.Helpers, as: Routes
-      alias TomieWeb.Worker
     end
   end
 
   def live do
     quote do
-      use Phoenix.LiveView
-      alias TomieWeb.Router.Helpers, as: Routes
+      use Phoenix.LiveView, layout: {TomieWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
     end
   end
 
@@ -43,19 +42,20 @@ defmodule TomieWeb do
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
-      import Phoenix.LiveView.Helpers
-
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
 
       # Import external modules
       import PhoenixActiveLink
 
-      import TomieWeb.ErrorHelpers
-      import TomieWeb.Gettext
-      import PhoenixFormAwesomplete
+      # Include shared imports and aliases for views
+      unquote(view_helpers())
+    end
+  end
 
-      alias TomieWeb.Router.Helpers, as: Routes
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+
+      unquote(view_helpers())
     end
   end
 
@@ -73,6 +73,20 @@ defmodule TomieWeb do
     quote do
       use Phoenix.Channel
       import TomieWeb.Gettext
+    end
+  end
+
+  defp view_helpers do
+    quote do
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      # Import convenience functions for LiveView rendering
+      import Phoenix.LiveView.Helpers
+
+      import TomieWeb.ErrorHelpers
+      import TomieWeb.Gettext
+      alias TomieWeb.Router.Helpers, as: Routes
     end
   end
 

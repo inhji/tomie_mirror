@@ -53,9 +53,7 @@
       </ul>
     </nav>
 
-    <main role="main" id="content" class="px-0 py-6 sm:p-6">
-      <%= @inner_content %>
-    </main>
+    <%= @inner_content %>
 
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
