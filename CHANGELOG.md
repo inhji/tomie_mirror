@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.11.0](https://git.inhji.de/inhji/tomie/compare/0.10.0...v0.11.0) (2020-04-20)
+
+
+
+
+### Features:
+
+* make sidebar sticky :DDD
+
+* make main nav scrollable on smol devices
+
+### Improvements:
+
+* nicer job overview
+
 ## [v0.10.0](https://git.inhji.de/inhji/tomie/compare/0.9.0...v0.10.0) (2020-04-20)
 
 
