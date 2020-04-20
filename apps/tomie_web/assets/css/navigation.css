@@ -78,7 +78,10 @@ main#content nav > ul > li > a.active {
 }
 
 aside#sidebar > nav {
-	@apply w-full;
+	@apply w-full sticky;
+
+	/* This has a weird value to account for the 5px below */
+	top: 5.2rem;
 
 	/* HACK: Prevent overflow from swallowing the shadow */
 	padding-right: 5px;
