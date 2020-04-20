@@ -1,5 +1,7 @@
 defmodule Bookmarks.Worker do
-  use Oban.Worker, queue: :default
+  use Oban.Worker,
+    queue: :default,
+    max_attempts: 5
 
   @impl Oban.Worker
   def perform(%{"id" => id}, _job) do
