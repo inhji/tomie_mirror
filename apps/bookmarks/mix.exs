@@ -27,7 +27,7 @@ defmodule Bookmarks.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:que, "~> 0.10.1"},
+      {:oban, "~> 1.2"},
       {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},
       {:phoenix_pubsub, "~> 2.0"},

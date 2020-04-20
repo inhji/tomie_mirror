@@ -1,5 +1,10 @@
 use Mix.Config
 
+config :tomie, Oban,
+  crontab: false,
+  queues: false,
+  prune: :disabled
+
 # Configure your database
 config :db, Db.Repo,
   username: "postgres",

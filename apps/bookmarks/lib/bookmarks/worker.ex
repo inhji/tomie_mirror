@@ -1,8 +1,11 @@
 defmodule Bookmarks.Worker do
-  use Que.Worker, concurrency: 4
+  use Oban.Worker, queue: :default
 
-  def perform(%Bookmarks.Bookmark{source: source} = bookmark) do
-    with {:ok, html} <- Scraper.get_html(source),
+  @impl Oban.Worker
+  def perform(%{"id" => id}, _job) do
+    with bookmark <- Bookmarks.get_bookmark!(id),
+         source <- Map.get(bookmark, :source),
+         {:ok, html} <- Scraper.get_html(source),
          {:ok, result} <- Scraper.parse(html),
          {:ok, updated_bookmark} <- Bookmarks.update_bookmark(bookmark, %{title: result.title}) do
       {:ok, updated_bookmark} =
