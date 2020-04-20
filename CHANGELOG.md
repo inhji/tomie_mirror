@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.10.0](https://git.inhji.de/inhji/tomie/compare/0.9.0...v0.10.0) (2020-04-20)
+
+
+
+
+### Features:
+
+* initial job dashboard
+
+### Improvements:
+
+* limit Bookmark worker to 5 attempts
+
+* move telemetry to Tomie
+
 ## [v0.9.0](https://git.inhji.de/inhji/tomie/compare/0.8.0...v0.9.0) (2020-04-20)
 
 
