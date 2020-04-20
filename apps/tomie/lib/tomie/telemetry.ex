@@ -1,4 +1,4 @@
-defmodule TomieWeb.Telemetry do
+defmodule Tomie.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -36,7 +36,11 @@ defmodule TomieWeb.Telemetry do
       summary("vm.memory.total", unit: {:byte, :kilobyte}),
       summary("vm.total_run_queue_lengths.total"),
       summary("vm.total_run_queue_lengths.cpu"),
-      summary("vm.total_run_queue_lengths.io")
+      summary("vm.total_run_queue_lengths.io"),
+
+      # Oban Metrics
+      summary("oban.success.duration", unit: {:native, :millisecond}),
+      summary("oban.failure.duration", unit: {:native, :millisecond})
     ]
   end
 

@@ -29,7 +29,7 @@ defmodule TomieWeb.Router do
   scope "/" do
     pipe_through [:browser, :protected]
 
-    live_dashboard "/dashboard", metrics: TomieWeb.Telemetry
+    live_dashboard "/dashboard", metrics: Tomie.Telemetry
   end
 
   scope "/", TomieWeb do

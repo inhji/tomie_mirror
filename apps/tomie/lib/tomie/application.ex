@@ -7,6 +7,7 @@ defmodule Tomie.Application do
 
   def start(_type, _args) do
     children = [
+      Tomie.Telemetry,
       {Oban, oban_config()}
     ]
 
