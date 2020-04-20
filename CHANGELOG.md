@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.8.0](https://git.inhji.de/inhji/tomie/compare/0.7.1...v0.8.0) (2020-04-20)
+
+
+
+
+### Features:
+
+* show archive in bookmark index, hide archived bookmarks elsewhere
+
+* add archive action to bookmark
+
+* Navigate to selected filter on Bookmark show backbutton, fixes #25
+
 ## [v0.7.1](https://git.inhji.de/inhji/tomie/compare/0.7.0...v0.7.1) (2020-04-20)
 
 
