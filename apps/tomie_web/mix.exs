@@ -51,7 +51,6 @@ defmodule TomieWeb.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.1"},
       {:pow, "~> 1.0.19"},
-      {:que, "~> 0.10.1"},
       {:excoveralls, "~> 0.12.3", only: :test},
       {:timex, "~> 3.5"},
       {:telemetry_poller, "~> 0.4"},

@@ -37,6 +37,7 @@ defmodule Tomie.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:oban, "~> 1.2"},
       {:ecto_sql, "~> 3.1"},
       {:jason, "~> 1.0"},
       {:pow, "~> 1.0.19"},

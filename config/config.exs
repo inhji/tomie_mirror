@@ -16,6 +16,11 @@ config :db,
 config :tomie,
   user_agent: "Tomie/0.x (https://inhji.de)"
 
+config :tomie, Oban,
+  repo: Db.Repo,
+  prune: {:maxlen, 10_000},
+  queues: [default: 10]
+
 config :tomie_web,
   ecto_repos: [Db.Repo],
   generators: [context_app: :tomie]

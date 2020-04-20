@@ -34,7 +34,9 @@ defmodule TomieWeb.BookmarkLive.New do
     case Bookmarks.create_bookmark(params) do
       {:ok, bookmark} ->
         Bookmarks.set_tags(tags, bookmark)
-        TomieWeb.Worker.run(bookmark)
+
+        Bookmarks.Worker.new(%{id: bookmark.id})
+        |> Oban.insert()
 
         {:noreply,
          push_redirect(socket, to: Routes.live_path(socket, BookmarkLive.Show, bookmark))}
