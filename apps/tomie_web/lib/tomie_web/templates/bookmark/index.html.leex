@@ -42,6 +42,16 @@
             <span class="hidden md:inline">Favorites</span>
           <% end %>
         </li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :archive) do %>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M0 2C0 .9.9 0 2 0h16a2 2 0 0 1 2 2v2H0V2zm1 3h18v13a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5zm6 2v2h6V7H7z"/>
+              </svg>
+            </div>
+            <span class="hidden md:inline">Archive</span>
+          <% end %>
+        </li>
       </ul>
     </nav>
   </aside>

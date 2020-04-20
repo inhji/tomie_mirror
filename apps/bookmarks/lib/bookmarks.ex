@@ -36,12 +36,17 @@ defmodule Bookmarks do
       Db.Repo.get!(Bookmark, id)
       |> Db.Repo.preload(@preloads)
 
+  def list_bookmarks() do
+    Db.Repo.all(from(b in Bookmark))
+  end
+
   def list_bookmarks(query \\ "", page \\ nil)
 
   def list_bookmarks(query, "recent") do
     Db.Repo.all(
       from b in bookmark_query(query),
-        order_by: [desc: b.inserted_at]
+        order_by: [desc: b.inserted_at],
+        where: b.is_archived == false
     )
   end
 
@@ -49,7 +54,8 @@ defmodule Bookmarks do
     Db.Repo.all(
       from [b, t] in bookmark_query(query),
         order_by: [desc: b.inserted_at],
-        where: b.views == 0 or is_nil(t.id)
+        where: b.views == 0 or is_nil(t.id),
+        where: b.is_archived == false
     )
   end
 
@@ -57,6 +63,15 @@ defmodule Bookmarks do
     Db.Repo.all(
       from b in bookmark_query(query),
         where: b.is_favorite == true,
+        where: b.is_archived == false,
+        order_by: [desc: b.inserted_at]
+    )
+  end
+
+  def list_bookmarks(query, "archive") do
+    Db.Repo.all(
+      from b in bookmark_query(query),
+        where: b.is_archived == true,
         order_by: [desc: b.inserted_at]
     )
   end
@@ -68,7 +83,8 @@ defmodule Bookmarks do
           desc: b.views,
           desc: b.is_favorite,
           asc: b.is_archived
-        ]
+        ],
+        where: b.is_archived == false
     )
   end
 
