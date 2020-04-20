@@ -76,9 +76,9 @@ defmodule Bookmarks do
     list_bookmarks(query, @default_page)
   end
 
-  def bookmark_query(""), do: bookmark_query()
+  defp bookmark_query(""), do: bookmark_query()
 
-  def bookmark_query(query) do
+  defp bookmark_query(query) do
     from [b, t] in bookmark_query(),
       where: ilike(b.title, ^"%#{query}%"),
       or_where: ilike(b.content, ^"%#{query}%"),
@@ -87,7 +87,7 @@ defmodule Bookmarks do
       or_where: t.slug == ^query
   end
 
-  def bookmark_query() do
+  defp bookmark_query() do
     from b in Bookmark,
       left_join: t in assoc(b, :tags),
       select: b,

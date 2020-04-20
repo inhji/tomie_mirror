@@ -8,7 +8,6 @@ defmodule Bookmarks.Worker do
       {:ok, updated_bookmark} =
         Tags.list_tags_with_rules()
         |> Tags.Rules.parse(updated_bookmark)
-        |> IO.inspect()
         |> Bookmarks.update_tags(updated_bookmark)
 
       Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Bookmarks.Worker:#{bookmark.id}", %{
