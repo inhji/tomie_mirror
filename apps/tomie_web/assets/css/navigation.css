@@ -29,7 +29,7 @@ nav > ul > li > a {
 /* Main Nav */
 
 nav#main {
-	@apply fixed top-0 text-on-navbar;
+	@apply fixed top-0 text-on-navbar overflow-x-auto;
 }
 
 nav#main > ul > li > a:hover,
