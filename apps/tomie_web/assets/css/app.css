@@ -158,39 +158,3 @@ form .error-tag {
 		@apply px-0;
 	}
 }
-
-
-
-.tabs {
-  overflow: hidden;
-}
-
-.tab {
-  width: 100%;
-  overflow: hidden;
-}
-.tab-label {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-  font-weight: bold;
-  cursor: pointer;
-  /* Icon */
-}
-.tab-content {
-  max-height: 0;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-	@apply text-surface-alt;
-}
-.tab input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-
-.tab input:checked ~ .tab-content {
-  max-height: 1000vh;
-	@apply text-on-surface;
-}
