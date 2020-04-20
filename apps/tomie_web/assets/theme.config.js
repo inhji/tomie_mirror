@@ -17,12 +17,12 @@ const mainTheme = new Theme()
     'navbar': '#4C51BF',
     'on-navbar': '#EDF2F7',
 
-    'info': '#4299E1',
-    'on-info': '#BEE3F8',
+    'info': '#BEE3F8',
+    'on-info': '#4299E1',
     'danger': '#FED7D7',
     'on-danger': '#C53030',
-    'success': '#48BB78',
-    'on-success': '#C6F6D5'
+    'success': '#C6F6D5',
+    'on-success': '#48BB78'
   })
   .opacityVariant('muted', .8)
   .opacityVariant('barely', .4)
