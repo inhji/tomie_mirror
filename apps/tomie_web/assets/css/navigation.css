@@ -39,7 +39,20 @@ nav#main > ul > li > a.active {
 }
 
 main#content nav {
-	@apply bg-surface text-on-surface mb-6 h-auto;
+	@apply bg-surface text-on-surface mb-4 pb-2 h-auto overflow-x-auto;
+
+	/* HACK: Prevent overflow from swallowing the shadow */
+	padding-left: 5px;
+	padding-top: 5px;
+	margin-left: -5px;
+	margin-top: -5px;
+	width: auto;
+}
+
+@screen sm {
+	main#content nav {
+		@apply overflow-x-hidden;
+	}
 }
 
 main#content nav > ul {
@@ -62,6 +75,14 @@ main#content nav > ul > li > a:hover,
 main#content nav > ul > li > a:focus,
 main#content nav > ul > li > a.active {
 	@apply bg-primary-alt text-surface shadow-none;
+}
+
+aside#sidebar > nav {
+	@apply w-full;
+
+	/* HACK: Prevent overflow from swallowing the shadow */
+	padding-right: 5px;
+	margin-right: -5px;
 }
 
 aside#sidebar > nav > ul {
