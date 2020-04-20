@@ -64,7 +64,7 @@
     <section class="list">
       <%= for bookmark <- @bookmarks do %>
       <article class="card">
-        <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
+        <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark, origin: @page), class: "block" do %>
           <h3 class="text-xl hyphens">
             <%= bookmark.title || domain(bookmark.source) %>
           </h3>
