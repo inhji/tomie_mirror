@@ -78,11 +78,9 @@ defmodule BookmarksTest do
     Bookmarks.toggle_bookmark_flag(second_bookmark, :is_archived)
 
     bookmarks = Bookmarks.list_bookmarks("", "popular")
-
-    assert [%Bookmark{}, %Bookmark{}] = bookmarks
+    assert [%Bookmark{title: "First"}] = bookmarks
     assert Enum.at(bookmarks, 0).views === 1
     assert Enum.at(bookmarks, 0).is_favorite === true
-    assert Enum.at(bookmarks, 1).is_archived === true
   end
 
   test "list_bookmarks/2 with page favorites lists favorited bookmarks" do
