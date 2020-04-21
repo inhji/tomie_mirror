@@ -28,6 +28,7 @@ defmodule Tags do
 
   def list_tags() do
     Tags.Tag
+    |> order_by(:name)
     |> Db.Repo.all()
   end
 
