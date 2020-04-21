@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.13.1](https://git.inhji.de/inhji/tomie/compare/0.13.0...v0.13.1) (2020-04-21)
+
+
+
+
+### Bug Fixes:
+
+* follow redirects in get_html/1
+
 ## [v0.13.0](https://git.inhji.de/inhji/tomie/compare/0.12.0...v0.13.0) (2020-04-21)
 
 
