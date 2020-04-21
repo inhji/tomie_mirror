@@ -12,7 +12,7 @@ defmodule Scraper do
   end
 
   def get_html(url) do
-    case HTTPoison.get(url, request_headers()) do
+    case HTTPoison.get(url, request_headers(), follow_redirect: true) do
       {:ok, %{body: body, status_code: 200}} ->
         {:ok, body}
 
