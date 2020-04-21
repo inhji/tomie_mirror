@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.12.0](https://git.inhji.de/inhji/tomie/compare/0.11.0...v0.12.0) (2020-04-21)
+
+
+
+
+### Features:
+
+* search tags with ilike instead of equals
+
+* order tags by name
+
+### Improvements:
+
+* tags and favorite status on bookmarks
+
+* add iconview to render svg icons
+
 ## [v0.11.0](https://git.inhji.de/inhji/tomie/compare/0.10.0...v0.11.0) (2020-04-20)
 
 
