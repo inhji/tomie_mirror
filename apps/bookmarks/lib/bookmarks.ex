@@ -99,8 +99,8 @@ defmodule Bookmarks do
       where: ilike(b.title, ^"%#{query}%"),
       or_where: ilike(b.content, ^"%#{query}%"),
       or_where: ilike(b.source, ^"%#{query}%"),
-      or_where: t.name == ^query,
-      or_where: t.slug == ^query
+      or_where: ilike(t.name, ^"%#{query}%"),
+      or_where: ilike(t.slug, ^"%#{query}%")
   end
 
   defp bookmark_query() do
