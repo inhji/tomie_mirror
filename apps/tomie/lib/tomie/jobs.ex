@@ -8,9 +8,7 @@ defmodule Tomie.Jobs do
     )
   end
 
-  def get_job!(id) do
-    Db.Repo.get!(Oban.Job, id)
-  end
+  def get_job!(id), do: Db.Repo.get!(Oban.Job, id)
 
   def delete_job(id) do
     job = get_job!(id)

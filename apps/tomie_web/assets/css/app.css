@@ -59,9 +59,6 @@ a {
 .hyphens {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
 	hyphens: auto;
 }
 
@@ -70,6 +67,10 @@ a {
 
 .card {
 	@apply p-4 transition duration-300 mb-4 shadow bg-surface-alt;
+}
+
+.card.bg-danger {
+	@apply bg-danger;
 }
 
 .list .card:last-child {

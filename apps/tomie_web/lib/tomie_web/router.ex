@@ -43,6 +43,7 @@ defmodule TomieWeb.Router do
     live "/bookmarks/:id/edit", BookmarkLive.Edit
 
     live "/jobs", JobLive.Index
+    live "/jobs/:id", JobLive.Show
 
     get "/r/:id/:slug", LinkController, :redirect
 

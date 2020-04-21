@@ -1,0 +1,26 @@
+<nav>
+  <ul>
+    <li><%= live_redirect "Back", to: Routes.live_path(@socket, JobLive.Index) %></li>
+  </ul>
+</nav>
+
+<div class="card">
+  <h1><%= @job.worker %></h1>
+
+  <ul>
+    <li>Queue: <%= @job.queue %></li>
+    <li>State: <%= @job.state %></li>
+  </ul>
+
+  <pre class="mt-4">
+    <%= inspect(@job.args) %>
+  </pre>
+</div>
+
+<%= if Enum.count(@job.errors) > 0 do %>
+  <div class="card bg-danger text-on-danger">
+    <%= for %{"error" => error} <- @job.errors do %>
+      <pre class="hyphens whitespace-pre-wrap"><%= error %></pre>
+    <% end %>
+  </div>
+<% end %>
