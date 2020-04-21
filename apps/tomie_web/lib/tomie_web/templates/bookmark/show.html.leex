@@ -15,7 +15,7 @@
 <article class="card">
   <h1>
     <%= if @bookmark.is_favorite do %>
-      <span class="icon"><%= IconView.icon(:star) %></span>
+      <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
     <% end %>
     <%= @bookmark.title || @bookmark.source %>
   </h1>

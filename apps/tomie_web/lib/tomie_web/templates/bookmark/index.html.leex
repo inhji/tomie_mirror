@@ -66,6 +66,9 @@
       <article class="card">
         <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark, origin: @page), class: "block" do %>
           <h3 class="text-xl hyphens">
+            <%= if bookmark.is_favorite do %>
+              <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
+            <% end %>
             <%= bookmark.title || domain(bookmark.source) %>
           </h3>
           <p class="text-on-surface-muted mb-2 hypens">

@@ -91,7 +91,7 @@ a {
 }
 
 .tag {
-	@apply text-xs uppercase text-on-surface-muted bg-secondary-barely px-2 py-1 shadow;
+	@apply text-xs uppercase bg-on-surface-not-even px-2 py-1 shadow-inner;
 }
 
 /* Forms */
