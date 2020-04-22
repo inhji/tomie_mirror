@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.15.2](https://git.inhji.de/inhji/tomie/compare/0.15.1...v0.15.2) (2020-04-22)
+
+
+
+
+### Bug Fixes:
+
+* remove downtime in deploy script
+
 ## [v0.15.1](https://git.inhji.de/inhji/tomie/compare/0.15.0...v0.15.1) (2020-04-22)
 
 
