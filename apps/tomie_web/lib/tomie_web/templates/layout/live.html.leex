@@ -1,3 +1,13 @@
 <main role="main" id="content" class="px-0 py-6 sm:p-6">
+  <section class="alerts">
+    <p class="info" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+
+    <p class="error" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+  </section>
+
   <%= @inner_content %>
 </main>

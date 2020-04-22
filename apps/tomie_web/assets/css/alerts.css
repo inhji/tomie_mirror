@@ -1,5 +1,9 @@
+section.alerts {
+  @apply cursor-pointer absolute bottom-0 left-0 right-0;
+}
+
 section.alerts p {
-  @apply text-center font-bold p-3;
+  @apply text-center font-bold p-3 m-6 shadow;
 }
 
 section.alerts p.info {
@@ -11,5 +15,5 @@ section.alerts p.error {
 }
 
 section.alerts p:empty {
-  display: none;
+  @apply hidden mb-0;
 }
