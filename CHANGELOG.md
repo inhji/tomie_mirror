@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.15.3](https://git.inhji.de/inhji/tomie/compare/0.15.2...v0.15.3) (2020-04-22)
+
+
+
+
+### Bug Fixes:
+
+* make email field an actual email field lol
+
+* tweak main#content nav hover styles
+
+* tweak notification colors
+
+* tweak divider colors
+
+### Improvements:
+
+* bring alerts back
+
 ## [v0.15.2](https://git.inhji.de/inhji/tomie/compare/0.15.1...v0.15.2) (2020-04-22)
 
 
