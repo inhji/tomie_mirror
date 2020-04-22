@@ -74,7 +74,7 @@ main#content nav > ul > li > a {
 main#content nav > ul > li > a:hover,
 main#content nav > ul > li > a:focus,
 main#content nav > ul > li > a.active {
-	@apply bg-primary-alt text-surface shadow-none;
+	@apply bg-primary-alt text-on-primary shadow-none;
 }
 
 aside#sidebar > nav {
