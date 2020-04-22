@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.16.0](https://git.inhji.de/inhji/tomie/compare/0.15.3...v0.16.0) (2020-04-22)
+
+
+
+
+### Features:
+
+* turn tag routes into live view thingies
+
+### Bug Fixes:
+
+* whitelist nprogress classes in purgecss
+
 ## [v0.15.3](https://git.inhji.de/inhji/tomie/compare/0.15.2...v0.15.3) (2020-04-22)
 
 
