@@ -8,6 +8,22 @@ defmodule Tomie.Jobs do
     )
   end
 
+  def list_jobs(:successful) do
+    Db.Repo.all(
+      from j in Oban.Job,
+        where: [state: "completed"],
+        order_by: [desc: j.completed_at]
+    )
+  end
+
+  def list_jobs(:failed) do
+    Db.Repo.all(
+      from j in Oban.Job,
+        where: [state: "discarded"],
+        order_by: [desc: j.completed_at]
+    )
+  end
+
   def get_job!(id), do: Db.Repo.get!(Oban.Job, id)
 
   def delete_job(id) do

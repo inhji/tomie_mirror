@@ -1,42 +1,76 @@
-<%= for job <- @jobs do %>
+<div class="grid grid-cols-5 gap-4">
+  <aside id="sidebar">
+    <nav>
+      <ul>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, JobLive.Index) do %>
+          <div class="icon">
+            <%= IconView.icon(:home) %>
+          </div>
+          <span class="hidden md:inline">All Jobs</span>
+          <% end %>
+        </li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, JobLive.Index, page: :successful) do %>
+          <div class="icon">
+            <%= IconView.icon(:checkmark) %>
+          </div>
+          <span class="hidden md:inline">Successful</span>
+          <% end %>
+        </li>
+        <li>
+          <%= live_patch to: Routes.live_path(@socket, JobLive.Index, page: :failed) do %>
+          <div class="icon">
+            <%= IconView.icon(:close_outline) %>
+          </div>
+          <span class="hidden md:inline">Failed</span>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 
-<div class="card text-on-surface-muted">
-  <%= live_redirect to: Routes.live_path(@socket, JobLive.Show, job) do %>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-    <div>
-      <h3 class="text-on-surface">
-        <%= if job.state === "completed" do %>
-        <div class="icon text-on-success">
-          <%= IconView.icon(:checkmark) %>
+  <div class="col-span-4">
+    <%= for job <- @jobs do %>
+    <div class="card text-on-surface-muted">
+      <%= live_redirect to: Routes.live_path(@socket, JobLive.Show, job) do %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div>
+          <h3 class="text-on-surface">
+            <%= if job.state === "completed" do %>
+            <div class="icon text-on-success">
+              <%= IconView.icon(:checkmark) %>
+            </div>
+            <% end %>
+            <%= if job.state === "retryable" do %>
+            <div class="icon text-on-info">
+              <%= IconView.icon(:refresh) %>
+            </div>
+            <% end %>
+            <%= if job.state === "discarded" do %>
+            <div class="icon text-on-danger">
+              <%= IconView.icon(:close_outline) %>
+            </div>
+            <% end %>
+            <%= job.worker %>
+          </h3>
+          <pre><%= inspect(job.args) %></pre>
         </div>
-        <% end %>
-        <%= if job.state === "retryable" do %>
-        <div class="icon text-on-info">
-          <%= IconView.icon(:refresh) %>
+        <div>
+          <ul>
+            <li>Attempts: <%= "#{job.attempt}/#{job.max_attempts}" %></li>
+            <li>Duration: <%= "#{job_duration(job)}ms" %></li>
+          </ul>
         </div>
-        <% end %>
-        <%= if job.state === "discarded" do %>
-        <div class="icon text-on-danger">
-          <%= IconView.icon(:close_outline) %>
+        <div>
+          <ul>
+            <li>Started: <%= job_time(job.inserted_at) %></li>
+            <li>Completed: <%= job_time(job.completed_at) %></li>
+          </ul>
         </div>
-        <% end %>
-        <%= job.worker %>
-      </h3>
-      <pre><%= inspect(job.args) %></pre>
+      </div>
+      <% end %>
     </div>
-    <div>
-      <ul>
-        <li>Attempts: <%= "#{job.attempt}/#{job.max_attempts}" %></li>
-        <li>Duration: <%= "#{job_duration(job)}ms" %></li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li>Started: <%= job_time(job.inserted_at) %></li>
-        <li>Completed: <%= job_time(job.completed_at) %></li>
-      </ul>
-    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
-<% end %>
