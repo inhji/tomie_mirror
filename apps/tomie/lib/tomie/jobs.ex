@@ -2,26 +2,33 @@ defmodule Tomie.Jobs do
   import Ecto.Query, warn: false
 
   def list_jobs() do
-    Db.Repo.all(
-      from j in Oban.Job,
-        order_by: [desc: j.completed_at]
-    )
+    Db.Repo.all(list_jobs_query())
   end
 
   def list_jobs(:successful) do
     Db.Repo.all(
-      from j in Oban.Job,
-        where: [state: "completed"],
-        order_by: [desc: j.completed_at]
+      from list_jobs_query(),
+        where: [state: "completed"]
     )
   end
 
   def list_jobs(:failed) do
     Db.Repo.all(
-      from j in Oban.Job,
-        where: [state: "discarded"],
-        order_by: [desc: j.completed_at]
+      from list_jobs_query(),
+        where: [state: "discarded"]
     )
+  end
+
+  def list_jobs(:retrying) do
+    Db.Repo.all(
+      from list_jobs_query(),
+        where: [state: "retryable"]
+    )
+  end
+
+  defp list_jobs_query() do
+    from j in Oban.Job,
+      order_by: [desc: j.completed_at]
   end
 
   def get_job!(id), do: Db.Repo.get!(Oban.Job, id)
