@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.14.0](https://git.inhji.de/inhji/tomie/compare/0.13.1...v0.14.0) (2020-04-22)
+
+
+
+
+### Features:
+
+* add job sidebar
+
+* add listen app
+
+### Bug Fixes:
+
+* whitelist active class in purgecss
+
 ## [v0.13.1](https://git.inhji.de/inhji/tomie/compare/0.13.0...v0.13.1) (2020-04-21)
 
 
