@@ -10,5 +10,5 @@ defmodule TomieWeb.JobView do
   def job_time(datetime), do: Timex.from_now(datetime)
 
   def format(nil), do: "empty"
-  def format(datetime), do: Timex.format!(datetime, "{h24}:{m}:{s}{ss}")
+  def format(datetime), do: Timex.format!(datetime, "{D}. {Mfull}, {h24}:{m}:{s}{ss}")
 end
