@@ -9,7 +9,7 @@
 
   <fieldset>
     <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-    <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), required: true %>
+    <%= email_input f, Pow.Ecto.Schema.user_id_field(@changeset), required: true %>
     <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
   </fieldset>
 
