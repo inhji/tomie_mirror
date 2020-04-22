@@ -44,8 +44,12 @@ const darkTheme = new Theme()
     'navbar': '#4C51BF',
     'on-navbar': '#EDF2F7',
 
-    'danger': '#9B2C2C',
-    'on-danger': '#FEB2B2'
+    'info': '#90CDF4',
+    'on-info': '#3182CE',
+    'success': '#9AE6B4',
+    'on-success': '#38A169',
+    'danger': '#FEB2B2',
+    'on-danger': '#9B2C2C'
   })
   .colorVariant('hover', '#2D3748', 'navbar')
   .colorVariant('hover', '#CBD5E0', 'on-navbar')
