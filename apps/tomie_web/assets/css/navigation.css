@@ -93,7 +93,7 @@ aside#sidebar > nav > ul {
 }
 
 aside#sidebar > nav > ul > li {
-	@apply mr-0 shadow-none border-surface-border border-solid border-b;
+	@apply mr-0 shadow-none border-divider border-solid border-b;
 }
 
 aside#sidebar > nav > ul > li:last-child {
