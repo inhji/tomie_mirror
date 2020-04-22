@@ -1,5 +1,6 @@
 defmodule TomieWeb.TagView do
   use TomieWeb, :view
+  alias TomieWeb.TagLive
 
   def rule_count(tag) do
     case tag.rules do

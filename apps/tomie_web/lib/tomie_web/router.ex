@@ -42,12 +42,17 @@ defmodule TomieWeb.Router do
     live "/bookmarks/:id", BookmarkLive.Show
     live "/bookmarks/:id/edit", BookmarkLive.Edit
 
+    live "/tags", TagLive.Index
+    live "/tags/new", TagLive.New
+    live "/tags/:id", TagLive.Show
+    live "/tags/:id/edit", TagLive.Edit
+
     live "/jobs", JobLive.Index
     live "/jobs/:id", JobLive.Show
 
     get "/r/:id/:slug", LinkController, :redirect
 
-    resources "/tags", TagController
+    # resources "/tags", TagController
 
     resources "/profile", ProfileController,
       only: [:show, :edit, :update],

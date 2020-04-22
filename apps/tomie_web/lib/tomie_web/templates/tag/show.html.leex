@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    <li><%= link "Back", to: Routes.live_path(@socket, TomieWeb.TagLive.Index) %></li>
+    <li><%= link "Edit", to: Routes.live_path(@socket, TomieWeb.TagLive.Edit, @tag) %></li>
+    <li><%= link "Delete", to: "#", phx_click: "delete_tag", phx_value_id: @tag.id %></li>
+  </ul>
+</nav>
+
+<h1><%= @tag.name %></h1>
+
+<pre>
+<%= for rule <- rules(@tag) do %>
+  <%= rule %>
+<% end %>
+</pre>

@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, TagLive.Index) %></li>
+  </ul>
+</nav>
+
+<h1>Edit Tag</h1>
+
+<%= render "form.html", assigns %>

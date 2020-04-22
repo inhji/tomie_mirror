@@ -1,6 +1,5 @@
 defmodule TomieWeb.BookmarkLive.Index do
   use TomieWeb, :live
-  use Phoenix.HTML
 
   def render(assigns), do: TomieWeb.BookmarkView.render("index.html", assigns)
 

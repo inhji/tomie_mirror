@@ -12,7 +12,7 @@ defmodule Tags.Tag do
     timestamps()
   end
 
-  def changeset(tag, attrs \\ %{}) do
+  def changeset(tag \\ %Tags.Tag{}, attrs \\ %{}) do
     tag
     |> cast(attrs, [:name, :slug, :rules])
     |> validate_required([:name])

@@ -1,13 +1,13 @@
 <nav>
   <ul>
-    <li><%= link "Add new Tag", to: Routes.tag_path(@conn, :new) %></li>
+    <li><%= live_patch "Add new Tag", to: Routes.live_path(@socket, TomieWeb.TagLive.New) %></li>
   </ul>
 </nav>
 
 <section class="list">
 <%= for tag <- @tags do %>
   <article class="card">
-    <%= link to: Routes.tag_path(@conn, :show, tag), class: "block" do %>
+    <%= live_patch to: Routes.live_path(@socket, TomieWeb.TagLive.Show, tag), class: "block" do %>
       <h3>
         <%= tag.name %>
       </h3>
