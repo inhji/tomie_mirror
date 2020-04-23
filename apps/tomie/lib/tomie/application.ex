@@ -8,6 +8,8 @@ defmodule Tomie.Application do
   def start(_type, _args) do
     children = [
       Tomie.Telemetry,
+      Tomie.JobsListener,
+      {Phoenix.PubSub, name: Tomie.PubSub},
       {Oban, oban_config()}
     ]
 

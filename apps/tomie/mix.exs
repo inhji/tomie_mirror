@@ -41,6 +41,7 @@ defmodule Tomie.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:jason, "~> 1.0"},
       {:pow, "~> 1.0.19"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:excoveralls, "~> 0.12.3", only: :test},
       {:db, in_umbrella: true}
     ]
