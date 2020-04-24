@@ -18,8 +18,8 @@ defmodule Listens.Albums do
   def list_albums do
     Album
     |> order_by([:image, :name])
-    |> Repo.all()
-    |> Repo.preload(:artist)
+    |> Db.Repo.all()
+    |> Db.Repo.preload(:artist)
   end
 
   @doc """
@@ -38,8 +38,8 @@ defmodule Listens.Albums do
   """
   def get_album!(id),
     do:
-      Repo.get!(Album, id)
-      |> Repo.preload([:artist, :listens])
+      Db.Repo.get!(Album, id)
+      |> Db.Repo.preload([:artist, :listens])
 
   @doc """
   Creates a album.
@@ -56,7 +56,7 @@ defmodule Listens.Albums do
   def create_album(attrs \\ %{}) do
     %Album{}
     |> Album.changeset(attrs)
-    |> Repo.insert()
+    |> Db.Repo.insert()
   end
 
   @doc """
@@ -74,7 +74,7 @@ defmodule Listens.Albums do
   def update_album(%Album{} = album, attrs) do
     album
     |> Album.changeset(attrs)
-    |> Repo.update()
+    |> Db.Repo.update()
   end
 
   @doc """
@@ -90,6 +90,6 @@ defmodule Listens.Albums do
 
   """
   def delete_album(%Album{} = album) do
-    Repo.delete(album)
+    Db.Repo.delete(album)
   end
 end
