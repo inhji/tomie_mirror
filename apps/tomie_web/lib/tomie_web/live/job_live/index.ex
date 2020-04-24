@@ -15,14 +15,14 @@ defmodule TomieWeb.JobLive.Index do
   defp fetch(%{queue: queue}), do: Jobs.list_jobs_by_queue(queue)
 
   def handle_info(
-        %{event: :updated, job: _job, operation: _op},
+        %{event: :updated, job_id: _job_id, operation: _op},
         %{assigns: %{page: page}} = socket
       ) do
     {:noreply, socket |> assign(jobs: fetch(%{page: page}))}
   end
 
   def handle_info(
-        %{event: :updated, job: _job, operation: _op},
+        %{event: :updated, job_id: _job_id, operation: _op},
         %{assigns: %{queue: queue}} = socket
       ) do
     {:noreply, socket |> assign(jobs: fetch(%{queue: queue}))}
