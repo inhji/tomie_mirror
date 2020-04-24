@@ -18,6 +18,7 @@ defmodule Listens.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Listens.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -25,6 +26,7 @@ defmodule Listens.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:cachex, "~> 3.2"},
       {:waffle, "~> 1.0.1"},
       {:waffle_ecto, "~> 0.0.8"},
       {:ecto_sql, "~> 3.1"},
