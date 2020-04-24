@@ -5,24 +5,17 @@ defmodule Tomie.Jobs do
     Db.Repo.all(list_jobs_query())
   end
 
-  def list_jobs(:successful) do
+  def list_jobs_by_queue(queue) when queue in ["bookmarks", "listens"] do
     Db.Repo.all(
       from list_jobs_query(),
-        where: [state: "completed"]
+        where: [queue: ^queue]
     )
   end
 
-  def list_jobs(:failed) do
+  def list_jobs_by_state(state) when state in ["completed", "discarded", "retryable"] do
     Db.Repo.all(
       from list_jobs_query(),
-        where: [state: "discarded"]
-    )
-  end
-
-  def list_jobs(:retrying) do
-    Db.Repo.all(
-      from list_jobs_query(),
-        where: [state: "retryable"]
+        where: [state: ^state]
     )
   end
 

@@ -11,22 +11,35 @@ defmodule TomieWeb.JobLive.Index do
   end
 
   defp fetch(nil), do: Jobs.list_jobs()
-  defp fetch(page), do: String.to_existing_atom(page) |> Jobs.list_jobs()
+  defp fetch(%{state: state}), do: Jobs.list_jobs_by_state(state)
+  defp fetch(%{queue: queue}), do: Jobs.list_jobs_by_queue(queue)
 
   def handle_info(
-        %{event: :updated, job: job, operation: operation},
+        %{event: :updated, job: _job, operation: _op},
         %{assigns: %{page: page}} = socket
       ) do
-    {:noreply, socket |> assign(jobs: fetch(page))}
+    {:noreply, socket |> assign(jobs: fetch(%{page: page}))}
   end
 
-  def handle_params(%{"page" => page}, _url, socket) do
-    jobs = fetch(page)
-    {:noreply, socket |> assign(jobs: jobs, page: page)}
+  def handle_info(
+        %{event: :updated, job: _job, operation: _op},
+        %{assigns: %{queue: queue}} = socket
+      ) do
+    {:noreply, socket |> assign(jobs: fetch(%{queue: queue}))}
+  end
+
+  def handle_params(%{"state" => state}, _url, socket) do
+    jobs = fetch(%{state: state})
+    {:noreply, socket |> assign(jobs: jobs, state: state)}
+  end
+
+  def handle_params(%{"queue" => queue}, _url, socket) do
+    jobs = fetch(%{queue: queue})
+    {:noreply, socket |> assign(jobs: jobs, queue: queue)}
   end
 
   def handle_params(_params, _url, socket) do
     jobs = fetch(nil)
-    {:noreply, socket |> assign(jobs: jobs, page: nil)}
+    {:noreply, socket |> assign(jobs: jobs, state: nil)}
   end
 end
