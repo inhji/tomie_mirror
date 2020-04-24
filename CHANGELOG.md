@@ -5,6 +5,27 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.20.0](https://git.inhji.de/inhji/tomie/compare/0.19.0...v0.20.0) (2020-04-24)
+
+
+
+
+### Features:
+
+* listens: listenbrainz worker
+
+* listens: add album functions, fix schemas
+
+### Bug Fixes:
+
+* duration crashes when completed_at is nil
+
+* missing db references
+
+### Improvements:
+
+* limit jobs on dashboard to 50
+
 ## [v0.19.0](https://git.inhji.de/inhji/tomie/compare/0.18.0...v0.19.0) (2020-04-23)
 
 
