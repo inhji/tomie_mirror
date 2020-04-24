@@ -28,7 +28,8 @@ defmodule Tomie.Jobs do
 
   defp list_jobs_query() do
     from j in Oban.Job,
-      order_by: [desc: j.completed_at]
+      order_by: [desc: j.completed_at],
+      limit: 50
   end
 
   def get_job!(id), do: Db.Repo.get!(Oban.Job, id)
