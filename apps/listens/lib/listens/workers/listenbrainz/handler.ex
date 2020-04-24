@@ -59,16 +59,20 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def prepare_listen(listen) do
-    meta = listen.track_metadata
-    info = meta.additional_info
+    %{
+      additional_info: info,
+      artist_name: artist_name,
+      release_name: release_name,
+      track_name: track_name
+    } = listen.track_metadata
 
-    with {:ok, artist} <- maybe_create_artist(meta.artist_name, info.artist_msid),
-         {:ok, album} <- maybe_create_album(meta.release_name, info.release_msid, artist),
-         {:ok, track} <- maybe_create_track(meta.track_name, artist, album) do
-      Logger.info("[Listen] #{meta.track_name}")
+    with {:ok, artist} <- maybe_create_artist(artist_name, info.artist_msid),
+         {:ok, album} <- maybe_create_album(release_name, info.release_msid, artist),
+         {:ok, track} <- maybe_create_track(track_name, artist, album) do
+      Logger.info("[Listen] #{track_name}")
 
       Listen.changeset(%Listen{}, %{
-        track: listen.track_metadata.track_name,
+        track: track_name,
         album_id: album.id,
         artist_id: artist.id,
         track_id: track.id,
@@ -92,7 +96,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
   def maybe_create_artist(name, messybrainz_id) do
     artist =
-      case Repo.get_by(Artist, [msid: messybrainz_id], log: false) do
+      case Repo.get_by(Artist, [msid: messybrainz_id, name: name], log: false) do
         nil ->
           Logger.info("[Artist] #{name}")
 
@@ -117,7 +121,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
   def maybe_create_album(name, messybrainz_id, artist) do
     album =
-      case Repo.get_by(Album, [msid: messybrainz_id], log: false) do
+      case Repo.get_by(Album, [msid: messybrainz_id, artist_id: artist.id], log: false) do
         nil ->
           Logger.info("[Album] #{name}")
 
