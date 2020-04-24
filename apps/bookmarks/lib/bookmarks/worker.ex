@@ -1,6 +1,6 @@
 defmodule Bookmarks.Worker do
   use Oban.Worker,
-    queue: :default,
+    queue: :bookmarks,
     max_attempts: 5
 
   @impl Oban.Worker
