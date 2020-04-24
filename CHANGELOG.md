@@ -5,6 +5,41 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.21.0](https://git.inhji.de/inhji/tomie/compare/0.20.0...v0.21.0) (2020-04-24)
+
+
+
+
+### Features:
+
+* listens: add sidebar component
+
+* add bookmark icon
+
+### Bug Fixes:
+
+* handle_info without page nor queue params
+
+* pass down job_id to pubsub
+
+* reduce attempts of listenbrainz worker
+
+* limit concurrency to 1 for listens
+
+* payload string too long in NOTIFY trigger
+
+* prevent merging unrelated albums
+
+* assign existing bookmark jobs to bookmark queue
+
+* put bookmark worker in bookmark queue
+
+### Improvements:
+
+* clean up logging in listenbrainz worker
+
+* unified stats for listenbrainz worker
+
 ## [v0.20.0](https://git.inhji.de/inhji/tomie/compare/0.19.0...v0.20.0) (2020-04-24)
 
 
