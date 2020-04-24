@@ -1,7 +1,7 @@
 defmodule Listens.Workers.Listenbrainz do
   use Oban.Worker,
     queue: :listens,
-    max_attempts: 5
+    max_attempts: 3
 
   require Logger
 
