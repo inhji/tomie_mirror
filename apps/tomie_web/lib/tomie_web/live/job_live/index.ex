@@ -28,6 +28,10 @@ defmodule TomieWeb.JobLive.Index do
     {:noreply, socket |> assign(jobs: fetch(%{queue: queue}))}
   end
 
+  def handle_info(%{event: :updated, job_id: _job_id, operation: _op}, socket) do
+    {:noreply, socket |> assign(jobs: fetch(nil))}
+  end
+
   def handle_params(%{"state" => state}, _url, socket) do
     jobs = fetch(%{state: state})
     {:noreply, socket |> assign(jobs: jobs, state: state)}
