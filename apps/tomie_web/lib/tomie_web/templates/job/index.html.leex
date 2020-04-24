@@ -1,42 +1,5 @@
 <div class="grid grid-cols-5 gap-4">
-  <aside id="sidebar">
-    <nav>
-      <ul>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, JobLive.Index) do %>
-          <div class="icon">
-            <%= IconView.icon(:home) %>
-          </div>
-          <span class="hidden md:inline">All Jobs</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, JobLive.Index, page: :successful) do %>
-          <div class="icon">
-            <%= IconView.icon(:checkmark) %>
-          </div>
-          <span class="hidden md:inline">Successful</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, JobLive.Index, page: :failed) do %>
-          <div class="icon">
-            <%= IconView.icon(:close_outline) %>
-          </div>
-          <span class="hidden md:inline">Failed</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, JobLive.Index, page: :retrying) do %>
-          <div class="icon">
-            <%= IconView.icon(:refresh) %>
-          </div>
-          <span class="hidden md:inline">Retrying</span>
-          <% end %>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+  <%= live_component @socket, TomieWeb.JobLive.SidebarComponent %>
 
   <div class="col-span-4">
     <%= for job <- @jobs do %>

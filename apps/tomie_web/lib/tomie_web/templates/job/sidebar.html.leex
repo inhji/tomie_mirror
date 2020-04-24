@@ -1,0 +1,54 @@
+<aside id="sidebar">
+  <nav>
+    <ul>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index) do %>
+        <div class="icon">
+          <%= IconView.icon(:home) %>
+        </div>
+        <span class="hidden md:inline">All Jobs</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index, state: "completed") do %>
+        <div class="icon">
+          <%= IconView.icon(:checkmark) %>
+        </div>
+        <span class="hidden md:inline">Successful</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index, state: "discarded") do %>
+        <div class="icon">
+          <%= IconView.icon(:close_outline) %>
+        </div>
+        <span class="hidden md:inline">Failed</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index, state: "retryable") do %>
+        <div class="icon">
+          <%= IconView.icon(:refresh) %>
+        </div>
+        <span class="hidden md:inline">Retrying</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index, queue: :bookmarks) do %>
+        <div class="icon">
+          <%= IconView.icon(:bookmark) %>
+        </div>
+        <span class="hidden md:inline">Bookmarks</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Index, queue: :listens) do %>
+        <div class="icon">
+          <%= IconView.icon(:music) %>
+        </div>
+        <span class="hidden md:inline">Listens</span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</aside>
