@@ -13,10 +13,18 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   @last_listen_timestamp "last_listen_timestamp"
 
   def handle_fetch_response(listens, last_ts) do
-    listens
-    |> prepare_listens()
-    |> Enum.filter(fn l -> !is_nil(l) end)
-    |> Enum.each(fn changeset ->
+    %{
+      changesets: changesets,
+      new_artists: new_artists,
+      new_albums: new_albums,
+      new_tracks: new_tracks
+    } = prepare_listens(listens)
+
+    Logger.info("New Artists: #{new_artists}")
+    Logger.info("New Albums: #{new_albums}")
+    Logger.info("New Tracks: #{new_tracks}")
+
+    Enum.each(changesets, fn changeset ->
       Repo.insert(changeset, log: false)
     end)
 
@@ -55,10 +63,17 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def prepare_listens(listens) do
-    Enum.map(listens, &prepare_listen/1)
+    initial_state = %{
+      changesets: [],
+      new_artists: 0,
+      new_albums: 0,
+      new_tracks: 0
+    }
+
+    Enum.reduce(listens, initial_state, &prepare_listen/2)
   end
 
-  def prepare_listen(listen) do
+  def prepare_listen(listen, state) do
     %{
       additional_info: info,
       artist_name: artist_name,
@@ -66,28 +81,39 @@ defmodule Listens.Workers.Listenbrainz.Handler do
       track_name: track_name
     } = listen.track_metadata
 
-    with {:ok, artist} <- maybe_create_artist(artist_name, info.artist_msid),
-         {:ok, album} <- maybe_create_album(release_name, info.release_msid, artist),
-         {:ok, track} <- maybe_create_track(track_name, artist, album) do
+    with {:ok, artist, new: new_artist} <- maybe_create_artist(artist_name, info.artist_msid),
+         {:ok, album, new: new_album} <-
+           maybe_create_album(release_name, info.release_msid, artist),
+         {:ok, track, new: new_track} <- maybe_create_track(track_name, artist, album) do
       Logger.info("[Listen] #{track_name}")
 
-      Listen.changeset(%Listen{}, %{
-        track: track_name,
-        album_id: album.id,
-        artist_id: artist.id,
-        track_id: track.id,
-        listened_at: DateTime.from_unix!(listen.listened_at)
-      })
+      changeset =
+        Listen.changeset(%Listen{}, %{
+          track: track_name,
+          album_id: album.id,
+          artist_id: artist.id,
+          track_id: track.id,
+          listened_at: DateTime.from_unix!(listen.listened_at)
+        })
+
+      state
+      |> Map.put(:changesets, state.changesets ++ [changeset])
+      |> Map.put(:new_artists, state.new_artists + bool_to_int(new_artist))
+      |> Map.put(:new_albums, state.new_albums + bool_to_int(new_album))
+      |> Map.put(:new_tracks, state.new_tracks + bool_to_int(new_track))
     else
       {:error, reason} ->
         Logger.error(reason)
-        nil
+        state
 
       {:warn, reason} ->
         Logger.warn(reason)
-        nil
+        state
     end
   end
+
+  def bool_to_int(true), do: 1
+  def bool_to_int(false), do: 0
 
   def maybe_create_artist(nil, _messybrainz_id) do
     Logger.warn("Artist name was nil, skipping.")
@@ -95,11 +121,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def maybe_create_artist(name, messybrainz_id) do
-    artist =
-      case Repo.get_by(Artist, [msid: messybrainz_id, name: name], log: false) do
-        nil ->
-          Logger.info("[Artist] #{name}")
+    case Repo.get_by(Artist, [msid: messybrainz_id, name: name], log: false) do
+      nil ->
+        Logger.info("[Artist] #{name}")
 
+        artist =
           %Artist{}
           |> Artist.changeset(%{
             name: name,
@@ -107,11 +133,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
           })
           |> Repo.insert!(log: false)
 
-        artist ->
-          artist
-      end
+        {:ok, artist, new: true}
 
-    {:ok, artist}
+      artist ->
+        {:ok, artist, new: false}
+    end
   end
 
   def maybe_create_album(nil, _messybrainz_id, _artist) do
@@ -120,11 +146,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def maybe_create_album(name, messybrainz_id, artist) do
-    album =
-      case Repo.get_by(Album, [msid: messybrainz_id, artist_id: artist.id], log: false) do
-        nil ->
-          Logger.info("[Album] #{name}")
+    case Repo.get_by(Album, [msid: messybrainz_id, artist_id: artist.id], log: false) do
+      nil ->
+        Logger.info("[Album] #{name}")
 
+        album =
           %Album{}
           |> Album.changeset(%{
             name: name,
@@ -133,11 +159,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
           })
           |> Repo.insert!(log: false)
 
-        album ->
-          album
-      end
+        {:ok, album, new: true}
 
-    {:ok, album}
+      album ->
+        {:ok, album, new: false}
+    end
   end
 
   def maybe_create_track(name, artist, album) do
@@ -146,11 +172,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
       |> Repo.get_by([name: name, artist_id: artist.id, album_id: album.id], log: false)
       |> Repo.preload([:album, :artist], log: false)
 
-    track =
-      case track do
-        nil ->
-          Logger.info("[Track] #{name}")
+    case track do
+      nil ->
+        Logger.info("[Track] #{name}")
 
+        track =
           %Track{}
           |> Track.changeset(%{
             name: name,
@@ -159,10 +185,10 @@ defmodule Listens.Workers.Listenbrainz.Handler do
           })
           |> Repo.insert!(log: false)
 
-        track ->
-          track
-      end
+        {:ok, track, new: true}
 
-    {:ok, track}
+      track ->
+        {:ok, track, new: false}
+    end
   end
 end
