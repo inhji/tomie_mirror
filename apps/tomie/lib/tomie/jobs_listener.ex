@@ -24,16 +24,13 @@ defmodule Tomie.JobsListener do
 
   @impl true
   def handle_info({:notification, _pid, _ref, "jobs_changed", payload}, _state) do
-    with {:ok, data} <- Jason.decode(payload, keys: :atoms),
-         %{operation: operation, record: record} <- data do
-      data
-      |> inspect()
-      |> Logger.info()
+    with {:ok, data} <- Jason.decode(payload, keys: :atoms) do
+      %{operation: operation, record: record} = data
 
       Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Tomie.JobsListener:ALL", %{
         event: :updated,
         operation: operation,
-        job: record
+        job_id: record
       })
 
       {:noreply, :event_handled}
