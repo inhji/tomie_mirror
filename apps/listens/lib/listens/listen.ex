@@ -13,7 +13,7 @@ defmodule Listens.Listens.Listen do
   end
 
   @doc false
-  def changeset(listen \\ %__MODULE__{}, attrs(%{})) do
+  def changeset(listen, attrs \\ %{}) do
     listen
     |> cast(attrs, [:track_id, :album_id, :artist_id, :listened_at])
     |> validate_required([:track_id, :album_id, :artist_id, :listened_at])

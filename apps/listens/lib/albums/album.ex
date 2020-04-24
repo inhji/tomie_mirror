@@ -22,10 +22,18 @@ defmodule Listens.Albums.Album do
     timestamps()
   end
 
+  defp maybe_delete_image(changeset) do
+    case get_change(changeset, :delete_image) do
+      true -> put_change(changeset, :image, nil)
+      _ -> changeset
+    end
+  end
+
   @doc false
-  def changeset(album \\ %__MODULE__{}, attrs \\ %{}) do
+  def changeset(album, attrs \\ %{}) do
     album
     |> cast(attrs, [:name, :mbid, :msid, :artist_id, :discogs_id])
+    |> maybe_delete_image()
     |> cast_attachments(attrs, [:image], allow_paths: true)
     |> validate_required([:name, :msid, :artist_id])
   end

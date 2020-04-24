@@ -23,7 +23,7 @@ defmodule Listens.Artists.Artist do
   end
 
   @doc false
-  def changeset(artist \\ %__MODULE__{}, attrs \\ %{}) do
+  def changeset(artist, attrs \\ %{}) do
     artist
     |> cast(attrs, [:name, :msid, :mbid, :discogs_id])
     |> cast_attachments(attrs, [:image], allow_paths: true)

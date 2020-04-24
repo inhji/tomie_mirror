@@ -14,7 +14,7 @@ defmodule Listens.Tracks.Track do
   end
 
   @doc false
-  def changeset(track \\ %__MODULE__{}, attrs \\ %{}) do
+  def changeset(track, attrs \\ %{}) do
     track
     |> cast(attrs, [:name, :album_id, :artist_id])
     |> validate_required([:name, :album_id, :artist_id])
