@@ -20,9 +20,11 @@ defmodule Listens.Workers.Listenbrainz.Handler do
       new_tracks: new_tracks
     } = prepare_listens(listens)
 
+    Logger.info("======= STATS =======")
     Logger.info("New Artists: #{new_artists}")
     Logger.info("New Albums: #{new_albums}")
     Logger.info("New Tracks: #{new_tracks}")
+    Logger.info("New Listens: #{Enum.count(changesets)}")
 
     Enum.each(changesets, fn changeset ->
       Repo.insert(changeset, log: false)
@@ -85,8 +87,6 @@ defmodule Listens.Workers.Listenbrainz.Handler do
          {:ok, album, new: new_album} <-
            maybe_create_album(release_name, info.release_msid, artist),
          {:ok, track, new: new_track} <- maybe_create_track(track_name, artist, album) do
-      Logger.info("[Listen] #{track_name}")
-
       changeset =
         Listen.changeset(%Listen{}, %{
           track: track_name,
@@ -116,14 +116,13 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   def bool_to_int(false), do: 0
 
   def maybe_create_artist(nil, _messybrainz_id) do
-    Logger.warn("Artist name was nil, skipping.")
-    {:warn, "artist_name_nil"}
+    {:warn, "Artist name was nil, skipping."}
   end
 
   def maybe_create_artist(name, messybrainz_id) do
     case Repo.get_by(Artist, [msid: messybrainz_id, name: name], log: false) do
       nil ->
-        Logger.info("[Artist] #{name}")
+        Logger.debug("[Artist] #{name}")
 
         artist =
           %Artist{}
@@ -141,14 +140,13 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def maybe_create_album(nil, _messybrainz_id, _artist) do
-    Logger.warn("Album name was nil, skipping.")
-    {:warn, "album_name_nil"}
+    {:warn, "Album name was nil, skipping."}
   end
 
   def maybe_create_album(name, messybrainz_id, artist) do
     case Repo.get_by(Album, [msid: messybrainz_id, artist_id: artist.id], log: false) do
       nil ->
-        Logger.info("[Album] #{name}")
+        Logger.debug("[Album] #{name}")
 
         album =
           %Album{}
@@ -174,7 +172,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
     case track do
       nil ->
-        Logger.info("[Track] #{name}")
+        Logger.debug("[Track] #{name}")
 
         track =
           %Track{}
