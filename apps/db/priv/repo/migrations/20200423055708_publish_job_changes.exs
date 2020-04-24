@@ -14,7 +14,7 @@ defmodule Db.Repo.Migrations.PublishJobChanges do
         'jobs_changed',
         json_build_object(
           'operation', TG_OP,
-          'record', row_to_json(NEW)
+          'record', NEW.id
         )::text
       );
 
