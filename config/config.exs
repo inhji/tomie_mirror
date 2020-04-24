@@ -19,7 +19,7 @@ config :tomie,
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},
-  queues: [bookmarks: 10, listens: 5],
+  queues: [bookmarks: 10, listens: 1],
   crontab: [
     {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}}
   ]
