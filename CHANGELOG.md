@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.22.1](https://git.inhji.de/inhji/tomie/compare/0.22.0...v0.22.1) (2020-04-25)
+
+
+
+
+### Bug Fixes:
+
+* make uploads directory configurable
+
 ## [v0.22.0](https://git.inhji.de/inhji/tomie/compare/0.21.0...v0.22.0) (2020-04-25)
 
 
