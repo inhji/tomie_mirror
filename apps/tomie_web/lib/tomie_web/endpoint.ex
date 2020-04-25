@@ -16,7 +16,7 @@ defmodule TomieWeb.Endpoint do
     ]
 
   plug Plug.Static,
-    at: "/uploads",
+    at: "/",
     from: Path.expand("../../uploads"),
     gzip: false
 

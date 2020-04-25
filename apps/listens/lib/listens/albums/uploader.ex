@@ -22,7 +22,7 @@ defmodule Listens.Albums.Uploader do
 
   # Override the storage directory:
   def storage_dir(_, _) do
-    "uploads/listens/album"
+    "listens/albums"
   end
 
   # Provide a default URL if there hasn't been a file uploaded
