@@ -44,6 +44,10 @@ defmodule Listens.Workers.Listenbrainz do
 
     Listens.Cache.try_put(@cache, "updated_at", DateTime.utc_now())
 
+    Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Listens.Workers:ALL", %{
+      event: :updated
+    })
+
     :ok
   end
 end

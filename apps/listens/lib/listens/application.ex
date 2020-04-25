@@ -6,7 +6,8 @@ defmodule Listens.Application do
     import Cachex.Spec
 
     children = [
-      worker(Cachex, [:listenbrainz, []], id: :listenbrainz)
+      worker(Cachex, [:listenbrainz, []], id: :listenbrainz),
+      {Phoenix.PubSub, name: Listens.PubSub}
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one, name: Listens.Supervisor)
