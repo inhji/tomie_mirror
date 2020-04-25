@@ -58,7 +58,8 @@ defmodule TomieWeb.MixProject do
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
       {:tags, in_umbrella: true},
-      {:db, in_umbrella: true}
+      {:db, in_umbrella: true},
+      {:listens, in_umbrella: true}
     ]
   end
 

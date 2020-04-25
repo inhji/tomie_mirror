@@ -4,7 +4,7 @@ defmodule Listens.Albums do
   """
 
   import Ecto.Query, warn: false
-  alias Listens.Albums.Album
+  alias Listens.Albums.{Album, Uploader}
 
   def list_albums do
     Album
@@ -22,10 +22,15 @@ defmodule Listens.Albums do
     |> Db.Repo.preload(:artist)
   end
 
-  def get_album!(id),
-    do:
-      Db.Repo.get!(Album, id)
-      |> Db.Repo.preload([:artist, :listens])
+  def get_album!(id) do
+    Album
+    |> Db.Repo.get!(id)
+    |> Db.Repo.preload([:artist, :listens])
+  end
+
+  def get_album_image(album) do
+    Uploader.url({album.image, album})
+  end
 
   def update_album(%Album{} = album, attrs) do
     album

@@ -22,11 +22,11 @@ defmodule Listens.Artists.Uploader do
 
   # Override the storage directory:
   def storage_dir(_, _) do
-    "listens/artists"
+    "uploads/listens/artists"
   end
 
   # Provide a default URL if there hasn't been a file uploaded
   def default_url(_version, _scope) do
-    "/images/artist.jpg"
+    "images/listens/artist.jpg"
   end
 end

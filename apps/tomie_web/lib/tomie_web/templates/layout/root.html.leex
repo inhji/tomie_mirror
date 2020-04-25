@@ -23,6 +23,7 @@
           <% end %>
         </li>
         <li><%= active_link @conn, "Bookmarks", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) %></li>
+        <li><%= active_link @conn, "Listens", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.ListenLive.Index) %></li>
         <li><%= active_link @conn, "Tags", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.TagLive.Index) %></li>
         <li><%= active_link @conn, "Jobs", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.JobLive.Index) %></li>
         <li class="spacer" />

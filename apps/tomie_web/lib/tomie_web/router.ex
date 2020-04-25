@@ -50,6 +50,8 @@ defmodule TomieWeb.Router do
     live "/jobs", JobLive.Index
     live "/jobs/:id", JobLive.Show
 
+    live "/listens", ListenLive.Index
+
     get "/r/:id/:slug", LinkController, :redirect
 
     # resources "/tags", TagController
