@@ -5,6 +5,45 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.22.0](https://git.inhji.de/inhji/tomie/compare/0.21.0...v0.22.0) (2020-04-25)
+
+
+
+
+### Features:
+
+* listens: update listens on worker completion
+
+* add initial listen overview page
+
+* listens: add artist and album image workers
+
+### Bug Fixes:
+
+* upload path
+
+* separate job errors
+
+* handle_info without page nor queue params
+
+* pass down job_id to pubsub
+
+* reduce attempts of listenbrainz worker
+
+* limit concurrency to 1 for listens
+
+* payload string too long in NOTIFY trigger
+
+* prevent merging unrelated albums
+
+### Improvements:
+
+* listen cards
+
+* clean up logging in listenbrainz worker
+
+* unified stats for listenbrainz worker
+
 ## [v0.21.0](https://git.inhji.de/inhji/tomie/compare/0.20.0...v0.21.0) (2020-04-24)
 
 
