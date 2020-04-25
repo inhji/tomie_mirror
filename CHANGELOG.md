@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.22.2](https://git.inhji.de/inhji/tomie/compare/0.22.1...v0.22.2) (2020-04-25)
+
+
+
+
+### Bug Fixes:
+
+* migrator
+
 ## [v0.22.1](https://git.inhji.de/inhji/tomie/compare/0.22.0...v0.22.1) (2020-04-25)
 
 
