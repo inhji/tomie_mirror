@@ -8,7 +8,6 @@ defmodule Listens.Workers.Listenbrainz do
   alias Listens.Workers.Listenbrainz.Handler
 
   @base_url "https://api.listenbrainz.org/1/user"
-
   @cache :listenbrainz
   @default_listen_count 100
 

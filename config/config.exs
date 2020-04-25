@@ -16,12 +16,17 @@ config :db,
 config :tomie,
   user_agent: "Tomie/0.x (https://inhji.de)"
 
+config :listens,
+  discogs_token: "kRIDCYTMRucJojWzQKlXlDAnDlQSgmXboMEZiUBT"
+
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},
   queues: [bookmarks: 10, listens: 1],
   crontab: [
-    {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}}
+    {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}},
+    {"* * * * *", Listens.Workers.DiscogsArtist, args: %{}},
+    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{}}
   ]
 
 config :tomie_web,
@@ -48,6 +53,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :waffle,
+  storage: Waffle.Storage.Local,
+  storage_dir_prefix: "uploads"
 
 config :git_ops,
   mix_project: Tomie.Umbrella.MixProject,
