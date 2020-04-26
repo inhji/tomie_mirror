@@ -8,7 +8,9 @@
         <h3><%= listen.track.name %></h3>
         <p>
           <span class="icon text-on-surface-muted"><%= IconView.icon(:user) %></span>
-          <%= listen.artist.name %>
+          <%= live_patch listen.artist.name,
+            class: "hover:underline",
+            to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, listen.artist.id) %>
         </p>
         <p>
           <span class="icon text-on-surface-barely"><%= IconView.icon(:music) %></span>

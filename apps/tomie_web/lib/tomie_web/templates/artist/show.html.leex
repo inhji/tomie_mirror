@@ -1,0 +1,26 @@
+<nav>
+  <ul>
+    <li><%= live_redirect "Back", to: Routes.live_path(@socket, TomieWeb.ListenLive.Index) %></li>
+  </ul>
+</nav>
+
+<div class="card flex flex-row">
+  <div class="mr-4">
+    <img src="<%= @image %>" class="w-40" >
+  </div>
+  <div class="flex-auto">
+    <h1><%= @artist.name %> <span class="text-on-surface-barely">(<%= Enum.count(@artist.listens) %>)</span></h1>
+  </div>
+</div>
+
+  <%= for album <- @albums do %>
+    <div class="card flex">
+      <div class="mr-4">
+        <img src="<%= album.image %>" alt="" class="w-20">
+      </div>
+
+      <div class="flex-auto">
+        <h3><%= album.item.name %></h3>
+      </div>
+    </div>
+  <% end %>
