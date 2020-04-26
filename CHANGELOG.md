@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.24.0](https://git.inhji.de/inhji/tomie/compare/0.23.0...v0.24.0) (2020-04-26)
+
+
+
+
+### Features:
+
+* show last listens per album
+
+### Improvements:
+
+* more info on artist page
+
 ## [v0.23.0](https://git.inhji.de/inhji/tomie/compare/0.22.3...v0.23.0) (2020-04-26)
 
 
