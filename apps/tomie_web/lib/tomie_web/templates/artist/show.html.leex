@@ -21,6 +21,8 @@
 
       <div class="flex-auto">
         <h3><%= album.item.name %></h3>
+
+        <p> <%= last_listen(album.item) %></p>
       </div>
     </div>
   <% end %>
