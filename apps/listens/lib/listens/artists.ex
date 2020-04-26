@@ -16,7 +16,7 @@ defmodule Listens.Artists do
     |> Db.Repo.preload([:listens, :tracks, albums: [:listens]])
   end
 
-  def get_artist_image(artist) do
-    Uploader.url({artist.image, artist})
+  def get_artist_image(artist, size \\ :thumb) do
+    Uploader.url({artist.image, artist}, size)
   end
 end

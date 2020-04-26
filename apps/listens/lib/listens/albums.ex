@@ -28,8 +28,8 @@ defmodule Listens.Albums do
     |> Db.Repo.preload([:artist, :listens])
   end
 
-  def get_album_image(album) do
-    Uploader.url({album.image, album})
+  def get_album_image(album, size \\ :thumb) do
+    Uploader.url({album.image, album}, size)
   end
 
   def update_album(%Album{} = album, attrs) do
