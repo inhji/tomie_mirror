@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.23.0](https://git.inhji.de/inhji/tomie/compare/0.22.3...v0.23.0) (2020-04-26)
+
+
+
+
+### Features:
+
+* listens: add artist page
+
+### Bug Fixes:
+
+* support image sizes for artists, albums
+
+* uploader default path
+
+* warnings
+
 ## [v0.22.3](https://git.inhji.de/inhji/tomie/compare/0.22.2...v0.22.3) (2020-04-26)
 
 
