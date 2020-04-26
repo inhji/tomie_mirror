@@ -9,7 +9,8 @@
     <img src="<%= @image %>" class="w-40" >
   </div>
   <div class="flex-auto">
-    <h1><%= @artist.name %> <span class="text-on-surface-barely">(<%= Enum.count(@artist.listens) %>)</span></h1>
+    <h1><%= @artist.name %></h1>
+    <p>Total Listens: <%= Enum.count(@artist.listens) %></p>
   </div>
 </div>
 
@@ -22,7 +23,8 @@
       <div class="flex-auto">
         <h3><%= album.item.name %></h3>
 
-        <p> <%= last_listen(album.item) %></p>
+        <p>Total Listens: <%= Enum.count(album.item.listens) %></p>
+        <p>Last Listen: <%= last_listen(album.item) %></p>
       </div>
     </div>
   <% end %>
