@@ -1,6 +1,5 @@
 defmodule TomieWeb.TagLive.Show do
   use TomieWeb, :live
-  alias Tags.Tag
 
   def render(assigns), do: TomieWeb.TagView.render("show.html", assigns)
 
@@ -17,12 +16,8 @@ defmodule TomieWeb.TagLive.Show do
   end
 
   def handle_event("delete_tag", %{"id" => id}, socket) do
-    IO.inspect("delete_tag")
-
     Tags.get_tag!(id)
-    |> IO.inspect()
     |> Tags.delete_tag()
-    |> IO.inspect()
 
     {:noreply, push_redirect(socket, to: Routes.live_path(socket, TomieWeb.TagLive.Index))}
   end

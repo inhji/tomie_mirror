@@ -62,7 +62,7 @@ defmodule Listens.Workers.DiscogsAlbum do
       })
       |> Repo.update(log: false)
     else
-      error ->
+      _error ->
         Logger.debug("[Album/Image] No image found for #{album.name}")
 
         album

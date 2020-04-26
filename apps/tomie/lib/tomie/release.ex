@@ -7,7 +7,7 @@ defmodule Tomie.Release do
     end
   end
 
-  def rollback(repo, version) do
+  def rollback(repo) do
     {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, step: 1))
   end
 

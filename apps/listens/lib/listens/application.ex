@@ -3,7 +3,6 @@ defmodule Listens.Application do
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-    import Cachex.Spec
 
     children = [
       worker(Cachex, [:listenbrainz, []], id: :listenbrainz),
