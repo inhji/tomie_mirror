@@ -27,6 +27,6 @@ defmodule Listens.Artists.Uploader do
 
   # Provide a default URL if there hasn't been a file uploaded
   def default_url(_version, _scope) do
-    "images/listens/artist.jpg"
+    "/images/listens/artist.jpg"
   end
 end
