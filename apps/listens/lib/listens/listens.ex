@@ -5,7 +5,7 @@ defmodule Listens.Listens do
 
   def list_listens() do
     Listen
-    |> order_by(desc: :inserted_at)
+    |> order_by(desc: :listened_at)
     |> limit(20)
     |> Db.Repo.all()
     |> Db.Repo.preload([:artist, :album, :track])
