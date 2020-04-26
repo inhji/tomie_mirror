@@ -61,12 +61,12 @@ a {
 	word-wrap: break-word;
 	hyphens: auto;
 }
-
-.list {
-}
-
 .card {
 	@apply p-4 transition duration-300 mb-4 shadow bg-surface-alt;
+}
+
+.card h3 {
+	@apply mb-2;
 }
 
 .card.bg-danger {
