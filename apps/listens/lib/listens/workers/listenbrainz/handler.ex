@@ -143,6 +143,10 @@ defmodule Listens.Workers.Listenbrainz.Handler do
     {:warn, "Album name was nil, skipping."}
   end
 
+  def maybe_create_album(_album_name, nil, _artist) do
+    {:warn, "Album MSID was nil, skipping."}
+  end
+
   def maybe_create_album(name, messybrainz_id, artist) do
     case Repo.get_by(Album, [msid: messybrainz_id, artist_id: artist.id], log: false) do
       nil ->
