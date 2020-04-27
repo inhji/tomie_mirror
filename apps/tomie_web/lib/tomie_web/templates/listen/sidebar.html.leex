@@ -1,0 +1,14 @@
+<aside id="sidebar">
+  <nav>
+    <ul>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, ListenLive.Index) do %>
+        <div class="icon">
+          <%= IconView.icon(:music) %>
+        </div>
+        <span class="hidden md:inline">Listens</span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</aside>

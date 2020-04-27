@@ -1,25 +1,31 @@
-<%= for listen <- @listens do %>
-  <div class="card">
-    <div class="flex">
-      <div class="image w-20 h-20 mr-4">
-        <img src="<%= Listens.Albums.get_album_image(listen.album) %>" class="w-full">
-      </div>
-      <div class="body">
-        <h3><%= listen.track.name %></h3>
-        <p>
-          <span class="icon text-on-surface-muted"><%= IconView.icon(:user) %></span>
-          <%= live_patch listen.artist.name,
-            class: "hover:underline",
-            to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, listen.artist.id) %>
-        </p>
-        <p>
-          <span class="icon text-on-surface-muted"><%= IconView.icon(:vinyl) %></span>
-          <%= listen.album.name %>
-        </p>
-        <div class="tags mt-2">
-          <span class="tag"><%= Timex.from_now(listen.listened_at) %></span>
+<div class="grid grid-cols-5 gap-4">
+  <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
+
+  <div class="col-span-4">
+    <%= for listen <- @listens do %>
+      <div class="card">
+        <div class="flex">
+          <div class="image w-20 h-20 mr-4">
+            <img src="<%= Listens.Albums.get_album_image(listen.album) %>" class="w-full">
+          </div>
+          <div class="body">
+            <h3><%= listen.track.name %></h3>
+            <p>
+              <span class="icon text-on-surface-muted"><%= IconView.icon(:user) %></span>
+              <%= live_patch listen.artist.name,
+                class: "hover:underline",
+                to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, listen.artist.id) %>
+            </p>
+            <p>
+              <span class="icon text-on-surface-muted"><%= IconView.icon(:vinyl) %></span>
+              <%= listen.album.name %>
+            </p>
+            <div class="tags mt-2">
+              <span class="tag"><%= Timex.from_now(listen.listened_at) %></span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

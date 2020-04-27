@@ -12,5 +12,9 @@ defmodule TomieWeb.ListenLive.Index do
     {:noreply, socket |> assign(listens: fetch())}
   end
 
+  def handle_params(_params, _url, socket) do
+    {:noreply, socket}
+  end
+
   def fetch(), do: Listens.Listens.list_listens()
 end
