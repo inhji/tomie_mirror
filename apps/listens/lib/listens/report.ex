@@ -15,7 +15,7 @@ defmodule Listens.Report do
       from a in model,
         join: s in subquery(sq),
         on: a.id == s.id,
-        select: %{album: a, listens: s.listens},
+        select: %{model: a, listens: s.listens},
         order_by: [desc: s.listens],
         limit: ^limit
     )

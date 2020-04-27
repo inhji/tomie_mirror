@@ -9,6 +9,22 @@
         <span class="hidden md:inline">Listens</span>
         <% end %>
       </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, ListenLive.Artists) do %>
+        <div class="icon">
+          <%= IconView.icon(:user) %>
+        </div>
+        <span class="hidden md:inline">Top Artists</span>
+        <% end %>
+      </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, ListenLive.Albums) do %>
+        <div class="icon">
+          <%= IconView.icon(:vinyl) %>
+        </div>
+        <span class="hidden md:inline">Top Albums</span>
+        <% end %>
+      </li>
     </ul>
   </nav>
 </aside>

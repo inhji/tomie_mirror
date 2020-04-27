@@ -1,0 +1,22 @@
+<div class="grid grid-cols-5 gap-4">
+  <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
+
+  <div class="col-span-4">
+    <%= for item <- @artists do %>
+      <div class="card">
+        <div class="flex">
+          <div class="image w-20 h-20 mr-4">
+            <img src="<%= Listens.Artists.get_artist_image(item.model) %>" class="w-full">
+          </div>
+          <div class="body">
+            <h3><%= item.model.name %></h3>
+
+            <p>
+              Listens: <%= item.listens %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
