@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.25.0](https://git.inhji.de/inhji/tomie/compare/0.24.3...v0.25.0) (2020-04-27)
+
+
+
+
+### Features:
+
+* add top albums/artists :)
+
+* add report module for listens
+
+* add listen sidebar
+
+### Improvements:
+
+* add new job icons, move icon functions to jobview
+
 ## [v0.24.3](https://git.inhji.de/inhji/tomie/compare/0.24.2...v0.24.3) (2020-04-27)
 
 
