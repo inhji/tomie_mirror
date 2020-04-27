@@ -1,6 +1,7 @@
 defmodule IconView do
   use TomieWeb, :view
 
+  def icon(nil), do: ""
   def icon(name), do: svg_icon(name)
 
   defp svg_icon(:star) do
@@ -111,6 +112,22 @@ defmodule IconView do
     ~E"""
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"/>
+    </svg>
+    """
+  end
+
+  defp svg_icon(:coffee) do
+    ~E"""
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M4 11H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h2V1h14v10a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zm0-2V5H2v4h2zm-2 8v-1h18v1l-4 2H6l-4-2z"/>
+    </svg>
+    """
+  end
+
+  defp svg_icon(:cog) do
+    ~E"""
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
     </svg>
     """
   end
