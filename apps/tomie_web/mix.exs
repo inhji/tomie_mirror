@@ -47,6 +47,7 @@ defmodule TomieWeb.MixProject do
       {:phoenix_live_dashboard, "~> 0.1"},
       {:phoenix_form_awesomplete, "~> 0.1"},
       {:phoenix_active_link, "~> 0.3.0"},
+      {:chartkick, "~> 0.4.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.2"},
