@@ -5,7 +5,7 @@
     <div class="chart" phx-update="ignore">
       <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chartkick.js") %>"></script>
       <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chart.js") %>"></script>
-      <%= raw Chartkick.line_chart Jason.encode!(@sparkline) %>
+      <%= raw Chartkick.line_chart Jason.encode!(@sparkline), colors: ["#dd3344"] %>
     </div>
 
     <%= for listen <- @listens do %>
