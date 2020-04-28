@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.26.3](https://git.inhji.de/inhji/tomie/compare/0.26.2...v0.26.3) (2020-04-28)
+
+
+
+
+### Bug Fixes:
+
+* remove inspects
+
+* greatly improve silly chart
+
+* nicer chart colors
+
 ## [v0.26.2](https://git.inhji.de/inhji/tomie/compare/0.26.1...v0.26.2) (2020-04-28)
 
 
