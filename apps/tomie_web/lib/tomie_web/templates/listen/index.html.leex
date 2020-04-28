@@ -2,6 +2,12 @@
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
   <div class="col-span-4">
+    <div class="chart" phx-update="ignore">
+      <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chartkick.js") %>"></script>
+      <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chart.js") %>"></script>
+      <%= raw Chartkick.line_chart Jason.encode!(@sparkline) %>
+    </div>
+
     <%= for listen <- @listens do %>
       <div class="card">
         <div class="flex">

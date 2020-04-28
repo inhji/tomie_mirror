@@ -26,6 +26,7 @@ defmodule Listens.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:chartkick, "~> 0.4.0"},
       {:cachex, "~> 3.2"},
       {:waffle, "~> 1.0.1"},
       {:waffle_ecto, "~> 0.0.8"},

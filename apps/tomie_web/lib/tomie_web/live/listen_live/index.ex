@@ -5,16 +5,25 @@ defmodule TomieWeb.ListenLive.Index do
 
   def mount(_args, _session, socket) do
     Phoenix.PubSub.subscribe(TomieWeb.PubSub, "Listens.Workers:ALL")
-    {:ok, socket |> assign(listens: fetch())}
+    {:ok, socket |> assign(fetch())}
   end
 
   def handle_info(%{event: :updated}, socket) do
-    {:noreply, socket |> assign(listens: fetch())}
+    {:noreply, socket |> assign(fetch())}
   end
 
   def handle_params(_params, _url, socket) do
     {:noreply, socket}
   end
 
-  def fetch(), do: Listens.Listens.list_listens()
+  def fetch() do
+    [
+      listens: Listens.Listens.list_listens(),
+      sparkline:
+        Listens.Report.sparkline()
+        |> Enum.with_index(-12)
+        |> Enum.map(fn {k, v} -> [v, k] end)
+        |> IO.inspect()
+    ]
+  end
 end

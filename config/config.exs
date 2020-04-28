@@ -54,6 +54,8 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :chartkick, json_serializer: Jason
+
 config :waffle,
   storage: Waffle.Storage.Local,
   storage_dir_prefix: "uploads"
