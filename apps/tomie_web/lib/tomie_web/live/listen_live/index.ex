@@ -9,19 +9,28 @@ defmodule TomieWeb.ListenLive.Index do
   end
 
   def handle_info(%{event: :updated}, socket) do
-    {:noreply, socket |> assign(fetch())}
+    {:noreply, socket}
   end
 
   def handle_params(_params, _url, socket) do
     {:noreply, socket}
   end
 
-  def fetch() do
-    [
+  def fetch(),
+    do: [
       listens: Listens.Listens.list_listens(),
-      sparkline:
-        Listens.Report.listens_over_time("YYYY-mm-dd", months: -1)
-        |> Enum.map(fn %{count: c, date: d} -> [d, c] end)
+      chart_data:
+        Listens.Report.listens_over_time("YYYY-mm-dd", days: -21)
+        |> Enum.map(&prepare_data/1)
+        |> Jason.encode!()
     ]
+
+  defp prepare_data(%{count: count, date: date}) do
+    formatted_date =
+      date
+      |> Timex.parse!("{YYYY}-{0M}-{D}")
+      |> Timex.format!("{0D}/{0M}")
+
+    [formatted_date, count]
   end
 end
