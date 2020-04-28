@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.26.4](https://git.inhji.de/inhji/tomie/compare/0.26.3...v0.26.4) (2020-04-28)
+
+
+
+
+### Improvements:
+
+* format chart date
+
+* wrap chart in card
+
+* artist/album pages span 2 weeks now
+
 ## [v0.26.3](https://git.inhji.de/inhji/tomie/compare/0.26.2...v0.26.3) (2020-04-28)
 
 
