@@ -5,14 +5,20 @@
     <%= for item <- @artists do %>
       <div class="card">
         <div class="flex">
-          <div class="image w-20 h-20 mr-4">
-            <img src="<%= Listens.Albums.get_album_image(item.model) %>" class="w-full">
+          <div class="image w-16 md:w-40 mr-4">
+            <img src="<%= Listens.Albums.get_album_image(item.model, :large) %>" class="w-full">
           </div>
           <div class="body">
-            <h3><%= item.model.name %></h3>
-
+            <h3>
+              <%= item.model.name %>
+              <span class="text-on-surface-barely">[</span>
+              <span class="text-on-surface-muted"><%= item.listens %></span>
+              <span class="text-on-surface-barely">]</span>
+            </h3>
             <p>
-              Listens: <%= item.listens %>
+              By <%= live_patch item.model.artist.name,
+                      class: "hover:underline",
+                      to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, item.model.artist) %>
             </p>
           </div>
         </div>

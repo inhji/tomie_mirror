@@ -5,7 +5,7 @@ defmodule Listens.Report do
   alias Listens.Albums.Album
   alias Listens.Listens.Listen
 
-  def top(model, limit, time_diff) when model in [Album, Artist] do
+  def top(model, limit, time_diff, preloads \\ []) when model in [Album, Artist] do
     sq =
       from [a, l] in count_listens_query(model),
         where: l.listened_at > ^offset(time_diff),
@@ -17,7 +17,8 @@ defmodule Listens.Report do
         on: a.id == s.id,
         select: %{model: a, listens: s.listens},
         order_by: [desc: s.listens],
-        limit: ^limit
+        limit: ^limit,
+        preload: ^preloads
     )
   end
 
