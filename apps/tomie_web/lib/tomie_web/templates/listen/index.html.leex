@@ -2,10 +2,12 @@
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
   <div class="col-span-4">
-    <div class="chart mb-4" phx-update="ignore">
-      <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chartkick.js") %>"></script>
-      <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chart.js") %>"></script>
-      <%= raw Chartkick.column_chart Jason.encode!(@sparkline), colors: ["#dd3344"] %>
+    <div class="card" phx-update="ignore">
+      <div class="chart mb-4">
+        <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chartkick.js") %>"></script>
+        <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chart.js") %>"></script>
+        <%= raw Chartkick.column_chart @chart_data, colors: ["#667EEA"], dataset: %{ borderWidth: 1 } %>
+      </div>
     </div>
 
     <%= for listen <- @listens do %>
