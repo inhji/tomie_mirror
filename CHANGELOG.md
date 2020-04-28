@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.26.0](https://git.inhji.de/inhji/tomie/compare/0.25.0...v0.26.0) (2020-04-28)
+
+
+
+
+### Features:
+
+* add silly listen chart
+
+### Bug Fixes:
+
+* remove jobstate
+
+* prevent listen image from shrinking
+
 ## [v0.25.0](https://git.inhji.de/inhji/tomie/compare/0.24.3...v0.25.0) (2020-04-27)
 
 
