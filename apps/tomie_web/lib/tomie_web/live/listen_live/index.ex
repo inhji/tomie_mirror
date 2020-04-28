@@ -20,9 +20,8 @@ defmodule TomieWeb.ListenLive.Index do
     [
       listens: Listens.Listens.list_listens(),
       sparkline:
-        Listens.Report.sparkline()
-        |> Enum.with_index(-12)
-        |> Enum.map(fn {k, v} -> [v, k] end)
+        Listens.Report.listens_over_time("YYYY-mm-dd", months: -1)
+        |> Enum.map(fn %{count: c, date: d} -> [d, c] end)
         |> IO.inspect()
     ]
   end
