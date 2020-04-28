@@ -5,6 +5,16 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.26.2](https://git.inhji.de/inhji/tomie/compare/0.26.1...v0.26.2) (2020-04-28)
+
+
+
+
+## [v0.26.1](https://git.inhji.de/inhji/tomie/compare/0.26.0...v0.26.1) (2020-04-28)
+
+
+
+
 ## [v0.26.0](https://git.inhji.de/inhji/tomie/compare/0.25.0...v0.26.0) (2020-04-28)
 
 
