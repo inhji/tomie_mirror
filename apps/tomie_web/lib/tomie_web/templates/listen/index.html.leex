@@ -5,11 +5,11 @@
     <%= for listen <- @listens do %>
       <div class="card">
         <div class="flex">
-          <div class="image w-20 h-20 mr-4">
-            <img src="<%= Listens.Albums.get_album_image(listen.album) %>" class="w-full">
+          <div class="image w-16 md:w-32 mr-4 flex-shrink-0">
+            <img src="<%= Listens.Albums.get_album_image(listen.album, :large) %>" class="w-full">
           </div>
           <div class="body">
-            <h3><%= listen.track.name %></h3>
+            <h3 class="hyphens"><%= listen.track.name %></h3>
             <p>
               <span class="icon text-on-surface-muted"><%= IconView.icon(:user) %></span>
               <%= live_patch listen.artist.name,
