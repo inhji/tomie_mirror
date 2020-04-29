@@ -1,9 +1,9 @@
-defmodule TomieWeb.ArtistView do
+defmodule TomieWeb.AlbumView do
   use TomieWeb, :view
-  alias TomieWeb.ArtistLive
+  alias TomieWeb.AlbumLive
 
-  def last_listen(artist) do
-    artist.listens
+  def last_listen(album) do
+    album.listens
     |> Enum.sort(fn a, b ->
       DateTime.compare(a.listened_at, b.listened_at) == :gt
     end)

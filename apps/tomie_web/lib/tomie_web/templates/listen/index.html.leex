@@ -22,7 +22,9 @@
             </p>
             <p>
               <span class="icon text-on-surface-muted"><%= IconView.icon(:vinyl) %></span>
-              <%= listen.album.name %>
+              <%= live_patch listen.album.name,
+                class: "hover:underline",
+                to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, listen.album.id) %>
             </p>
             <div class="tags mt-2">
               <span class="tag"><%= Timex.from_now(listen.listened_at) %></span>
