@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.28.0](https://git.inhji.de/inhji/tomie/compare/0.27.0...v0.28.0) (2020-04-29)
+
+
+
+
+### Features:
+
+* simple markdown styles
+
+### Bug Fixes:
+
+* increase textarea size in bookmark form
+
 ## [v0.27.0](https://git.inhji.de/inhji/tomie/compare/0.26.4...v0.27.0) (2020-04-28)
 
 
