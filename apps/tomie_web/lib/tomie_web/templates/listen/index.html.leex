@@ -3,11 +3,7 @@
 
   <div class="col-span-4">
     <div class="card" phx-update="ignore">
-      <div class="chart mb-4">
-        <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chartkick.js") %>"></script>
-        <script src=" <%= Routes.static_path(TomieWeb.Endpoint, "/js/chart.js") %>"></script>
-        <%= raw Chartkick.column_chart @chart_data, colors: ["#667EEA"], dataset: %{ borderWidth: 1 } %>
-      </div>
+      <div id="listen-index-chart" phx-hook="ListenIndex" data-chart="<%= @last_two_weeks %>"></div>
     </div>
 
     <%= for listen <- @listens do %>

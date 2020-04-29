@@ -19,9 +19,15 @@ defmodule TomieWeb.ListenLive.Index do
   def fetch(),
     do: [
       listens: Listens.Listens.list_listens(),
-      chart_data:
-        Listens.Report.listens_over_time("YYYY-mm-dd", days: -21)
-        |> Enum.map(&prepare_data/1)
+      last_two_weeks:
+        Listens.Report.listens_within_range(days: -14)
+        |> Enum.group_by(fn l -> l.artist.name end)
+        |> Enum.map(fn {name, listens} -> {name, Enum.count(listens)} end)
+        |> Enum.sort_by(fn {_name, listens} -> listens end)
+        |> Enum.reverse()
+        |> Enum.take(10)
+        |> Enum.map(fn {name, listens} -> [name, listens] end)
+        |> IO.inspect()
         |> Jason.encode!()
     ]
 

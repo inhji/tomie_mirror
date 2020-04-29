@@ -30,16 +30,13 @@ defmodule Listens.Report do
       select: %{id: a.id, listens: count(a.id)}
   end
 
-  def listens_over_time(format, time_diff) do
-    Listen
-    |> group_by([l], fragment("to_char(?, ?)", l.listened_at, "YYYY-mm-dd"))
-    |> select([l], %{
-      count: count(l.id),
-      date: fragment("to_char(?, ?)", l.listened_at, "YYYY-mm-dd")
-    })
-    |> where([l], l.listened_at > ^offset(time_diff))
-    |> order_by([l], fragment("to_char(?, ?)", l.listened_at, "YYYY-mm-dd"))
-    |> Db.Repo.all()
+  def listens_within_range(range) do
+    q =
+      from l in Listen,
+        where: l.listened_at > ^offset(range),
+        preload: [:artist, :album]
+
+    Db.Repo.all(q)
   end
 
   def offset([{unit, value}]) when unit in [:days, :weeks, :months, :years] do

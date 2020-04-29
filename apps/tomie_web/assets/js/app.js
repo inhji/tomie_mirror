@@ -7,11 +7,17 @@ import "phoenix_html"
 import NProgress from "nprogress"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
+import ListenIndex from "./hooks/listen_index"
 
 // Live Socket
-
+let Hooks = {
+  ListenIndex
+}
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, {
+  params: {_csrf_token: csrfToken},
+  hooks: Hooks
+})
 
 liveSocket.connect()
 
