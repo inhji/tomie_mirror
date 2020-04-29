@@ -38,12 +38,16 @@ a {
 
 /* Markdown Styles */
 
-.markdown p{
+.markdown p, .markdown ul, .markdown pre{
 	@apply mb-4;
 }
 
+.markdown ul li:before {
+	content: "» "
+}
+
 .markdown pre {
-	@apply mb-4 p-2 bg-on-surface-muted text-surface-muted;
+	@apply p-2 bg-on-surface-muted text-surface-muted;
 }
 
 /* General Styles */
