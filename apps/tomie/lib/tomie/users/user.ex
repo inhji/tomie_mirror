@@ -6,6 +6,9 @@ defmodule Users.User do
   schema "users" do
     pow_user_fields()
 
+    field :name, :string
+    field :username, :string
+
     field :theme, :string, default: "light"
     field :token, :string
     field :reset_token, :boolean, virtual: true
@@ -15,7 +18,7 @@ defmodule Users.User do
 
   def profile_changeset(user, attrs \\ %{}) do
     user
-    |> cast(attrs, [:theme, :token, :reset_token])
+    |> cast(attrs, [:theme, :token, :reset_token, :name, :username])
     |> validate_inclusion(:theme, ["dark", "light"])
     |> maybe_create_token()
     |> maybe_reset_token()

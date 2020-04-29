@@ -1,5 +1,17 @@
 <%= form_for @changeset, @action, fn f -> %>
   <fieldset>
+    <%= label f, :name %>
+    <%= text_input f, :name%>
+    <%= error_tag f, :name %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :username %>
+    <%= text_input f, :username %>
+    <%= error_tag f, :username %>
+  </fieldset>
+
+  <fieldset>
     <%= label f, :theme, "Frontend Theme" %>
     <%= select f, :theme, ["light", "dark"] %>
     <%= error_tag f, :theme %>

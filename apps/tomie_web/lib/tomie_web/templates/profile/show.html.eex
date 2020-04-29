@@ -15,6 +15,15 @@
   </ul>
 </nav>
 
-<h1>Profile</h1>
+<div class="card">
+  <h1><%= @user.name %></h1>
 
-<a href="<%= bookmarklet(@conn) %>">Bookmarklet</a>
+  <ul>
+    <li>Username: <%= @user.username %></li>
+    <li>Email: <%= @user.email %></li>
+    <li>Token: <%= @user.token %></li>
+    <li>Theme: <%= @user.theme %></li>
+  </ul>
+</div>
+
+<a href="<%= bookmarklet(@conn) %>" class="button">Bookmarklet</a>
