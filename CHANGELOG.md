@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.29.0](https://git.inhji.de/inhji/tomie/compare/0.28.0...v0.29.0) (2020-04-29)
+
+
+
+
+### Features:
+
+* update silly chart, load though hooks
+
+* add chart.js and chartkick from npm
+
+### Bug Fixes:
+
+* add @babel/plugin-proposal-export-default-from
+
 ## [v0.28.0](https://git.inhji.de/inhji/tomie/compare/0.27.0...v0.28.0) (2020-04-29)
 
 
