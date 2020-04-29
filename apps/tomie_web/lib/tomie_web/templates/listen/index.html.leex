@@ -2,10 +2,6 @@
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
   <div class="col-span-4">
-    <div class="card" phx-update="ignore">
-      <div id="listen-index-chart" phx-hook="ListenIndex" data-chart="<%= @last_two_weeks %>"></div>
-    </div>
-
     <%= for listen <- @listens do %>
       <div class="card">
         <div class="flex">

@@ -53,6 +53,7 @@ defmodule TomieWeb.Router do
     live "/listens", ListenLive.Index
     live "/listens/artists", ListenLive.Artists
     live "/listens/albums", ListenLive.Albums
+    live "/listens/charts", ListenLive.Charts
     live "/listens/artist/:id", ArtistLive.Show
     live "/listens/album/:id", AlbumLive.Show
 

@@ -25,6 +25,14 @@
         <span class="hidden md:inline">Top Albums</span>
         <% end %>
       </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, ListenLive.Charts) do %>
+        <div class="icon">
+          <%= IconView.icon(:chart) %>
+        </div>
+        <span class="hidden md:inline">Charts</span>
+        <% end %>
+      </li>
     </ul>
   </nav>
 </aside>
