@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.30.0](https://git.inhji.de/inhji/tomie/compare/0.29.0...v0.30.0) (2020-04-29)
+
+
+
+
+### Features:
+
+* add names to user, improve profile
+
+* add listen charts route
+
+* album show
+
+### Improvements:
+
+* add grid to tag index
+
 ## [v0.29.0](https://git.inhji.de/inhji/tomie/compare/0.28.0...v0.29.0) (2020-04-29)
 
 
