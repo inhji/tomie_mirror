@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, NoteLive.ShowNotebook, @notebook_id) %></li>
+  </ul>
+</nav>
+
+<%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: @note %>

@@ -1,0 +1,19 @@
+<nav>
+  <ul>
+    <li><%= live_patch "New Notebook", to: Routes.live_path(@socket, NoteLive.NewNotebook) %></li>
+  </ul>
+</nav>
+
+<%= for notebook <- @notebooks do %>
+  <div class="card">
+    <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
+    <h3>
+      <%= notebook.title %>
+    </h3>
+
+    <p>
+      <%= note_count(notebook) %> Notes
+    </p>
+    <% end %>
+  </div>
+<% end %>

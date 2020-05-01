@@ -1,0 +1,5 @@
+<h1> <%= @notebook.title %></h1>
+
+<%= for node <- @nodes do %>
+  <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: node %>
+<% end %>

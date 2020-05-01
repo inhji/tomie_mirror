@@ -42,6 +42,11 @@ defmodule TomieWeb.Router do
     live "/bookmarks/:id", BookmarkLive.Show
     live "/bookmarks/:id/edit", BookmarkLive.Edit
 
+    live "/notebooks", NoteLive.Index
+    live "/notebooks/new", NoteLive.NewNotebook
+    live "/notebooks/:id", NoteLive.ShowNotebook
+    live "/notebooks/:id/note/:note_id", NoteLive.ShowNote
+
     live "/tags", TagLive.Index
     live "/tags/new", TagLive.New
     live "/tags/:id", TagLive.Show

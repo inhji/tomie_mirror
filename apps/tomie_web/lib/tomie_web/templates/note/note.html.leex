@@ -1,0 +1,13 @@
+<div class="card">
+  <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note) do %>
+    <h3><%= @note.title %> (<%= @note.id %>)</h3>
+
+    <p><%= @note.content %></p>
+  <% end %>
+</div>
+
+<div class="pl-4 border-l-2 border-solid border-on-surface-not-even">
+  <%= for child <- @children do %>
+    <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: child %>
+  <% end %>
+</div>
