@@ -1,6 +1,7 @@
 <nav>
   <ul>
     <li><%= live_patch "Back", to: Routes.live_path(@socket, NoteLive.ShowNotebook, @notebook_id) %></li>
+    <li><%= live_patch "Edit", to: Routes.live_path(@socket, NoteLive.EditNote, @notebook_id, @note) %></li>
   </ul>
 </nav>
 

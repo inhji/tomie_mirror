@@ -1,7 +1,6 @@
 <div class="card">
   <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note) do %>
-    <h3><%= @note.title %> (<%= @note.id %>)</h3>
-
+    <h3><%= @note.title %></h3>
     <p><%= @note.content %></p>
   <% end %>
 </div>

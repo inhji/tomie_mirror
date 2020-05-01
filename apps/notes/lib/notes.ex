@@ -32,6 +32,12 @@ defmodule Notes do
     |> Db.Repo.insert()
   end
 
+  def update_note(note, attrs) do
+    note
+    |> Note.changeset(attrs)
+    |> Db.Repo.update()
+  end
+
   def list_notebooks() do
     Book
     |> Db.Repo.all()
