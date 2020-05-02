@@ -13,6 +13,23 @@ defmodule Notes.Note do
   def changeset(note, attrs \\ %{}) do
     note
     |> cast(attrs, [:title, :content, :notebook_id, :root])
-    |> validate_required([:content, :notebook_id])
+    |> validate_required([:notebook_id])
+    |> validate_required_content_or_title()
+  end
+
+  defp validate_required_content_or_title(changeset) do
+    with title <- get_field(changeset, :title),
+         content <- get_field(changeset, :content) do
+      IO.inspect(title)
+      IO.inspect(content)
+
+      if is_nil(title) and is_nil(content) do
+        changeset
+        |> add_error(:title, "Either title or content is required!")
+        |> add_error(:content, "Either title or content is required!")
+      else
+        changeset
+      end
+    end
   end
 end
