@@ -58,6 +58,7 @@ defmodule TomieWeb.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:tomie, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
+      {:notes, in_umbrella: true},
       {:tags, in_umbrella: true},
       {:db, in_umbrella: true},
       {:listens, in_umbrella: true}

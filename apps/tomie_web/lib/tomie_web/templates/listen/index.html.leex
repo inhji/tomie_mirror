@@ -4,7 +4,7 @@
   <div class="col-span-4">
     <%= for listen <- @listens do %>
       <div class="card">
-        <div class="flex">
+        <div class="content flex">
           <div class="image w-16 md:w-32 mr-4 flex-shrink-0">
             <img src="<%= Listens.Albums.get_album_image(listen.album, :large) %>" class="w-full">
           </div>

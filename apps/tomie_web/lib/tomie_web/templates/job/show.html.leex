@@ -5,24 +5,26 @@
 </nav>
 
 <div class="card">
-  <h1><%= @job.worker %></h1>
+  <div class="content">
+    <h1><%= @job.worker %></h1>
 
-  <ul>
-    <li>Queue: <%= @job.queue %></li>
-    <li>State: <%= @job.state %></li>
-  </ul>
+    <ul>
+      <li>Queue: <%= @job.queue %></li>
+      <li>State: <%= @job.state %></li>
+    </ul>
 
-  <ul class="mt-4">
-    <li>Inserted: <%= format(@job.inserted_at) %></li>
-    <li>Scheduled: <%= format(@job.scheduled_at) %></li>
-    <li>Completed: <%= format(@job.completed_at) %></li>
-    <li>Discarded: <%= format(@job.discarded_at) %></li>
-  </ul>
+    <ul class="mt-4">
+      <li>Inserted: <%= format(@job.inserted_at) %></li>
+      <li>Scheduled: <%= format(@job.scheduled_at) %></li>
+      <li>Completed: <%= format(@job.completed_at) %></li>
+      <li>Discarded: <%= format(@job.discarded_at) %></li>
+    </ul>
 
 
-  <pre class="mt-4">
-    <%= inspect(@job.args) %>
-  </pre>
+    <pre class="mt-4">
+      <%= inspect(@job.args) %>
+    </pre>
+  </div>  
 </div>
 
 <%= if Enum.count(@job.errors) > 0 do %>

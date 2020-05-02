@@ -65,8 +65,9 @@ a {
 	word-wrap: break-word;
 	hyphens: auto;
 }
+
 .card {
-	@apply p-4 transition duration-300 mb-4 shadow bg-surface-alt;
+	@apply transition duration-300 mb-4 shadow bg-surface-alt;
 }
 
 .card h3 {
@@ -75,6 +76,18 @@ a {
 
 .card.bg-danger {
 	@apply bg-danger;
+}
+
+.card .content {
+	@apply p-4;
+}
+
+.card footer {
+	@apply mt-6 border-divider border-solid border-t;
+}
+
+.card footer .button {
+	@apply rounded-none bg-surface-alt text-on-surface;
 }
 
 .list .card:last-child {

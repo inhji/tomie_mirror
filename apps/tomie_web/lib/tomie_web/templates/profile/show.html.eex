@@ -16,14 +16,16 @@
 </nav>
 
 <div class="card">
-  <h1><%= @user.name %></h1>
+  <div class="content">
+    <h1><%= @user.name %></h1>
 
-  <ul>
-    <li>Username: <%= @user.username %></li>
-    <li>Email: <%= @user.email %></li>
-    <li>Token: <%= @user.token %></li>
-    <li>Theme: <%= @user.theme %></li>
-  </ul>
+    <ul>
+      <li>Username: <%= @user.username %></li>
+      <li>Email: <%= @user.email %></li>
+      <li>Token: <%= @user.token %></li>
+      <li>Theme: <%= @user.theme %></li>
+    </ul>
+  </div>
 </div>
 
 <a href="<%= bookmarklet(@conn) %>" class="button">Bookmarklet</a>

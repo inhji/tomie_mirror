@@ -7,14 +7,16 @@
 <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:grid-cols-7">
 <%= for tag <- @tags do %>
   <article class="card m-0">
-    <%= live_patch to: Routes.live_path(@socket, TomieWeb.TagLive.Show, tag), class: "block" do %>
-      <h3>
-        <%= tag.name %>
-      </h3>
-      <span class="text-on-surface-muted tag">
-        <%= rule_count(tag) %> Rules
-      </span>
-    <% end %>
+    <div class="content">
+      <%= live_patch to: Routes.live_path(@socket, TomieWeb.TagLive.Show, tag), class: "block" do %>
+        <h3>
+          <%= tag.name %>
+        </h3>
+        <span class="text-on-surface-muted tag">
+          <%= rule_count(tag) %> Rules
+        </span>
+      <% end %>
+    </div>
   </article>
 <% end %>
 </section>

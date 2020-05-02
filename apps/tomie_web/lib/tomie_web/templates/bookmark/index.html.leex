@@ -64,29 +64,31 @@
     <section class="list">
       <%= for bookmark <- @bookmarks do %>
       <article class="card">
-        <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark, origin: @page), class: "block" do %>
-          <h3 class="text-xl hyphens">
-            <%= if bookmark.is_favorite do %>
-              <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
-            <% end %>
-            <%= bookmark.title || domain(bookmark.source) %>
-          </h3>
-          <p class="text-on-surface-muted mb-2 hypens">
-            <%= domain(bookmark.source) %>
-          </p>
-          <div class="meta">
-            <span>
-              <!-- JANKY HACK M8-->
-              <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
-              <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
-            </span>
-            <span class="tags">
-              <%= for tag <- bookmark.tags do %>
-              <span class="tag ml-1"><%= tag.name %></span>
+        <div class="content">
+          <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark, origin: @page), class: "block" do %>
+            <h3 class="text-xl hyphens">
+              <%= if bookmark.is_favorite do %>
+                <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
               <% end %>
-            </span>
-          </div>
-        <% end %>
+              <%= bookmark.title || domain(bookmark.source) %>
+            </h3>
+            <p class="text-on-surface-muted mb-2 hypens">
+              <%= domain(bookmark.source) %>
+            </p>
+            <div class="meta">
+              <span>
+                <!-- JANKY HACK M8-->
+                <span class="tag"><%= bookmark.views %> Views</span>&nbsp;
+                <span class="tag"><%= Timex.from_now(bookmark.inserted_at) %></span>
+              </span>
+              <span class="tags">
+                <%= for tag <- bookmark.tags do %>
+                <span class="tag ml-1"><%= tag.name %></span>
+                <% end %>
+              </span>
+            </div>
+          <% end %>
+        </div>
       </article>
       <% end %>
     </section>
