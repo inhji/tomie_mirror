@@ -5,6 +5,45 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.31.0](https://git.inhji.de/inhji/tomie/compare/0.30.0...v0.31.0) (2020-05-02)
+
+
+
+
+### Features:
+
+* delete note
+
+* delete notebook
+
+* add card footer, remote root note component
+
+* add card content class
+
+* add notes, initial ugly ui
+
+* delete notes on notebook delete
+
+* update notebooks
+
+* edit notes
+
+* add initial notes application
+
+### Bug Fixes:
+
+* missing content classes on jobs and tags
+
+* return of the confirmation box on delete :)
+
+* bookmark html missing content class
+
+* rename notebook form
+
+### Improvements:
+
+* make either title or content required for note
+
 ## [v0.30.0](https://git.inhji.de/inhji/tomie/compare/0.29.0...v0.30.0) (2020-04-29)
 
 
