@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.31.1](https://git.inhji.de/inhji/tomie/compare/0.31.0...v0.31.1) (2020-05-02)
+
+
+
+
+### Bug Fixes:
+
+* fucked up closure_table dep
+
 ## [v0.31.0](https://git.inhji.de/inhji/tomie/compare/0.30.0...v0.31.0) (2020-05-02)
 
 
