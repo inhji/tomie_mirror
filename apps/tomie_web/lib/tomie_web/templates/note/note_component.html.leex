@@ -1,7 +1,10 @@
 <div class="card">
   <div class="content">
     <h3><%= @note.title %></h3>
-    <p><%= @note.content %></p>
+
+    <%= if @note.content do %>
+      <p><%= @note.content %></p>
+    <% end %>
   </div>
   <footer>
     <%= live_patch "Show",

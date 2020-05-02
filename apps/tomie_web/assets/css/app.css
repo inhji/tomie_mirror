@@ -83,7 +83,7 @@ a {
 }
 
 .card footer {
-	@apply mt-6 border-divider border-solid border-t;
+	@apply border-divider border-solid border-t;
 }
 
 .card footer .button {
