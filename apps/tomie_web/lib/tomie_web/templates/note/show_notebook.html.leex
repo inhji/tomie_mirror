@@ -7,6 +7,8 @@
 
 <h1> <%= @notebook.title %></h1>
 
+<%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: @root %>
+
 <%= for node <- @nodes do %>
   <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: node %>
 <% end %>

@@ -1,0 +1,3 @@
+<%= live_patch "New Top Level Note",
+  to: Routes.live_path(@socket, NoteLive.NewNote, @note.notebook_id, parent: @note.id),
+  class: "button mb-6" %>

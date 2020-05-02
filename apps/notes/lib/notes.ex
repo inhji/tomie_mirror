@@ -20,10 +20,13 @@ defmodule Notes do
   def create_note(parent, attrs \\ %{}) do
     {:ok, note} =
       attrs
-      |> Map.put_new(:notebook_id, parent.notebook_id)
+      |> Map.new(fn {k, v} -> {String.to_existing_atom(k), v} end)
+      |> Map.put(:notebook_id, parent.notebook_id)
       |> do_create_note()
 
     Tree.insert(note.id, parent.id)
+
+    {:ok, note}
   end
 
   defp do_create_note(attrs \\ %{}) do
@@ -49,7 +52,7 @@ defmodule Notes do
     root_note = Db.Repo.get_by!(Note, notebook_id: notebook.id, root: true)
     {:ok, tree} = Tree.descendants(root_note.id, Keyword.put_new(tree_opts, :nodes, true))
 
-    {notebook, tree}
+    {notebook, tree, root_note}
   end
 
   def create_notebook(attrs \\ %{}) do

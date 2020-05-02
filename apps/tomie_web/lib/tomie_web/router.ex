@@ -46,6 +46,8 @@ defmodule TomieWeb.Router do
     live "/notebooks/new", NoteLive.NewNotebook
     live "/notebooks/:id", NoteLive.ShowNotebook
     live "/notebooks/:id/edit", NoteLive.EditNotebook
+
+    live "/notebooks/:id/note/new", NoteLive.NewNote
     live "/notebooks/:id/note/:note_id", NoteLive.ShowNote
     live "/notebooks/:id/note/:note_id/edit", NoteLive.EditNote
 

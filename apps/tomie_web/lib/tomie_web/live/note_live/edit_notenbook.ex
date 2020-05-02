@@ -5,7 +5,7 @@ defmodule TomieWeb.NoteLive.EditNotebook do
   def render(assigns), do: TomieWeb.NoteView.render("edit_notebook.html", assigns)
 
   def mount(%{"id" => id}, _session, socket) do
-    {notebook, _tree} = Notes.get_notebook!(id, nodes: false)
+    {notebook, _tree, _root} = Notes.get_notebook!(id, nodes: false)
     changeset = Book.changeset(notebook, %{})
     {:ok, socket |> assign(changeset: changeset, notebook: notebook)}
   end

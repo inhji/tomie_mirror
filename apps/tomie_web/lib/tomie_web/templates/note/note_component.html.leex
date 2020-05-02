@@ -3,9 +3,13 @@
     <h3><%= @note.title %></h3>
     <p><%= @note.content %></p>
   <% end %>
+
+  <%= live_patch "New Subnote",
+    to: Routes.live_path(@socket, NoteLive.NewNote, @note.notebook_id, parent: @note.id),
+    class: "button mt-6" %>
 </div>
 
-<div class="pl-4 border-l-2 border-solid border-on-surface-not-even">
+<div class="pl-4 border-l-2 border-solid border-on-surface-not-even mb-6">
   <%= for child <- @children do %>
     <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: child %>
   <% end %>
