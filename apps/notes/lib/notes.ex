@@ -47,7 +47,7 @@ defmodule Notes do
   def get_notebook!(id, tree_opts \\ []) do
     notebook = Db.Repo.get!(Book, id)
     root_note = Db.Repo.get_by!(Note, notebook_id: notebook.id, root: true)
-    {:ok, tree} = Tree.descendants(root_note.id, [nodes: true] ++ tree_opts)
+    {:ok, tree} = Tree.descendants(root_note.id, Keyword.put_new(tree_opts, :nodes, true))
 
     {notebook, tree}
   end
@@ -72,5 +72,11 @@ defmodule Notes do
     %Book{}
     |> Book.changeset(attrs)
     |> Db.Repo.insert()
+  end
+
+  def update_notebook(notebook, attrs) do
+    notebook
+    |> Book.changeset(attrs)
+    |> Db.Repo.update()
   end
 end

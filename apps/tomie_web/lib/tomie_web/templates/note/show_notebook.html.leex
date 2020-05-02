@@ -1,3 +1,10 @@
+<nav>
+  <ul>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, NoteLive.Index) %></li>
+    <li><%= live_patch "Edit", to: Routes.live_path(@socket, NoteLive.EditNotebook, @notebook) %></li>
+  </ul>
+</nav>
+
 <h1> <%= @notebook.title %></h1>
 
 <%= for node <- @nodes do %>
