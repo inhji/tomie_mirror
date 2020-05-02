@@ -70,8 +70,21 @@ a {
 	@apply transition duration-300 mb-4 shadow bg-surface-alt;
 }
 
-.card h3 {
-	@apply mb-2;
+.card footer {
+	@apply hidden border-none;
+}
+
+.card footer .button {
+	@apply rounded-none bg-surface-alt text-on-surface;
+}
+
+/* This only takes effect if tabindex is used on the .card */
+.card:focus, .card:focus-within {
+	@apply outline-none;
+}
+
+.card:focus footer, .card:focus-within footer {
+	@apply block border-divider border-solid border-t;
 }
 
 .card.bg-danger {
@@ -82,14 +95,6 @@ a {
 	@apply p-4;
 }
 
-.card footer {
-	@apply border-divider border-solid border-t;
-}
-
-.card footer .button {
-	@apply rounded-none bg-surface-alt text-on-surface;
-}
-
 .list .card:last-child {
 	@apply border-none;
 }
@@ -98,9 +103,9 @@ a {
 	@apply mt-6;
 }
 
-.list .card:hover,
-.list .card:focus,
-.list .card:active {
+.card:hover,
+.card:focus,
+.card:active {
 	@apply bg-surface-alt shadow-lg;
 }
 
