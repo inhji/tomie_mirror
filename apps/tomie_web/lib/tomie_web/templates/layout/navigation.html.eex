@@ -1,0 +1,36 @@
+<nav role="navigation" id="main">
+  <ul>
+    <li>
+      <%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.PageLive.Index) do %>
+        <span class="icon">
+          <%= IconView.icon(:home) %>
+        </span>
+      <% end %>
+    </li>
+    <li><%= active_link @conn, "Bookmarks", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) %></li>
+    <li><%= active_link @conn, "Notes", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.NoteLive.Index) %></li>
+    <li><%= active_link @conn, "Listens", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.ListenLive.Index) %></li>
+    <li><%= active_link @conn, "Tags", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.TagLive.Index) %></li>
+    <li><%= active_link @conn, "Jobs", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.JobLive.Index) %></li>
+    <li class="spacer" />
+    <li>
+      <a href="#" class="theme-toggle">
+        <span class="icon">
+          <%= IconView.icon(:light_bulb) %>
+        </span>
+      </a>
+    </li>
+    <%= unless Pow.Plug.current_user(@conn) do %>
+      <li><%= active_link @conn, "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+      <li><%= active_link @conn, "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+    <% else %>
+      <li>
+        <%= active_link @conn, to: Routes.profile_path(@conn, :show) do %>
+          <span class="icon">
+            <%= IconView.icon(:user) %>
+          </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
