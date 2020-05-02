@@ -1,14 +1,16 @@
 <div class="card">
   <div class="content">
-    <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note) do %>
-      <h3><%= @note.title %></h3>
-      <p><%= @note.content %></p>
-    <% end %>
-
+    <h3><%= @note.title %></h3>
+    <p><%= @note.content %></p>
+  </div>
+  <footer>
+    <%= live_patch "Show",
+      to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note),
+      class: "button" %>
     <%= live_patch "New Subnote",
       to: Routes.live_path(@socket, NoteLive.NewNote, @note.notebook_id, parent: @note.id),
-      class: "button mt-6" %>
-  </div>
+      class: "button" %>
+  </footer>
 </div>
 
 <div class="pl-4 border-l-2 border-solid border-on-surface-not-even mb-6">
