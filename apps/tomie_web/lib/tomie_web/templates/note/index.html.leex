@@ -6,14 +6,16 @@
 
 <%= for notebook <- @notebooks do %>
   <div class="card">
-    <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
-    <h3>
-      <%= notebook.title %>
-    </h3>
+    <div class="content">
+      <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
+        <h3>
+          <%= notebook.title %>
+        </h3>
 
-    <p>
-      <%= note_count(notebook) %> Notes
-    </p>
-    <% end %>
+        <p>
+          <%= note_count(notebook) %> Notes
+        </p>
+      <% end %>
+    </div>
   </div>
 <% end %>
