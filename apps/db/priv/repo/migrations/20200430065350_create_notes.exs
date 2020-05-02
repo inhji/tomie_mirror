@@ -11,13 +11,13 @@ defmodule Db.Repo.Migrations.CreateNotes do
       add :content, :text
       add :root, :boolean
 
-      add :notebook_id, references(:notebooks)
+      add :notebook_id, references(:notebooks, on_delete: :delete_all)
     end
 
     create table(:note_paths) do
       add :depth, :integer
-      add :ancestor, references(:notes)
-      add :descendant, references(:notes)
+      add :ancestor, references(:notes, on_delete: :delete_all)
+      add :descendant, references(:notes, on_delete: :delete_all)
     end
   end
 end
