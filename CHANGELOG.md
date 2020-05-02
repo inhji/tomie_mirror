@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.32.0](https://git.inhji.de/inhji/tomie/compare/0.31.1...v0.32.0) (2020-05-02)
+
+
+
+
+### Features:
+
+* show card footer only on focus
+
+### Bug Fixes:
+
+* excess spacing on notes
+
+* fucked up closure_table dep
+
+### Improvements:
+
+* move navigation to separate file
+
 ## [v0.31.1](https://git.inhji.de/inhji/tomie/compare/0.31.0...v0.31.1) (2020-05-02)
 
 
