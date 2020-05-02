@@ -27,11 +27,8 @@ defmodule Notes.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.1"},
-      # {:closure_table, "~> 0.1"},
-      {:closure_table, path: "~/Devel/elixir/closure_table"},
+      {:closure_table, git: "https://git.inhji.de/inhji/closure_table.git", branch: "testing"},
       {:db, in_umbrella: true}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
   end
 end
