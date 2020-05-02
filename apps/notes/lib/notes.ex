@@ -82,4 +82,9 @@ defmodule Notes do
     |> Book.changeset(attrs)
     |> Db.Repo.update()
   end
+
+  def delete_notebook(notebook) do
+    notebook
+    |> Db.Repo.delete()
+  end
 end

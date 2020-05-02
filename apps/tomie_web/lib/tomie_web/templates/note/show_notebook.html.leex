@@ -2,6 +2,7 @@
   <ul>
     <li><%= live_patch "Back", to: Routes.live_path(@socket, NoteLive.Index) %></li>
     <li><%= live_patch "Edit", to: Routes.live_path(@socket, NoteLive.EditNotebook, @notebook) %></li>
+    <li><%= live_patch "Delete", to: "#", phx_click: "delete_notebook", phx_value_id: @notebook.id, data: [confirm: "Are you sure?"] %></li>
     <li><%= live_patch "New Note", to: Routes.live_path(@socket, NoteLive.NewNote, @notebook, parent: @root) %></li>
   </ul>
 </nav>
