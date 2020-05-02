@@ -4,34 +4,36 @@
   <div class="col-span-4">
     <%= for job <- @jobs do %>
     <div class="card text-on-surface-muted">
-      <%= live_redirect to: Routes.live_path(@socket, JobLive.Show, job) do %>
-      <h3 class="text-on-surface">
-        <% {icon, class} = state_icon(job) %>
-        <div class="icon <%= class %>">
-          <%= IconView.icon(icon) %>
-        </div>
-        <%= job.worker %>
-      </h3>
+      <div class="content">
+        <%= live_redirect to: Routes.live_path(@socket, JobLive.Show, job) do %>
+        <h3 class="text-on-surface">
+          <% {icon, class} = state_icon(job) %>
+          <div class="icon <%= class %>">
+            <%= IconView.icon(icon) %>
+          </div>
+          <%= job.worker %>
+        </h3>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        <div>
-          <div>Args:</div>
-          <pre><%= inspect(job.args) %></pre>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <div>
+            <div>Args:</div>
+            <pre><%= inspect(job.args) %></pre>
+          </div>
+          <div>
+            <ul>
+              <li>Attempts: <%= "#{job.attempt}/#{job.max_attempts}" %></li>
+              <li>Duration: <%= "#{job_duration(job)}" %></li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Started: <%= job_time(job.inserted_at) %></li>
+              <li>Completed: <%= job_time(job.completed_at) %></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <ul>
-            <li>Attempts: <%= "#{job.attempt}/#{job.max_attempts}" %></li>
-            <li>Duration: <%= "#{job_duration(job)}" %></li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li>Started: <%= job_time(job.inserted_at) %></li>
-            <li>Completed: <%= job_time(job.completed_at) %></li>
-          </ul>
-        </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
     <% end %>
   </div>
