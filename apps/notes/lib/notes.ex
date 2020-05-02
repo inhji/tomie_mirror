@@ -41,6 +41,11 @@ defmodule Notes do
     |> Db.Repo.update()
   end
 
+  def delete_note(note) do
+    note
+    |> Db.Repo.delete()
+  end
+
   def list_notebooks() do
     Book
     |> Db.Repo.all()

@@ -1,7 +1,9 @@
 defmodule TomieWeb.NoteLive.ShowNote do
   use TomieWeb, :live
+  alias TomieWeb.NoteView
+  alias TomieWeb.NoteLive
 
-  def render(assigns), do: TomieWeb.NoteView.render("show_note.html", assigns)
+  def render(assigns), do: NoteView.render("show_note.html", assigns)
 
   def mount(%{"id" => id, "note_id" => note_id}, _session, socket) do
     note = Notes.get_note!(note_id)
@@ -11,5 +13,17 @@ defmodule TomieWeb.NoteLive.ShowNote do
   def handle_params(%{"id" => _id, "note_id" => note_id}, _url, socket) do
     note = Notes.get_note!(note_id)
     {:noreply, socket |> assign(note: note)}
+  end
+
+  def handle_event("delete_note", %{"id" => id}, socket) do
+    {:ok, note} =
+      id
+      |> Notes.get_note!()
+      |> Notes.delete_note()
+
+    {:noreply,
+     push_redirect(socket,
+       to: Routes.live_path(socket, NoteLive.ShowNotebook, socket.assigns.notebook_id)
+     )}
   end
 end
