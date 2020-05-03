@@ -50,7 +50,7 @@ mnesia_dir =
 
 config :tomie_web, :pow, cache_store_backend: Pow.Store.Backend.MnesiaCache
 
-config :mnesia, dir: mnesia_dir
+config :mnesia, dir: '#{mnesia_dir}'
 
 # ## Using releases (Elixir v1.9+)
 #
