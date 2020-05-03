@@ -5,10 +5,10 @@
 </nav>
 
 <div class="card flex flex-row">
-  <div class="mr-4">
+  <div>
     <img src="<%= @image %>" class="w-40" >
   </div>
-  <div class="flex-auto">
+  <div class="flex-auto content">
     <h1><%= @artist.name %></h1>
     <p class="text-on-surface-muted">
       <span class="icon">
@@ -21,11 +21,11 @@
 
   <%= for album <- @albums do %>
     <div class="card flex">
-      <div class="mr-4">
-        <img src="<%= album.image %>" alt="" class="w-20">
+      <div>
+        <img src="<%= album.image %>" alt="" class="w-32">
       </div>
 
-      <div class="flex-auto">
+      <div class="flex-auto content">
         <h3><%= album.item.name %></h3>
 
         <p class="text-on-surface-muted">
