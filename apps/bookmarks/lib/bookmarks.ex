@@ -54,7 +54,7 @@ defmodule Bookmarks do
     Db.Repo.all(
       from [b, t] in bookmark_query(query),
         order_by: [desc: b.inserted_at],
-        where: b.views == 0 or is_nil(t.id),
+        where: is_nil(t.id),
         where: b.is_archived == false
     )
   end
