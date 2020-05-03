@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.33.2](https://git.inhji.de/inhji/tomie/compare/0.33.1...v0.33.2) (2020-05-03)
+
+
+
+
+### Bug Fixes:
+
+* correct mnesia dir syntax?
+
 ## [v0.33.1](https://git.inhji.de/inhji/tomie/compare/0.33.0...v0.33.1) (2020-05-03)
 
 
