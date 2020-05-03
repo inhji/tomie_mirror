@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.33.1](https://git.inhji.de/inhji/tomie/compare/0.33.0...v0.33.1) (2020-05-03)
+
+
+
+
+### Bug Fixes:
+
+* add mnesia to extra_applications
+
 ## [v0.33.0](https://git.inhji.de/inhji/tomie/compare/0.32.2...v0.33.0) (2020-05-03)
 
 
