@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.33.0](https://git.inhji.de/inhji/tomie/compare/0.32.2...v0.33.0) (2020-05-03)
+
+
+
+
+### Features:
+
+* use proper session cache :)))
+
 ## [v0.32.2](https://git.inhji.de/inhji/tomie/compare/0.32.1...v0.32.2) (2020-05-03)
 
 
