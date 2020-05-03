@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.32.1](https://git.inhji.de/inhji/tomie/compare/0.32.0...v0.32.1) (2020-05-03)
+
+
+
+
+### Bug Fixes:
+
+* listen card styles
+
+### Improvements:
+
+* inbox shows only untagged bookmarks
+
+* artist/album card styles
+
 ## [v0.32.0](https://git.inhji.de/inhji/tomie/compare/0.31.1...v0.32.0) (2020-05-02)
 
 
