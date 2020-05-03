@@ -3,10 +3,12 @@
 
   <div class="col-span-4">
     <div class="card" phx-update="ignore">
-      <h3>Last 14 Days</h3>
-      <div id="artists-last-two-weeks"
-        phx-hook="Listens"               
-        data-chart="<%= @last_two_weeks %>"></div>
+      <div class="content">
+        <h3>Last 14 Days</h3>
+        <div id="artists-last-two-weeks"
+          phx-hook="Listens"
+          data-chart="<%= @last_two_weeks %>"></div>
+      </div>
     </div>
   </div>
 </div>

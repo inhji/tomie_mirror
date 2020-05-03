@@ -4,16 +4,14 @@
   <div class="col-span-4">
     <%= for item <- @artists do %>
       <div class="card">
-        <div class="content flex">
-          <div class="image w-16 md:w-40 mr-4">
+        <div class="flex">
+          <div class="image w-16 md:w-40">
             <img src="<%= Listens.Artists.get_artist_image(item.model, :large) %>" class="w-full">
           </div>
-          <div class="body">
+          <div class="content">
             <h3>
               <%= item.model.name %>
-              <span class="text-on-surface-barely">[</span>
-              <span class="text-on-surface-muted"><%= item.listens %></span>
-              <span class="text-on-surface-barely">]</span>
+              <span class="text-on-surface-muted"></span>
             </h3>
           </div>
         </div>
