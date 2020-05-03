@@ -22,4 +22,8 @@ erl_crash.dump
 # Ignore environment file
 .env
 
+# Ignore Uploads dir
 /uploads/
+
+# Ignore Cache dir
+/cache/

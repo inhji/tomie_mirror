@@ -44,7 +44,10 @@ config :tomie_web, TomieWeb.Endpoint,
 config :tomie_web, :pow,
   user: Users.User,
   repo: Db.Repo,
-  web_module: TomieWeb
+  web_module: TomieWeb,
+  cache_store_backend: Pow.Store.Backend.MnesiaCache
+
+config :mnesia, dir: 'cache'
 
 # Configures Elixir's Logger
 config :logger, :console,

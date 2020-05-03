@@ -41,6 +41,17 @@ upload_dir =
 config :waffle,
   storage_dir_prefix: upload_dir
 
+mnesia_dir =
+  System.get_env("CACHE_DIR") ||
+    raise """
+    environment variable CACHE_DIR is missing.
+    for example: /opt/tomie/cache
+    """
+
+config :tomie_web, :pow, cache_store_backend: Pow.Store.Backend.MnesiaCache
+
+config :mnesia, dir: mnesia_dir
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix

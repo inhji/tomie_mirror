@@ -11,7 +11,9 @@ defmodule TomieWeb.Application do
       # Start the endpoint when the application starts
       TomieWeb.Endpoint,
       # Starts a worker by calling: TomieWeb.Worker.start_link(arg)
-      {Phoenix.PubSub, name: TomieWeb.PubSub}
+      {Phoenix.PubSub, name: TomieWeb.PubSub},
+      # Starts Mnesia Store for Pow
+      Pow.Store.Backend.MnesiaCache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -7,7 +7,8 @@ defmodule TomieWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_tomie_web_key",
-    signing_salt: "bnetjq+s"
+    signing_salt: "bnetjq+s",
+    max_age: 1_209_600
   ]
 
   socket "/live", Phoenix.LiveView.Socket,
