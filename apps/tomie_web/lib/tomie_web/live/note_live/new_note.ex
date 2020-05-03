@@ -1,10 +1,11 @@
 defmodule TomieWeb.NoteLive.NewNote do
   use TomieWeb, :live
   alias Notes.Note
+  alias TomieWeb.NoteLive
 
   def render(assigns), do: TomieWeb.NoteView.render("new_note.html", assigns)
 
-  def mount(%{"id" => id, "parent" => parent_id}, _session, socket) do
+  def mount(%{"id" => _id, "parent" => parent_id}, _session, socket) do
     parent = Notes.get_note!(parent_id)
     changeset = Note.changeset(%Note{})
     {:ok, assign(socket, changeset: changeset, parent: parent)}
@@ -22,7 +23,7 @@ defmodule TomieWeb.NoteLive.NewNote do
   def handle_event("save", %{"note" => params}, socket) do
     case Notes.create_note(socket.assigns.parent, params) do
       {:ok, note} ->
-        path = Routes.live_path(socket, TomieWeb.NoteLive.ShowNotebook, note.notebook_id)
+        path = Routes.live_path(socket, NoteLive.ShowNotebook, note.notebook_id)
         {:noreply, push_redirect(socket, to: path)}
 
       {:error, changeset} ->

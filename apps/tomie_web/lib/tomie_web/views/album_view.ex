@@ -1,6 +1,5 @@
 defmodule TomieWeb.AlbumView do
   use TomieWeb, :view
-  alias TomieWeb.AlbumLive
 
   def last_listen(album) do
     album.listens

@@ -1,6 +1,5 @@
 defmodule TomieWeb.ArtistView do
   use TomieWeb, :view
-  alias TomieWeb.ArtistLive
 
   def last_listen(artist) do
     artist.listens

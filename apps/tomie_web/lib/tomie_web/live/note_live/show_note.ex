@@ -16,7 +16,7 @@ defmodule TomieWeb.NoteLive.ShowNote do
   end
 
   def handle_event("delete_note", %{"id" => id}, socket) do
-    {:ok, note} =
+    {:ok, _note} =
       id
       |> Notes.get_note!()
       |> Notes.delete_note()

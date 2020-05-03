@@ -1,6 +1,5 @@
 defmodule Notes.NotePath do
   use Ecto.Schema
-  import Ecto.Changeset
 
   @primary_key false
 

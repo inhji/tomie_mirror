@@ -29,7 +29,7 @@ defmodule Notes do
     {:ok, note}
   end
 
-  defp do_create_note(attrs \\ %{}) do
+  defp do_create_note(attrs) do
     %Note{}
     |> Note.changeset(attrs)
     |> Db.Repo.insert()
@@ -76,7 +76,7 @@ defmodule Notes do
     end
   end
 
-  defp do_create_notebook(attrs \\ %{}) do
+  defp do_create_notebook(attrs) do
     %Book{}
     |> Book.changeset(attrs)
     |> Db.Repo.insert()
