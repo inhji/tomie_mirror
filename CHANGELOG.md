@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.34.1](https://git.inhji.de/inhji/tomie/compare/0.34.0...v0.34.1) (2020-05-04)
+
+
+
+
+### Bug Fixes:
+
+* use inserted_at as order column
+
 ## [v0.34.0](https://git.inhji.de/inhji/tomie/compare/0.33.2...v0.34.0) (2020-05-04)
 
 
