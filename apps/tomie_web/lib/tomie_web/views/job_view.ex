@@ -2,8 +2,12 @@ defmodule TomieWeb.JobView do
   use TomieWeb, :view
   alias TomieWeb.JobLive
 
-  def job_duration(%{scheduled_at: _scheduled_at, completed_at: nil} = _job) do
+  def job_duration(%{state: "executing"} = _job) do
     "Running"
+  end
+
+  def job_duration(%{state: "discarded"} = _job) do
+    "Discarded"
   end
 
   def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at} = _job) do
