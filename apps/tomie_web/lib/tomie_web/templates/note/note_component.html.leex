@@ -3,7 +3,9 @@
     <h3><%= @note.title %></h3>
 
     <%= if @note.content do %>
-      <p><%= raw @note.content_html %></p>
+      <div class="markdown">
+        <%= raw @note.content_html %>
+      </div>
     <% end %>
   </div>
   <footer>
