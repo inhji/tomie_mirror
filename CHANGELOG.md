@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.34.2](https://git.inhji.de/inhji/tomie/compare/0.34.1...v0.34.2) (2020-05-04)
+
+
+
+
+### Bug Fixes:
+
+* use normal path for site.webmanifest
+
+* add markdown class to note content
+
 ## [v0.34.1](https://git.inhji.de/inhji/tomie/compare/0.34.0...v0.34.1) (2020-05-04)
 
 
