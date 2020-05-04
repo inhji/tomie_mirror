@@ -28,7 +28,7 @@ defmodule TomieWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :tomie_web,
-    gzip: true,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt sw.js site.webmanifest)
 
   # Code reloading can be explicitly enabled under the
