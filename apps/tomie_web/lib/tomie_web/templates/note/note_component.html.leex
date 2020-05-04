@@ -10,6 +10,9 @@
     <%= live_patch "Show",
       to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note),
       class: "button" %>
+    <%= live_patch "Edit",
+      to: Routes.live_path(@socket, NoteLive.EditNote, @note.notebook_id, @note),
+      class: "button" %>
     <%= live_patch "New Subnote",
       to: Routes.live_path(@socket, NoteLive.NewNote, @note.notebook_id, parent: @note.id),
       class: "button" %>
