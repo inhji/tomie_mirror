@@ -1,8 +1,8 @@
 <nav>
   <ul>
-    <li><%= link "Back", to: Routes.live_path(@socket, TomieWeb.TagLive.Index) %></li>
-    <li><%= link "Edit", to: Routes.live_path(@socket, TomieWeb.TagLive.Edit, @tag) %></li>
-    <li><%= link "Delete", to: "#", phx_click: "delete_tag", phx_value_id: @tag.id %></li>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, TomieWeb.TagLive.Index) %></li>
+    <li><%= live_patch "Edit", to: Routes.live_path(@socket, TomieWeb.TagLive.Edit, @tag) %></li>
+    <li><%= live_patch "Delete", to: "#", phx_click: "delete_tag", phx_value_id: @tag.id %></li>
   </ul>
 </nav>
 
