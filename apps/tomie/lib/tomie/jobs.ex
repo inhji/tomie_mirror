@@ -21,7 +21,7 @@ defmodule Tomie.Jobs do
 
   defp list_jobs_query() do
     from j in Oban.Job,
-      order_by: [desc: j.started_at],
+      order_by: [desc: j.inserted_at],
       limit: 20
   end
 
