@@ -40,6 +40,13 @@ defmodule Bookmarks do
     Db.Repo.all(from(b in Bookmark))
   end
 
+  def list_bookmarks_by_tag_id(tag_id) do
+    Db.Repo.all(
+      from [b, t] in bookmark_query(""),
+        where: t.id == ^tag_id
+    )
+  end
+
   def list_bookmarks(query \\ "", page \\ nil)
 
   def list_bookmarks(query, "recent") do

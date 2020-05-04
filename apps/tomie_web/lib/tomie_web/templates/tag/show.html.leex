@@ -8,8 +8,26 @@
 
 <h1><%= @tag.name %></h1>
 
-<pre>
-<%= for rule <- rules(@tag) do %>
-  <%= rule %>
+<div class="card">
+  <div class="content">
+    <pre>
+    <%= for rule <- rules(@tag) do %>
+      <%= rule %>
+    <% end %>
+    </pre>
+  </div>
+</div>
+
+<%= if Enum.count(@tagged_bookmarks) > 0 do %>
+  <h2>Tagged Bookmarks</h2>
+
+  <%= for bookmark <- @tagged_bookmarks do %>
+  <div class="card">
+    <%= live_patch to: Routes.live_path(@socket, TomieWeb.BookmarkLive.Show, bookmark) do %>
+      <div class="content">
+        <h3><%= bookmark.title %></h3>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
 <% end %>
-</pre>
