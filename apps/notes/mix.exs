@@ -27,6 +27,7 @@ defmodule Notes.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.1"},
+      {:earmark, "~> 1.4"},
       {:closure_table, git: "https://git.inhji.de/inhji/closure_table.git", branch: "testing"},
       {:db, in_umbrella: true}
     ]

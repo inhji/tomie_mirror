@@ -3,7 +3,7 @@
     <h3><%= @note.title %></h3>
 
     <%= if @note.content do %>
-      <p><%= @note.content %></p>
+      <p><%= raw @note.content_html %></p>
     <% end %>
   </div>
   <footer>
