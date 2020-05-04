@@ -86,7 +86,9 @@ defmodule TomieWeb do
 
       import TomieWeb.ErrorHelpers
       import TomieWeb.Gettext
+
       alias TomieWeb.Router.Helpers, as: Routes
+      alias TomieWeb.IconView
     end
   end
 

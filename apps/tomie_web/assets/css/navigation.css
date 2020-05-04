@@ -71,6 +71,11 @@ main#content nav > ul > li > a {
 	@apply bg-surface-alt;
 }
 
+main#content nav > ul > li > a .icon {
+	@apply mr-1;
+	padding: 2px;
+}
+
 main#content nav > ul > li > a:hover,
 main#content nav > ul > li > a:focus,
 main#content nav > ul > li > a.active {
