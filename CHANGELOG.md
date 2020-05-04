@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.34.0](https://git.inhji.de/inhji/tomie/compare/0.33.2...v0.34.0) (2020-05-04)
+
+
+
+
+### Features:
+
+* add edit button to note component
+
+* add markdown rendering to notes content
+
+### Bug Fixes:
+
+* order jobs by started_at
+
 ## [v0.33.2](https://git.inhji.de/inhji/tomie/compare/0.33.1...v0.33.2) (2020-05-03)
 
 
