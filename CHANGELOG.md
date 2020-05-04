@@ -5,6 +5,31 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.35.0](https://git.inhji.de/inhji/tomie/compare/0.34.2...v0.35.0) (2020-05-04)
+
+
+
+
+### Features:
+
+* add icon to add bookmark button
+
+* show tagged bookmarks on tag show page
+
+### Bug Fixes:
+
+* revert gzip to false
+
+* use live_patch on tag show page
+
+* job duration for discarded jobs
+
+* card styles for job errors
+
+### Improvements:
+
+* turn on gzip for static assets
+
 ## [v0.34.2](https://git.inhji.de/inhji/tomie/compare/0.34.1...v0.34.2) (2020-05-04)
 
 
