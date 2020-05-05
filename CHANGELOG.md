@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.36.0](https://git.inhji.de/inhji/tomie/compare/0.35.1...v0.36.0) (2020-05-05)
+
+
+
+
+### Features:
+
+* add icons to main nav
+
 ## [v0.35.1](https://git.inhji.de/inhji/tomie/compare/0.35.0...v0.35.1) (2020-05-05)
 
 
