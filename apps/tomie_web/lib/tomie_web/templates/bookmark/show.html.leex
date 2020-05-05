@@ -26,16 +26,10 @@
     </div>
 
     <div class="meta">
-      <span>
-        <!-- JANKY HACK M8-->
-        <span class="tag"><%= @bookmark.views %> Views</span>&nbsp;
-        <span class="tag"><%= Timex.from_now(@bookmark.inserted_at) %></span>
-      </span>
-      <span class="tags">
-        <%= for tag <- @bookmark.tags do %>
-        <span class="tag ml-1"><%= tag.name %></span>
-        <% end %>
-      </span>
+      <span><%= Timex.from_now(@bookmark.inserted_at) %></span>
+      <%= for tag <- @bookmark.tags do %>
+      <span class="tag"><%= tag.name %></span>
+      <% end %>
     </div>
   </div>
 </article>

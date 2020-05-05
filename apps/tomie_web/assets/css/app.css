@@ -116,12 +116,13 @@ a {
 	@apply bg-surface-alt shadow-lg;
 }
 
-.meta {
-	@apply mb-2;
+.card .meta {}
+.card .meta span {
+	@apply text-xs mr-1 text-on-surface-muted;
 }
 
-.tag {
-	@apply text-xs uppercase bg-on-surface-not-even px-2 py-1 shadow-inner;
+.card .meta .tag {
+	@apply px-2 py-1 bg-on-surface-not-even shadow-inner rounded-sm;
 }
 
 /* Forms */
