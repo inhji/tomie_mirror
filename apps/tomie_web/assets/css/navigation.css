@@ -38,6 +38,11 @@ nav#main > ul > li > a.active {
 	@apply bg-navbar-hover text-on-navbar-hover;
 }
 
+nav#main > ul > li > a .icon {
+	@apply mr-1;
+	padding: 2px;
+}
+
 main#content nav {
 	@apply bg-surface text-on-surface mb-4 pb-2 h-auto overflow-x-auto;
 
