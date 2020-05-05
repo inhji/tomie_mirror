@@ -4,11 +4,36 @@
   <div class="col-span-4">
     <nav>
       <ul>
-        <li><%= live_redirect "Visit", to: Routes.link_path(@socket, :redirect, @bookmark, Slugger.slugify(@bookmark.source)), target: "_blank" %></li>
-        <li><%= live_redirect "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
-        <li><%= link favorite_action(@bookmark), to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id %></li>
-        <li><%= link archive_action(@bookmark), to: "#", phx_click: "toggle_archived", phx_value_id: @bookmark.id %></li>
-        <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id, data: [confirm: "Are you sure?"] %></li>
+        <li><%= live_redirect to: Routes.link_path(@socket, :redirect, @bookmark, Slugger.slugify(@bookmark.source)), target: "_blank" do %>
+          <span class="icon">
+            <%= IconView.icon(:link) %>
+          </span>
+          <span>Visit</span>
+        <% end %></li>
+        <li><%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) do %>
+          <span class="icon">
+            <%= IconView.icon(:edit) %>
+          </span>
+          <span>Edit</span>
+        <% end %></li>
+        <li><%= link to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id do %>
+          <span class="icon">
+            <%= IconView.icon(:heart) %>
+          </span>
+          <span><%= favorite_action(@bookmark) %></span>
+        <% end %></li>
+        <li><%= link to: "#", phx_click: "toggle_archived", phx_value_id: @bookmark.id do %>
+          <span class="icon">
+            <%= IconView.icon(:box) %>
+          </span>
+          <span><%= archive_action(@bookmark) %></span>
+        <% end %></li>
+        <li><%= link to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id, data: [confirm: "Are you sure?"] do %>
+          <span class="icon">
+            <%= IconView.icon(:close_outline) %>
+          </span>
+          <span>Delete</span>
+        <% end %></li>
       </ul>
     </nav>
 
