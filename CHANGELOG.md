@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.38.0](https://git.inhji.de/inhji/tomie/compare/0.37.0...v0.38.0) (2020-05-05)
+
+
+
+
+### Features:
+
+* add prismjs highlighting
+
 ## [v0.37.0](https://git.inhji.de/inhji/tomie/compare/0.36.0...v0.37.0) (2020-05-05)
 
 
