@@ -37,7 +37,7 @@
     </li>
     <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.JobLive.Index) do %>
       <span class="icon">
-        <%= IconView.icon(:cog) %>
+        <%= IconView.icon(:coffee) %>
       </span>
       <span class="hidden md:inline-block">Jobs</span>
       <% end %>
