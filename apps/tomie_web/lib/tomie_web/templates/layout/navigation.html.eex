@@ -7,11 +7,41 @@
         </span>
       <% end %>
     </li>
-    <li><%= active_link @conn, "Bookmarks", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) %></li>
-    <li><%= active_link @conn, "Notes", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.NoteLive.Index) %></li>
-    <li><%= active_link @conn, "Listens", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.ListenLive.Index) %></li>
-    <li><%= active_link @conn, "Tags", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.TagLive.Index) %></li>
-    <li><%= active_link @conn, "Jobs", to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.JobLive.Index) %></li>
+    <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) do %>
+      <span class="icon">
+        <%= IconView.icon(:bookmark) %>
+      </span>
+      <span class="hidden md:inline-block">Bookmarks</span>
+      <% end %>
+    </li>
+    <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.NoteLive.Index) do %>
+      <span class="icon">
+        <%= IconView.icon(:box) %>
+      </span>
+      <span class="hidden md:inline-block">Notes</span>
+      <% end %>
+    </li>
+    <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.ListenLive.Index) do %>
+      <span class="icon">
+        <%= IconView.icon(:vinyl) %>
+      </span>
+      <span class="hidden md:inline-block">Listens</span>
+      <% end %>
+    </li>
+    <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.TagLive.Index) do %>
+      <span class="icon">
+        <%= IconView.icon(:tag) %>
+      </span>
+      <span class="hidden md:inline-block">Tags</span>
+      <% end %>
+    </li>
+    <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.JobLive.Index) do %>
+      <span class="icon">
+        <%= IconView.icon(:cog) %>
+      </span>
+      <span class="hidden md:inline-block">Jobs</span>
+      <% end %>
+    </li>
     <li class="spacer" />
     <li>
       <a href="#" class="theme-toggle">
