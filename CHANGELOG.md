@@ -5,6 +5,31 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.37.0](https://git.inhji.de/inhji/tomie/compare/0.36.0...v0.37.0) (2020-05-05)
+
+
+
+
+### Features:
+
+* add icons to bookmark buttons
+
+* add bookmark sidebar
+
+* improve card meta
+
+### Bug Fixes:
+
+* main nav padding
+
+### Improvements:
+
+* give home link a title
+
+* turn bookmark visit link into live_redirect
+
+* use coffe icon for jobs
+
 ## [v0.36.0](https://git.inhji.de/inhji/tomie/compare/0.35.1...v0.36.0) (2020-05-05)
 
 
