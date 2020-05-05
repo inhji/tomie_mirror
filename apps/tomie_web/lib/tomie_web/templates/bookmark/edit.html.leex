@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Index) %></li>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, BookmarkLive.Show, @bookmark) %></li>
   </ul>
 </nav>
 
