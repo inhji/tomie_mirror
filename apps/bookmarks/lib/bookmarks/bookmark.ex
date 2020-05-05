@@ -61,7 +61,7 @@ defmodule Bookmarks.Bookmark do
   end
 
   defp maybe_render_markdown(changeset, content) do
-    case Earmark.as_html(content) do
+    case Earmark.as_html(content, code_class_prefix: "language-") do
       {:ok, html, _} ->
         put_change(changeset, :content_html, html)
 

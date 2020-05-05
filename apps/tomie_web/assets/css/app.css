@@ -6,6 +6,8 @@
 
 /* Plugins */
 @import "vendor/nprogress";
+@import "vendor/prismjs-light";
+@import "vendor/prismjs-dark";
 
 /* Other */
 @import "alerts";
@@ -44,10 +46,6 @@ a {
 
 .markdown ul li:before {
 	content: "» "
-}
-
-.markdown pre {
-	@apply p-2 bg-on-surface-muted text-surface-muted;
 }
 
 /* General Styles */

@@ -3,6 +3,24 @@
         "@babel/preset-env"
     ],
     "plugins": [
-      "@babel/plugin-proposal-export-default-from"
+      "@babel/plugin-proposal-export-default-from",
+      ["prismjs", {
+        "languages": [
+          "javascript",
+          "css",
+          "markup",
+          "elixir",
+          "bash",
+          "nginx",
+          "http",
+          "json",
+          "markdown",
+          "regex",
+          "sql"
+        ],
+        "plugins": ["line-numbers"],
+        "themes": ["funky"],
+        "css": true
+      }]
     ]
 }

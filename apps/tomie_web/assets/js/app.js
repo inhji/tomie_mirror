@@ -8,6 +8,7 @@ import NProgress from "nprogress"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 import Listens from "./hooks/listens"
+import Prism from 'prismjs';
 
 // Live Socket
 let Hooks = {
@@ -40,4 +41,7 @@ toggleButton.addEventListener("click", function (e) {
 
 NProgress.configure({ showSpinner: false })
 window.addEventListener("phx:page-loading-start", info => NProgress.start())
-window.addEventListener("phx:page-loading-stop", info => NProgress.done())
+window.addEventListener("phx:page-loading-stop", info => {
+  Prism.highlightAll()
+  NProgress.done()
+})
