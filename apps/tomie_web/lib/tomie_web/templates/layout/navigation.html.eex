@@ -5,6 +5,7 @@
         <span class="icon">
           <%= IconView.icon(:home) %>
         </span>
+        <span class="hidden md:inline-block">Home</span>
       <% end %>
     </li>
     <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) do %>
