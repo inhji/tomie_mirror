@@ -1,50 +1,5 @@
 <div class="grid grid-cols-5 gap-4">
-  <aside id="sidebar">
-    <nav>
-      <ul>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :recent) do %>
-          <span class="icon">
-            <%= IconView.icon(:time) %>
-          </span>
-          <span class="hidden md:inline">Recently</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :popular) do %>
-          <span class="icon">
-            <%= IconView.icon(:arrow_outline_up) %>
-          </span>
-          <span class="hidden md:inline">Popular</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :inbox) do %>
-            <div class="icon">
-              <%= IconView.icon(:inbox) %>
-            </div>
-            <span class="hidden md:inline">Inbox</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :favorites) do %>
-            <div class="icon">
-              <%= IconView.icon(:heart) %>
-            </div>
-            <span class="hidden md:inline">Favorites</span>
-          <% end %>
-        </li>
-        <li>
-          <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :archive) do %>
-            <div class="icon">
-              <%= IconView.icon(:box) %>
-            </div>
-            <span class="hidden md:inline">Archive</span>
-          <% end %>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+  <%= live_component @socket, TomieWeb.BookmarkLive.SidebarComponent %>
 
   <div class="col-span-4">
     <nav>
@@ -72,7 +27,7 @@
       <%= for bookmark <- @bookmarks do %>
       <article class="card">
         <div class="content">
-          <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark, origin: @page), class: "block" do %>
+          <%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Show, bookmark), class: "block" do %>
             <h3 class="text-xl hyphens">
               <%= if bookmark.is_favorite do %>
                 <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>

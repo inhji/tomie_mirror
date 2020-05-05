@@ -1,32 +1,39 @@
-<nav>
-  <ul>
-    <li><%= live_redirect "Back", to: Routes.live_path(@socket, BookmarkLive.Index, page: @origin) %></li>
-    <li><%= live_redirect "Visit", to: Routes.link_path(@socket, :redirect, @bookmark, Slugger.slugify(@bookmark.source)), target: "_blank" %></li>
-    <li><%= live_redirect "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
-    <li><%= link favorite_action(@bookmark), to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id %></li>
-    <li><%= link archive_action(@bookmark), to: "#", phx_click: "toggle_archived", phx_value_id: @bookmark.id %></li>
-    <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id, data: [confirm: "Are you sure?"] %></li>
-  </ul>
-</nav>
+<div class="grid grid-cols-5 gap-4">
+  <%= live_component @socket, TomieWeb.BookmarkLive.SidebarComponent %>
 
-<article class="card">
-  <div class="content">
-    <h1>
-      <%= if @bookmark.is_favorite do %>
-        <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
-      <% end %>
-      <%= @bookmark.title || @bookmark.source %>
-    </h1>
+  <div class="col-span-4">
+    <nav>
+      <ul>
+        <li><%= live_redirect "Visit", to: Routes.link_path(@socket, :redirect, @bookmark, Slugger.slugify(@bookmark.source)), target: "_blank" %></li>
+        <li><%= live_redirect "Edit", to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) %></li>
+        <li><%= link favorite_action(@bookmark), to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id %></li>
+        <li><%= link archive_action(@bookmark), to: "#", phx_click: "toggle_archived", phx_value_id: @bookmark.id %></li>
+        <li><%= link "Delete", to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id, data: [confirm: "Are you sure?"] %></li>
+      </ul>
+    </nav>
 
-    <div class="markdown md:w-2/4 mb-4">
-      <%= raw(@bookmark.content_html) %>
-    </div>
+    <article class="card">
+      <div class="content">
+        <h1>
+          <%= if @bookmark.is_favorite do %>
+            <span class="icon text-secondary"><%= IconView.icon(:heart) %></span>
+          <% end %>
+          <%= @bookmark.title || @bookmark.source %>
+        </h1>
 
-    <div class="meta">
-      <span><%= Timex.from_now(@bookmark.inserted_at) %></span>
-      <%= for tag <- @bookmark.tags do %>
-      <span class="tag"><%= tag.name %></span>
-      <% end %>
-    </div>
+        <div class="markdown md:w-2/4 mb-4">
+          <%= raw(@bookmark.content_html) %>
+        </div>
+
+        <div class="meta">
+          <span><%= Timex.from_now(@bookmark.inserted_at) %></span>
+          <%= for tag <- @bookmark.tags do %>
+          <span class="tag">
+            <%= live_patch tag.name, to: Routes.live_path(@socket, TomieWeb.TagLive.Show, tag.id) %>
+          </span>
+          <% end %>
+        </div>
+      </div>
+    </article>
   </div>
-</article>
+</div>

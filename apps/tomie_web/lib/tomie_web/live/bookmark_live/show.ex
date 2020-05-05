@@ -5,10 +5,9 @@ defmodule TomieWeb.BookmarkLive.Show do
   def render(assigns), do: BookmarkView.render("show.html", assigns)
 
   def mount(%{"id" => id} = params, _session, socket) do
-    origin = Map.get(params, "origin", "recent")
     Phoenix.PubSub.subscribe(TomieWeb.PubSub, "Bookmarks.Worker:#{id}")
 
-    {:ok, socket |> assign(origin: origin)}
+    {:ok, socket}
   end
 
   def handle_info(%{event: :updated, bookmark: bookmark}, socket) do
