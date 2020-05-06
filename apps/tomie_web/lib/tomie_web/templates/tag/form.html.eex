@@ -1,5 +1,5 @@
 <%= f = form_for @changeset, "#",
-  [phx_change: :validate, phx_submit: :save ] %>
+  [phx_submit: :save ] %>
   <fieldset>
     <%= label f, :name, "Tag Name" %>
     <%= text_input f, :name, autofocus: true, required: true %>

@@ -15,15 +15,6 @@ defmodule TomieWeb.TagLive.Edit do
     assign(socket, tag: tag, changeset: Tag.changeset(tag))
   end
 
-  def handle_event("validate", %{"tag" => params}, socket) do
-    changeset =
-      %Tag{}
-      |> Tag.changeset(params)
-      |> Map.put(:action, :update)
-
-    {:noreply, assign(socket, changeset: changeset)}
-  end
-
   def handle_event("save", %{"tag" => params}, socket) do
     case Tags.update_tag(socket.assigns.tag, params) do
       {:ok, tag} ->

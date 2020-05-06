@@ -18,7 +18,9 @@ defmodule TomieWeb.TagLive.New do
     {:noreply, assign(socket, changeset: changeset)}
   end
 
-  def handle_event("save", %{"tag" => params}, socket) do
+  def handle_event("save", %{"tag" => %{"name" => name} = params}, socket) do
+    params = Map.put(params, "rules", "title::contains::#{name}")
+
     case Tags.create_tag(params) do
       {:ok, tag} ->
         {:noreply,
