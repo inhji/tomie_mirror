@@ -4,8 +4,12 @@ defmodule TomieWeb.ListenLive.Albums do
   def render(assigns), do: TomieWeb.ListenView.render("albums.html", assigns)
 
   def mount(_args, _session, socket) do
-    {:ok, socket |> assign(artists: fetch())}
+    {:ok, socket |> assign(albums: fetch())}
   end
 
-  def fetch(), do: Listens.Report.top(Listens.Albums.Album, 10, [weeks: -2], [:artist])
+  def fetch(),
+    do: [
+      top: Listens.Report.top(Listens.Albums.Album, 5, [weeks: -2], [:artist]),
+      newest: Listens.Albums.list_newest_albums()
+    ]
 end

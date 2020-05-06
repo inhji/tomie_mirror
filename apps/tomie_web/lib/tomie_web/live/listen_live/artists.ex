@@ -7,5 +7,9 @@ defmodule TomieWeb.ListenLive.Artists do
     {:ok, socket |> assign(artists: fetch())}
   end
 
-  def fetch(), do: Listens.Report.top(Listens.Artists.Artist, 10, weeks: -2)
+  def fetch(),
+    do: [
+      top: Listens.Report.top(Listens.Artists.Artist, 5, weeks: -2),
+      newest: Listens.Artists.list_newest_artists()
+    ]
 end

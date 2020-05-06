@@ -4,15 +4,15 @@
   <div class="col-span-4">
     <h1>Top Artists in the last 2 Weeks</h1>
 
-    <%= for item <- @artists do %>
+    <%= for item <- @artists[:top] do %>
       <div class="card">
         <div class="flex">
-          <div class="image w-16 md:w-40">
+          <div class="image w-16 md:w-32">
             <img src="<%= Listens.Artists.get_artist_image(item.model, :large) %>" class="w-full">
           </div>
           <div class="content">
             <h3>
-              <%= item.model.name %>
+              <%= link item.model.name, to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, item.model) %>
             </h3>
 
             <p>
@@ -21,6 +21,31 @@
                   <%= IconView.icon(:music) %>
                 </span>
                 <%= item.listens %> Listens
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h1>Newest Artists in the last 2 Weeks</h1>
+
+    <%= for artist <- @artists[:newest] do %>
+      <div class="card">
+        <div class="flex">
+          <div class="image w-16 md:w-32">
+            <img src="<%= Listens.Artists.get_artist_image(artist, :large) %>" class="w-full">
+          </div>
+          <div class="content">
+            <h3>
+              <%= link artist.name, to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, artist) %>
+            </h3>
+            <p>
+              <span class="text-on-surface-muted">
+                <span class="icon">
+                  <%= IconView.icon(:music) %>
+                </span>
+                <%= Enum.count(artist.listens) %> Listens
               </span>
             </p>
           </div>

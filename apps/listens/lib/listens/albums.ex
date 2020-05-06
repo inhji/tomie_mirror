@@ -13,6 +13,14 @@ defmodule Listens.Albums do
     |> Db.Repo.preload(:artist)
   end
 
+  def list_newest_albums do
+    Album
+    |> order_by(desc: :inserted_at)
+    |> limit(5)
+    |> Db.Repo.all()
+    |> Db.Repo.preload([:listens, :artist])
+  end
+
   def list_albums_without_cover(opts \\ []) do
     Album
     |> where([a], is_nil(a.image))

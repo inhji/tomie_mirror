@@ -11,6 +11,14 @@ defmodule Listens.Artists do
     |> Db.Repo.all(opts)
   end
 
+  def list_newest_artists() do
+    Artist
+    |> order_by(desc: :inserted_at)
+    |> limit(5)
+    |> preload(:listens)
+    |> Db.Repo.all()
+  end
+
   def get_artist!(id) do
     Db.Repo.get!(Artist, id)
     |> Db.Repo.preload([:listens, :tracks, albums: [:listens]])
