@@ -26,7 +26,7 @@
       </div>
 
       <div class="flex-auto content">
-        <h3><%= album.item.name %></h3>
+        <h3><%= live_patch album.item.name, to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, album.item) %></h3>
 
         <p class="text-on-surface-muted">
           <span class="icon">

@@ -2,6 +2,8 @@
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
   <div class="col-span-4">
+    <h1>Top Albums in the last 2 Weeks</h1>
+
     <%= for item <- @artists do %>
       <div class="card">
         <div class="flex">
@@ -9,16 +11,20 @@
             <img src="<%= Listens.Albums.get_album_image(item.model, :large) %>" class="w-full">
           </div>
           <div class="content">
-            <h3>
-              <%= item.model.name %>
-              <span class="text-on-surface-barely">[</span>
-              <span class="text-on-surface-muted"><%= item.listens %></span>
-              <span class="text-on-surface-barely">]</span>
-            </h3>
-            <p>
-              By <%= live_patch item.model.artist.name,
-                      class: "hover:underline",
-                      to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, item.model.artist) %>
+            <h3><%= item.model.name %></h3>
+            <p class="text-on-surface-muted">
+              <span class="icon">
+                <%= IconView.icon(:user) %>
+              </span>
+              <%= live_patch item.model.artist.name,
+                class: "hover:underline",
+                to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, item.model.artist) %>
+            </p>
+            <p class="text-on-surface-muted">
+              <span class="icon">
+                <%= IconView.icon(:music) %>
+              </span>
+              <%= item.listens %> Listens
             </p>
           </div>
         </div>

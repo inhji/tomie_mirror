@@ -2,6 +2,8 @@
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
   <div class="col-span-4">
+    <h1>Top Artists in the last 2 Weeks</h1>
+
     <%= for item <- @artists do %>
       <div class="card">
         <div class="flex">
@@ -11,8 +13,16 @@
           <div class="content">
             <h3>
               <%= item.model.name %>
-              <span class="text-on-surface-muted"></span>
             </h3>
+
+            <p>
+              <span class="text-on-surface-muted">
+                <span class="icon">
+                  <%= IconView.icon(:music) %>
+                </span>
+                <%= item.listens %> Listens
+              </span>
+            </p>
           </div>
         </div>
       </div>
