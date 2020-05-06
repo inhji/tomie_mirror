@@ -10,13 +10,8 @@ defmodule TomieWeb.ListenLive.Charts do
   def fetch(),
     do: [
       last_two_weeks:
-        Listens.Report.listens_within_range(days: -14)
-        |> Enum.group_by(fn l -> l.artist.name end)
-        |> Enum.map(fn {name, listens} -> {name, Enum.count(listens)} end)
-        |> Enum.sort_by(fn {_name, listens} -> listens end)
-        |> Enum.reverse()
-        |> Enum.take(10)
-        |> Enum.map(fn {name, listens} -> [name, listens] end)
+        Listens.Report.top(Listens.Artists.Artist, 10, days: -14)
+        |> Enum.map(fn %{listens: listens, model: artist} -> [artist.name, listens] end)
         |> Jason.encode!()
     ]
 end
