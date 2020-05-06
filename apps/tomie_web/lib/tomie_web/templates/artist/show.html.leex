@@ -19,27 +19,38 @@
   </div>
 </div>
 
-  <%= for album <- @albums do %>
-    <div class="card flex">
-      <div>
-        <img src="<%= album.image %>" class="w-32">
-      </div>
+<div class="card">
+  <div class="content">
+    <p class="text-on-surface-muted">
+      Messybrainz Id: <pre><%= @artist.msid || "MISSING" %></pre>
+    </p>
+    <p class="text-on-surface-muted">
+      Musicbrainz Id: <pre><%= @artist.mbid || "MISSING" %></pre>
+    </p>
+  </div>
+</div>
 
-      <div class="flex-auto content">
-        <h3><%= live_patch album.item.name, to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, album.item) %></h3>
-
-        <p class="text-on-surface-muted">
-          <span class="icon">
-            <%= IconView.icon(:music) %>
-          </span>
-          <%= Enum.count(album.item.listens) %>
-        </p>
-        <p class="text-on-surface-muted">
-          <span class="icon">
-            <%= IconView.icon(:time) %>
-          </span>
-          <%= last_listen(album.item) %>
-        </p>
-      </div>
+<%= for album <- @albums do %>
+  <div class="card flex">
+    <div>
+      <img src="<%= album.image %>" class="w-32">
     </div>
-  <% end %>
+
+    <div class="flex-auto content">
+      <h3><%= live_patch album.item.name, to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, album.item) %></h3>
+
+      <p class="text-on-surface-muted">
+        <span class="icon">
+          <%= IconView.icon(:music) %>
+        </span>
+        <%= Enum.count(album.item.listens) %>
+      </p>
+      <p class="text-on-surface-muted">
+        <span class="icon">
+          <%= IconView.icon(:time) %>
+        </span>
+        <%= last_listen(album.item) %>
+      </p>
+    </div>
+  </div>
+<% end %>
