@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.39.0](https://git.inhji.de/inhji/tomie/compare/0.38.0...v0.39.0) (2020-05-06)
+
+
+
+
+### Features:
+
+* use Report.top for artist chart
+
+* show newest artists/albums
+
+### Bug Fixes:
+
+* cross link albums/artists
+
 ## [v0.38.0](https://git.inhji.de/inhji/tomie/compare/0.37.0...v0.38.0) (2020-05-05)
 
 
