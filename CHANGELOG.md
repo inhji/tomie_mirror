@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.40.0](https://git.inhji.de/inhji/tomie/compare/0.39.0...v0.40.0) (2020-05-09)
+
+
+
+
+### Features:
+
+* show msid/mbid for artists/albums
+
+### Bug Fixes:
+
+* remove unused params
+
+* rename top artists/albums
+
+* only add default tag rule on insert
+
 ## [v0.39.0](https://git.inhji.de/inhji/tomie/compare/0.38.0...v0.39.0) (2020-05-06)
 
 
