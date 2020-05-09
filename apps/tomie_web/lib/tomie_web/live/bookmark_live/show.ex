@@ -4,7 +4,7 @@ defmodule TomieWeb.BookmarkLive.Show do
 
   def render(assigns), do: BookmarkView.render("show.html", assigns)
 
-  def mount(%{"id" => id} = params, _session, socket) do
+  def mount(%{"id" => id}, _session, socket) do
     Phoenix.PubSub.subscribe(TomieWeb.PubSub, "Bookmarks.Worker:#{id}")
 
     {:ok, socket}
