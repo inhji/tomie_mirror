@@ -1,7 +1,9 @@
 defmodule Tags.Tag do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Tags.Slug
+  alias Tags.{Tag, Slug}
+
+  @attrs [:name, :slug, :rules]
 
   @derive {Jason.Encoder, only: [:name]}
   schema "tags" do
@@ -14,10 +16,31 @@ defmodule Tags.Tag do
 
   def changeset(tag \\ %Tags.Tag{}, attrs \\ %{}) do
     tag
-    |> cast(attrs, [:name, :slug, :rules])
+    |> cast(attrs, @attrs)
     |> validate_required([:name])
     |> unique_constraint(:name)
     |> Slug.maybe_generate_slug()
     |> Slug.unique_constraint()
+  end
+
+  def insert_changeset(tag \\ %Tags.Tag{}, attrs \\ %{}) do
+    tag
+    |> cast(attrs, @attrs)
+    |> validate_required([:name])
+    |> unique_constraint(:name)
+    |> add_default_rule()
+    |> Slug.maybe_generate_slug()
+    |> Slug.unique_constraint()
+  end
+
+  def add_default_rule(changeset) do
+    case get_change(changeset, :rules) do
+      nil ->
+        name = get_change(changeset, :name)
+        put_change(changeset, :rules, "title::contains::#{name}")
+
+      _ ->
+        changeset
+    end
   end
 end

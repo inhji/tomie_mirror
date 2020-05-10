@@ -12,7 +12,7 @@ defmodule Tags do
 
   def create_tag(attrs) when is_map(attrs) do
     %Tag{}
-    |> Tag.changeset(attrs)
+    |> Tag.insert_changeset(attrs)
     |> Db.Repo.insert()
   end
 
