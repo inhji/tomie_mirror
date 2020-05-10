@@ -37,11 +37,6 @@ defmodule TomieWeb.JobLive.Index do
     {:noreply, socket |> assign(jobs: jobs, state: state)}
   end
 
-  def handle_params(%{"queue" => queue}, _url, socket) do
-    jobs = fetch(%{queue: queue})
-    {:noreply, socket |> assign(jobs: jobs, queue: queue)}
-  end
-
   def handle_params(_params, _url, socket) do
     jobs = fetch(nil)
     {:noreply, socket |> assign(jobs: jobs, state: nil)}
