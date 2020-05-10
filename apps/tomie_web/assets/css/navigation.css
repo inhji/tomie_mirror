@@ -1,7 +1,7 @@
 /* Base Styles */
 
 nav {
-	@apply h-16 bg-navbar w-full;
+	@apply h-16 bg-navbar w-full z-50;
 }
 
 nav > ul {
@@ -29,7 +29,11 @@ nav > ul > li > a {
 /* Main Nav */
 
 nav#main {
-	@apply fixed top-0 text-on-navbar overflow-x-auto;
+	@apply fixed top-0 text-on-navbar overflow-x-auto overflow-y-hidden;
+}
+
+nav#main > ul > li a {
+	@apply flex;
 }
 
 nav#main > ul > li > a:hover,
@@ -52,12 +56,6 @@ main#content nav {
 	margin-left: -5px;
 	margin-top: -5px;
 	width: auto;
-}
-
-@screen sm {
-	main#content nav {
-		@apply overflow-x-hidden;
-	}
 }
 
 main#content nav > ul {
@@ -108,4 +106,10 @@ aside#sidebar > nav > ul > li {
 
 aside#sidebar > nav > ul > li:last-child {
 	@apply border-none;
+}
+
+@screen sm {
+	main#content nav {
+		@apply overflow-x-hidden;
+	}
 }
