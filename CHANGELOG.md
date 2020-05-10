@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.42.0](https://git.inhji.de/inhji/tomie/compare/0.41.0...v0.42.0) (2020-05-10)
+
+
+
+
+### Features:
+
+* add by_day/2, nicer chart
+
+### Bug Fixes:
+
+* add z-index to navigation
+
+### Improvements:
+
+* nicer artists page
+
 ## [v0.41.0](https://git.inhji.de/inhji/tomie/compare/0.40.0...v0.41.0) (2020-05-10)
 
 
