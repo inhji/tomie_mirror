@@ -21,9 +21,13 @@ defmodule Tomie.Application do
 
     # Prevent running queues or scheduling jobs from an iex console.
     if Code.ensure_loaded?(IEx) and IEx.started?() do
-      opts
-      |> Keyword.put(:crontab, false)
-      |> Keyword.put(:queues, false)
+      if System.get_env("QUEUE") == nil do
+        opts
+        |> Keyword.put(:crontab, false)
+        |> Keyword.put(:queues, false)
+      else
+        opts
+      end
     else
       opts
     end
