@@ -1,7 +1,8 @@
 defmodule Listens.Workers.DiscogsAlbum do
   use Oban.Worker,
     queue: :listens,
-    max_attempts: 3
+    max_attempts: 3,
+    unique: [period: 60, fields: [:worker]]
 
   require Logger
 

@@ -22,7 +22,7 @@ config :listens,
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},
-  queues: [bookmarks: 10, listens: 1],
+  queues: [bookmarks: 10, listens: 10],
   crontab: [
     {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}},
     {"* * * * *", Listens.Workers.DiscogsArtist, args: %{}},
