@@ -66,12 +66,13 @@ defmodule TomieWeb.Router do
     live "/listens/artist/:id", ArtistLive.Show
     live "/listens/album/:id", AlbumLive.Show
 
+    live "/profile", ProfileLive.Show
+    live "/profile/edit", ProfileLive.Edit
+
     get "/r/:id/:slug", LinkController, :redirect
 
-    # resources "/tags", TagController
-
-    resources "/profile", ProfileController,
-      only: [:show, :edit, :update],
-      singleton: true
+    # resources "/profile", ProfileController,
+    #   only: [:show, :edit, :update],
+    #   singleton: true
   end
 end

@@ -42,7 +42,7 @@ config :tomie_web, TomieWeb.Endpoint,
   live_view: [signing_salt: "La8TeKsJi1aZt2Bhp8vXfx9HOOFpP/JY"]
 
 config :tomie_web, :pow,
-  user: Users.User,
+  user: Tomie.Users.User,
   repo: Db.Repo,
   web_module: TomieWeb,
   cache_store_backend: Pow.Store.Backend.MnesiaCache

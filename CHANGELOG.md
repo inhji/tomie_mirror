@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.41.0](https://git.inhji.de/inhji/tomie/compare/0.40.0...v0.41.0) (2020-05-10)
+
+
+
+
+### Features:
+
+* start queue when in iex and QUEUE=true
+
+### Bug Fixes:
+
+* remove queue tabs in job index
+
+* tag default rules not being created when using Tags.create_tag/1
+
+### Improvements:
+
+* increate listen worker concurrency, preserving uniqueness
+
 ## [v0.40.0](https://git.inhji.de/inhji/tomie/compare/0.39.0...v0.40.0) (2020-05-09)
 
 

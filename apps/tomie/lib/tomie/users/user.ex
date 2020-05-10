@@ -1,4 +1,4 @@
-defmodule Users.User do
+defmodule Tomie.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
   import Ecto.Changeset
