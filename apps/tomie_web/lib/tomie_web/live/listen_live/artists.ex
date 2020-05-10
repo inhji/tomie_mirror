@@ -9,7 +9,7 @@ defmodule TomieWeb.ListenLive.Artists do
 
   def fetch(),
     do: [
-      top: Listens.Report.top(Listens.Artists.Artist, 5, weeks: -2),
+      top: Listens.Report.top(Listens.Artists.Artist, 6, weeks: -2),
       newest: Listens.Artists.list_newest_artists()
     ]
 end
