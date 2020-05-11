@@ -8,7 +8,7 @@
       <%= for item <- @artists[:top] do %>
         <div class="relative">
           <img src="<%= Listens.Artists.get_artist_image(item.model, :large) %>">
-          <span class="absolute top-0 left-0 bg-surface-alt p-1 w-10 text-center">
+          <span class="absolute top-0 left-0 m-1 p-1 bg-surface-alt text-center rounded">
             <%= item.listens %>
           </span>
         </div>
