@@ -20,8 +20,6 @@ defmodule TomieWeb.NoteLive.EditNotebook do
   end
 
   def handle_event("save", %{"book" => params}, socket) do
-    IO.inspect(socket)
-
     case Notes.update_notebook(socket.assigns.notebook, params) do
       {:ok, notebook} ->
         {:noreply,

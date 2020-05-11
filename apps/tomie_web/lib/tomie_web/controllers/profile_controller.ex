@@ -7,9 +7,6 @@ defmodule TomieWeb.ProfileController do
 
   def show(conn, _params) do
     user = Pow.Plug.current_user(conn)
-
-    IO.inspect(user)
-
     render(conn, "show.html", user: user)
   end
 

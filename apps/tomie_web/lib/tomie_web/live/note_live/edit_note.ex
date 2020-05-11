@@ -22,8 +22,6 @@ defmodule TomieWeb.NoteLive.EditNote do
   end
 
   def handle_event("save", %{"note" => params}, socket) do
-    IO.inspect(socket)
-
     case Notes.update_note(socket.assigns.note, params) do
       {:ok, note} ->
         {:noreply,

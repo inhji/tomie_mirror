@@ -15,16 +15,10 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   def handle_fetch_response(listens, last_ts) do
     %{
       changesets: changesets,
-      new_artists: new_artists,
-      new_albums: new_albums,
-      new_tracks: new_tracks
+      new_artists: _new_artists,
+      new_albums: _new_albums,
+      new_tracks: _new_tracks
     } = prepare_listens(listens)
-
-    Logger.info("======= STATS =======")
-    Logger.info("New Artists: #{new_artists}")
-    Logger.info("New Albums: #{new_albums}")
-    Logger.info("New Tracks: #{new_tracks}")
-    Logger.info("New Listens: #{Enum.count(changesets)}")
 
     Enum.each(changesets, fn changeset ->
       Repo.insert(changeset, log: false)
