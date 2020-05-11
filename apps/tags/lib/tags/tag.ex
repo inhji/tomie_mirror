@@ -14,7 +14,7 @@ defmodule Tags.Tag do
     timestamps()
   end
 
-  def changeset(tag \\ %Tags.Tag{}, attrs \\ %{}) do
+  def changeset(tag \\ %Tag{}, attrs \\ %{}) do
     tag
     |> cast(attrs, @attrs)
     |> validate_required([:name])
@@ -23,7 +23,7 @@ defmodule Tags.Tag do
     |> Slug.unique_constraint()
   end
 
-  def insert_changeset(tag \\ %Tags.Tag{}, attrs \\ %{}) do
+  def insert_changeset(tag \\ %Tag{}, attrs \\ %{}) do
     tag
     |> cast(attrs, @attrs)
     |> validate_required([:name])

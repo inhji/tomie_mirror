@@ -18,7 +18,7 @@ defmodule TomieWeb.TagLive.New do
     {:noreply, assign(socket, changeset: changeset)}
   end
 
-  def handle_event("save", %{"tag" => %{"name" => name} = params}, socket) do
+  def handle_event("save", %{"tag" => params}, socket) do
     case Tags.create_tag(params) do
       {:ok, tag} ->
         {:noreply,

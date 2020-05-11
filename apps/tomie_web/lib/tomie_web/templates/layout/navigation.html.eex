@@ -56,7 +56,7 @@
       <li><%= active_link @conn, "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
     <% else %>
       <li>
-        <%= active_link @conn, to: Routes.live_path(@conn, TomieWeb.ProfileLive.Show) do %>
+        <%= active_link @conn, to: Routes.profile_path(@conn, :show) do %>
           <span class="icon">
             <%= IconView.icon(:user) %>
           </span>

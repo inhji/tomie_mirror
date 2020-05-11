@@ -1,16 +1,21 @@
 defmodule TomieWeb.ProfileController do
   use TomieWeb, :controller
+  alias Tomie.Users
+  alias Tomie.Users.User
 
   defp sync_user(conn, user), do: Pow.Plug.create(conn, user)
 
   def show(conn, _params) do
     user = Pow.Plug.current_user(conn)
+
+    IO.inspect(user)
+
     render(conn, "show.html", user: user)
   end
 
   def edit(conn, _params) do
     user = Pow.Plug.current_user(conn)
-    changeset = Users.User.profile_changeset(user)
+    changeset = User.profile_changeset(user)
 
     render(conn, "edit.html", user: user, changeset: changeset)
   end
