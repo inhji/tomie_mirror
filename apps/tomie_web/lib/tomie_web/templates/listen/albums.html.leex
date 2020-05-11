@@ -6,12 +6,12 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-10">
     <%= for item <- @albums[:top] do %>
-      <div class="relative">
+      <%= live_patch class: "relative", to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, item.model.id) do %>
         <img src="<%= Listens.Albums.get_album_image(item.model, :large) %>" class="w-full">
         <span class="absolute top-0 left-0 m-1 p-1 bg-surface-alt text-center rounded">
           <%= item.listens %>
         </span>
-      </div>
+      <% end %>
     <% end %>
     </div>
 
@@ -19,12 +19,12 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
       <%= for album <- @albums[:newest] do %>
-        <div class="relative">
+        <%= live_patch class: "relative", to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, album) do %>
           <img src="<%= Listens.Albums.get_album_image(album, :large) %>">
           <span class="absolute top-0 left-0 bg-surface-alt p-1 text-center">
             <%= album.name %>
           </span>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
