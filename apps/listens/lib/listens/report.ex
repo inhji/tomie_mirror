@@ -1,5 +1,6 @@
 defmodule Listens.Report do
   import Ecto.Query, warn: false
+  import Listens.Series
 
   alias Listens.Artists.Artist
   alias Listens.Albums.Album
@@ -46,21 +47,12 @@ defmodule Listens.Report do
     Db.Repo.all(q)
   end
 
-  def listens_per_day_query(artist_id, days) do
-    days_minus_one = days - 1
+  def listens_per_day_query(artist_id, [{range, value}]) when range in [:days, :weeks, :months] do
+    final_range = range |> to_string() |> String.replace_trailing("s", "")
+    final_value = value - 1
 
     from(l in Listen,
-      right_join:
-        day in fragment(
-          """
-          SELECT generate_series(
-            current_date - interval '1 day' * ?,
-            current_date,
-            '1 day'
-          )::date AS d
-          """,
-          ^days_minus_one
-        ),
+      right_join: day in series_day(^final_value),
       on: day.d == fragment("date(?)", l.listened_at) and l.artist_id == ^artist_id,
       group_by: day.d,
       order_by: day.d,
