@@ -13,6 +13,11 @@ defmodule Listens.Albums do
     |> Db.Repo.preload(:artist)
   end
 
+  def get_album!(id) do
+    Db.Repo.get!(Album, id)
+    |> Db.Repo.preload(:listens)
+  end
+
   def list_newest_albums do
     Album
     |> order_by(desc: :inserted_at)

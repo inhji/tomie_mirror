@@ -64,7 +64,9 @@ defmodule TomieWeb.Router do
     live "/listens/albums", ListenLive.Albums
     live "/listens/charts", ListenLive.Charts
     live "/listens/artist/:id", ArtistLive.Show
+
     live "/listens/album/:id", AlbumLive.Show
+    live "/listens/album/:id/edit", AlbumLive.Edit
 
     get "/r/:id/:slug", LinkController, :redirect
 

@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li><%= live_patch "Back", to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, @album) %></li>
+  </ul>
+</nav>
+
+<h1>Edit Album</h1>
+
+<%= render "form.html", assigns %>
