@@ -16,7 +16,7 @@ defmodule Listens.Albums do
   def list_newest_albums do
     Album
     |> order_by(desc: :inserted_at)
-    |> limit(5)
+    |> limit(6)
     |> Db.Repo.all()
     |> Db.Repo.preload([:listens, :artist])
   end

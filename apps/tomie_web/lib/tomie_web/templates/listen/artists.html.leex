@@ -4,7 +4,7 @@
   <div class="col-span-4">
     <h1>Top Artists</h1>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-10">
       <%= for item <- @artists[:top] do %>
         <div class="relative">
           <img src="<%= Listens.Artists.get_artist_image(item.model, :large) %>">

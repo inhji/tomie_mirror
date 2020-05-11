@@ -9,7 +9,7 @@ defmodule TomieWeb.ListenLive.Albums do
 
   def fetch(),
     do: [
-      top: Listens.Report.top(Listens.Albums.Album, 5, [weeks: -2], preloads: [:artist]),
+      top: Listens.Report.top(Listens.Albums.Album, 6, [weeks: -2], preloads: [:artist]),
       newest: Listens.Albums.list_newest_albums()
     ]
 end
