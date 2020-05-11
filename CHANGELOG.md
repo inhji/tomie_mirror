@@ -5,6 +5,27 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.42.1](https://git.inhji.de/inhji/tomie/compare/0.42.0...v0.42.1) (2020-05-11)
+
+
+
+
+### Bug Fixes:
+
+* nicer listen bubbles for artists
+
+* handle available jobs
+
+* smol top margin for main nav
+
+* profile works again, smol unused stuff
+
+### Improvements:
+
+* make series generation more modular
+
+* nicer album overview
+
 ## [v0.42.0](https://git.inhji.de/inhji/tomie/compare/0.41.0...v0.42.0) (2020-05-10)
 
 
