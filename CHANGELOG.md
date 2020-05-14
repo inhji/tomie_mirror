@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.43.1](https://git.inhji.de/inhji/tomie/compare/0.43.0...v0.43.1) (2020-05-14)
+
+
+
+
+### Bug Fixes:
+
+* prevent stripping syntax highlighting styles
+
+* add listens to started apps
+
+### Improvements:
+
+* link to artist from album show
+
 ## [v0.43.0](https://git.inhji.de/inhji/tomie/compare/0.42.1...v0.43.0) (2020-05-11)
 
 
