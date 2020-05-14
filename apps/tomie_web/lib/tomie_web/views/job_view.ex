@@ -14,7 +14,7 @@ defmodule TomieWeb.JobView do
     "Available"
   end
 
-  def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at} = job) do
+  def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at}) do
     to_string(Timex.diff(completed_at, scheduled_at, :milliseconds)) <> "ms"
   end
 
