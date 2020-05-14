@@ -6,8 +6,11 @@
 
 /* Plugins */
 @import "vendor/nprogress";
+
+/*! purgecss start ignore */
 @import "vendor/prismjs-light";
 @import "vendor/prismjs-dark";
+/*! purgecss end ignore */
 
 /* Other */
 @import "alerts";
