@@ -11,6 +11,12 @@
   </div>
   <div class="flex-auto content">
     <h1><%= @album.name %></h1>
+    <%= live_patch to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, @album.artist), class: "text-on-surface-muted" do %>
+      <span class="icon">
+        <%= IconView.icon(:user) %>
+      </span>
+      <%= @album.artist.name %>
+    <% end %>
     <p class="text-on-surface-muted">
       <span class="icon">
         <%= IconView.icon(:music) %>
