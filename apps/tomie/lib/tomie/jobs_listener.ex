@@ -15,27 +15,28 @@ defmodule Tomie.JobsListener do
 
   @impl true
   def init(opts) do
-    with {:ok, _pid, _ref} <- Db.Repo.listen("jobs_changed") do
-      {:ok, opts}
-    else
+    case Db.Repo.listen("jobs_changed") do
+      {:ok, _pid, _ref} -> {:ok, opts}
       error -> {:stop, error}
     end
   end
 
   @impl true
   def handle_info({:notification, _pid, _ref, "jobs_changed", payload}, _state) do
-    with {:ok, data} <- Jason.decode(payload, keys: :atoms) do
-      %{operation: operation, record: record} = data
+    case Jason.decode(payload, keys: :atoms) do
+      {:ok, data} ->
+        %{operation: operation, record: record} = data
 
-      Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Tomie.JobsListener:ALL", %{
-        event: :updated,
-        operation: operation,
-        job_id: record
-      })
+        Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Tomie.JobsListener:ALL", %{
+          event: :updated,
+          operation: operation,
+          job_id: record
+        })
 
-      {:noreply, :event_handled}
-    else
-      error -> {:stop, error, []}
+        {:noreply, :event_handled}
+
+      error ->
+        {:stop, error, []}
     end
   end
 end

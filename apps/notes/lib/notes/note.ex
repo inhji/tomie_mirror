@@ -40,9 +40,6 @@ defmodule Notes.Note do
   defp validate_required_content_or_title(changeset) do
     with title <- get_field(changeset, :title),
          content <- get_field(changeset, :content) do
-      IO.inspect(title)
-      IO.inspect(content)
-
       if is_nil(title) and is_nil(content) do
         changeset
         |> add_error(:title, "Either title or content is required!")

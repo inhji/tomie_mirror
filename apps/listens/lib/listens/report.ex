@@ -48,7 +48,6 @@ defmodule Listens.Report do
   end
 
   def listens_per_day_query(artist_id, [{range, value}]) when range in [:days, :weeks, :months] do
-    final_range = range |> to_string() |> String.replace_trailing("s", "")
     final_value = value - 1
 
     from(l in Listen,
