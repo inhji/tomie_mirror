@@ -59,6 +59,9 @@ config :phoenix, :json_library, Jason
 
 config :chartkick, json_serializer: Jason
 
+config :earmark,
+  render_options: [code_class_prefix: "language-"]
+
 config :waffle,
   storage: Waffle.Storage.Local,
   storage_dir_prefix: "uploads"

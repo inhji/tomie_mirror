@@ -27,7 +27,9 @@ defmodule Notes.Note do
   end
 
   defp maybe_render_markdown(changeset, content) do
-    case Earmark.as_html(content) do
+    opts = Application.fetch_env!(:earmark, :render_options)
+
+    case Earmark.as_html(content, opts) do
       {:ok, html, _} ->
         put_change(changeset, :content_html, html)
 
