@@ -4,7 +4,7 @@ defmodule TomieWeb.BookmarkLive.Index do
   def render(assigns), do: TomieWeb.BookmarkView.render("index.html", assigns)
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(changeset: changeset(), query: "")}
+    {:ok, socket |> assign(changeset: changeset(), query: "", page_title: "Bookmarks")}
   end
 
   def handle_params(%{"page" => page}, _url, socket) do

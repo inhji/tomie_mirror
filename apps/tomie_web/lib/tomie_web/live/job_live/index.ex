@@ -7,7 +7,7 @@ defmodule TomieWeb.JobLive.Index do
 
   def mount(_args, _session, socket) do
     Phoenix.PubSub.subscribe(TomieWeb.PubSub, "Tomie.JobsListener:ALL")
-    {:ok, socket}
+    {:ok, assign(socket, page_title: "Jobs")}
   end
 
   defp fetch(nil), do: Jobs.list_jobs()

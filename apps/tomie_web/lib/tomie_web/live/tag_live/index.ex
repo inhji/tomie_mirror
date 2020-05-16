@@ -6,6 +6,6 @@ defmodule TomieWeb.TagLive.Index do
   def mount(_params, _session, socket) do
     tags = Tags.list_tags()
 
-    {:ok, socket |> assign(tags: tags)}
+    {:ok, socket |> assign(tags: tags, page_title: "Tags")}
   end
 end

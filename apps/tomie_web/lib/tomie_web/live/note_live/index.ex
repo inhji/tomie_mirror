@@ -6,6 +6,6 @@ defmodule TomieWeb.NoteLive.Index do
   def mount(_params, _session, socket) do
     notebooks = Notes.list_notebooks()
 
-    {:ok, socket |> assign(notebooks: notebooks)}
+    {:ok, socket |> assign(notebooks: notebooks, page_title: "Notes")}
   end
 end

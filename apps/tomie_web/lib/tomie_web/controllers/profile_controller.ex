@@ -7,7 +7,7 @@ defmodule TomieWeb.ProfileController do
 
   def show(conn, _params) do
     user = Pow.Plug.current_user(conn)
-    render(conn, "show.html", user: user)
+    render(conn, "show.html", user: user, page_title: "Profile")
   end
 
   def edit(conn, _params) do

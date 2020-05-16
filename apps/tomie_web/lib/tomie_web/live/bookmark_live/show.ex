@@ -19,7 +19,8 @@ defmodule TomieWeb.BookmarkLive.Show do
   end
 
   def fetch(%{assigns: %{id: id}} = socket) do
-    assign(socket, bookmark: Bookmarks.get_bookmark!(id))
+    bookmark = Bookmarks.get_bookmark!(id)
+    assign(socket, bookmark: bookmark, page_title: bookmark.title || bookmark.source)
   end
 
   def handle_event("toggle_favorite", %{"id" => id}, socket) do
