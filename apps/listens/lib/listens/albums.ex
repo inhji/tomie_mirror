@@ -4,6 +4,7 @@ defmodule Listens.Albums do
   """
 
   import Ecto.Query, warn: false
+  alias Ecto.Multi
   alias Listens.Albums.{Album, Uploader}
 
   def list_albums do
@@ -44,5 +45,23 @@ defmodule Listens.Albums do
     album
     |> Album.changeset(attrs)
     |> Db.Repo.update()
+  end
+
+  def merge_album(old_album_id, new_album_id) do
+    old_album = get_album!(old_album_id)
+
+    listen_query =
+      from l in Listens.Listens.Listen,
+        where: l.album_id == ^old_album_id
+
+    track_query =
+      from t in Listens.Tracks.Track,
+        where: t.album_id == ^old_album_id
+
+    Multi.new()
+    |> Multi.update_all(:merge_listens, listen_query, set: [album_id: new_album_id])
+    |> Multi.update_all(:merge_tracks, track_query, set: [album_id: new_album_id])
+    |> Multi.delete(:delete_old_album, old_album)
+    |> Db.Repo.transaction()
   end
 end

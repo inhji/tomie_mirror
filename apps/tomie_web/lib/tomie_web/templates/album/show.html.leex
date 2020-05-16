@@ -2,6 +2,7 @@
   <ul>
     <li><%= live_redirect "Back", to: Routes.live_path(@socket, TomieWeb.ListenLive.Index) %></li>
     <li><%= live_redirect "Edit", to: Routes.live_path(@socket, TomieWeb.AlbumLive.Edit, @album.id) %></li>
+    <li><%= live_redirect "Merge", to: Routes.live_path(@socket, TomieWeb.AlbumLive.Merge, @album.id) %></li>
   </ul>
 </nav>
 

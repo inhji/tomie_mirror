@@ -1,0 +1,68 @@
+<nav>
+  <ul>
+    <li><%= live_redirect "Back", to: Routes.live_path(@socket, TomieWeb.ListenLive.Index) %></li>
+  </ul>
+</nav>
+
+<form phx-change="change_album" phx-update="ignore">
+  <select class="album flex" name="album">
+    <option value="0">-- Please select album --</option>
+    <%= for album <- @albums do %>
+    <option value="<%= album.id %>"><%= album.name %></option>
+    <% end %>
+  </select>
+</form>
+
+<div class="flex">
+  <div class="card flex flex-grow">
+    <div>
+      <img src="<%= @old_image %>" class="w-40" >
+    </div>
+    <div class="flex-auto content">
+      <h1><%= @old_album.name %> (<%= @old_album.id %>)</h1>
+      <%= live_patch to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, @old_album.artist), class: "text-on-surface-muted" do %>
+      <span class="icon">
+        <%= IconView.icon(:user) %>
+      </span>
+      <%= @old_album.artist.name %>
+      <% end %>
+      <p class="text-on-surface-muted">
+        <span class="icon">
+          <%= IconView.icon(:time) %>
+        </span>
+        <%= last_listen(@old_album) %>
+      </p>
+    </div>
+  </div>
+
+  <%= if @new_album do %>
+  <div class="card flex flex-grow">
+    <div>
+      <img src="<%= @new_image %>" class="w-40" >
+    </div>
+    <div class="flex-auto content">
+      <h1><%= @new_album.name %> (<%= @new_album.id %>)</h1>
+      <%= live_patch to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, @new_album.artist), class: "text-on-surface-muted" do %>
+      <span class="icon">
+        <%= IconView.icon(:user) %>
+      </span>
+      <%= @new_album.artist.name %>
+      <% end %>
+      <p class="text-on-surface-muted">
+        <span class="icon">
+          <%= IconView.icon(:time) %>
+        </span>
+        <%= last_listen(@new_album) %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= if @new_album do %>
+<p class="p-4 my-4 bg-info bg-on-info">
+  Album <strong> <%= @old_album.name %></strong> will be merged into <strong><%= @new_album.name %></strong>
+</p>
+
+<%= link "Do the merge", class: "button", to: "#", phx_click: "do_merge", data: [confirm: "Are you sure?"] %>
+<% end %>
