@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.44.1](https://git.inhji.de/inhji/tomie/compare/0.44.0...v0.44.1) (2020-05-16)
+
+
+
+
+### Bug Fixes:
+
+* TLS Handshake error
+
+### Improvements:
+
+* show more job details
+
 ## [v0.44.0](https://git.inhji.de/inhji/tomie/compare/0.43.1...v0.44.0) (2020-05-14)
 
 
