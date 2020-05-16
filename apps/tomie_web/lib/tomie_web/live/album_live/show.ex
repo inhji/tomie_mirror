@@ -11,7 +11,8 @@ defmodule TomieWeb.AlbumLive.Show do
      socket
      |> assign(
        album: album,
-       image: image
+       image: image,
+       page_title: album.name
      )}
   end
 end

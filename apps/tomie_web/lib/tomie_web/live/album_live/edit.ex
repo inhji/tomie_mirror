@@ -12,7 +12,12 @@ defmodule TomieWeb.AlbumLive.Edit do
 
   def fetch(%{assigns: %{id: id}} = socket) do
     album = Listens.Albums.get_album!(id)
-    assign(socket, album: album, changeset: Album.changeset(album))
+
+    assign(socket,
+      album: album,
+      changeset: Album.changeset(album),
+      page_title: "Edit #{album.name}"
+    )
   end
 
   def handle_event("validate", %{"album" => params}, socket) do

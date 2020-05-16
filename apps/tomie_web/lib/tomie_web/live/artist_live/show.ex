@@ -25,7 +25,8 @@ defmodule TomieWeb.ArtistLive.Show do
      |> assign(
        artist: artist,
        albums: albums,
-       image: image
+       image: image,
+       page_title: artist.name
      )}
   end
 end

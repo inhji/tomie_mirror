@@ -9,6 +9,7 @@ defmodule TomieWeb.ListenLive.Charts do
 
   def fetch(),
     do: [
+      page_title: "Charts",
       last_two_weeks:
         Listens.Artists.Artist
         |> Listens.Report.top(6, weeks: -2)

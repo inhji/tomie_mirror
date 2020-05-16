@@ -4,7 +4,7 @@ defmodule TomieWeb.ListenLive.Albums do
   def render(assigns), do: TomieWeb.ListenView.render("albums.html", assigns)
 
   def mount(_args, _session, socket) do
-    {:ok, socket |> assign(albums: fetch())}
+    {:ok, socket |> assign(albums: fetch(), page_title: "Albums")}
   end
 
   def fetch(),

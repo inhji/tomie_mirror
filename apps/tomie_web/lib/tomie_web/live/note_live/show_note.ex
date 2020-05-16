@@ -7,7 +7,8 @@ defmodule TomieWeb.NoteLive.ShowNote do
 
   def mount(%{"id" => id, "note_id" => note_id}, _session, socket) do
     note = Notes.get_note!(note_id)
-    {:ok, socket |> assign(note: note, notebook_id: id)}
+    page_title = note.title || String.slice(note.content, 0..20) <> ".."
+    {:ok, socket |> assign(note: note, notebook_id: id, page_title: page_title)}
   end
 
   def handle_params(%{"id" => _id, "note_id" => note_id}, _url, socket) do

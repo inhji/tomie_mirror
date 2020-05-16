@@ -6,6 +6,6 @@ defmodule TomieWeb.JobLive.Show do
 
   def mount(%{"id" => id}, _session, socket) do
     job = Tomie.Jobs.get_job!(id)
-    {:ok, socket |> assign(job: job)}
+    {:ok, socket |> assign(job: job, page_title: job.worker)}
   end
 end

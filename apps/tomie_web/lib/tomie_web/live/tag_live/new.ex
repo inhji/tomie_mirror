@@ -6,7 +6,7 @@ defmodule TomieWeb.TagLive.New do
 
   def mount(_params, _session, socket) do
     changeset = Tag.changeset(%Tag{})
-    {:ok, socket |> assign(changeset: changeset)}
+    {:ok, socket |> assign(changeset: changeset, page_title: "New Tag")}
   end
 
   def handle_event("validate", %{"tag" => params}, socket) do

@@ -7,7 +7,10 @@ defmodule TomieWeb.NoteLive.EditNotebook do
   def mount(%{"id" => id}, _session, socket) do
     {notebook, _tree, _root} = Notes.get_notebook!(id, nodes: false)
     changeset = Book.changeset(notebook, %{})
-    {:ok, socket |> assign(changeset: changeset, notebook: notebook)}
+
+    {:ok,
+     socket
+     |> assign(changeset: changeset, notebook: notebook, page_title: "Edit #{notebook.title}")}
   end
 
   def handle_event("validate", %{"book" => params}, socket) do

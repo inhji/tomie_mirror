@@ -12,7 +12,12 @@ defmodule TomieWeb.BookmarkLive.Edit do
 
   def fetch(%{assigns: %{id: id}} = socket) do
     bookmark = Bookmarks.get_bookmark!(id)
-    assign(socket, bookmark: bookmark, changeset: Bookmark.changeset(bookmark))
+
+    assign(socket,
+      bookmark: bookmark,
+      changeset: Bookmark.changeset(bookmark),
+      page_title: "Edit #{bookmark.title || bookmark.source}"
+    )
   end
 
   def handle_event("validate", %{"bookmark" => params}, socket) do

@@ -6,7 +6,7 @@ defmodule TomieWeb.NoteLive.NewNotebook do
 
   def mount(_params, _session, socket) do
     changeset = Book.changeset(%Book{})
-    {:ok, assign(socket, changeset: changeset)}
+    {:ok, assign(socket, changeset: changeset, page_title: "New Notebook")}
   end
 
   def handle_event("validate", %{"book" => params}, socket) do

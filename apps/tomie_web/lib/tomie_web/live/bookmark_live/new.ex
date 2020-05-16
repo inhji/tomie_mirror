@@ -13,12 +13,12 @@ defmodule TomieWeb.BookmarkLive.New do
         source: url
       })
 
-    {:ok, assign(socket, changeset: changeset)}
+    {:ok, assign(socket, changeset: changeset, page_title: "New Bookmark")}
   end
 
   def mount(_params, _session, socket) do
     changeset = Bookmark.changeset(%Bookmark{})
-    {:ok, assign(socket, changeset: changeset)}
+    {:ok, assign(socket, changeset: changeset, page_title: "New Bookmark")}
   end
 
   def handle_event("validate", %{"bookmark" => params}, socket) do

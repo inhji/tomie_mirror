@@ -14,7 +14,7 @@ defmodule TomieWeb.ProfileController do
     user = Pow.Plug.current_user(conn)
     changeset = User.profile_changeset(user)
 
-    render(conn, "edit.html", user: user, changeset: changeset)
+    render(conn, "edit.html", user: user, changeset: changeset, page_title: "Edit Profile")
   end
 
   def update(conn, %{"user" => user_params}) do

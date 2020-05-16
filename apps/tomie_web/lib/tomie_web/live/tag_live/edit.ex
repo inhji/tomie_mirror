@@ -12,7 +12,7 @@ defmodule TomieWeb.TagLive.Edit do
 
   def fetch(%{assigns: %{id: id}} = socket) do
     tag = Tags.get_tag!(id)
-    assign(socket, tag: tag, changeset: Tag.changeset(tag))
+    assign(socket, tag: tag, changeset: Tag.changeset(tag), page_title: "Edit #{tag.name}")
   end
 
   def handle_event("save", %{"tag" => params}, socket) do

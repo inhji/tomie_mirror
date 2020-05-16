@@ -12,9 +12,12 @@ defmodule TomieWeb.TagLive.Show do
   end
 
   def fetch(%{assigns: %{id: id}} = socket) do
+    tag = Tags.get_tag!(id)
+
     assigns = [
-      tag: Tags.get_tag!(id),
-      tagged_bookmarks: Bookmarks.list_bookmarks_by_tag_id(id)
+      tag: tag,
+      tagged_bookmarks: Bookmarks.list_bookmarks_by_tag_id(id),
+      page_title: tag.name
     ]
 
     assign(socket, assigns)

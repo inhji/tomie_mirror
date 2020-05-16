@@ -6,7 +6,14 @@ defmodule TomieWeb.NoteLive.ShowNotebook do
   def mount(%{"id" => id}, _session, socket) do
     {notebook, nodes, root} = Notes.get_notebook!(id, depth: 1)
 
-    {:ok, socket |> assign(notebook: notebook, nodes: nodes, root: root)}
+    {:ok,
+     socket
+     |> assign(
+       notebook: notebook,
+       nodes: nodes,
+       root: root,
+       page_title: notebook.title
+     )}
   end
 
   def handle_event("delete_notebook", %{"id" => id}, socket) do

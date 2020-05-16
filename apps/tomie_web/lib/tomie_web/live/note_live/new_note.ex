@@ -8,7 +8,7 @@ defmodule TomieWeb.NoteLive.NewNote do
   def mount(%{"id" => _id, "parent" => parent_id}, _session, socket) do
     parent = Notes.get_note!(parent_id)
     changeset = Note.changeset(%Note{})
-    {:ok, assign(socket, changeset: changeset, parent: parent)}
+    {:ok, assign(socket, changeset: changeset, parent: parent, page_title: "New Note")}
   end
 
   def handle_event("validate", %{"note" => params}, socket) do

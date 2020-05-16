@@ -7,9 +7,16 @@ defmodule TomieWeb.NoteLive.EditNote do
   def mount(%{"id" => id, "note_id" => note_id}, _session, socket) do
     note = Notes.get_note!(note_id)
     changeset = Note.changeset(note, %{})
+    page_title = "Edit " <> (note.title || String.slice(note.content, 0..20) <> "..")
 
-    note = Notes.get_note!(note_id)
-    {:ok, socket |> assign(changeset: changeset, note: note, notebook_id: id)}
+    {:ok,
+     socket
+     |> assign(
+       changeset: changeset,
+       note: note,
+       notebook_id: id,
+       page_title: page_title
+     )}
   end
 
   def handle_event("validate", %{"note" => params}, socket) do
