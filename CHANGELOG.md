@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.46.2](https://git.inhji.de/inhji/tomie/compare/0.46.1...v0.46.2) (2020-05-16)
+
+
+
+
+### Bug Fixes:
+
+* checkbox is no longer centered
+
+### Improvements:
+
+* support image deletion
+
+* link discogs id
+
+* show discogs id
+
+* make artists clickable, add title to top artists
+
 ## [v0.46.1](https://git.inhji.de/inhji/tomie/compare/0.46.0...v0.46.1) (2020-05-16)
 
 
