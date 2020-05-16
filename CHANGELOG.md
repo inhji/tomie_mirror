@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.46.0](https://git.inhji.de/inhji/tomie/compare/0.45.0...v0.46.0) (2020-05-16)
+
+
+
+
+### Features:
+
+* merge albums
+
+### Improvements:
+
+* add page title for almost all routes
+
 ## [v0.45.0](https://git.inhji.de/inhji/tomie/compare/0.44.1...v0.45.0) (2020-05-16)
 
 
