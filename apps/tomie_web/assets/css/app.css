@@ -168,7 +168,7 @@ form textarea:read-only {
 }
 
 form input[type=checkbox] {
-	@apply inline-block;
+	@apply inline-block w-auto;
 }
 
 .button {
