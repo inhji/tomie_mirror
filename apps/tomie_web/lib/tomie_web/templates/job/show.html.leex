@@ -30,9 +30,10 @@
 <%= if Enum.count(@job.errors) > 0 do %>
   <div class="card text-on-danger">
     <div class="content">
-      <%= for %{"error" => error} <- @job.errors do %>
+      <%= for %{"error" => error, "attempt" => attempt, "at" => at} <- @job.errors do %>
+        <h3>Attempt <%= attempt %> at <%= at %></h3>
         <pre class="hyphens whitespace-pre-wrap mb-6"><%= error %></pre>
       <% end %>
-    </div>  
+    </div>
   </div>
 <% end %>
