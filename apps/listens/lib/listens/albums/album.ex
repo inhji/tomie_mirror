@@ -32,7 +32,7 @@ defmodule Listens.Albums.Album do
   @doc false
   def changeset(album, attrs \\ %{}) do
     album
-    |> cast(attrs, [:name, :mbid, :msid, :artist_id, :discogs_id])
+    |> cast(attrs, [:name, :mbid, :msid, :artist_id, :discogs_id, :delete_image])
     |> maybe_delete_image()
     |> cast_attachments(attrs, [:image], allow_paths: true)
     |> validate_required([:name, :msid, :artist_id])

@@ -25,5 +25,11 @@
     <%= error_tag f, :discogs_id %>
   </fieldset>
 
+  <fieldset>
+    <%= label f, :delete_image %>
+    <%= checkbox f, :delete_image %>
+    <%= error_tag f, :delete_image %>
+  </fieldset>
+
   <%= submit "submit", class: "button" %>
 </form>
