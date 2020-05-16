@@ -10,4 +10,14 @@ defmodule TomieWeb.AlbumView do
     |> Map.get(:listened_at)
     |> Timex.from_now()
   end
+
+  def discogs_link(album) do
+    case album.discogs_id do
+      nil ->
+        "Missing"
+
+      discogs_id ->
+        link(discogs_id, target: "_blank", to: "https://www.discogs.com/release/#{discogs_id}")
+    end
+  end
 end

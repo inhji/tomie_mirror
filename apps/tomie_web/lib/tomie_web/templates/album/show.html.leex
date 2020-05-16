@@ -42,7 +42,7 @@
       Musicbrainz Id: <pre><%= @album.mbid || "MISSING" %></pre>
     </p>
     <p class="text-on-surface-muted">
-      Discogs Id: <pre><%= @album.discogs_id || "MISSING" %></pre>
+      Discogs Id: <pre><%= discogs_link(@album) %></pre>
     </p>
   </div>
 </div>
