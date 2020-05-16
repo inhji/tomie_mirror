@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.45.0](https://git.inhji.de/inhji/tomie/compare/0.44.1...v0.45.0) (2020-05-16)
+
+
+
+
+### Features:
+
+* update page title
+
+* add csharp/vbnet code, tweak colors
+
 ## [v0.44.1](https://git.inhji.de/inhji/tomie/compare/0.44.0...v0.44.1) (2020-05-16)
 
 
