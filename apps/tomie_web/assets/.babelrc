@@ -16,7 +16,9 @@
           "json",
           "markdown",
           "regex",
-          "sql"
+          "sql",
+          "csharp",
+          "vbnet"
         ],
         "plugins": ["line-numbers"],
         "themes": ["funky"],
