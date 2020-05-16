@@ -33,8 +33,9 @@ defmodule Listens.Workers.DiscogsArtist do
 
   def fetch_artist_image(artist) do
     url = get_url(artist)
+    opts = Application.fetch_env!(:httpoison, :options)
 
-    case HTTPoison.get!(url) do
+    case HTTPoison.get!(url, [], opts) do
       %HTTPoison.Response{body: body, headers: headers} ->
         handle_fetch_response(body, artist)
         rate_limit = Listens.RateLimit.calculate(headers, :discogs)

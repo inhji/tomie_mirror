@@ -32,8 +32,9 @@ defmodule Listens.Workers.DiscogsAlbum do
 
   def fetch_album_cover(album) do
     url = get_url(album)
+    opts = Application.fetch_env!(:httpoison, :options)
 
-    case HTTPoison.get!(url) do
+    case HTTPoison.get!(url, [], opts) do
       %HTTPoison.Response{body: body, headers: headers} ->
         handle_fetch_response(body, album)
         rate_limit = Listens.RateLimit.calculate(headers, :discogs)

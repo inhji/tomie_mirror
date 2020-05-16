@@ -62,6 +62,9 @@ config :chartkick, json_serializer: Jason
 config :earmark,
   render_options: [code_class_prefix: "language-"]
 
+config :httpoison,
+  options: [ssl: [{:versions, [:"tlsv1.2", :"tlsv1.1", :tlsv1]}]]
+
 config :waffle,
   storage: Waffle.Storage.Local,
   storage_dir_prefix: "uploads"

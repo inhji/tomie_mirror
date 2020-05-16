@@ -21,11 +21,12 @@ defmodule Listens.Workers.Listenbrainz do
     count = Listens.Cache.try_get(@cache, @fetch_listen_count, @default_listen_count)
     last_ts = Handler.last_listen_timestamp()
     url = "#{@base_url}/#{user}/listens?min_ts=#{last_ts}&count=#{count}"
+    opts = Application.fetch_env!(:httpoison, :options)
 
     Logger.info("Fetching new Listens for Timestamp #{last_ts}:")
     Logger.info(url)
 
-    case HTTPoison.get!(url) do
+    case HTTPoison.get!(url, [], opts) do
       %HTTPoison.Response{body: body, headers: headers} ->
         newest_timestamp =
           body
