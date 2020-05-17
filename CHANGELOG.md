@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.46.4](https://git.inhji.de/inhji/tomie/compare/0.46.3...v0.46.4) (2020-05-17)
+
+
+
+
+### Bug Fixes:
+
+* show search link when album discogs_id is -1
+
+* activate merge
+
 ## [v0.46.3](https://git.inhji.de/inhji/tomie/compare/0.46.2...v0.46.3) (2020-05-17)
 
 
