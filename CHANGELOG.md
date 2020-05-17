@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.46.3](https://git.inhji.de/inhji/tomie/compare/0.46.2...v0.46.3) (2020-05-17)
+
+
+
+
+### Bug Fixes:
+
+* deep merge, closes #50
+
 ## [v0.46.2](https://git.inhji.de/inhji/tomie/compare/0.46.1...v0.46.2) (2020-05-16)
 
 
