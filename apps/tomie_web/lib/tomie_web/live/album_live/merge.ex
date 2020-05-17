@@ -35,7 +35,7 @@ defmodule TomieWeb.AlbumLive.Merge do
     old_album_id = socket.assigns.old_album.id
     new_album_id = socket.assigns.new_album.id
 
-    case Listens.Albums.merge_album(old_album_id, new_album_id) do
+    case Listens.Merge.merge_album(old_album_id, new_album_id) do
       {:ok, _result} ->
         {:noreply,
          push_redirect(socket, to: Routes.live_path(socket, TomieWeb.AlbumLive.Show, new_album_id))}
