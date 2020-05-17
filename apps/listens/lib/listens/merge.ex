@@ -18,9 +18,7 @@ defmodule Listens.Merge do
     Multi.new()
     |> prepare_merge(upcase_tracks, old_album_id, new_album_id)
     |> Multi.delete(:delete_old_album, old_album)
-    |> IO.inspect()
-
-    # |> Db.Repo.transaction()
+    |> Db.Repo.transaction()
   end
 
   def prepare_merge(multi, track_names, old_album_id, new_album_id) do
