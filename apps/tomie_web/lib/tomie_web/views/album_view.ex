@@ -12,9 +12,20 @@ defmodule TomieWeb.AlbumView do
   end
 
   def discogs_link(album) do
+    search_text = URI.encode("#{album.artist.name} #{album.name}")
+
+    missing_link =
+      link("Missing/Search",
+        target: "_blank",
+        to: "https://www.discogs.com/search/?type=all&q=#{search_text}"
+      )
+
     case album.discogs_id do
       nil ->
-        "Missing"
+        missing_link
+
+      -1 ->
+        missing_link
 
       discogs_id ->
         link(discogs_id, target: "_blank", to: "https://www.discogs.com/release/#{discogs_id}")
