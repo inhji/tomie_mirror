@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 mix local.hex --if-missing --force
 mix local.rebar --if-missing --force
