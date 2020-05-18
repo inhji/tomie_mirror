@@ -19,7 +19,7 @@ defmodule Listens.Workers.DiscogsAlbum do
   @impl Oban.Worker
   def perform(_args, _job) do
     albums = Albums.list_albums_without_cover(log: false)
-    Enum.each(albums, &fetch_album_cover/1)
+    Enum.each(albums, &search_album_cover/1)
 
     Listens.Cache.try_put(@cache, "updated_at", DateTime.utc_now())
 
@@ -30,13 +30,12 @@ defmodule Listens.Workers.DiscogsAlbum do
     :ok
   end
 
-  def fetch_album_cover(album) do
-    url = get_url(album)
-    opts = Application.fetch_env!(:httpoison, :options)
+  def search_album_cover(album) do
+    url = get_search_url(album)
 
-    case HTTPoison.get!(url, [], opts) do
+    case Http.get!(url) do
       %HTTPoison.Response{body: body, headers: headers} ->
-        handle_fetch_response(body, album)
+        handle_search_response(body, album)
         rate_limit = Listens.RateLimit.calculate(headers, :discogs)
         Listens.Cache.try_put(@cache, @rate_limit, rate_limit)
 
@@ -45,7 +44,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     end
   end
 
-  def handle_fetch_response(body, album) do
+  def handle_search_response(body, album) do
     with decoded <- Jason.decode!(body, keys: :atoms),
          results <- Map.get(decoded, :results),
          false <- is_nil(results),
@@ -75,10 +74,13 @@ defmodule Listens.Workers.DiscogsAlbum do
     end
   end
 
-  def get_url(album) do
+  def get_search_url(album) do
     album_name = URI.encode(album.name)
     artist_name = URI.encode(album.artist.name)
 
     "#{@base_url}?token=#{@token}&release_title=#{album_name}&artist=#{artist_name}"
+  end
+
+  def get_fetch_url(%{discogs_id: discogs_id}) do
   end
 end

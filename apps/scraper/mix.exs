@@ -29,6 +29,7 @@ defmodule Scraper.MixProject do
       {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"},
       {:httpoison, "~> 1.6"},
       {:excoveralls, "~> 0.12.3", only: :test},
+      {:http, in_umbrella: true},
       {:floki, "~> 0.26.0"}
     ]
   end

@@ -1,9 +1,9 @@
-defmodule Listens.MixProject do
+defmodule Http.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :listens,
+      app: :http,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -18,7 +18,6 @@ defmodule Listens.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {Listens.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -26,13 +25,7 @@ defmodule Listens.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:cachex, "~> 3.2"},
-      {:waffle, "~> 1.0.1"},
-      {:waffle_ecto, "~> 0.0.8"},
-      {:phoenix_pubsub, "~> 2.0"},
-      {:ecto_sql, "~> 3.1"},
-      {:http, in_umbrella: true},
-      {:db, in_umbrella: true}
+      {:httpoison, "~> 1.6"}
     ]
   end
 end

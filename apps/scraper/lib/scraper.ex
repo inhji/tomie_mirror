@@ -3,16 +3,8 @@ defmodule Scraper do
   Documentation for `Scraper`.
   """
 
-  def request_headers() do
-    user_agent = Application.get_env(:tomie, :user_agent)
-
-    [
-      {"User-Agent", user_agent}
-    ]
-  end
-
   def get_html(url) do
-    case HTTPoison.get(url, request_headers(), follow_redirect: true) do
+    case Http.get(url, [], follow_redirect: true) do
       {:ok, %{body: body, status_code: 200}} ->
         {:ok, body}
 

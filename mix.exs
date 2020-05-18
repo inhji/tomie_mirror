@@ -25,7 +25,8 @@ defmodule Tomie.Umbrella.MixProject do
             bookmarks: :permanent,
             scraper: :permanent,
             tags: :permanent,
-            listens: :permanent
+            listens: :permanent,
+            http: :permanent
           ]
         ]
       ]
