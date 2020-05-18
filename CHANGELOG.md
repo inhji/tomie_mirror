@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.47.0](https://git.inhji.de/inhji/tomie/compare/0.46.4...v0.47.0) (2020-05-18)
+
+
+
+
+### Features:
+
+* add http app, consolidate http requests
+
+### Bug Fixes:
+
+* use releases endpoint if discogs_id exists
+
 ## [v0.46.4](https://git.inhji.de/inhji/tomie/compare/0.46.3...v0.46.4) (2020-05-17)
 
 
