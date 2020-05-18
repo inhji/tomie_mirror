@@ -2,6 +2,7 @@
 
 ssh -T root@inhji.de << EOSSH
 su tomie
+source ~/.zshrc
 cd /opt/tomie
 git pull
 ./build.sh
