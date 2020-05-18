@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.47.1](https://git.inhji.de/inhji/tomie/compare/0.47.0...v0.47.1) (2020-05-18)
+
+
+
+
+### Bug Fixes:
+
+* use zsh for build.sh
+
 ## [v0.47.0](https://git.inhji.de/inhji/tomie/compare/0.46.4...v0.47.0) (2020-05-18)
 
 
