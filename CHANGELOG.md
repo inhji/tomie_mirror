@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.48.1](https://git.inhji.de/inhji/tomie/compare/0.48.0...v0.48.1) (2020-05-19)
+
+
+
+
+### Bug Fixes:
+
+* handle missing image
+
+* error when mutiple tracks with same name exist after merge
+
 ## [v0.48.0](https://git.inhji.de/inhji/tomie/compare/0.47.3...v0.48.0) (2020-05-19)
 
 
