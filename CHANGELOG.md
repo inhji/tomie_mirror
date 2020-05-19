@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.48.0](https://git.inhji.de/inhji/tomie/compare/0.47.3...v0.48.0) (2020-05-19)
+
+
+
+
+### Features:
+
+* rework, discogs_album worker, fetch genres/styles, show genres/styles
+
 ## [v0.47.3](https://git.inhji.de/inhji/tomie/compare/0.47.2...v0.47.3) (2020-05-18)
 
 
