@@ -163,13 +163,19 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   end
 
   def maybe_create_track(name, artist, album) do
-    track =
-      Track
-      |> Repo.get_by([name: name, artist_id: artist.id, album_id: album.id], log: false)
+    query =
+      from t in Track,
+        where: t.name == ^name,
+        where: t.artist_id == ^artist.id,
+        where: t.album_id == ^album.id
+
+    track_list =
+      query
+      |> Repo.all(log: false)
       |> Repo.preload([:album, :artist], log: false)
 
-    case track do
-      nil ->
+    case track_list do
+      [] ->
         Logger.debug("[Track] #{name}")
 
         track =
@@ -183,7 +189,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
         {:ok, track, new: true}
 
-      track ->
+      [track | _rest] ->
         {:ok, track, new: false}
     end
   end
