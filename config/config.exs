@@ -26,7 +26,9 @@ config :tomie, Oban,
   crontab: [
     {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}},
     {"* * * * *", Listens.Workers.DiscogsArtist, args: %{}},
-    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{}}
+    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "search_id"}},
+    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_cover"}},
+    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_genres"}}
   ]
 
 config :tomie_web,

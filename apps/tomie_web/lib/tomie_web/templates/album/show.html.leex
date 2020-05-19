@@ -12,6 +12,7 @@
   </div>
   <div class="flex-auto content">
     <h1><%= @album.name %></h1>
+
     <%= live_patch to: Routes.live_path(@socket, TomieWeb.ArtistLive.Show, @album.artist), class: "text-on-surface-muted" do %>
       <span class="icon">
         <%= IconView.icon(:user) %>
@@ -29,6 +30,20 @@
         <%= IconView.icon(:time) %>
       </span>
       <%= last_listen(@album) %>
+    </p>
+
+    <p class="meta mt-4">
+      <%= if @album.genres do %>
+        <%= for genre <- @album.genres do %>
+          <span class="tag primary"><%= genre %></span>
+        <% end %>
+      <% end %>
+
+      <%= if @album.styles do %>
+        <%= for style <- @album.styles do %>
+          <span class="tag"><%= style %></span>
+        <% end %>
+      <% end %>
     </p>
   </div>
 </div>

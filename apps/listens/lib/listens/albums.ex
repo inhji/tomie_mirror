@@ -24,7 +24,25 @@ defmodule Listens.Albums do
   def list_albums_without_cover(opts \\ []) do
     Album
     |> where([a], is_nil(a.image))
-    |> where([a], is_nil(a.discogs_id) or a.discogs_id > 0)
+    |> where([a], a.discogs_id > 0)
+    |> limit(10)
+    |> Db.Repo.all(opts)
+    |> Db.Repo.preload(:artist)
+  end
+
+
+  def list_albums_without_discogs_id(opts \\ []) do
+    Album
+    |> where([a], is_nil(a.discogs_id))
+    |> limit(10)
+    |> Db.Repo.all(opts)
+    |> Db.Repo.preload(:artist)
+  end
+
+  def list_albums_without_genres(opts \\ []) do
+    Album
+    |> where([a], is_nil(a.genres) or is_nil(a.styles))
+    |> where([a], not is_nil(a.discogs_id) and a.discogs_id != -1)
     |> limit(10)
     |> Db.Repo.all(opts)
     |> Db.Repo.preload(:artist)

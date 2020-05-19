@@ -126,6 +126,10 @@ a {
 	@apply px-2 py-1 bg-on-surface-not-even shadow-inner rounded-sm;
 }
 
+.card .meta .tag.primary {
+	@apply bg-primary text-on-primary;
+}
+
 /* Forms */
 
 form:not(.search) {

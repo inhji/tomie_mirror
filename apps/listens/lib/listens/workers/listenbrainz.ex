@@ -10,7 +10,7 @@ defmodule Listens.Workers.Listenbrainz do
 
   @base_url "https://api.listenbrainz.org/1/user"
   @cache :listenbrainz
-  @default_listen_count 100
+  @default_listen_count 10
 
   @last_listen_timestamp "last_listen_timestamp"
   @fetch_listen_count "fetch_listen_count"

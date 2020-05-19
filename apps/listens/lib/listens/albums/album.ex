@@ -11,6 +11,9 @@ defmodule Listens.Albums.Album do
     field :msid, :string
     field :discogs_id, :integer
 
+    field :genres, {:array, :string}
+    field :styles, {:array, :string}
+
     field :delete_image, :boolean,
       virtual: true,
       default: false
@@ -32,7 +35,7 @@ defmodule Listens.Albums.Album do
   @doc false
   def changeset(album, attrs \\ %{}) do
     album
-    |> cast(attrs, [:name, :mbid, :msid, :artist_id, :discogs_id, :delete_image])
+    |> cast(attrs, [:name, :mbid, :msid, :artist_id, :discogs_id, :delete_image, :genres, :styles])
     |> maybe_delete_image()
     |> cast_attachments(attrs, [:image], allow_paths: true)
     |> validate_required([:name, :msid, :artist_id])
