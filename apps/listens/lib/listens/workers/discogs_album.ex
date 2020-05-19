@@ -96,6 +96,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     with decoded <- Jason.decode!(body, keys: :atoms),
          images <- Map.get(decoded, :images),
          primary_image <- Enum.find(images, fn i -> i.type == "primary" end),
+         false <- is_nil(primary_image),
          image_uri <- Map.get(primary_image, :uri) do
       Logger.info("[Album/Image/Fetch] #{album.name}")
 
