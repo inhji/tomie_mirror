@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.50.0](https://git.inhji.de/inhji/tomie/compare/0.49.0...v0.50.0) (2020-05-21)
+
+
+
+
+### Features:
+
+* add new light theme
+
+### Bug Fixes:
+
+* set genres/styles to empty list if nil
+
+* discogs worker cache missing
+
+### Improvements:
+
+* account for empty cache for last_listen/timestamp
+
 ## [v0.49.0](https://git.inhji.de/inhji/tomie/compare/0.48.1...v0.49.0) (2020-05-21)
 
 
