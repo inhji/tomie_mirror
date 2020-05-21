@@ -47,7 +47,7 @@ defmodule TomieWeb.JobView do
     if stats.listenbrainz.last_listen_timestamp == 0 do
       "Never"
     else
-      @stats.listenbrainz.last_listen_timestamp
+      stats.listenbrainz.last_listen_timestamp
       |> DateTime.from_unix!()
       |> Timex.from_now()
     end
