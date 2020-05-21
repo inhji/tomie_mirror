@@ -32,7 +32,7 @@
           </p>
 
           <p>
-            <%= "Last listen: #{Timex.from_now(DateTime.from_unix!(@stats.discogs.last_listen_timestamp))}" %>
+            <%= "Last update: #{Timex.from_now(@stats.discogs.last_updated)}" %>
           </p>
         </div>
       </div>

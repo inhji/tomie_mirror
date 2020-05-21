@@ -6,6 +6,7 @@ defmodule Listens.Application do
 
     children = [
       worker(Cachex, [:listenbrainz, []], id: :listenbrainz),
+      worker(Cachex, [:discogs, []], id: :discogs),
       {Phoenix.PubSub, name: Listens.PubSub}
     ]
 

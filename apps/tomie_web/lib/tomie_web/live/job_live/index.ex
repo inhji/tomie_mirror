@@ -7,7 +7,6 @@ defmodule TomieWeb.JobLive.Index do
 
   def mount(_args, _session, socket) do
     Phoenix.PubSub.subscribe(TomieWeb.PubSub, "Tomie.JobsListener:ALL")
-
     {:ok, assign(socket, page_title: "Jobs", stats: fetch_stats())}
   end
 
@@ -24,9 +23,13 @@ defmodule TomieWeb.JobLive.Index do
       },
       discogs: %{
         rate_limit: Listens.Cache.try_get(:discogs, :rate_limit, %{remaining: 0, total: 0}),
-        last_listen_timestamp: Listens.Cache.try_get(:discogs, :last_listen_timestamp, 0)
+        last_updated: Listens.Cache.try_get(:discogs, :last_updated, 0)
       }
     }
+  end
+
+  def handle_info(:heartbeat, socket) do
+    {:noreply, socket |> assign(stats: fetch_stats())}
   end
 
   def handle_info(

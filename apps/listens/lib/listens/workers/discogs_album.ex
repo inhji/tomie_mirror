@@ -22,6 +22,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     |> Enum.each(&fetch_album_cover/1)
 
     Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Listens.Workers:ALL", %{event: :updated})
+    Listens.Cache.try_put(@cache, :last_updated, DateTime.utc_now())
 
     :ok
   end
@@ -31,6 +32,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     |> Enum.each(&fetch_album_genres_styles/1)
 
     Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Listens.Workers:ALL", %{event: :updated})
+    Listens.Cache.try_put(@cache, :last_updated, DateTime.utc_now())
 
     :ok
   end
@@ -41,6 +43,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     |> Enum.each(&search_discogs_id/1)
 
     Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Listens.Workers:ALL", %{event: :updated})
+    Listens.Cache.try_put(@cache, :last_updated, DateTime.utc_now())
 
     :ok
   end
@@ -55,6 +58,7 @@ defmodule Listens.Workers.DiscogsAlbum do
       %HTTPoison.Response{body: body, headers: headers} ->
         handle_genres_fetch_response(body, album)
         rate_limit = Listens.RateLimit.calculate(headers, :discogs)
+
         Listens.Cache.try_put(@cache, @rate_limit, rate_limit)
 
       error ->
