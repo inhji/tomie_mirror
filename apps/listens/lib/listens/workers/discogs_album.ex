@@ -75,6 +75,9 @@ defmodule Listens.Workers.DiscogsAlbum do
     Logger.info("[Album/Genres/Fetch] Genres: #{inspect(genres)}")
     Logger.info("[Album/Genres/Fetch] Styles: #{inspect(styles)}")
 
+    genres = if is_nil(genres), do: [], else: genres
+    styles = if is_nil(styles), do: [], else: styles
+
     album
     |> Album.changeset(%{genres: genres, styles: styles})
     |> Repo.update(log: false)
