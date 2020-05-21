@@ -10,12 +10,6 @@
           </span>
           <span>Visit</span>
         <% end %></li>
-        <li><%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) do %>
-          <span class="icon">
-            <%= IconView.icon(:edit) %>
-          </span>
-          <span>Edit</span>
-        <% end %></li>
         <li><%= link to: "#", phx_click: "toggle_favorite", phx_value_id: @bookmark.id do %>
           <span class="icon">
             <%= IconView.icon(:heart) %>
@@ -27,6 +21,12 @@
             <%= IconView.icon(:box) %>
           </span>
           <span><%= archive_action(@bookmark) %></span>
+        <% end %></li>
+        <li><%= live_redirect to: Routes.live_path(@socket, BookmarkLive.Edit, @bookmark) do %>
+          <span class="icon">
+            <%= IconView.icon(:edit) %>
+          </span>
+          <span>Edit</span>
         <% end %></li>
         <li><%= link to: "#", phx_click: "delete_bookmark", phx_value_id: @bookmark.id, data: [confirm: "Are you sure?"] do %>
           <span class="icon">

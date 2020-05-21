@@ -11,18 +11,18 @@ defmodule Listens.Workers.DiscogsArtist do
   alias Listens.Artists.Artist
 
   @base_url "https://api.discogs.com/database/search"
-  @cache :discogs_artist
+  @cache :discogs
 
   @token Application.compile_env(:listens, :discogs_token)
   @invalid_discogs_id -1
-  @rate_limit "rate_limit"
+  @rate_limit :rate_limit
 
   @impl Oban.Worker
   def perform(_args, _job) do
     Artists.list_artists_without_image(log: false)
     |> Enum.each(&fetch_artist_image/1)
 
-    Listens.Cache.try_put(@cache, "updated_at", DateTime.utc_now())
+    Listens.Cache.try_put(@cache, :updated_at, DateTime.utc_now())
 
     Phoenix.PubSub.broadcast(TomieWeb.PubSub, "Listens.Workers:ALL", %{
       event: :updated

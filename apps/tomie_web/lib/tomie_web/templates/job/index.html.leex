@@ -2,6 +2,42 @@
   <%= live_component @socket, TomieWeb.JobLive.SidebarComponent %>
 
   <div class="col-span-4">
+    <div class="flex justify-between">
+      <div class="card">
+        <div class="content">
+          <h3 class="mb-3">Listenbrainz</h3>
+
+          <p>
+            <% limit = @stats.listenbrainz.rate_limit %>
+            <%= "Rate Limit: #{limit.remaining}/#{limit.total}" %>
+          </p>
+
+          <p>
+            <%= "Listens per fetch: #{@stats.listenbrainz.fetch_listen_count}" %>
+          </p>
+
+          <p>
+            <%= "Last listen: #{Timex.from_now(DateTime.from_unix!(@stats.listenbrainz.last_listen_timestamp))}" %>
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="content">
+          <h3 class="mb-3">Discogs</h3>
+
+          <p>
+            <% limit = @stats.discogs.rate_limit %>
+            <%= "Rate Limit: #{limit.remaining}/#{limit.total}" %>
+          </p>
+
+          <p>
+            <%= "Last listen: #{Timex.from_now(DateTime.from_unix!(@stats.discogs.last_listen_timestamp))}" %>
+          </p>
+        </div>
+      </div>
+    </div>
+
     <%= for job <- @jobs do %>
     <div class="card text-on-surface-muted">
       <div class="content">

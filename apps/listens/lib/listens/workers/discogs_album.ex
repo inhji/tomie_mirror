@@ -10,11 +10,11 @@ defmodule Listens.Workers.DiscogsAlbum do
   alias Listens.Albums
   alias Listens.Albums.Album
 
-  @cache :discogs_album
+  @cache :discogs
   @base_url "https://api.discogs.com"
   @token Application.compile_env(:listens, :discogs_token)
   @invalid_discogs_id -1
-  @rate_limit "rate_limit"
+  @rate_limit :rate_limit
 
   @impl Oban.Worker
   def perform(%{"action" => "fetch_cover"}, _job) do
