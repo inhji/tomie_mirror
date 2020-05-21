@@ -19,7 +19,7 @@ defmodule Tomie.Users.User do
   def profile_changeset(user, attrs \\ %{}) do
     user
     |> cast(attrs, [:theme, :token, :reset_token, :name, :username])
-    |> validate_inclusion(:theme, ["dark", "light"])
+    |> validate_inclusion(:theme, ["dark", "light-purple", "light-red"])
     |> maybe_create_token()
     |> maybe_reset_token()
   end

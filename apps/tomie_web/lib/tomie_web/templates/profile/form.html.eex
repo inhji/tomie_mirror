@@ -13,7 +13,7 @@
 
   <fieldset>
     <%= label f, :theme, "Frontend Theme" %>
-    <%= select f, :theme, ["light", "dark"] %>
+    <%= select f, :theme, ["light-purple", "dark", "light-red"] %>
     <%= error_tag f, :theme %>
   </fieldset>
 
