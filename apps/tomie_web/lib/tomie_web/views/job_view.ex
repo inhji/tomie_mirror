@@ -34,4 +34,22 @@ defmodule TomieWeb.JobView do
 
   def format(nil), do: "empty"
   def format(datetime), do: Timex.format!(datetime, "{D}. {Mfull}, {h24}:{m}:{s}{ss}")
+
+  def last_updated(stats) do
+    if is_nil(stats.discogs.last_updated) do
+      "Never"
+    else
+      Timex.from_now(stats.discogs.last_updated)
+    end
+  end
+
+  def last_listen(stats) do
+    if stats.listenbrainz.last_listen_timestamp == 0 do
+      "Never"
+    else
+      @stats.listenbrainz.last_listen_timestamp
+      |> DateTime.from_unix!()
+      |> Timex.from_now()
+    end
+  end
 end

@@ -23,7 +23,7 @@ defmodule TomieWeb.JobLive.Index do
       },
       discogs: %{
         rate_limit: Listens.Cache.try_get(:discogs, :rate_limit, %{remaining: 0, total: 0}),
-        last_updated: Listens.Cache.try_get(:discogs, :last_updated, 0)
+        last_updated: Listens.Cache.try_get(:discogs, :last_updated, nil)
       }
     }
   end

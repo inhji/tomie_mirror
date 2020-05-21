@@ -17,7 +17,7 @@
           </p>
 
           <p>
-            <%= "Last listen: #{Timex.from_now(DateTime.from_unix!(@stats.listenbrainz.last_listen_timestamp))}" %>
+            <%= "Last listen: #{last_listen(@stats)}" %>
           </p>
         </div>
       </div>
@@ -32,7 +32,7 @@
           </p>
 
           <p>
-            <%= "Last update: #{Timex.from_now(@stats.discogs.last_updated)}" %>
+            <%= "Last update: #{last_updated(@stats)}" %>
           </p>
         </div>
       </div>
