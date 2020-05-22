@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.50.3](https://git.inhji.de/inhji/tomie/compare/0.50.2...v0.50.3) (2020-05-22)
+
+
+
+
+### Bug Fixes:
+
+* last_listen_timestamp not updating
+
 ## [v0.50.2](https://git.inhji.de/inhji/tomie/compare/0.50.1...v0.50.2) (2020-05-22)
 
 
