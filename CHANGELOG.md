@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.51.0](https://git.inhji.de/inhji/tomie/compare/0.50.3...v0.51.0) (2020-05-22)
+
+
+
+
+### Features:
+
+* add weather worker, show weather on index page
+
+### Improvements:
+
+* new Scraper.Html module
+
 ## [v0.50.3](https://git.inhji.de/inhji/tomie/compare/0.50.2...v0.50.3) (2020-05-22)
 
 
