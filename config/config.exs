@@ -19,16 +19,21 @@ config :tomie,
 config :listens,
   discogs_token: "kRIDCYTMRucJojWzQKlXlDAnDlQSgmXboMEZiUBT"
 
+config :scraper, :weather,
+  api_key: "5e8d6569a828fd7860acf87bf1113a9e",
+  city_id: "2920512"
+
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},
-  queues: [bookmarks: 10, listens: 10],
+  queues: [bookmarks: 10, listens: 10, scraper: 10],
   crontab: [
     {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}},
     {"* * * * *", Listens.Workers.DiscogsArtist, args: %{}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "search_id"}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_cover"}},
-    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_genres"}}
+    {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_genres"}},
+    {"* * * * *", Scraper.Workers.Weather, args: %{}}
   ]
 
 config :tomie_web,

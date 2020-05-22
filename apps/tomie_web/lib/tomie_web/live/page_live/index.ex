@@ -3,4 +3,10 @@ defmodule TomieWeb.PageLive.Index do
   alias TomieWeb.PageView
 
   def render(assigns), do: PageView.render("index.html", assigns)
+
+  def mount(_params, _session, socket) do
+    weather = Cachex.get!(:weather, :now)
+
+    {:ok, socket |> assign(weather: weather)}
+  end
 end

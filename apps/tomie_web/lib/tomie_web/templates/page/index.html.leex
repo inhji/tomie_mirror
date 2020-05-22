@@ -1,22 +1,17 @@
-<section class="text-center">
-  <h2 class="text-4xl">
-    Keep in mind
-  </h1>
-
-  <ul class="text-2xl">
-    <li>This is not your homepage</li>
-    <li>You are your own (and only) user</li>
-    <li>You don't <em>need</em> social</li>
-    <li>JS is overrated</li>
-  </ul>
-
-  <h2 class="text-4xl">
-  	Goals
-  </h2>
-
-  <ul class="text-2xl">
-    <li>Keep it simple, stupid!</li>
-    <li>Learn from previous iterations</li>
-    <li>Write your tests first!</li>
-  </ul>
-</section>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <div class="card">
+    <div class="content flex">
+      <%= if @weather do %>
+        <div class="image w-16 flex-shrink-0">
+          <img src="<%= weather_icon_path(@weather) %>" class="w-full">
+        </div>
+        <div class="body">
+          <h3><span class="text-secondary font-bold"><%= @weather.temp.temp %>°</span> in <%= @weather.location %></h3>
+          <p><%= @weather.timestamp |>DateTime.from_unix! |> Timex.from_now %></p>
+        </div>
+      <% else %>
+        <p>Weather loading...</p>
+      <% end %>
+    </div>
+  </div>
+</div>
