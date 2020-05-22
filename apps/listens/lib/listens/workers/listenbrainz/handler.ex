@@ -10,7 +10,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
   @msid_missing "MISSING"
   @cache :listenbrainz
-  @last_listen_timestamp "last_listen_timestamp"
+  @last_listen_timestamp :last_listen_timestamp
 
   def handle_fetch_response(listens, last_ts) do
     %{
