@@ -7,8 +7,8 @@ defmodule Bookmarks.Worker do
   def perform(%{"id" => id}, _job) do
     with bookmark <- Bookmarks.get_bookmark!(id),
          source <- Map.get(bookmark, :source),
-         {:ok, html} <- Scraper.get_html(source),
-         {:ok, result} <- Scraper.parse(html),
+         {:ok, html} <- Scraper.Html.get_html(source),
+         {:ok, result} <- Scraper.Html.parse(html),
          {:ok, updated_bookmark} <- Bookmarks.update_bookmark(bookmark, %{title: result.title}) do
       {:ok, updated_bookmark} =
         Tags.list_tags_with_rules()
