@@ -44,13 +44,6 @@
       <% end %>
     </li>
     <li class="spacer" />
-    <li>
-      <a href="#" class="theme-toggle">
-        <span class="icon">
-          <%= IconView.icon(:light_bulb) %>
-        </span>
-      </a>
-    </li>
     <%= unless Pow.Plug.current_user(@conn) do %>
       <li><%= active_link @conn, "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
       <li><%= active_link @conn, "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>

@@ -24,19 +24,6 @@ liveSocket.connect()
 
 window.liveSocket = liveSocket
 
-// Theme Switch
-
-const toggleButton = document.querySelector(".theme-toggle")
-
-toggleButton.addEventListener("click", function (e) {
-  e.preventDefault()
-
-  const body = document.querySelector("body")
-  const theme = body.dataset.theme
-
-  body.dataset.theme = (theme === "light" ? "dark" : "light")
-})
-
 // NProgress
 
 NProgress.configure({ showSpinner: false })
