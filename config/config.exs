@@ -33,7 +33,7 @@ config :tomie, Oban,
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "search_id"}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_cover"}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_genres"}},
-    {"* * * * *", Scraper.Workers.Weather, args: %{}}
+    {"*/5 * * * *", Scraper.Workers.Weather, args: %{}}
   ]
 
 config :tomie_web,
