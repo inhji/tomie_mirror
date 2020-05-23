@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.51.1](https://git.inhji.de/inhji/tomie/compare/0.51.0...v0.51.1) (2020-05-23)
+
+
+
+
+### Bug Fixes:
+
+* clean up scraper, add cachex dep
+
 ## [v0.51.0](https://git.inhji.de/inhji/tomie/compare/0.50.3...v0.51.0) (2020-05-22)
 
 
