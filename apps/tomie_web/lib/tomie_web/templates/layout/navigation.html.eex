@@ -60,6 +60,7 @@
           <span class="icon">
             <%= IconView.icon(:user) %>
           </span>
+          <span><%= @current_user.name %></span>
         <% end %>
       </li>
     <% end %>
