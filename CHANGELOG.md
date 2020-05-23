@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.51.3](https://git.inhji.de/inhji/tomie/compare/0.51.2...v0.51.3) (2020-05-23)
+
+
+
+
+### Bug Fixes:
+
+* remove theme toggle
+
+### Improvements:
+
+* show username in navbar
+
+* make profile show a liveview
+
 ## [v0.51.2](https://git.inhji.de/inhji/tomie/compare/0.51.1...v0.51.2) (2020-05-23)
 
 
