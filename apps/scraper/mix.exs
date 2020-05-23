@@ -11,8 +11,7 @@ defmodule Scraper.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      test_coverage: [tool: ExCoveralls]
+      deps: deps()
     ]
   end
 
@@ -27,9 +26,9 @@ defmodule Scraper.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:cachex, "~> 3.2"},
       {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"},
       {:httpoison, "~> 1.6"},
-      {:excoveralls, "~> 0.12.3", only: :test},
       {:http, in_umbrella: true},
       {:floki, "~> 0.26.0"}
     ]

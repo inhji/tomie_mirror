@@ -5,7 +5,7 @@ defmodule Scraper.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Cachex, [:weather, []], id: :weather),
+      worker(Cachex, [:weather, []], id: :weather)
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one, name: Scraper.Supervisor)
