@@ -69,10 +69,12 @@ defmodule TomieWeb.Router do
     live "/listens/album/:id/edit", AlbumLive.Edit
     live "/listens/album/:id/merge", AlbumLive.Merge
 
+    live "/profile", ProfileLive.Show
+
     get "/r/:id/:slug", LinkController, :redirect
 
     resources "/profile", ProfileController,
-      only: [:show, :edit, :update],
+      only: [:edit, :update],
       singleton: true
   end
 end
