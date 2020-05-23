@@ -4,18 +4,16 @@
   </ul>
 </nav>
 
-<%= for notebook <- @notebooks do %>
-  <div class="card">
-    <div class="content">
-      <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
-        <h3>
-          <%= notebook.title %>
-        </h3>
-
-        <p>
-          <%= note_count(notebook) %> Notes
-        </p>
-      <% end %>
+<div class="notes" phx-window-keyup="navigate">
+  <%= for {notebook, index} <- @notebooks do %>
+    <div class="card <%= active_class?(index, @selected) %>">
+      <div class="content">
+        <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
+          <h3><%= notebook.title %> <%= index %></h3>
+          <p><%= note_count(notebook) %> Notes</p>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+

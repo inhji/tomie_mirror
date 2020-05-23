@@ -71,6 +71,10 @@ a {
 	@apply transition duration-300 mb-4 shadow bg-surface-alt;
 }
 
+.card h3 {
+	@apply transition duration-300;
+}
+
 .card footer {
 	@apply hidden border-none;
 }
@@ -113,8 +117,13 @@ a {
 
 .card:hover,
 .card:focus,
-.card:active {
+.card:active,
+.card.active {
 	@apply bg-surface-alt shadow-lg;
+}
+
+.card.active h3 {
+	@apply text-primary;
 }
 
 .card .meta {}
