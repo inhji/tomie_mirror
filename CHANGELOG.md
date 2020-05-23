@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.52.0](https://git.inhji.de/inhji/tomie/compare/0.51.3...v0.52.0) (2020-05-23)
+
+
+
+
+### Features:
+
+* implement keyboard navigation for notebooks
+
+### Bug Fixes:
+
+* adapt nprogress to being at the bottom
+
+* read pow cache backend from config
+
+### Improvements:
+
+* tweak nprogress bar
+
 ## [v0.51.3](https://git.inhji.de/inhji/tomie/compare/0.51.2...v0.51.3) (2020-05-23)
 
 
