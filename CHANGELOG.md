@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.53.0](https://git.inhji.de/inhji/tomie/compare/0.52.0...v0.53.0) (2020-05-24)
+
+
+
+
+### Features:
+
+* add queue overview page
+
+### Bug Fixes:
+
+* add focusable class to note card footer to have simple footers for queues
+
+### Improvements:
+
+* refactor album cover fetching
+
 ## [v0.52.0](https://git.inhji.de/inhji/tomie/compare/0.51.3...v0.52.0) (2020-05-23)
 
 
