@@ -57,6 +57,7 @@ defmodule TomieWeb.Router do
     live "/tags/:id/edit", TagLive.Edit
 
     live "/jobs", JobLive.Index
+    live "/jobs/queues", JobLive.Queues
     live "/jobs/:id", JobLive.Show
 
     live "/listens", ListenLive.Index

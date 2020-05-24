@@ -1,0 +1,25 @@
+<div class="grid grid-cols-5 gap-4">
+  <%= live_component @socket, TomieWeb.JobLive.SidebarComponent %>
+
+  <div class="col-span-4">
+    <%= for {queue, states} <- @queues do %>
+      <div class="card">
+        <div class="content">
+          <h3><%= queue %></h3>
+
+          <ul>
+            <%= for %{jobs: jobs, state: state} <- states do %>
+              <li>
+                <strong><%= state %>:</strong> <span><%= jobs %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div>   
+        <footer>
+          <a href="#" class="button" phx-click="pause_queue" phx-value-queue="<%= queue %>">Pause</a>
+          <a href="#" class="button" phx-click="resume_queue" phx-value-queue="<%= queue %>">Resume</a>
+        </footer>  
+      </div>
+    <% end %>
+  </div>
+</div>

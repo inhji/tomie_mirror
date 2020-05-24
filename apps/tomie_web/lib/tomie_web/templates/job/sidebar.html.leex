@@ -33,6 +33,14 @@
         <span class="hidden md:inline">Retrying</span>
         <% end %>
       </li>
+      <li>
+        <%= live_patch to: Routes.live_path(@socket, JobLive.Queues) do %>
+        <div class="icon">
+          <%= IconView.icon(:refresh) %>
+        </div>
+        <span class="hidden md:inline">Queues</span>
+        <% end %>
+      </li>
     </ul>
   </nav>
 </aside>
