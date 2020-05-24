@@ -7,8 +7,11 @@
   </ul>
 </nav>
 
-<h1> <%= @notebook.title %></h1>
 
-<%= for node <- @nodes do %>
-  <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: node %>
-<% end %>
+<div phx-window-keyup="navigate">
+	<h1><%= @notebook.title %></h1>
+
+	<%= for {node, index} <- @nodes do %>
+	  <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: node %>
+	<% end %>
+</div>

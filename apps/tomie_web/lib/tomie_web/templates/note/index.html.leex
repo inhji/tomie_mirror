@@ -4,7 +4,7 @@
   </ul>
 </nav>
 
-<div class="notes" phx-window-keyup="navigate">
+<div phx-window-keyup="navigate">
   <%= for {notebook, index} <- @notebooks do %>
     <div class="card <%= active_class?(index, @selected) %>">
       <div class="content">

@@ -16,14 +16,14 @@ defmodule TomieWeb.JobLive.Queues do
   end
 
   def handle_event("pause_queue", %{"queue" => queue}, socket) do
-  	:ok = Oban.pause_queue(queue)
+    :ok = Oban.pause_queue(queue)
 
-  	{:noreply, socket |> put_flash(:info, "Queue #{queue} paused!")}
+    {:noreply, socket |> put_flash(:info, "Queue #{queue} paused!")}
   end
 
   def handle_event("resume_queue", %{"queue" => queue}, socket) do
-  	:ok = Oban.resume_queue(queue)
+    :ok = Oban.resume_queue(queue)
 
-  	{:noreply, socket |> put_flash(:info, "Queue #{queue} resumed!")}
+    {:noreply, socket |> put_flash(:info, "Queue #{queue} resumed!")}
   end
 end
