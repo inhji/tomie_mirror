@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.54.0](https://git.inhji.de/inhji/tomie/compare/0.53.0...v0.54.0) (2020-05-24)
+
+
+
+
+### Features:
+
+* prepare note navigation
+
+* add note navigation helper
+
 ## [v0.53.0](https://git.inhji.de/inhji/tomie/compare/0.52.0...v0.53.0) (2020-05-24)
 
 
