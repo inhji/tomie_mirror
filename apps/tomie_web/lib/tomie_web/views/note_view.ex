@@ -7,10 +7,10 @@ defmodule TomieWeb.NoteView do
   end
 
   def active_class?(index, selected) do
-  	if index == selected do
-  		"active"
-  	else
-  		""
-  	end
+    if index == selected do
+      "active"
+    else
+      ""
+    end
   end
 end

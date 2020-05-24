@@ -12,7 +12,9 @@ defmodule TomieWeb.ProfileView do
         } catch (e) {
             t = \"\";
         };
-        window.location = \"#{url}?url=\" + encodeURIComponent(window.location.href) + \"&content=\" + encodeURIComponent((t == '' ? '' : '> ' + t)) + \"&name=\" + encodeURIComponent(document.title) + \"&token=#{user.token}\";
+        window.location = \"#{url}?url=\" + encodeURIComponent(window.location.href) + \"&content=\" + encodeURIComponent((t == '' ? '' : '> ' + t)) + \"&name=\" + encodeURIComponent(document.title) + \"&token=#{
+      user.token
+    }\";
     })();
     """
   end

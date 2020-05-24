@@ -8,7 +8,7 @@
       </div>
     <% end %>
   </div>
-  <footer>
+  <footer class="focusable">
     <%= live_patch "Show",
       to: Routes.live_path(@socket, NoteLive.ShowNote, @note.notebook_id, @note),
       class: "button" %>

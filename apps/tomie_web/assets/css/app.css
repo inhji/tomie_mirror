@@ -75,12 +75,8 @@ a {
 	@apply transition duration-300;
 }
 
-.card footer {
+.card footer.focusable {
 	@apply hidden border-none;
-}
-
-.card footer .button {
-	@apply rounded-none bg-surface-alt text-on-surface;
 }
 
 /* This only takes effect if tabindex is used on the .card */
@@ -88,8 +84,12 @@ a {
 	@apply outline-none;
 }
 
-.card:focus footer, .card:focus-within footer {
+.card:focus footer.focusable, .card:focus-within footer.focusable {
 	@apply block border-divider border-solid border-t;
+}
+
+.card footer .button {
+	@apply rounded-none bg-surface-alt text-on-surface;
 }
 
 .card.bg-danger {
