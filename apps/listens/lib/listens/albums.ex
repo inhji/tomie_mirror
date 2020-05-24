@@ -30,7 +30,6 @@ defmodule Listens.Albums do
     |> Db.Repo.preload(:artist)
   end
 
-
   def list_albums_without_discogs_id(opts \\ []) do
     Album
     |> where([a], is_nil(a.discogs_id))
