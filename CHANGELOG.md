@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.55.0](https://git.inhji.de/inhji/tomie/compare/0.54.0...v0.55.0) (2020-05-26)
+
+
+
+
+### Features:
+
+* count tagged posts on tag index
+
+### Bug Fixes:
+
+* unused vars
+
 ## [v0.54.0](https://git.inhji.de/inhji/tomie/compare/0.53.0...v0.54.0) (2020-05-24)
 
 
