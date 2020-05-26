@@ -43,7 +43,18 @@ defmodule Bookmarks do
   def list_bookmarks_by_tag_id(tag_id) do
     Db.Repo.all(
       from [b, t] in bookmark_query(""),
-        where: t.id == ^tag_id
+        where: t.id == ^tag_id,
+        select: b
+    )
+  end
+
+  def count_bookmarks_by_tag_id(tag_id) do
+    Db.Repo.one(
+      from b in Bookmark,
+        left_join: t in assoc(b, :tags),
+        distinct: true,
+        where: t.id == ^tag_id,
+        select: count(b.id)
     )
   end
 
@@ -53,7 +64,8 @@ defmodule Bookmarks do
     Db.Repo.all(
       from b in bookmark_query(query),
         order_by: [desc: b.inserted_at],
-        where: b.is_archived == false
+        where: b.is_archived == false,
+        select: b
     )
   end
 
@@ -62,7 +74,8 @@ defmodule Bookmarks do
       from [b, t] in bookmark_query(query),
         order_by: [desc: b.inserted_at],
         where: is_nil(t.id),
-        where: b.is_archived == false
+        where: b.is_archived == false,
+        select: b
     )
   end
 
@@ -71,7 +84,8 @@ defmodule Bookmarks do
       from b in bookmark_query(query),
         where: b.is_favorite == true,
         where: b.is_archived == false,
-        order_by: [desc: b.inserted_at]
+        order_by: [desc: b.inserted_at],
+        select: b
     )
   end
 
@@ -79,7 +93,8 @@ defmodule Bookmarks do
     Db.Repo.all(
       from b in bookmark_query(query),
         where: b.is_archived == true,
-        order_by: [desc: b.inserted_at]
+        order_by: [desc: b.inserted_at],
+        select: b
     )
   end
 
@@ -91,7 +106,8 @@ defmodule Bookmarks do
           desc: b.is_favorite,
           asc: b.is_archived
         ],
-        where: b.is_archived == false
+        where: b.is_archived == false,
+        select: b
     )
   end
 
@@ -113,7 +129,6 @@ defmodule Bookmarks do
   defp bookmark_query() do
     from b in Bookmark,
       left_join: t in assoc(b, :tags),
-      select: b,
       distinct: true,
       preload: ^@preloads
   end

@@ -24,13 +24,8 @@ defmodule Tags.Tag do
   end
 
   def insert_changeset(tag \\ %Tag{}, attrs \\ %{}) do
-    tag
-    |> cast(attrs, @attrs)
-    |> validate_required([:name])
-    |> unique_constraint(:name)
+    changeset(tag, attrs)
     |> add_default_rule()
-    |> Slug.maybe_generate_slug()
-    |> Slug.unique_constraint()
   end
 
   def add_default_rule(changeset) do
