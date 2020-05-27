@@ -12,7 +12,6 @@
 	<h1><%= @notebook.title %></h1>
 
 	<%= for {node, index} <- @nodes do %>
-    <div><%= index %></div>
 	  <%= live_component @socket, TomieWeb.NoteLive.NoteComponent, note: node, active: @selected == index %>
 	<% end %>
 </div>
