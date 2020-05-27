@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.56.0](https://git.inhji.de/inhji/tomie/compare/0.55.0...v0.56.0) (2020-05-27)
+
+
+
+
+### Features:
+
+* add navigation to top level notes
+
+### Bug Fixes:
+
+* remove index
+
 ## [v0.55.0](https://git.inhji.de/inhji/tomie/compare/0.54.0...v0.55.0) (2020-05-26)
 
 
