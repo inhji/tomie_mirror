@@ -58,8 +58,6 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query \\ "", page \\ nil)
-
   def list_bookmarks(query, "recent") do
     Db.Repo.all(
       from b in bookmark_query(query),
