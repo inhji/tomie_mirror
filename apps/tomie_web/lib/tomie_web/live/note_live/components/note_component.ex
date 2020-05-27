@@ -10,11 +10,11 @@ defmodule TomieWeb.NoteLive.NoteComponent do
   end
 
   def update(%{note: note}, socket) do
-  	{:ok, socket |> assign(note: note, children: fetch(note), active: false)}
+    {:ok, socket |> assign(note: note, children: fetch(note), active: false)}
   end
 
   def fetch(note) do
-  	{:ok, children} = Notes.Tree.descendants(note.id, nodes: true, depth: 1)
-  	children
+    {:ok, children} = Notes.Tree.descendants(note.id, nodes: true, depth: 1)
+    children
   end
 end
