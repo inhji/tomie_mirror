@@ -6,7 +6,7 @@
 
 <div phx-window-keyup="navigate">
   <%= for {notebook, index} <- @notebooks do %>
-    <div class="card <%= active_class?(index, @selected) %>">
+    <div class="card <%= active_class?(index == @selected) %>">
       <div class="content">
         <%= live_patch to: Routes.live_path(@socket, NoteLive.ShowNotebook, notebook) do %>
           <h3><%= notebook.title %> <%= index %></h3>

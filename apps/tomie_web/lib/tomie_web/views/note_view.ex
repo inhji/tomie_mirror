@@ -6,7 +6,7 @@ defmodule TomieWeb.NoteView do
     Enum.count(notebook.notes) - 1
   end
 
-  def active_class?(socket) do
+  def active_class?(socket) when is_map(socket) do
     if socket.assigns.active do
       "active"
     else
@@ -14,8 +14,8 @@ defmodule TomieWeb.NoteView do
     end
   end
 
-  def active_class?(index, selected) do
-    if index == selected do
+  def active_class?(active) do
+    if active do
       "active"
     else
       ""
