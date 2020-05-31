@@ -3,12 +3,17 @@
     <div class="content flex">
       <%= if @weather do %>
         <div class="image w-16 flex-shrink-0">
-          <img src="<%= weather_icon_path(@weather) %>" class="w-full">
+          <img src="<%= weather_icon_path(@weather) %>" class="w-full" title="<%= @weather.pretty.description %>">
         </div>
+
         <div class="body">
-          <h3><span class="text-secondary font-bold"><%= @weather.temp.temp %>°</span> in <%= @weather.location %></h3>
-          <p><%= @weather.timestamp |>DateTime.from_unix! |> Timex.from_now %></p>
-        </div>
+          <h3><span class="text-secondary font-bold"><%= @weather.temp.temp %>°</span> and <%= @weather.pretty.main %> in <%= @weather.location %></h3>
+          <p><%= @weather.clouds.all %>% cloudy, <%= @weather.temp.humidity %>% humidity</p>    
+
+          <div class="meta">
+            <span><%= @weather.timestamp |>DateTime.from_unix! |> Timex.from_now %></span>  
+          </div>      
+        </div>       
       <% else %>
         <p>Weather loading...</p>
       <% end %>
