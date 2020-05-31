@@ -4,11 +4,13 @@
 import css from "../css/app.css"
 
 import "phoenix_html"
+import "trix"
+
 import NProgress from "nprogress"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 import Listens from "./hooks/listens"
-import Prism from 'prismjs';
+import Prism from "prismjs"
 
 // Live Socket
 let Hooks = {
