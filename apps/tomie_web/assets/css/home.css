@@ -3,5 +3,71 @@
 @import "vendor/minireset";
 
 body {
-	font-family: serif;
+	max-width: 50rem;
+	padding: 1rem;
+	line-height: 1rem;
+	margin: 0 auto;
+
+	font-family: monospace;
+	font-size: 0.9rem;
+}
+
+a {
+	color: black;
+	text-transform: uppercase;
+}
+
+a:hover {
+	color: white;
+	background: black;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+dl {
+	margin-bottom: 1rem;
+}
+
+dd {
+	margin-bottom: 0.5rem;
+}
+
+h2, h3 {
+	margin-top: 1rem;
+}
+
+h1 {
+	font-size: 1.3rem;
+}
+
+h1:before {
+	content: '⌘ ';
+}
+
+h2 {
+	font-size: 1.2rem;
+}
+
+h2:before {
+	content: '⌘ ';
+}
+
+li {
+	text-align: justify;
+}
+
+li:before {
+	content: '* ';
+}
+
+.divider { margin-bottom: 1rem; }
+.divider:before {
+	content: '============================================';
 }
