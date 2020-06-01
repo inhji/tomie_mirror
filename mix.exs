@@ -26,7 +26,8 @@ defmodule Tomie.Umbrella.MixProject do
             scraper: :permanent,
             tags: :permanent,
             listens: :permanent,
-            http: :permanent
+            http: :permanent,
+            wiki: :permanent
           ]
         ]
       ]
