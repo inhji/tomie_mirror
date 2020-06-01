@@ -26,13 +26,17 @@ defmodule TomieWeb.Router do
     pow_routes()
   end
 
-  scope "/" do
+  scope "/", TomieWeb do
+    get "/", HomeController, :index
+  end
+
+  scope "/admin" do
     pipe_through [:browser, :protected]
 
     live_dashboard "/dashboard", metrics: Tomie.Telemetry
   end
 
-  scope "/", TomieWeb do
+  scope "/admin", TomieWeb do
     pipe_through [:browser, :protected]
 
     live "/", PageLive.Index
