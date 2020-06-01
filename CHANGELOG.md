@@ -5,6 +5,25 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.57.0](https://git.inhji.de/inhji/tomie/compare/0.56.0...v0.57.0) (2020-06-01)
+
+
+
+
+### Features:
+
+* add trix editor
+
+### Bug Fixes:
+
+* finally remove warning about list_bookmarks
+
+### Improvements:
+
+* more weather data
+
+* handle opening note
+
 ## [v0.56.0](https://git.inhji.de/inhji/tomie/compare/0.55.0...v0.56.0) (2020-05-27)
 
 
