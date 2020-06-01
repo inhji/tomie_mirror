@@ -5,6 +5,27 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.58.0](https://git.inhji.de/inhji/tomie/compare/0.57.0...v0.58.0) (2020-06-01)
+
+
+
+
+### Features:
+
+* initial homepage
+
+* initial home styles
+
+* initial home route
+
+* add home css bundle
+
+* add wiki app
+
+### Improvements:
+
+* move routes to /admin scope
+
 ## [v0.57.0](https://git.inhji.de/inhji/tomie/compare/0.56.0...v0.57.0) (2020-06-01)
 
 
