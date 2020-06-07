@@ -3,71 +3,118 @@
 @import "vendor/minireset";
 
 body {
-	max-width: 50rem;
-	padding: 1rem;
-	line-height: 1rem;
-	margin: 0 auto;
+  max-width: 50rem;
+  margin: 0 auto;
 
-	font-family: monospace;
-	font-size: 0.9rem;
+  padding: 2rem;
+
+  color: #555;
+  background: #DDD;
+
+  line-height: 1.5rem;
+  font-family: Georgia;
+  font-size: 1rem;
+}
+
+.logo svg g path {
+  fill: #ccc;
+  stroke:#aaa;
+  stroke-width:1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  stroke-opacity:1;
 }
 
 a {
-	color: black;
-	text-transform: uppercase;
+  color: black;
+  text-decoration: none;
 }
 
 a:hover {
-	color: white;
-	background: black;
+  color: white;
+  background: black;
 }
+
+a::before {
+  content: '▸ ';
+  color: #555;
+  white-space: nowrap;
+}
+
 
 p {
-	margin-bottom: 1rem;
-}
-
-h1, h2, h3 {
-	font-weight: bold;
-	margin-bottom: 1rem;
-}
-
-dl {
-	margin-bottom: 1rem;
-}
-
-dd {
-	margin-bottom: 0.5rem;
-}
-
-h2, h3 {
-	margin-top: 1rem;
-}
-
-h1 {
-	font-size: 1.3rem;
-}
-
-h1:before {
-	content: '⌘ ';
-}
-
-h2 {
-	font-size: 1.2rem;
-}
-
-h2:before {
-	content: '⌘ ';
+  margin-bottom: 1rem;
 }
 
 li {
-	text-align: justify;
+  margin-bottom: 0.1rem;
 }
 
-li:before {
-	content: '* ';
+h1, h2, h3 {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  color: #333;
 }
 
-.divider { margin-bottom: 1rem; }
-.divider:before {
-	content: '============================================';
+dl {
+  margin-bottom: 1rem;
 }
+
+dd {
+  margin-bottom: 0.5rem;
+}
+
+h2, h3 {
+  margin-top: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h1 span {
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #eee;
+  background: #d34;
+  padding: 0.25rem 0.5rem; 
+}
+
+h1 a {
+  text-decoration: none;
+  padding-left: 0.5rem;
+}
+
+h1 a:hover {
+  padding: 0.25rem 0rem 0.25rem 0.5rem; 
+}
+
+h1 a::before {
+  content: '';
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h2::before {
+  content: '• ';
+  color: #d34;
+}
+
+h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+footer {
+  padding: 3rem 0;
+  font-family: "Helvetica", "Arial", sans-serif;
+  text-align: center;
+}
+
