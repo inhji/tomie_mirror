@@ -1,7 +1,10 @@
-<header>
+<header class="h-card">
 	<h1>
-		<a href="/">Hi, my name is <span title="\inǰi\">Inhji</span></a>
+		<a href="/" class="u-url u-uid">
+			Hi, my name is <span title="\inǰi\" class="p-name">Inhji</span>
+		</a>
 	</h1>
+	<h3>Building Blockchain-powered AI's since 2178</h3>
 </header>
 
 <h2>A few things about me</h2>
