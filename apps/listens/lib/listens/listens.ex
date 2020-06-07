@@ -3,10 +3,10 @@ defmodule Listens.Listens do
 
   alias Listens.Listens.Listen
 
-  def list_listens() do
+  def list_listens(limit \\ 20) do
     Listen
     |> order_by(desc: :listened_at)
-    |> limit(20)
+    |> limit(^limit)
     |> Db.Repo.all()
     |> Db.Repo.preload([:artist, :album, :track])
   end

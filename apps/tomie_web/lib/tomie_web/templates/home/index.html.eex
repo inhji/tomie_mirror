@@ -1,25 +1,60 @@
-<h1>Hi, my name is Inhji!</h1>
+<header>
+	<h1>
+		<a href="/">Hi, my name is <span title="\inǰi\">Inhji</span></a>
+	</h1>
+</header>
 
-<div class="divider"></div>
-
-<p>Here are a few things about me:</p>
+<h2>A few things about me</h2>
 
 <ul>
-	<li>I got introduced to computers at the age of 5 when I watched my dad playing <a href="https://en.wikipedia.org/wiki/Oxyd">OXYD</a> on his Atari ST</li>
-	<li>I started teaching myself to code when I got a book about programming in <a href="https://en.wikipedia.org/wiki/Turbo_Pascal">Turbo Pascal</a> at 12</li>
+	<li>I got introduced to computers &amp; games at the age of 5 when I watched my dad playing <a href="https://en.wikipedia.org/wiki/Oxyd" class="external">OXYD</a> on his Atari ST</li>
+	<li>I started teaching myself to code when I got a book about programming in <a href="https://en.wikipedia.org/wiki/Turbo_Pascal" class="external">Turbo Pascal</a> at 12</li>
 	<li>I work as a software developer where I write windows applications with .NET</li>
 	<li>In my free time I write a lot of Elixir, almost exclusively for the website you're reading</li>
-	<li>My other passion besides computers is music. I consider myself a music addict</li>
+	<li>My other passion besides computers is music</li>
+</ul>
+
+<h2>Latest Bookmarks</h2>
+
+<ul>
+	<%= for b <- @bookmarks do %>
+		<li>
+			<h3>
+				<a href="<%= b.source %>" class="external">
+					<%= b.title %>				
+				</a>
+			</h3>
+			<p>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></p>
+		</li>
+	<% end %>
+</ul>
+
+<h2>Latest Listens</h2>
+
+<ul>
+	<%= for l <- @listens do %>
+		<li>
+			<h3>
+				<span>
+					<%= l.track.name %>				
+				</span>
+			</h3>
+			<p>by <%= l.artist.name %></p>
+		</li>
+	<% end %>
 </ul>
 
 <h2>Projects</h2>
 
-<div class="divider"></div>
-
 <dl>
-	<dt><a href="/tomie">TOMIE</a></dt>
-	<dd>bla bla</dd>
+	<h3><a href="/tomie">Tomie</a></h3>
+	<p>bla bla</p>	
 
-	<dt><a href="/modular">EURORACK</a></dt>
-	<dd>eurorack</dd>
+	<h3><a href="/modular">Eurorack</a></h3>
+	<p>eurorack</p>	
 </dl>
+
+<footer>
+	<p>Created by Inhji.</p>
+	<p>Source</p>
+</footer>

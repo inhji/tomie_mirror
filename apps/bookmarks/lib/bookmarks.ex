@@ -7,6 +7,7 @@ defmodule Bookmarks do
 
   @preloads [:tags]
   @default_page "recent"
+  @default_limit 50
 
   @doc """
   Creates a bookmark from the given attributes.
@@ -36,10 +37,6 @@ defmodule Bookmarks do
       Db.Repo.get!(Bookmark, id)
       |> Db.Repo.preload(@preloads)
 
-  def list_bookmarks() do
-    Db.Repo.all(from(b in Bookmark))
-  end
-
   def list_bookmarks_by_tag_id(tag_id) do
     Db.Repo.all(
       from [b, t] in bookmark_query(""),
@@ -58,16 +55,19 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, "recent") do
+  def list_bookmarks(query, page, limit \\ @default_limit)
+
+  def list_bookmarks(query, "recent", limit) do
     Db.Repo.all(
       from b in bookmark_query(query),
         order_by: [desc: b.inserted_at],
         where: b.is_archived == false,
-        select: b
+        select: b,
+        limit: ^limit
     )
   end
 
-  def list_bookmarks(query, "inbox") do
+  def list_bookmarks(query, "inbox", limit) do
     Db.Repo.all(
       from [b, t] in bookmark_query(query),
         order_by: [desc: b.inserted_at],
@@ -77,7 +77,7 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, "favorites") do
+  def list_bookmarks(query, "favorites", limit) do
     Db.Repo.all(
       from b in bookmark_query(query),
         where: b.is_favorite == true,
@@ -87,7 +87,7 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, "archive") do
+  def list_bookmarks(query, "archive", limit) do
     Db.Repo.all(
       from b in bookmark_query(query),
         where: b.is_archived == true,
@@ -96,7 +96,7 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, "popular") do
+  def list_bookmarks(query, "popular", limit) do
     Db.Repo.all(
       from b in bookmark_query(query),
         order_by: [
@@ -109,7 +109,8 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, _page) do
+
+  def list_bookmarks(query, _page, limit) do
     list_bookmarks(query, @default_page)
   end
 
