@@ -47,6 +47,7 @@
 	<% end %>
 </ul>
 
+<!--
 <h2>Projects</h2>
 
 <dl>
@@ -56,6 +57,7 @@
 	<h3><a href="/modular">Eurorack</a></h3>
 	<p>eurorack</p>	
 </dl>
+-->
 
 <footer>
 	<p>Created by Inhji.</p>
