@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.4](https://git.inhji.de/inhji/tomie/compare/0.59.3...v0.59.4) (2020-06-07)
+
+
+
+
+### Bug Fixes:
+
+* colors for a::before
+
+* remove projects for now
+
+* lighter background
+
 ## [v0.59.3](https://git.inhji.de/inhji/tomie/compare/0.59.2...v0.59.3) (2020-06-07)
 
 
