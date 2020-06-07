@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.2](https://git.inhji.de/inhji/tomie/compare/0.59.1...v0.59.2) (2020-06-07)
+
+
+
+
+### Bug Fixes:
+
+* add stupid subtitle
+
+* add link to source
+
 ## [v0.59.1](https://git.inhji.de/inhji/tomie/compare/0.59.0...v0.59.1) (2020-06-07)
 
 
