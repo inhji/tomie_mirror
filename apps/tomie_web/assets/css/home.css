@@ -38,10 +38,12 @@ a:hover {
 
 a::before {
   content: '▸ ';
-  color: #555;
   white-space: nowrap;
 }
 
+a.hover::before {
+  color: #eee;
+}
 
 p {
   margin-bottom: 1rem;
