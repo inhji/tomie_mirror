@@ -22,11 +22,7 @@
 <ul>
 	<%= for b <- @bookmarks do %>
 		<li>
-			<h3>
-				<a href="<%= b.source %>" class="external">
-					<%= b.title %>				
-				</a>
-			</h3>
+			<h3><a href="<%= b.source %>"><%= b.title %></a></h3>
 			<p>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></p>
 		</li>
 	<% end %>
@@ -37,11 +33,7 @@
 <ul>
 	<%= for l <- @listens do %>
 		<li>
-			<h3>
-				<span>
-					<%= l.track.name %>				
-				</span>
-			</h3>
+			<h3><%= l.track.name %></h3>
 			<p>by <%= l.artist.name %></p>
 		</li>
 	<% end %>
@@ -61,5 +53,5 @@
 
 <footer>
 	<p>Created by Inhji.</p>
-	<p><a href="https://git.inhji.de/inhji/tomie" target="_blank">Source</a></p>
+	<p><a href="https://git.inhji.de/inhji/tomie" target="_blank" rel="noopener noreferrer">Source</a></p>
 </footer>
