@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.5](https://git.inhji.de/inhji/tomie/compare/0.59.4...v0.59.5) (2020-06-08)
+
+
+
+
+### Bug Fixes:
+
+* smol improvements to homepage structure
+
+* update favicon
+
 ## [v0.59.4](https://git.inhji.de/inhji/tomie/compare/0.59.3...v0.59.4) (2020-06-07)
 
 
