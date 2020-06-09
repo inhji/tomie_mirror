@@ -21,10 +21,10 @@
 
 <ul>
 	<%= for b <- @bookmarks do %>
-		<li>
-			<h3><a href="<%= b.source %>"><%= b.title %></a></h3>
-			<p>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></p>
-		</li>
+	<li>
+		<h3><a href="<%= b.source %>"><%= b.title %></a></h3>
+		<p>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></p>
+	</li>
 	<% end %>
 </ul>
 
@@ -32,24 +32,22 @@
 
 <ul>
 	<%= for l <- @listens do %>
-		<li>
-			<h3><%= l.track.name %></h3>
-			<p>by <%= l.artist.name %></p>
-		</li>
+	<li>
+		<h3><%= l.track.name %></h3>
+		<p>by <%= l.artist.name %></p>
+	</li>
 	<% end %>
 </ul>
 
-<!--
 <h2>Projects</h2>
 
 <dl>
-	<h3><a href="/tomie">Tomie</a></h3>
-	<p>bla bla</p>	
+	<h3><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <span class="brackets">2013 - 2020</span></h3>
+	<p>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</p>	
 
-	<h3><a href="/modular">Eurorack</a></h3>
-	<p>eurorack</p>	
+	<h3><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <span class="brackets">2018 - 2020</span></h3>
+	<p>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</p>	
 </dl>
--->
 
 <footer>
 	<p>Created by Inhji.</p>

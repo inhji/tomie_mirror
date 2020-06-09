@@ -115,3 +115,13 @@ footer {
   text-align: center;
 }
 
+
+.brackets::before {
+  content: '[';
+  color: #d34;
+}
+
+.brackets::after {
+  content: ']';
+  color: #d34;
+}
