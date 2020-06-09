@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.6](https://git.inhji.de/inhji/tomie/compare/0.59.5...v0.59.6) (2020-06-09)
+
+
+
+
+### Bug Fixes:
+
+* project pages
+
+* rel=me links
+
+* project links
+
+* project routes
+
 ## [v0.59.5](https://git.inhji.de/inhji/tomie/compare/0.59.4...v0.59.5) (2020-06-08)
 
 
