@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import "vendor/minireset";
+@import "home/header";
 
 body {
   max-width: 50rem;
@@ -17,22 +18,19 @@ body {
 }
 
 a {
-  color: black;
+  color: #333;
   text-decoration: none;
 }
 
 a:hover {
   color: white;
-  background: black;
+  background: #333;
 }
 
 a::before {
-  content: '▸ ';
+  content: '▸';
+  padding-right: 3px;
   white-space: nowrap;
-}
-
-a.hover::before {
-  color: #eee;
 }
 
 p {
@@ -53,6 +51,14 @@ dl {
   margin-bottom: 1rem;
 }
 
+dt {
+  color: #333;
+  font-size: 1rem;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 dd {
   margin-bottom: 0.5rem;
 }
@@ -61,52 +67,15 @@ h2, h3 {
   margin-top: 1rem;
 }
 
-header {}
-header h3 {
-  text-align: center;
-}
-
-h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-h1 span {
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: #eee;
-  background: #d34;
-  padding: 0.25rem 0.5rem; 
-}
-
-h1 a {
-  text-decoration: none;
-  padding-left: 0.5rem;
-}
-
-h1 a:hover {
-  padding: 0.25rem 0rem 0.25rem 0.5rem; 
-}
-
-h1 a::before {
-  content: '';
-}
-
-h2 {
+h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   margin-top: 3rem;
 }
 
-h2::before {
+h3::before {
   content: '• ';
   color: #d34;
-}
-
-h3 {
-  font-size: 1rem;
-  text-transform: uppercase;
 }
 
 footer {
@@ -119,9 +88,13 @@ footer {
 .brackets::before {
   content: '[';
   color: #d34;
+  padding-right: 3px;
+  vertical-align: top;
 }
 
 .brackets::after {
   content: ']';
   color: #d34;
+  padding-left: 3px;
+  vertical-align: top;
 }

@@ -1,0 +1,33 @@
+header {}
+header h2 {
+  font-size: 1.1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+header h1 span {
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #eee;
+  background: #d34;
+  padding: 0.25rem 0.5rem; 
+}
+
+header h1 a {
+  text-decoration: none;
+  padding-left: 0.5rem;
+}
+
+header h1 a:hover {
+  padding: 0.25rem 0rem 0.25rem 0.5rem; 
+}
+
+header h1 a::before {
+  content: '';
+}

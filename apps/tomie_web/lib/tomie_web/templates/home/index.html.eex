@@ -4,10 +4,10 @@
 			Hi, my name is <span title="\inǰi\" class="p-name">Inhji</span>
 		</a>
 	</h1>
-	<h3 class="p-note">Building Blockchain-powered AI's since 2178</h3>
+	<h2 class="p-note">Building Blockchain-powered AI's since 2178</h2>
 </header>
 
-<h2>A few things about me</h2>
+<h3>A few things about me</h3>
 
 <ul>
 	<li>I got introduced to computers &amp; games at the age of 5 when I watched my dad playing <a href="https://en.wikipedia.org/wiki/Oxyd" class="external">OXYD</a> on his Atari ST</li>
@@ -17,36 +17,32 @@
 	<li>My other passion besides computers is music</li>
 </ul>
 
-<h2>Latest Bookmarks</h2>
+<h3>Latest Bookmarks</h3>
 
 <ul>
 	<%= for b <- @bookmarks do %>
-	<li>
-		<h3><a href="<%= b.source %>"><%= b.title %></a></h3>
-		<p>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></p>
-	</li>
+	<dt><a href="<%= b.source %>"><%= b.title %></a> <small class="brackets"><%= Timex.from_now(b.inserted_at) %></small></dt>
+	<dd>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></dd>
 	<% end %>
 </ul>
 
-<h2>Latest Listens</h2>
-
-<ul>
-	<%= for l <- @listens do %>
-	<li>
-		<h3><%= l.track.name %></h3>
-		<p>by <%= l.artist.name %></p>
-	</li>
-	<% end %>
-</ul>
-
-<h2>Projects</h2>
+<h3>Latest Listens</h3>
 
 <dl>
-	<h3><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <span class="brackets">2013 - 2020</span></h3>
-	<p>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</p>	
+	<%= for l <- @listens do %>
+	<dt><%= l.track.name %> <small class="brackets"><%= Timex.from_now(l.listened_at) %></small></dt>
+	<dd>by <%= l.artist.name %></dd>
+	<% end %>
+</dl>
 
-	<h3><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <span class="brackets">2018 - 2020</span></h3>
-	<p>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</p>	
+<h3>Projects</h3>
+
+<dl>
+	<dt><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <small class="brackets">2013 - 2020</small></dt>
+	<dd>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</dd>	
+
+	<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
+	<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
 </dl>
 
 <footer>
