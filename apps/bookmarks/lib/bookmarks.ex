@@ -109,7 +109,6 @@ defmodule Bookmarks do
     )
   end
 
-
   def list_bookmarks(query, _page, limit) do
     list_bookmarks(query, @default_page)
   end
