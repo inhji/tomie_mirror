@@ -11,6 +11,10 @@ defmodule TomieWeb.Router do
     plug :put_root_layout, {TomieWeb.LayoutView, :root}
   end
 
+  pipeline :home do
+    plug :accepts, ["html"]
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -20,15 +24,24 @@ defmodule TomieWeb.Router do
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
+  # --- Auth Routes
+
   scope "/" do
     pipe_through :browser
 
     pow_routes()
   end
 
+  # --- Home Routes
+
   scope "/", TomieWeb do
+    pipe_through :home
+
     get "/", HomeController, :index
+    get "/project/:name", HomeController, :project
   end
+
+  # --- Admin Routes
 
   scope "/admin" do
     pipe_through [:browser, :protected]
