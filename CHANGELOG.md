@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.60.0](https://git.inhji.de/inhji/tomie/compare/0.59.10...v0.60.0) (2020-06-15)
+
+
+
+
+### Features:
+
+* add avatar and tag line
+
+### Bug Fixes:
+
+* active link for home
+
+* revert profile routes to simple controller
+
+* limit warnings in bookmarks
+
 ## [v0.59.10](https://git.inhji.de/inhji/tomie/compare/0.59.9...v0.59.10) (2020-06-15)
 
 
