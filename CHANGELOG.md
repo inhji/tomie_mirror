@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.8](https://git.inhji.de/inhji/tomie/compare/0.59.7...v0.59.8) (2020-06-15)
+
+
+
+
+### Bug Fixes:
+
+* image struct can be nil
+
 ## [v0.59.7](https://git.inhji.de/inhji/tomie/compare/0.59.6...v0.59.7) (2020-06-09)
 
 
