@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.59.9](https://git.inhji.de/inhji/tomie/compare/0.59.8...v0.59.9) (2020-06-15)
+
+
+
+
+### Bug Fixes:
+
+* update plug_cowboy
+
 ## [v0.59.8](https://git.inhji.de/inhji/tomie/compare/0.59.7...v0.59.8) (2020-06-15)
 
 
