@@ -102,23 +102,27 @@ defmodule Listens.Workers.DiscogsAlbum do
   def handle_cover_fetch_response(body, album) do
     case Jason.decode(body, keys: :atoms) do
       {:ok, json} ->
-        primary_image =
-          json
-          |> Map.get(:images)
-          |> Enum.find(fn i -> i.type in ["primary", "secondary"] end)
+        case maybe_get_image(json) do
+          nil ->
+            Logger.warn("[Album/Image/Fetch] No cover image found for #{album.name}")
 
-        if is_nil(primary_image) do
-          Logger.warn("[Album/Image/Fetch] No cover image found for #{album.name}")
-        else
-          image_uri = Map.get(primary_image, :uri)
+          image ->
+            image_uri = Map.get(cover_image, :uri)
 
-          album
-          |> Album.changeset(%{image: image_uri})
-          |> Repo.update(log: false)
+            album
+            |> Album.changeset(%{image: image_uri})
+            |> Repo.update(log: false)
         end
 
       {:error, error} ->
         Logger.error("[Album/Image/Fetch] #{inspect(error)}")
+    end
+  end
+
+  def maybe_get_image(json) do
+    case Map.get(json, :images) do
+      nil -> nil
+      images -> Enum.find(images, fn i -> i.type in ["primary", "secondary"] end)
     end
   end
 

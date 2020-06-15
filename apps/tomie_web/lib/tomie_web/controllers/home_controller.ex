@@ -16,7 +16,7 @@ defmodule TomieWeb.HomeController do
   end
 
   def project(conn, %{"name" => name}) do
-  	pretty_name = String.capitalize(name)
+    pretty_name = String.capitalize(name)
 
     render(conn, "project_#{name}.html", page_title: pretty_name)
   end
