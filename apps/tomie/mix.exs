@@ -43,6 +43,8 @@ defmodule Tomie.MixProject do
       {:pow, "~> 1.0.19"},
       {:phoenix_pubsub, "~> 2.0"},
       {:excoveralls, "~> 0.12.3", only: :test},
+      {:waffle, "~> 1.1"},
+      {:waffle_ecto, "~> 0.0.9"},
       {:db, in_umbrella: true}
     ]
   end

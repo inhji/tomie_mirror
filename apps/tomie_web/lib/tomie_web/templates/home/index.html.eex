@@ -1,10 +1,13 @@
 <header class="h-card">
+	<div class="avatar">
+		<img src="<%= Routes.static_path(@conn, Tomie.Users.User.avatar(@user)) %>" class="u-photo" width="150">
+	</div>
 	<h1>
 		<a href="/" class="u-url u-uid">
 			Hi, my name is <span title="\inǰi\" class="p-name">Inhji</span>
 		</a>
 	</h1>
-	<h2 class="p-note">Building Blockchain-powered AI's since 2178</h2>
+	<h2 class="p-note"><%= @user.tagline %></h2>
 </header>
 
 <h3>A few things about me</h3>

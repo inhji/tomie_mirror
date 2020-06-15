@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		<%= live_title_tag @page_title, suffix: " — Inhji.de" %>
+		<%= live_title_tag @page_title, suffix: " • Inhji.de" %>
 
 		<link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/home.css") %>"/>
 		<link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/images/apple-touch-icon.png") %>">

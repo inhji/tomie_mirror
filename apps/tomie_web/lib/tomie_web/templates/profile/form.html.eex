@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <fieldset>
     <%= label f, :name %>
     <%= text_input f, :name%>
@@ -9,6 +9,12 @@
     <%= label f, :username %>
     <%= text_input f, :username %>
     <%= error_tag f, :username %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :tagline %>
+    <%= text_input f, :tagline %>
+    <%= error_tag f, :tagline %>
   </fieldset>
 
   <fieldset>
@@ -27,6 +33,12 @@
     <%= label f, :reset_token, "Reset API Token" %>
     <%= checkbox f, :reset_token %>
     <%= error_tag f, :reset_token %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :avatar, "Avatar" %>
+    <%= file_input f, :avatar %>
+    <%= error_tag f, :avatar %>
   </fieldset>
 
   <%= submit "submit", class: "button" %>

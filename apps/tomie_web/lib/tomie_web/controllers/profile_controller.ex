@@ -29,7 +29,7 @@ defmodule TomieWeb.ProfileController do
         conn
         |> sync_user(user)
         |> put_flash(:info, "Profile updated!")
-        |> redirect(to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.ProfileLive.Show))
+        |> redirect(to: Routes.profile_path(conn, :show))
 
       {:error, changeset} ->
         render(conn, "edit.html", changeset: changeset)

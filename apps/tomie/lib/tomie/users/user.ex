@@ -1,6 +1,7 @@
 defmodule Tomie.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
+  use Waffle.Ecto.Schema
   import Ecto.Changeset
 
   schema "users" do
@@ -8,20 +9,28 @@ defmodule Tomie.Users.User do
 
     field :name, :string
     field :username, :string
+    field :tagline, :string
 
     field :theme, :string, default: "light"
     field :token, :string
     field :reset_token, :boolean, virtual: true
+
+    field :avatar, Tomie.Users.Uploader.Type
 
     timestamps()
   end
 
   def profile_changeset(user, attrs \\ %{}) do
     user
-    |> cast(attrs, [:theme, :token, :reset_token, :name, :username])
+    |> cast(attrs, [:theme, :token, :reset_token, :name, :username, :tagline])
+    |> cast_attachments(attrs, [:avatar])
     |> validate_inclusion(:theme, ["dark", "light-purple", "light-red"])
     |> maybe_create_token()
     |> maybe_reset_token()
+  end
+
+  def avatar(user, version \\ :large) do
+    Tomie.Users.Uploader.url({:avatar, user}, version)
   end
 
   defp maybe_reset_token(changeset) do
