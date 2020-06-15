@@ -106,7 +106,7 @@ defmodule Listens.Workers.DiscogsAlbum do
           nil ->
             Logger.warn("[Album/Image/Fetch] No cover image found for #{album.name}")
 
-          image ->
+          cover_image ->
             image_uri = Map.get(cover_image, :uri)
 
             album
