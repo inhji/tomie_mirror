@@ -73,7 +73,8 @@ defmodule Bookmarks do
         order_by: [desc: b.inserted_at],
         where: is_nil(t.id),
         where: b.is_archived == false,
-        select: b
+        select: b,
+        limit: ^limit
     )
   end
 
@@ -83,7 +84,8 @@ defmodule Bookmarks do
         where: b.is_favorite == true,
         where: b.is_archived == false,
         order_by: [desc: b.inserted_at],
-        select: b
+        select: b,
+        limit: ^limit
     )
   end
 
@@ -92,7 +94,8 @@ defmodule Bookmarks do
       from b in bookmark_query(query),
         where: b.is_archived == true,
         order_by: [desc: b.inserted_at],
-        select: b
+        select: b,
+        limit: ^limit
     )
   end
 
@@ -105,11 +108,12 @@ defmodule Bookmarks do
           asc: b.is_archived
         ],
         where: b.is_archived == false,
-        select: b
+        select: b,
+        limit: ^limit
     )
   end
 
-  def list_bookmarks(query, _page, limit) do
+  def list_bookmarks(query, _page, _limit) do
     list_bookmarks(query, @default_page)
   end
 
