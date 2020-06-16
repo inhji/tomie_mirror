@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.61.1](https://git.inhji.de/inhji/tomie/compare/0.61.0...v0.61.1) (2020-06-16)
+
+
+
+
+### Improvements:
+
+* add refactor and tweaks for git_ops changelog
+
+### Tweaks:
+
+* improve bookmark page, cover basic mf2 props
+
 ## [v0.61.0](https://git.inhji.de/inhji/tomie/compare/0.60.1...v0.61.0) (2020-06-16)
 
 
