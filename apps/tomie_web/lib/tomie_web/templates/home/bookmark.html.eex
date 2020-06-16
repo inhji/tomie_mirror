@@ -1,12 +1,8 @@
-<p>
-	<%= link "Back", to: Routes.home_path(@conn, :index), class: "back" %>
-</p>
-
 <article class="bookmark h-entry">
 	<header>
-		<h1 class="p-name"><%= @bookmark.title %></h1>
-		
-		<p>Published by <a href="/" class="p-author h-card">Inhji</a> <time class="dt-published" datetime="<%= @bookmark.inserted_at %>"><%= Timex.from_now(@bookmark.inserted_at) %></time> under <%= tag_string(@bookmark.tags) %></p>
+		<h1 class="p-name">
+			<%= link @bookmark.title, to: @bookmark.source, class: "u-url u-bookmark-of" %>	
+		</h1>
 	</header>
 
 	<div class="markdown p-summary e-content">
@@ -14,6 +10,6 @@
 	</div>
 
 	<footer>
-		<a class="u-bookmark-of" rel="noopener" href="<%= @bookmark.source %>"><%= @bookmark.source %></a>
+		<p><time class="dt-published" title="<%= @bookmark.inserted_at %>" datetime="<%= @bookmark.inserted_at %>"><%= Timex.from_now(@bookmark.inserted_at) %></time> • <%= render "partial_tags.html", tags: @bookmark.tags %> • by <a href="/" class="p-author h-card">Inhji</a></p>
 	</footer>
 </article>

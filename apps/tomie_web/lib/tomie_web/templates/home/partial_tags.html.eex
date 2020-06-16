@@ -1,0 +1,3 @@
+<%= for tag <- @tags do %>
+<span class="tag p-category"><%= tag.name %></span>
+<% end %>
