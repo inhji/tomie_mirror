@@ -85,9 +85,9 @@ config :git_ops,
     ],
     # Makes an allowed commit type called `important` that gets
     # a section in the changelog with the header "Important Changes"
-    important: [
-      header: "Important Changes"
-    ]
+    important: [ header: "Important Changes" ],
+    tweak: [ header: "Tweaks" ],
+    ref: [ header: "Refactors" ]
   ],
   # Instructs the tool to manage your mix version in your `mix.exs` file
   # See below for more information
