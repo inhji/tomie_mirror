@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.60.1](https://git.inhji.de/inhji/tomie/compare/0.60.0...v0.60.1) (2020-06-16)
+
+
+
+
+### Bug Fixes:
+
+* dont get user from pow for unauthenticated routes
+
 ## [v0.60.0](https://git.inhji.de/inhji/tomie/compare/0.59.10...v0.60.0) (2020-06-15)
 
 
