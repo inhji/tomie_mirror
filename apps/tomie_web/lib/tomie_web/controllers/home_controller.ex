@@ -23,5 +23,11 @@ defmodule TomieWeb.HomeController do
     render(conn, "project_#{name}.html", page_title: pretty_name)
   end
 
+  def bookmark(conn, %{"id" => id}) do
+    bookmark = Bookmarks.get_bookmark!(id)
+
+    render(conn, "bookmark.html", bookmark: bookmark, page_title: bookmark.title)
+  end
+
   defp with_home_layout(conn, _opts), do: put_layout(conn, "home.html")
 end

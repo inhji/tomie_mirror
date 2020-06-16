@@ -1,0 +1,19 @@
+<p>
+	<%= link "Back", to: Routes.home_path(@conn, :index), class: "back" %>
+</p>
+
+<article class="bookmark h-entry">
+	<header>
+		<h1 class="p-name"><%= @bookmark.title %></h1>
+		
+		<p>Published by <a href="/" class="p-author h-card">Inhji</a> <time class="dt-published" datetime="<%= @bookmark.inserted_at %>"><%= Timex.from_now(@bookmark.inserted_at) %></time> under <%= tag_string(@bookmark.tags) %></p>
+	</header>
+
+	<div class="markdown p-summary e-content">
+		<%= raw(@bookmark.content_html) %>
+	</div>
+
+	<footer>
+		<a class="u-bookmark-of" rel="noopener" href="<%= @bookmark.source %>"><%= @bookmark.source %></a>
+	</footer>
+</article>

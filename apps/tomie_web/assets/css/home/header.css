@@ -1,17 +1,16 @@
-header {}
-header h2 {
-  font-size: 1.1rem;
+header.site-header {}
+header.site-header h2 {
   text-align: center;
   text-transform: uppercase;
 }
 
-header h1 {
-  font-size: 2rem;
+header.site-header h1 {
   text-align: center;
   margin-bottom: 1.5rem;
+  border: none;
 }
 
-header h1 span {
+header.site-header h1 span {
   font-weight: 400;
   letter-spacing: 1px;
   color: #eee;
@@ -19,15 +18,25 @@ header h1 span {
   padding: 0.25rem 0.5rem; 
 }
 
-header h1 a {
+header.site-header h1 a {
   text-decoration: none;
   padding-left: 0.5rem;
 }
 
-header h1 a:hover {
+header.site-header h1 a:hover {
   padding: 0.25rem 0rem 0.25rem 0.5rem; 
 }
 
-header h1 a::before {
+header.site-header h1 a::before {
   content: '';
+}
+
+header.site-header .avatar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header.site-header .avatar img {
+  border-radius: 1000px;
+  box-shadow: 2px 2px #d34;
 }

@@ -1,4 +1,4 @@
-<header class="h-card">
+<header class="site-header h-card">
 	<div class="avatar">
 		<img src="<%= Routes.static_path(@conn, Tomie.Users.User.avatar(@user)) %>" class="u-photo" width="150">
 	</div>
@@ -24,7 +24,7 @@
 
 <ul>
 	<%= for b <- @bookmarks do %>
-	<dt><a href="<%= b.source %>"><%= b.title %></a> <small class="brackets"><%= Timex.from_now(b.inserted_at) %></small></dt>
+	<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"><%= Timex.from_now(b.inserted_at) %></small></dt>
 	<dd>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></dd>
 	<% end %>
 </ul>
@@ -48,7 +48,10 @@
 	<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
 </dl>
 
-<footer>
+<footer class="site-footer">
 	<p>Created by Inhji.</p>
-	<p><a href="https://git.inhji.de/inhji/tomie" target="_blank" rel="noopener noreferrer">Source</a></p>
+	<p>
+		<a href="https://git.inhji.de/inhji/tomie" rel="noopener noreferrer">Source</a>
+		<a href="/admin" rel="noopener noreferrer">Admin</a>
+	</p>
 </footer>

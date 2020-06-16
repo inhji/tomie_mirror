@@ -39,6 +39,7 @@ defmodule TomieWeb.Router do
 
     get "/", HomeController, :index
     get "/project/:name", HomeController, :project
+    get "/bookmark/:id", HomeController, :bookmark
   end
 
   # --- Admin Routes

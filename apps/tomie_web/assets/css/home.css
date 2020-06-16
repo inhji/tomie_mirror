@@ -33,18 +33,20 @@ a::before {
   white-space: nowrap;
 }
 
+a.back {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+a.back::before {
+  content: '◂';
+}
+
 p {
   margin-bottom: 1rem;
 }
 
 li {
   margin-bottom: 0.1rem;
-}
-
-h1, h2, h3 {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-weight: bold;
-  color: #333;
 }
 
 dl {
@@ -63,6 +65,23 @@ dd {
   margin-bottom: 0.5rem;
 }
 
+h1, h2, h3 {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #dd3344;
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
 h2, h3 {
   margin-top: 1rem;
 }
@@ -78,22 +97,15 @@ h3::before {
   color: #d34;
 }
 
-header .avatar {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-header .avatar img {
-  border-radius: 1000px;
-  box-shadow: 2px 2px #d34;
-}
-
-footer {
+footer.site-footer {
   padding: 3rem 0;
   font-family: "Helvetica", "Arial", sans-serif;
   text-align: center;
 }
 
+article header, article footer {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
 
 .brackets::before {
   content: '[';
