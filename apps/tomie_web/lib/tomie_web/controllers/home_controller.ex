@@ -6,7 +6,7 @@ defmodule TomieWeb.HomeController do
   def index(conn, _params) do
     bookmarks = Bookmarks.list_bookmarks("", "recent", 3)
     listens = Listens.Listens.list_listens(3)
-    user = Pow.Plug.current_user(conn)
+    user = Tomie.Users.get_user!(1)
 
     conn
     |> render("index.html",
