@@ -12,7 +12,7 @@ defmodule Tomie.Users.Uploader do
   end
 
   def transform(:thumb, _) do
-    {:convert, "-strip -thumbnail 100x100^ -gravity center -extent 100x100 -format png", :png}
+    {:convert, "-strip -thumbnail 150x150^ -gravity center -extent 150x150 -format png", :png}
   end
 
   # Override the persisted filenames:
