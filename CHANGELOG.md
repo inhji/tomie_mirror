@@ -5,6 +5,27 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.61.2](https://git.inhji.de/inhji/tomie/compare/0.61.1...v0.61.2) (2020-06-18)
+
+
+
+
+### Bug Fixes:
+
+* add dashboard page title
+
+* make thumb size of avatar equal to homepage avatar size
+
+* use tag_string function in home index
+
+* bookmark mf2
+
+### Tweaks:
+
+* mix format
+
+* add phoenix dashboard link to profile, dont show all user info
+
 ## [v0.61.1](https://git.inhji.de/inhji/tomie/compare/0.61.0...v0.61.1) (2020-06-16)
 
 
