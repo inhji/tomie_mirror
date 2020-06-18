@@ -22,12 +22,12 @@
 
 <h3>Latest Bookmarks</h3>
 
-<ul>
+<dl>
 	<%= for b <- @bookmarks do %>
 	<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"><%= Timex.from_now(b.inserted_at) %></small></dt>
-	<dd>in <%= Enum.map(b.tags, fn (t) -> t.name end) |> Enum.join(", ") %></dd>
+	<dd>in <%= tag_string(b.tags) %></dd>
 	<% end %>
-</ul>
+</dl>
 
 <h3>Latest Listens</h3>
 
