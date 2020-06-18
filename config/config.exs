@@ -14,7 +14,7 @@ config :db,
   ecto_repos: [Db.Repo]
 
 config :tomie,
-  user_agent: "Tomie/0.x +https://dev.inhji.de"
+  user_agent: "Tomie/0.x +https://inhji.de"
 
 config :listens,
   discogs_token: "kRIDCYTMRucJojWzQKlXlDAnDlQSgmXboMEZiUBT"
