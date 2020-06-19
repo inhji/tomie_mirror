@@ -24,6 +24,8 @@ config :scraper, :weather,
   city_id: "2920512"
 
 config :indie,
+  token_endpoint: "https://tokens.indieauth.com/token",
+  auth_endpoint: "https://indieauth.com/auth",
   supported_scopes: [
     # Micropub scopes
     "create",

@@ -4,13 +4,15 @@ defmodule Indie.Token do
   alias HTTPoison.Response
 
   @supported_scopes Application.compile_env!(:indie, :supported_scopes)
+  @token_endpoint Application.compile_env!(:indie, :token_endpoint)
+
   @hostname Application.get_env(:tomie, [TomieWeb.Endpoint, :url, :host])
 
-  def verify(access_token, required_scope, token_endpoint) do
+  def verify(access_token, required_scope) do
     headers = [authorization: "Bearer #{access_token}", accept: "application/json"]
 
     with {:ok, %Response{status_code: 200, body: body}} <-
-           HTTP.get(token_endpoint, headers),
+           Http.get(@token_endpoint, headers),
          {:ok, body_map} <- Jason.decode(body),
          :ok <- verify_token_response(body_map, required_scope) do
       :ok
@@ -48,8 +50,8 @@ defmodule Indie.Token do
     Logger.info("ClientId: #{client_id}")
     Logger.info("Scopes: '#{scope}'")
 
-    with {:ok, _hostname} <- verify_hostname_match(hostname),
-         {:ok, _scope} <- verify_scope_support(scope, required_scope, @supported_scopes) do
+    with :ok <- verify_hostname_match(hostname),
+         :ok <- verify_scope_support(scope, required_scope, @supported_scopes) do
       :ok
     else
       {:error, name, reason} ->
@@ -63,10 +65,10 @@ defmodule Indie.Token do
 
     case hostnames_match? do
       true ->
-        {:ok, hostname}
+        :ok
 
       _ ->
-        Logger.warn("Hostnames do not match: Given #{hostname}, Actual: #{Akedia.url()}")
+        Logger.warn("Hostnames do not match: Given #{hostname}, Actual: #{@hostname}")
         {:error, "verify_hostname_match", "hostname does not match"}
     end
   end
@@ -83,7 +85,7 @@ defmodule Indie.Token do
 
     cond do
       required && requested ->
-        {:ok, scopes}
+        :ok
 
       !required ->
         {:error, "verify_scope_support", "scope '#{required_scope}' is not supported"}
