@@ -9,24 +9,18 @@ defmodule Tomie.Umbrella.MixProject do
       version: @version,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ],
       releases: [
         tomie: [
           applications: [
-            tomie: :permanent,
-            tomie_web: :permanent,
-            db: :permanent,
             bookmarks: :permanent,
+            db: :permanent,
+            http: :permanent,
+            indie: :permanent,
+            listens: :permanent,
             scraper: :permanent,
             tags: :permanent,
-            listens: :permanent,
-            http: :permanent,
+            tomie: :permanent,
+            tomie_web: :permanent,
             wiki: :permanent
           ]
         ]

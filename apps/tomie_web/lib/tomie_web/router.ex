@@ -50,6 +50,15 @@ defmodule TomieWeb.Router do
     live_dashboard "/dashboard", metrics: Tomie.Telemetry
   end
 
+  scope "/indie" do
+    pipe_through [:api]
+
+    forward "/micropub",
+            PlugMicropub,
+            handler: Indie.Micropub.Handler,
+            json_decoder: Jason
+  end
+
   scope "/admin", TomieWeb do
     pipe_through [:browser, :protected]
 

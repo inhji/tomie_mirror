@@ -23,6 +23,22 @@ config :scraper, :weather,
   api_key: "5e8d6569a828fd7860acf87bf1113a9e",
   city_id: "2920512"
 
+config :indie,
+  supported_scopes: [
+    # Micropub scopes
+    "create",
+    "update",
+    "delete",
+    "undelete",
+    "media",
+    # Microsub scopes
+    "read",
+    "follow",
+    "mute",
+    "block",
+    "channels"
+  ]
+
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},

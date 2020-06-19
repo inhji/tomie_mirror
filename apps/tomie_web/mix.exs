@@ -38,29 +38,31 @@ defmodule TomieWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bookmarks, in_umbrella: true},
+      {:chartkick, "~> 0.4.0"},
+      {:db, in_umbrella: true},
+      {:excoveralls, "~> 0.12.3", only: :test},
+      {:gettext, "~> 0.11"},
+      {:indie, in_umbrella: true},
+      {:jason, "~> 1.0"},
+      {:listens, in_umbrella: true},
       {:phoenix, "~> 1.5.0"},
-      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_active_link, "~> 0.3.0"},
       {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_form_awesomplete, "~> 0.1"},
       {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_dashboard, "~> 0.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.12.0"},
-      {:phoenix_live_dashboard, "~> 0.1"},
-      {:phoenix_form_awesomplete, "~> 0.1"},
-      {:phoenix_active_link, "~> 0.3.0"},
-      {:chartkick, "~> 0.4.0"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:plug_cowboy, "~> 2.2"},
+      {:plug_micropub, "~> 0.1.0"},
       {:pow, "~> 1.0.19"},
-      {:excoveralls, "~> 0.12.3", only: :test},
-      {:timex, "~> 3.5"},
-      {:telemetry_poller, "~> 0.4"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:tomie, in_umbrella: true},
-      {:bookmarks, in_umbrella: true},
       {:tags, in_umbrella: true},
-      {:db, in_umbrella: true},
-      {:listens, in_umbrella: true}
+      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_poller, "~> 0.4"},
+      {:timex, "~> 3.5"},
+      {:tomie, in_umbrella: true}
     ]
   end
 
