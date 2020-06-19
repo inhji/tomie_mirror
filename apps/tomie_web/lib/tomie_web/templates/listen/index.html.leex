@@ -3,11 +3,13 @@
 
   <div class="col-span-4">
     <%= for listen <- @listens do %>
-      <div class="card">
+      <div class="card flex">
+        <div class="image w-16 md:w-32 mr-4 flex-shrink-0">
+          <img src="<%= Listens.Albums.get_album_image(listen.album, :large) %>" class="w-full">
+        </div>
+
         <div class="content flex">
-          <div class="image w-16 md:w-32 mr-4 flex-shrink-0">
-            <img src="<%= Listens.Albums.get_album_image(listen.album, :large) %>" class="w-full">
-          </div>
+          
           <div class="body">
             <h3 class="hyphens"><%= listen.track.name %></h3>
             <p>
@@ -22,8 +24,8 @@
                 class: "hover:underline",
                 to: Routes.live_path(@socket, TomieWeb.AlbumLive.Show, listen.album.id) %>
             </p>
-            <div class="tags mt-2">
-              <span class="tag"><%= Timex.from_now(listen.listened_at) %></span>
+            <div class="tags">
+              <small class="tag"><%= Timex.from_now(listen.listened_at) %></small>
             </div>
           </div>
         </div>
