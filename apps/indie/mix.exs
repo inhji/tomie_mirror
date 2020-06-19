@@ -26,6 +26,7 @@ defmodule Indie.MixProject do
   defp deps do
     [
       {:http, in_umbrella: true},
-      {:plug_micropub, "~> 0.1.0"}    ]
+      {:plug_micropub, "~> 0.1.0"}
+    ]
   end
 end
