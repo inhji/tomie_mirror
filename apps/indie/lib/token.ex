@@ -4,6 +4,7 @@ defmodule Indie.Token do
   alias HTTPoison.Response
 
   @supported_scopes Application.compile_env!(:indie, :supported_scopes)
+  @hostname Application.get_env(:tomie, [TomieWeb.Endpoint, :url, :host])
 
   def verify(access_token, required_scope, token_endpoint) do
     headers = [authorization: "Bearer #{access_token}", accept: "application/json"]
@@ -58,7 +59,7 @@ defmodule Indie.Token do
   end
 
   defp verify_hostname_match(hostname) do
-    hostnames_match? = Akedia.Helpers.sanitize_hostname(hostname) == Akedia.url()
+    hostnames_match? = sanitize_hostname(hostname) == @hostname
 
     case hostnames_match? do
       true ->
@@ -68,6 +69,10 @@ defmodule Indie.Token do
         Logger.warn("Hostnames do not match: Given #{hostname}, Actual: #{Akedia.url()}")
         {:error, "verify_hostname_match", "hostname does not match"}
     end
+  end
+
+  defp sanitize_hostname(hostname) do
+    String.trim_trailing(hostname, "/")
   end
 
   defp verify_scope_support(scopes, nil, _supported_scopes), do: {:ok, scopes}
