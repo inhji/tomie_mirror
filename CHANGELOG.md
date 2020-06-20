@@ -5,6 +5,33 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.62.0](https://git.inhji.de/inhji/tomie/compare/0.61.3...v0.62.0) (2020-06-20)
+
+
+
+
+### Features:
+
+* first version of micropub for bookmarks
+
+* add indie app, init micropub support
+
+### Bug Fixes:
+
+* add plug_micropub
+
+### Refactors:
+
+* read endpoints for micropub from config
+
+### Tweaks:
+
+* mix format
+
+* read hostname from endpoint config
+
+* leaner listen cards
+
 ## [v0.61.3](https://git.inhji.de/inhji/tomie/compare/0.61.2...v0.61.3) (2020-06-18)
 
 
