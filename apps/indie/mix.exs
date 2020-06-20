@@ -25,6 +25,7 @@ defmodule Indie.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:bookmarks, in_umbrella: true},
       {:http, in_umbrella: true},
       {:plug_micropub, "~> 0.1.0"}
     ]

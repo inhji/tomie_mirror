@@ -60,7 +60,7 @@ config :tomie_web,
 
 # Configures the endpoint
 config :tomie_web, TomieWeb.Endpoint,
-  url: [host: "localhost"],
+  url: (System.get_env("TUNNEL") && [host: "tunnel.inhji.de", port: 443, scheme: "https"]) || nil,
   secret_key_base: "vA2gj8nBFMrN/nH0bjo09DfxDovTsbUZJbpnsawqXsTneL/F0nWEY5PfY5uptNra",
   render_errors: [view: TomieWeb.ErrorView, accepts: ~w(html json)],
   pubsub_server: TomieWeb.PubSub,

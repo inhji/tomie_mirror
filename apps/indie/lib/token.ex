@@ -5,8 +5,7 @@ defmodule Indie.Token do
 
   @supported_scopes Application.compile_env!(:indie, :supported_scopes)
   @token_endpoint Application.compile_env!(:indie, :token_endpoint)
-
-  @hostname Application.get_env(:tomie, [TomieWeb.Endpoint, :url, :host])
+  @hostname Application.compile_env!(:tomie_web, [TomieWeb.Endpoint, :url, :host])
 
   def verify(access_token, required_scope) do
     headers = [authorization: "Bearer #{access_token}", accept: "application/json"]
@@ -37,7 +36,7 @@ defmodule Indie.Token do
 
   defp verify_token_response(
          %{
-           "me" => hostname,
+           "me" => host_uri,
            "scope" => scope,
            "client_id" => client_id,
            "issued_at" => _issued_at,
@@ -46,11 +45,11 @@ defmodule Indie.Token do
          },
          required_scope
        ) do
-    Logger.info("Hostname: '#{hostname}'")
+    Logger.info("Host-URI: '#{host_uri}'")
     Logger.info("ClientId: #{client_id}")
     Logger.info("Scopes: '#{scope}'")
 
-    with :ok <- verify_hostname_match(hostname),
+    with :ok <- verify_hostname_match(host_uri),
          :ok <- verify_scope_support(scope, required_scope, @supported_scopes) do
       :ok
     else
@@ -60,21 +59,21 @@ defmodule Indie.Token do
     end
   end
 
-  defp verify_hostname_match(hostname) do
-    hostnames_match? = sanitize_hostname(hostname) == @hostname
+  defp verify_hostname_match(host_uri) do
+    hostnames_match? = get_hostname(host_uri) == @hostname
 
     case hostnames_match? do
       true ->
         :ok
 
       _ ->
-        Logger.warn("Hostnames do not match: Given #{hostname}, Actual: #{@hostname}")
+        Logger.warn("Hostnames do not match: Given #{host_uri}, Actual: #{@hostname}")
         {:error, "verify_hostname_match", "hostname does not match"}
     end
   end
 
-  defp sanitize_hostname(hostname) do
-    String.trim_trailing(hostname, "/")
+  defp get_hostname(host_uri) do
+    host_uri |> URI.parse() |> Map.get(:host)
   end
 
   defp verify_scope_support(scopes, nil, _supported_scopes), do: {:ok, scopes}

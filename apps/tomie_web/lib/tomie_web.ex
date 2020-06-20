@@ -26,6 +26,12 @@ defmodule TomieWeb do
     end
   end
 
+  def handler do
+    quote do
+      alias TomieWeb.Router.Helpers, as: Routes
+    end
+  end
+
   def live do
     quote do
       use Phoenix.LiveView, layout: {TomieWeb.LayoutView, "live.html"}

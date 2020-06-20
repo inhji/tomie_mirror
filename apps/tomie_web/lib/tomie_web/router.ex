@@ -55,8 +55,8 @@ defmodule TomieWeb.Router do
 
     forward "/micropub",
             PlugMicropub,
-            handler: Indie.Micropub.Handler,
-            json_decoder: Jason
+            handler: TomieWeb.MicropubHandler,
+            json_encoder: Jason
   end
 
   scope "/admin", TomieWeb do
