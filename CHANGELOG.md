@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.62.2](https://git.inhji.de/inhji/tomie/compare/0.62.1...v0.62.2) (2020-06-20)
+
+
+
+
+### Bug Fixes:
+
+* remove tunnel config
+
 ## [v0.62.1](https://git.inhji.de/inhji/tomie/compare/0.62.0...v0.62.1) (2020-06-20)
 
 
