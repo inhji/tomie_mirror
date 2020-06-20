@@ -27,10 +27,11 @@ defmodule Scraper.MixProject do
   defp deps do
     [
       {:cachex, "~> 3.2"},
-      {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"},
-      {:httpoison, "~> 1.6"},
+      {:floki, "~> 0.26.0"},
       {:http, in_umbrella: true},
-      {:floki, "~> 0.26.0"}
+      {:httpoison, "~> 1.6"},
+      {:oban, "~> 1.2"},
+      {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"}
     ]
   end
 end
