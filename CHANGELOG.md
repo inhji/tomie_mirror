@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.62.4](https://git.inhji.de/inhji/tomie/compare/0.62.3...v0.62.4) (2020-06-20)
+
+
+
+
+### Bug Fixes:
+
+* hostname mismatch
+
 ## [v0.62.3](https://git.inhji.de/inhji/tomie/compare/0.62.2...v0.62.3) (2020-06-20)
 
 
