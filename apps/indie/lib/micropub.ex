@@ -1,15 +1,15 @@
 defmodule Indie.Micropub do
-	def get_post_type(properties) do
-	  cond do
-	    Map.has_key?(properties, "bookmark-of") ->
-	      {:ok, :bookmark}
+  def get_post_type(properties) do
+    cond do
+      Map.has_key?(properties, "bookmark-of") ->
+        {:ok, :bookmark}
 
-	    true ->
-	      {:error, :unsupported_posttype}
-	  end
-	end
+      true ->
+        {:error, :unsupported_posttype}
+    end
+  end
 
-	def get_tags(%{"category" => [""]}), do: []
+  def get_tags(%{"category" => [""]}), do: []
   def get_tags(%{"category" => tags}), do: tags
   def get_tags(_), do: []
 

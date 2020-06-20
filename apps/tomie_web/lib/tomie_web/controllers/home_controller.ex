@@ -36,6 +36,7 @@ defmodule TomieWeb.HomeController do
   end
 
   defp with_home_layout(conn, _opts), do: put_layout(conn, "home.html")
+
   defp with_indie_endpoints(conn, _opts) do
     conn
     |> assign(:token_endpoint, @token_endpoint)
