@@ -5,15 +5,14 @@ defmodule Indie.Token do
 
   @supported_scopes Application.compile_env!(:indie, :supported_scopes)
   @token_endpoint Application.compile_env!(:indie, :token_endpoint)
-  @hostname Application.compile_env!(:tomie_web, [TomieWeb.Endpoint, :url, :host])
 
-  def verify(access_token, required_scope) do
+  def verify(access_token, required_scope, own_hostname) do
     headers = [authorization: "Bearer #{access_token}", accept: "application/json"]
 
     with {:ok, %Response{status_code: 200, body: body}} <-
            Http.get(@token_endpoint, headers),
          {:ok, body_map} <- Jason.decode(body),
-         :ok <- verify_token_response(body_map, required_scope) do
+         :ok <- verify_token_response(body_map, required_scope, own_hostname) do
       :ok
     else
       {:error, %HTTPoison.Response{status_code: code}} ->
@@ -43,13 +42,14 @@ defmodule Indie.Token do
            "issued_by" => _issued_by,
            "nonce" => _nonce
          },
-         required_scope
+         required_scope,
+         own_hostname
        ) do
     Logger.info("Host-URI: '#{host_uri}'")
     Logger.info("ClientId: #{client_id}")
     Logger.info("Scopes: '#{scope}'")
 
-    with :ok <- verify_hostname_match(host_uri),
+    with :ok <- verify_hostname_match(host_uri, own_hostname),
          :ok <- verify_scope_support(scope, required_scope, @supported_scopes) do
       :ok
     else
@@ -59,8 +59,8 @@ defmodule Indie.Token do
     end
   end
 
-  defp verify_hostname_match(host_uri) do
-    hostnames_match? = get_hostname(host_uri) == @hostname
+  defp verify_hostname_match(host_uri, own_hostname) do
+    hostnames_match? = get_hostname(host_uri) == own_hostname
 
     case hostnames_match? do
       true ->
