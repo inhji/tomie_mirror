@@ -32,7 +32,7 @@ defmodule Bookmarks.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:phoenix_pubsub, "~> 2.0"},
       {:mock, "~> 0.3.0", only: :test},
-      {:excoveralls, "~> 0.12.3", only: :test},
+      {:excoveralls, "~> 0.13.0", only: :test},
       {:db, in_umbrella: true},
       {:tags, in_umbrella: true},
       {:scraper, in_umbrella: true}

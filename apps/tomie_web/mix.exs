@@ -41,7 +41,7 @@ defmodule TomieWeb.MixProject do
       {:bookmarks, in_umbrella: true},
       {:chartkick, "~> 0.4.0"},
       {:db, in_umbrella: true},
-      {:excoveralls, "~> 0.12.3", only: :test},
+      {:excoveralls, "~> 0.13.0", only: :test},
       {:gettext, "~> 0.11"},
       {:indie, in_umbrella: true},
       {:jason, "~> 1.0"},
