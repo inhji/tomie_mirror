@@ -1,3 +1,7 @@
+<%= if Enum.count(@tags) == 0 do %>
+<span>no tags</span>
+<% else %>
 <%= for tag <- @tags do %>
 <span class="tag p-category"><%= tag.name %></span>
+<% end %>
 <% end %>
