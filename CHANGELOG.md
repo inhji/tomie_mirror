@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.62.6](https://git.inhji.de/inhji/tomie/compare/0.62.5...v0.62.6) (2020-06-21)
+
+
+
+
+### Bug Fixes:
+
+* update phoenix_live_view
+
 ## [v0.62.5](https://git.inhji.de/inhji/tomie/compare/0.62.4...v0.62.5) (2020-06-21)
 
 
