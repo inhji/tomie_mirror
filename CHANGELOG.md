@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.62.5](https://git.inhji.de/inhji/tomie/compare/0.62.4...v0.62.5) (2020-06-21)
+
+
+
+
+### Bug Fixes:
+
+* handle empty bookmark tags
+
+* add tunnel config again
+
 ## [v0.62.4](https://git.inhji.de/inhji/tomie/compare/0.62.3...v0.62.4) (2020-06-20)
 
 
