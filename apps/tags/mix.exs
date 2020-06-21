@@ -28,7 +28,7 @@ defmodule Tags.MixProject do
     [
       {:ecto_sql, "~> 3.1"},
       {:ecto_autoslug_field, "~> 2.0"},
-      {:excoveralls, "~> 0.12.3", only: :test},
+      {:excoveralls, "~> 0.13.0", only: :test},
       {:db, in_umbrella: true}
     ]
   end

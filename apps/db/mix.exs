@@ -29,7 +29,7 @@ defmodule Db.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.1"},
-      {:excoveralls, "~> 0.12.3", only: :test},
+      {:excoveralls, "~> 0.13.0", only: :test},
       {:postgrex, ">= 0.0.0"}
     ]
   end
