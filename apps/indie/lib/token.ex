@@ -67,7 +67,7 @@ defmodule Indie.Token do
         :ok
 
       _ ->
-        Logger.warn("Hostnames do not match: Given #{host_uri}, Actual: #{@hostname}")
+        Logger.warn("Hostnames do not match: Given #{host_uri}, Actual: #{own_hostname}")
         {:error, "verify_hostname_match", "hostname does not match"}
     end
   end

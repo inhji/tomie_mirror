@@ -21,6 +21,8 @@ config :listens,
 
 config :scraper, :weather,
   api_key: "5e8d6569a828fd7860acf87bf1113a9e",
+  latitude: 50.583832,
+  longitude: 8.677890,
   city_id: "2920512"
 
 config :indie,
