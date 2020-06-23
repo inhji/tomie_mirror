@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.63.0](https://git.inhji.de/inhji/tomie/compare/0.62.6...v0.63.0) (2020-06-23)
+
+
+
+
+### Features:
+
+* switch to openweathermap onecall api
+
 ## [v0.62.6](https://git.inhji.de/inhji/tomie/compare/0.62.5...v0.62.6) (2020-06-21)
 
 
