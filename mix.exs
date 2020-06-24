@@ -1,7 +1,7 @@
 defmodule Tomie.Umbrella.MixProject do
   use Mix.Project
 
-  @version "0.63.2"
+  @version "0.63.3"
 
   def project do
     [

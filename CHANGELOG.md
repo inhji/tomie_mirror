@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.63.3](https://git.inhji.de/inhji/tomie/compare/0.63.2...v0.63.3) (2020-06-24)
+
+
+
+
+### Bug Fixes:
+
+* round temp
+
 ## [v0.63.2](https://git.inhji.de/inhji/tomie/compare/0.63.1...v0.63.2) (2020-06-24)
 
 
