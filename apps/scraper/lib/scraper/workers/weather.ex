@@ -20,7 +20,7 @@ defmodule Scraper.Workers.Weather do
 
     Cachex.put(:weather, :now, %{
       pretty: current.weather |> List.first(),
-      temp: current.temp,
+      temp: current.temp - 273.15,
       clouds: current.clouds,
       timestamp: current.dt,
       humidity: current.humidity
