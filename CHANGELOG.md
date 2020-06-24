@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.63.1](https://git.inhji.de/inhji/tomie/compare/0.63.0...v0.63.1) (2020-06-24)
+
+
+
+
+### Bug Fixes:
+
+* convert temp to celcius
+
 ## [v0.63.0](https://git.inhji.de/inhji/tomie/compare/0.62.6...v0.63.0) (2020-06-23)
 
 
