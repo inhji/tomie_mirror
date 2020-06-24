@@ -1,9 +1,16 @@
 module.exports = {
-  theme: {
-    extend: {},
+  purge: {
+  	content: [
+  		"../**/*.html.eex",
+  		"../**/*.html.leex",
+  		"../**/views/**/*.ex",
+  		"./js/**/*.js"
+  	],
+  	options: {
+  		whitelist: ["active"]
+  	}
   },
-  variants: {},
   plugins: [
     require('./theme.config.js')
-  ],
+  ]
 }
