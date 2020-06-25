@@ -38,6 +38,8 @@ defmodule TomieWeb.Router do
     pipe_through :home
 
     get "/", HomeController, :index
+    get "/about", HomeController, :about
+
     get "/project/:name", HomeController, :project
     get "/bookmark/:id", HomeController, :bookmark
   end

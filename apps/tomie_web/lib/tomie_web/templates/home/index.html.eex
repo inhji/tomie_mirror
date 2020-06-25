@@ -10,33 +10,29 @@
 	<h2 class="p-note"><%= @user.tagline %></h2>
 </header>
 
-<h3>A few things about me</h3>
+<div class="flex-container">
+	<div>
+		<h3>Bookmarks</h3>
 
-<ul>
-	<li>I got introduced to computers &amp; games at the age of 5 when I watched my dad playing <a href="https://en.wikipedia.org/wiki/Oxyd" class="external">OXYD</a> on his Atari ST</li>
-	<li>I started teaching myself to code when I got a book about programming in <a href="https://en.wikipedia.org/wiki/Turbo_Pascal" class="external">Turbo Pascal</a> at 12</li>
-	<li>I work as a software developer where I write windows applications with .NET</li>
-	<li>In my free time I write a lot of Elixir, almost exclusively for the website you're reading</li>
-	<li>My other passion besides computers is music</li>
-</ul>
+		<dl>
+			<%= for b <- @bookmarks do %>
+			<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"></small></dt>
+			<dd><%= Timex.from_now(b.inserted_at) %> • <%= tag_string(b.tags) %></dd>
+			<% end %>
+		</dl>
+	</div>
 
-<h3>Latest Bookmarks</h3>
+	<div>
+		<h3>Listens</h3>
 
-<dl>
-	<%= for b <- @bookmarks do %>
-	<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"><%= Timex.from_now(b.inserted_at) %></small></dt>
-	<dd><%= tag_string(b.tags) %></dd>
-	<% end %>
-</dl>
-
-<h3>Latest Listens</h3>
-
-<dl>
-	<%= for l <- @listens do %>
-	<dt><%= l.track.name %> <small class="brackets"><%= Timex.from_now(l.listened_at) %></small></dt>
-	<dd>by <%= l.artist.name %></dd>
-	<% end %>
-</dl>
+		<dl>
+			<%= for l <- @listens do %>
+			<dt><%= l.track.name %> <small class="brackets"></small></dt>
+			<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
+			<% end %>
+		</dl>
+	</div>
+</div>
 
 <h3>Projects</h3>
 
@@ -47,11 +43,3 @@
 	<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
 	<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
 </dl>
-
-<footer class="site-footer">
-	<p>Created by Inhji.</p>
-	<p>
-		<a href="https://git.inhji.de/inhji/tomie" rel="noopener noreferrer">Source</a>
-		<a href="/admin" rel="noopener noreferrer">Admin</a>
-	</p>
-</footer>

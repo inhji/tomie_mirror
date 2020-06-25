@@ -1,0 +1,11 @@
+footer#site-footer {
+  margin: 0 auto;
+  width: 60rem;
+  text-align: center;
+  padding: 10rem;
+}
+
+footer#site-footer a {
+ text-decoration: none;
+ color: #333;
+}
