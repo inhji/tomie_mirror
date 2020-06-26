@@ -1,6 +1,8 @@
 defmodule Scraper.Weather do
   def get_weather() do
-    [api_key: api_key, latitude: lat, longitude: lon, city_id: _] = Application.fetch_env!(:scraper, :weather)
+    [api_key: api_key, latitude: lat, longitude: lon, city_id: _] =
+      Application.fetch_env!(:scraper, :weather)
+
     base_url = "http://api.openweathermap.org/data/2.5/onecall"
     url = "#{base_url}?lat=#{lat}&lon=#{lon}&appid=#{api_key}&units=metric,exclude=minutely,daily"
 

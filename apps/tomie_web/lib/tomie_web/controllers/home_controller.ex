@@ -23,7 +23,7 @@ defmodule TomieWeb.HomeController do
   end
 
   def about(conn, _params) do
-    render(conn, "about.html", page_title: "About",)
+    render(conn, "about.html", page_title: "About")
   end
 
   def project(conn, %{"name" => name}) do

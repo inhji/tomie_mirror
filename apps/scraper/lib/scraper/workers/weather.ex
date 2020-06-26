@@ -9,8 +9,8 @@ defmodule Scraper.Workers.Weather do
   @impl Oban.Worker
   def perform(_args, _job) do
     %{
-      current: current, 
-      daily: _daily, 
+      current: current,
+      daily: _daily,
       hourly: _hourly,
       lat: _lat,
       lon: _lon,
