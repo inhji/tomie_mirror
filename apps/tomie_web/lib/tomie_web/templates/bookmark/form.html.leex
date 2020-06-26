@@ -1,15 +1,16 @@
 <%= f = form_for @changeset, "#",
   [phx_change: :validate, phx_submit: :save ] %>
-  <fieldset>
-    <%= label f, :source, "Bookmark Source" %>
-    <%= url_input f, :source, autofocus: true, required: true %>
-    <%= error_tag f, :source %>
-  </fieldset>
-
+  
   <fieldset>
     <%= label f, :title %>
     <%= text_input f, :title %>
     <%= error_tag f, :title %>
+  </fieldset>
+
+  <fieldset>
+    <%= label f, :source, "Bookmark Source" %>
+    <%= url_input f, :source, autofocus: true, required: true %>
+    <%= error_tag f, :source %>
   </fieldset>
 
   <fieldset>

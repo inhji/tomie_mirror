@@ -158,11 +158,11 @@ form:not(.search) {
 }
 
 form label {
-	@apply block py-3;
+	@apply block p-3 tracking-wide;
 }
 
 form input, form textarea, form select {
-	@apply mb-3 border-on-surface-barely border-b-2 border-solid text-on-surface bg-surface transition-all duration-300;
+	@apply mb-3 border-on-surface-barely border-b-2 border-solid text-on-surface bg-surface-alt transition-all duration-300;
 }
 
 form textarea {
@@ -174,15 +174,20 @@ form input:focus, form textarea:focus {
 }
 
 form input:invalid, form textarea:invalid {
-	@apply border-danger bg-danger-barely shadow-none;
+	@apply border-danger shadow-none;
 }
 
-form input[required]:valid, form textarea[required]:valid {
-	@apply border-success bg-success-barely shadow-none;
+form input[required]:valid,
+form textarea[required]:valid {
+	@apply border-success shadow-none;
 }
 
 form input, form textarea, form select, .error-tag {
 	@apply block p-3 w-full rounded-sm;
+}
+
+form button[type=submit] {
+	@apply my-6;
 }
 
 form input:disabled,
@@ -197,7 +202,7 @@ form input[type=checkbox] {
 }
 
 .button {
-	@apply p-3 bg-primary-alt text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
+	@apply p-3 border-2 border-primary bg-primary-not-even text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
 .button:hover,
