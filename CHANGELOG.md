@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.65.0](https://git.inhji.de/inhji/tomie/compare/0.64.0...v0.65.0) (2020-06-26)
+
+
+
+
+### Features:
+
+* use css vars, fix spacing for header and footer
+
 ## [v0.64.0](https://git.inhji.de/inhji/tomie/compare/0.63.3...v0.64.0) (2020-06-25)
 
 
