@@ -1,7 +1,7 @@
 <article class="bookmark h-entry">
 	<header>
 		<h1 class="p-name">
-			<%= link @bookmark.title || @bookmark.source, to: Routes.home_path(@conn, :bookmark, @bookmark), class: "u-url" %>	
+			<%= link @bookmark.title || @bookmark.source, to: @bookmark.source, class: "u-bookmark-of" %>	
 		</h1>
 	</header>
 
@@ -9,11 +9,9 @@
 		<%= raw(@bookmark.content_html) %>
 	</div>
 
-	<p>
-		<%= link "Source", to: @bookmark.source, class: "u-bookmark-of" %>
-	</p>
-
 	<footer>
-		<p><time class="dt-published" title="<%= @bookmark.inserted_at %>" datetime="<%= @bookmark.inserted_at %>"><%= Timex.from_now(@bookmark.inserted_at) %></time> • <%= render "partial_tags.html", tags: @bookmark.tags %> • by <a href="/" class="p-author h-card">Inhji</a></p>
+		<%= link to: Routes.home_path(@conn, :bookmark, @bookmark), class: "u-url" do %>
+			<time class="dt-published" title="<%= @bookmark.inserted_at %>" datetime="<%= @bookmark.inserted_at %>"><%= Timex.from_now(@bookmark.inserted_at) %></time>
+		<% end %> • <%= render "partial_tags.html", tags: @bookmark.tags %> • by <a href="/" class="p-author h-card">Inhji</a></p>
 	</footer>
 </article>

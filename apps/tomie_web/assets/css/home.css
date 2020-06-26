@@ -3,22 +3,40 @@
 @import "vendor/minireset";
 @import "home/header";
 @import "home/navigation";
+@import "home/article";
 @import "home/footer";
+@import "home/helpers";
+
+:root {
+  --primary-color: #d34;
+  --main-bg-color: #fefefe;
+}
 
 body {
   color: #555;
-  background: #fefefe;
+  background: var(--main-bg-color);
   
   font-family: 'Manrope', sans-serif;
   font-size: 17px;
 }
 
 main#wrapper {
-  padding: 2rem;
+  padding: 0 2rem;
   line-height: 1.3em;
   max-width: 50rem;
   margin: 0 auto;
 }
+
+main#wrapper a {
+  color: #333;
+  text-decoration: none;
+}
+
+main#wrapper a:hover {
+  color: white;
+  background: #333;
+}
+
 
 p, ul, dl {
   font-family: 'Open Sans', serif; 
@@ -67,24 +85,6 @@ h3 {
 }
 
 h3::after {
-  color: #d34;
+  color: var(--primary-color);
   content: '.';
-}
-
-main#wrapper a {
-  color: #333;
-  text-decoration: none;
-}
-
-main#wrapper a:hover {
-  color: white;
-  background: #333;
-}
-
-.flex-container {
-  display: flex;
-}
-
-.flex-container div {
-  flex: 1;
 }

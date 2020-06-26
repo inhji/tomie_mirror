@@ -7,11 +7,9 @@ nav#main-navigation {
 	font-size: 2rem;
 
 	margin: 0 auto;
-	margin-bottom: 3rem;
-	margin-top: 2rem;
+	margin-top: 1rem;
 
 	padding: 0 1rem 1rem;
-	padding-bottom: 1rem;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -30,5 +28,5 @@ nav#main-navigation .brand {
 
 nav#main-navigation .brand::after {
 	content: '.';
-	color: #d34;
+	color: var(--primary-color);
 }
