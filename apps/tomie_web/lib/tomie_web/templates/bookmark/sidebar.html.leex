@@ -2,6 +2,14 @@
   <nav>
     <ul>
       <li>
+        <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :inbox) do %>
+          <div class="icon">
+            <%= IconView.icon(:inbox) %>
+          </div>
+          <span class="hidden md:inline">Inbox</span>
+        <% end %>
+      </li>
+      <li>
         <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :recent) do %>
         <span class="icon">
           <%= IconView.icon(:time) %>
@@ -15,14 +23,6 @@
           <%= IconView.icon(:arrow_outline_up) %>
         </span>
         <span class="hidden md:inline">Popular</span>
-        <% end %>
-      </li>
-      <li>
-        <%= live_patch to: Routes.live_path(@socket, BookmarkLive.Index, page: :inbox) do %>
-          <div class="icon">
-            <%= IconView.icon(:inbox) %>
-          </div>
-          <span class="hidden md:inline">Inbox</span>
         <% end %>
       </li>
       <li>
