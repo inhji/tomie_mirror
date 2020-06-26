@@ -6,7 +6,7 @@ defmodule Bookmarks do
   alias Bookmarks.{Bookmark}
 
   @preloads [:tags]
-  @default_page "recent"
+  @default_page "inbox"
   @default_limit 50
 
   @doc """
@@ -39,7 +39,7 @@ defmodule Bookmarks do
 
   def list_bookmarks_by_tag_id(tag_id) do
     Db.Repo.all(
-      from [b, t] in bookmark_query(""),
+      from [b, t] in base_query("", @default_limit),
         where: t.id == ^tag_id,
         select: b
     )
@@ -55,84 +55,72 @@ defmodule Bookmarks do
     )
   end
 
-  def list_bookmarks(query, page, limit \\ @default_limit)
-
-  def list_bookmarks(query, "recent", limit) do
-    Db.Repo.all(
-      from b in bookmark_query(query),
-        order_by: [desc: b.inserted_at],
-        where: b.is_archived == false,
-        select: b,
-        limit: ^limit
-    )
+  def list_bookmarks(search_string, page, limit \\ @default_limit) do
+    search_string
+    |> list_bookmarks_query(page, limit)
+    |> Db.Repo.all()
   end
 
-  def list_bookmarks(query, "inbox", limit) do
-    Db.Repo.all(
-      from [b, t] in bookmark_query(query),
-        order_by: [desc: b.inserted_at],
-        where: is_nil(t.id),
-        where: b.is_archived == false,
-        select: b,
-        limit: ^limit
-    )
-  end
-
-  def list_bookmarks(query, "favorites", limit) do
-    Db.Repo.all(
-      from b in bookmark_query(query),
-        where: b.is_favorite == true,
-        where: b.is_archived == false,
-        order_by: [desc: b.inserted_at],
-        select: b,
-        limit: ^limit
-    )
-  end
-
-  def list_bookmarks(query, "archive", limit) do
-    Db.Repo.all(
-      from b in bookmark_query(query),
-        where: b.is_archived == true,
-        order_by: [desc: b.inserted_at],
-        select: b,
-        limit: ^limit
-    )
-  end
-
-  def list_bookmarks(query, "popular", limit) do
-    Db.Repo.all(
-      from b in bookmark_query(query),
-        order_by: [
-          desc: b.views,
-          desc: b.is_favorite,
-          asc: b.is_archived
-        ],
-        where: b.is_archived == false,
-        select: b,
-        limit: ^limit
-    )
-  end
-
-  def list_bookmarks(query, _page, _limit) do
-    list_bookmarks(query, @default_page)
-  end
-
-  defp bookmark_query(""), do: bookmark_query()
-
-  defp bookmark_query(query) do
-    from [b, t] in bookmark_query(),
-      where: ilike(b.title, ^"%#{query}%"),
-      or_where: ilike(b.content, ^"%#{query}%"),
-      or_where: ilike(b.source, ^"%#{query}%"),
-      or_where: ilike(t.name, ^"%#{query}%"),
-      or_where: ilike(t.slug, ^"%#{query}%")
-  end
-
-  defp bookmark_query() do
-    from b in Bookmark,
+  defp base_query(search_string, limit) do
+    query = from b in Bookmark,
       left_join: t in assoc(b, :tags),
       distinct: true,
-      preload: ^@preloads
+      preload: ^@preloads,
+      select: b,
+      limit: ^limit
+
+    case search_string do
+      "" ->
+        query
+
+      search_string ->
+        from [b, t] in query,
+          where: ilike(b.title, ^"%#{search_string}%"),
+          or_where: ilike(b.content, ^"%#{search_string}%"),
+          or_where: ilike(b.source, ^"%#{search_string}%"),
+          or_where: ilike(t.name, ^"%#{search_string}%"),
+          or_where: ilike(t.slug, ^"%#{search_string}%")
+    end
+  end
+
+  def list_bookmarks_query(search_string, page, limit) do
+    base_query = base_query(search_string, limit)   
+
+    case page do
+      "recent" ->
+        from b in base_query,
+          order_by: [desc: b.inserted_at],
+          where: b.is_archived == false
+
+      "inbox" ->
+        from [b, t] in base_query,
+          order_by: [desc: b.inserted_at],
+          where: is_nil(t.id),
+          where: b.is_archived == false
+
+      "favorites" ->
+        from b in base_query,
+          where: b.is_favorite == true,
+          where: b.is_archived == false,
+          order_by: [desc: b.inserted_at]
+
+      "archive" ->
+        from b in base_query,
+          where: b.is_archived == true,
+          order_by: [desc: b.inserted_at]
+
+      "popular" ->
+        from b in base_query,
+          order_by: [
+            desc: b.views,
+            desc: b.is_favorite,
+            asc: b.is_archived
+          ],
+          where: b.is_archived == false
+
+      _ ->
+        list_bookmarks_query(search_string, @default_page, limit)
+    end
   end
 
   @doc """
