@@ -62,12 +62,13 @@ defmodule Bookmarks do
   end
 
   defp base_query(search_string, limit) do
-    query = from b in Bookmark,
-      left_join: t in assoc(b, :tags),
-      distinct: true,
-      preload: ^@preloads,
-      select: b,
-      limit: ^limit
+    query =
+      from b in Bookmark,
+        left_join: t in assoc(b, :tags),
+        distinct: true,
+        preload: ^@preloads,
+        select: b,
+        limit: ^limit
 
     case search_string do
       "" ->
@@ -84,7 +85,7 @@ defmodule Bookmarks do
   end
 
   def list_bookmarks_query(search_string, page, limit) do
-    base_query = base_query(search_string, limit)   
+    base_query = base_query(search_string, limit)
 
     case page do
       "recent" ->
