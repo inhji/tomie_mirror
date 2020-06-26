@@ -144,7 +144,7 @@ a {
 }
 
 .card .meta .tag {
-	@apply px-2 py-1 bg-on-surface-not-even shadow-inner rounded-sm;
+	@apply px-2 py-1 bg-on-surface-barely shadow-inner rounded-sm;
 }
 
 .card .meta .tag.primary {
@@ -202,13 +202,13 @@ form input[type=checkbox] {
 }
 
 .button {
-	@apply p-3 border-2 border-primary bg-primary-not-even text-on-primary transition-all duration-300 inline-block uppercase rounded-sm;
+	@apply p-3 border-2 border-primary bg-primary-not-even font-bold text-on-surface transition-all duration-300 inline-block uppercase rounded-sm;
 }
 
 .button:hover,
 .button:focus,
 .button:active {
-	@apply bg-primary-alt-muted;
+	@apply bg-primary-alt-muted text-on-surface;
 }
 
 form .error-tag {
