@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.66.0](https://git.inhji.de/inhji/tomie/compare/0.65.0...v0.66.0) (2020-06-26)
+
+
+
+
+### Features:
+
+* make inbox default bookmark page
+
+* centered, fixed width admin pages
+
+### Refactors:
+
+* rework bookmark listing functions
+
 ## [v0.65.0](https://git.inhji.de/inhji/tomie/compare/0.64.0...v0.65.0) (2020-06-26)
 
 
