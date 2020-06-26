@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.66.2](https://git.inhji.de/inhji/tomie/compare/0.66.1...v0.66.2) (2020-06-26)
+
+
+
+
+### Bug Fixes:
+
+* button colors for light theme
+
+* remove back button
+
 ## [v0.66.1](https://git.inhji.de/inhji/tomie/compare/0.66.0...v0.66.1) (2020-06-26)
 
 
