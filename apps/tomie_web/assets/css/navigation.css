@@ -90,7 +90,8 @@ aside#sidebar > nav {
 	@apply w-full sticky;
 
 	/* This has a weird value to account for the 5px below */
-	top: 5.2rem;
+	/*top: 5.2rem;*/
+	top: 106.6px;
 
 	/* HACK: Prevent overflow from swallowing the shadow */
 	padding-right: 5px;

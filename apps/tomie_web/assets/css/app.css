@@ -22,6 +22,17 @@ body {
 	@apply bg-surface text-on-surface;
 }
 
+main#content {
+	@apply mx-auto my-0 px-0 py-12;
+	max-width: 60rem;
+}
+
+@screen sm {
+	main#content {
+		@apply px-6;
+	}
+}
+
 h1, h2 {
 	@apply border-b border-divider;
 }
