@@ -40,8 +40,7 @@ defmodule Bookmarks do
   def list_bookmarks_by_tag_id(tag_id) do
     Db.Repo.all(
       from [b, t] in base_query("", @default_limit),
-        where: t.id == ^tag_id,
-        select: b
+        where: t.id == ^tag_id
     )
   end
 
