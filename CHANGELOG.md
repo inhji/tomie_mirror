@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.67.0](https://git.inhji.de/inhji/tomie/compare/0.66.3...v0.67.0) (2020-06-27)
+
+
+
+
+### Features:
+
+* add forecast
+
 ## [v0.66.3](https://git.inhji.de/inhji/tomie/compare/0.66.2...v0.66.3) (2020-06-27)
 
 
