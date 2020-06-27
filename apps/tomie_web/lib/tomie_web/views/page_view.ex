@@ -4,4 +4,8 @@ defmodule TomieWeb.PageView do
   def weather_icon_path(%{pretty: pretty} = _weather) do
     Routes.static_path(TomieWeb.Endpoint, "/images/weather/#{pretty.icon}@2x.png")
   end
+
+  def to_celsius(kelvin) do
+    Float.round(kelvin - 273.15, 1)
+  end
 end

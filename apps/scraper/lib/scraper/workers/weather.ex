@@ -8,22 +8,7 @@ defmodule Scraper.Workers.Weather do
 
   @impl Oban.Worker
   def perform(_args, _job) do
-    %{
-      current: current,
-      daily: _daily,
-      hourly: _hourly,
-      lat: _lat,
-      lon: _lon,
-      timezone: _timezone,
-      timezone_offset: _timezone_offset
-    } = Scraper.Weather.get_weather()
-
-    Cachex.put(:weather, :now, %{
-      pretty: current.weather |> List.first(),
-      temp: Float.round(current.temp - 273.15, 1),
-      clouds: current.clouds,
-      timestamp: current.dt,
-      humidity: current.humidity
-    })
+    weather_data = Scraper.Weather.get_weather()
+    Scraper.Weather.save_weather(weather_data)
   end
 end

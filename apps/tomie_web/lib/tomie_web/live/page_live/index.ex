@@ -6,6 +6,7 @@ defmodule TomieWeb.PageLive.Index do
 
   def mount(_params, _session, socket) do
     weather = Cachex.get!(:weather, :now)
-    {:ok, socket |> assign(weather: weather, page_title: "Dashboard")}
+    forecast = Cachex.get!(:weather, :daily)
+    {:ok, socket |> assign(weather: weather, forecast: forecast, page_title: "Dashboard")}
   end
 end

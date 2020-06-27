@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-  <div class="card">
+  <div class="card col-span-2">
     <div class="content flex">
       <%= if @weather do %>
         <div class="image w-16 flex-shrink-0">
@@ -7,7 +7,7 @@
         </div>
 
         <div class="body">
-          <h3><span class="text-secondary font-bold"><%= @weather.temp %>°</span> and <%= @weather.pretty.main %></h3>
+          <h3><span class="text-secondary font-bold"><%= to_celsius(@weather.temp) %>°</span> and <%= @weather.pretty.main %></h3>
           <p><%= @weather.clouds %>% cloudy, <%= @weather.humidity %>% humidity</p>    
 
           <div class="meta">
@@ -16,6 +16,21 @@
         </div>       
       <% else %>
         <p>Weather loading...</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card col-span-2">
+    <div class="content flex">
+      <%= for day <- Enum.take(@forecast, 3) do %>
+        <div class="flex-auto">
+          <div class="image w-16 flex-shrink-0">
+            <img src="<%= weather_icon_path(day) %>" class="w-full" title="<%= day.pretty.description %>">
+            <div class="text-center">
+              <%= to_celsius(day.temp.day) %>°
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
