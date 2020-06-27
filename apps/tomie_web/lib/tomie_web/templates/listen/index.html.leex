@@ -1,7 +1,7 @@
-<div class="grid grid-cols-5 gap-4">
+<div class="grid grid-cols-4 gap-4">
   <%= live_component @socket, TomieWeb.ListenLive.SidebarComponent %>
 
-  <div class="col-span-4">
+  <div class="col-span-3">
     <%= for listen <- @listens do %>
       <div class="card flex">
         <div class="image w-16 md:w-32 mr-4 flex-shrink-0">
