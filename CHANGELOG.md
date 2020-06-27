@@ -5,6 +5,23 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.66.3](https://git.inhji.de/inhji/tomie/compare/0.66.2...v0.66.3) (2020-06-27)
+
+
+
+
+### Bug Fixes:
+
+* improve job details on index page
+
+* improve tag index
+
+* list_bookmarks_by_tag_id
+
+### Tweaks:
+
+* improve grid on jobs, listens, bookmarks
+
 ## [v0.66.2](https://git.inhji.de/inhji/tomie/compare/0.66.1...v0.66.2) (2020-06-26)
 
 
