@@ -47,26 +47,21 @@
           <div class="icon <%= class %>">
             <%= IconView.icon(icon) %>
           </div>
-          <%= job.worker %>
+          <%= job.worker %> (<%= "#{job.attempt}/#{job.max_attempts}" %>)
         </h3>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          <div>
-            <div>Args:</div>
-            <pre><%= inspect(job.args) %></pre>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 mt-2">
           <div>
             <ul>
-              <li>Attempts: <%= "#{job.attempt}/#{job.max_attempts}" %></li>
               <li>Duration: <%= "#{job_duration(job)}" %></li>
-            </ul>
-          </div>
-          <div>
-            <ul>
               <li>Started: <%= job_time(job.inserted_at) %></li>
               <li>Completed: <%= job_time(job.completed_at) %></li>
             </ul>
           </div>
+        </div>
+
+        <div class="mt-4">
+          <pre>Args: <%= inspect(job.args) %></pre>
         </div>
         <% end %>
       </div>
