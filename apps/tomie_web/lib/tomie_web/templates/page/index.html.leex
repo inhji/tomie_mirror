@@ -1,28 +1,25 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <%= if @weather do %>
   <div class="card col-span-2">
-    <div class="content flex">
-      <%= if @weather do %>
-        <div class="image w-16 flex-shrink-0">
-          <img src="<%= weather_icon_path(@weather) %>" class="w-full" title="<%= @weather.pretty.description %>">
-        </div>
+    <div class="content flex">     
+      <div class="image w-16 flex-shrink-0">
+        <img src="<%= weather_icon_path(@weather) %>" class="w-full" title="<%= @weather.pretty.description %>">
+      </div>
 
-        <div class="body">
-          <h3><span class="text-secondary font-bold"><%= to_celsius(@weather.temp) %>°</span> and <%= @weather.pretty.main %></h3>
-          <p><%= @weather.clouds %>% cloudy, <%= @weather.humidity %>% humidity</p>    
+      <div class="body">
+        <h3><span class="text-secondary font-bold"><%= to_celsius(@weather.temp) %>°</span> and <%= @weather.pretty.main %></h3>
+        <p><%= @weather.clouds %>% cloudy, <%= @weather.humidity %>% humidity</p>    
 
-          <div class="meta">
-            <span><%= @weather.timestamp |> DateTime.from_unix! |> Timex.from_now %></span>  
-          </div>      
-        </div>       
-      <% else %>
-        <p>Weather loading...</p>
-      <% end %>
+        <div class="meta">
+          <span><%= @weather.timestamp |> DateTime.from_unix! |> Timex.from_now %></span>  
+        </div>      
+      </div>       
     </div>
   </div>
 
   <div class="card col-span-2">
     <div class="content flex">
-      <%= for day <- Enum.take(@forecast, 3) do %>
+      <%= for day <- forecast_days(@forecast) do %>
         <div class="flex-auto">
           <div class="image w-16 flex-shrink-0">
             <img src="<%= weather_icon_path(day) %>" class="w-full" title="<%= day.pretty.description %>">
@@ -34,4 +31,7 @@
       <% end %>
     </div>
   </div>
+  <% else %>
+  <p>Weather loading...</p>
+  <% end %>
 </div>

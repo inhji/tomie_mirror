@@ -8,4 +8,11 @@ defmodule TomieWeb.PageView do
   def to_celsius(kelvin) do
     Float.round(kelvin - 273.15, 1)
   end
+
+  def forecast_days(forecast) do
+  	IO.inspect(forecast)
+  	forecast
+  	|> Enum.drop(1)
+  	|> Enum.take(3)
+  end
 end
