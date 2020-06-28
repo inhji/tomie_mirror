@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.67.1](https://git.inhji.de/inhji/tomie/compare/0.67.0...v0.67.1) (2020-06-28)
+
+
+
+
+### Bug Fixes:
+
+* prevent unloaded weather from crashing
+
+* update grid columns for some pages
+
 ## [v0.67.0](https://git.inhji.de/inhji/tomie/compare/0.66.3...v0.67.0) (2020-06-27)
 
 
