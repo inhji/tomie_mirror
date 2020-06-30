@@ -24,6 +24,7 @@
           <div class="image w-16 flex-shrink-0">
             <img src="<%= weather_icon_path(day) %>" class="w-full" title="<%= day.pretty.description %>">
             <div class="text-center">
+              <div><strong><%= weekday(day.dt) %></strong></div>
               <%= to_celsius(day.temp.day) %>°
             </div>
           </div>

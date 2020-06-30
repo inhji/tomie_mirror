@@ -14,4 +14,11 @@ defmodule TomieWeb.PageView do
   	|> Enum.drop(1)
   	|> Enum.take(3)
   end
+
+  def weekday(timestamp) do
+    timestamp
+    |> Timex.from_unix()
+    |> Timex.to_date()
+    |> Timex.format!("{WDshort}")
+  end
 end
