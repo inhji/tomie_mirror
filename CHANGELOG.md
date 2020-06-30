@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.68.0](https://git.inhji.de/inhji/tomie/compare/0.67.1...v0.68.0) (2020-06-30)
+
+
+
+
+### Features:
+
+* show weekday in forecast
+
 ## [v0.67.1](https://git.inhji.de/inhji/tomie/compare/0.67.0...v0.67.1) (2020-06-28)
 
 
