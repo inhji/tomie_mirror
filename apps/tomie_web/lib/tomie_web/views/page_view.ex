@@ -10,7 +10,6 @@ defmodule TomieWeb.PageView do
   end
 
   def forecast_days(forecast) do
-  	IO.inspect(forecast)
   	forecast
   	|> Enum.drop(1)
   	|> Enum.take(3)

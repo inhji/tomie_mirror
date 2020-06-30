@@ -1,7 +1,7 @@
 <div class="grid grid-cols-4 gap-4">
   <%= live_component @socket, TomieWeb.BookmarkLive.SidebarComponent %>
 
-  <div class="col-span-4">
+  <div class="col-span-3">
     <nav>
       <ul>
         <li><%= live_redirect to: Routes.link_path(@socket, :redirect, @bookmark, Slugger.slugify(@bookmark.source)), target: "_blank" do %>
