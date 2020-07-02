@@ -35,7 +35,8 @@ defmodule Bookmarks.MixProject do
       {:excoveralls, "~> 0.13.0", only: :test},
       {:db, in_umbrella: true},
       {:tags, in_umbrella: true},
-      {:scraper, in_umbrella: true}
+      {:scraper, in_umbrella: true},
+      {:webmentions, "~> 0.4.2"}
     ]
   end
 end
