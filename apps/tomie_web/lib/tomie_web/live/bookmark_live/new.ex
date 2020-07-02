@@ -40,7 +40,7 @@ defmodule TomieWeb.BookmarkLive.New do
           url: Routes.home_url(TomieWeb.Endpoint, :bookmark, bookmark)
         })
         |> Oban.insert()
-        
+
         {:noreply,
          push_redirect(socket, to: Routes.live_path(socket, BookmarkLive.Show, bookmark))}
 

@@ -10,9 +10,9 @@ defmodule TomieWeb.PageView do
   end
 
   def forecast_days(forecast) do
-  	forecast
-  	|> Enum.drop(1)
-  	|> Enum.take(3)
+    forecast
+    |> Enum.drop(1)
+    |> Enum.take(3)
   end
 
   def weekday(timestamp) do
