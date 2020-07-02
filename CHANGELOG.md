@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.70.0](https://git.inhji.de/inhji/tomie/compare/0.69.1...v0.70.0) (2020-07-02)
+
+
+
+
+### Features:
+
+* add nginx config
+
+### Bug Fixes:
+
+* bookmarks: add webmentions dep
+
 ## [v0.69.1](https://git.inhji.de/inhji/tomie/compare/0.69.0...v0.69.1) (2020-07-02)
 
 
