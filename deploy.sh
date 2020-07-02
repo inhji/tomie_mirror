@@ -1,11 +1,9 @@
 #!/usr/bin/env zsh
 
-ssh -T root@inhji.de << EOSSH
-su tomie
-source ~/.zshrc
-cd /opt/tomie
+ssh -T tomie@glados << EOSSH
+cd ~/tomie
 git pull
 ./build.sh
 exit
 EOSSH
-ssh -T root@inhji.de systemctl restart tomie
+#ssh -T glados systemctl restart tomie
