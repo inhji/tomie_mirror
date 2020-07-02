@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.69.1](https://git.inhji.de/inhji/tomie/compare/0.69.0...v0.69.1) (2020-07-02)
+
+
+
+
+### Bug Fixes:
+
+* update tool-versions
+
+* update deploy script
+
 ## [v0.69.0](https://git.inhji.de/inhji/tomie/compare/0.68.0...v0.69.0) (2020-07-02)
 
 
