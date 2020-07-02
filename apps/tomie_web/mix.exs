@@ -44,6 +44,7 @@ defmodule TomieWeb.MixProject do
       {:excoveralls, "~> 0.13.0", only: :test},
       {:gettext, "~> 0.11"},
       {:indie, in_umbrella: true},
+      {:indie, in_umbrella: true},
       {:jason, "~> 1.0"},
       {:listens, in_umbrella: true},
       {:phoenix, "~> 1.5.0"},

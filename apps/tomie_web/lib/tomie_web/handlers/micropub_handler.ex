@@ -33,7 +33,10 @@ defmodule TomieWeb.MicropubHandler do
 
     case Bookmarks.create_bookmark(attrs) do
       {:ok, bookmark} ->
-        Bookmarks.Worker.new(%{id: bookmark.id})
+        Bookmarks.Worker.new(%{
+          id: bookmark.id,
+          url: Routes.home_url(TomieWeb.Endpoint, :bookmark, bookmark)
+        })
         |> Oban.insert()
 
         {:ok, :created, Routes.home_url(TomieWeb.Endpoint, :bookmark, bookmark)}

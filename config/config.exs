@@ -46,7 +46,7 @@ config :indie,
 config :tomie, Oban,
   repo: Db.Repo,
   prune: {:maxlen, 10_000},
-  queues: [bookmarks: 10, listens: 10, scraper: 10],
+  queues: [bookmarks: 10, listens: 10, scraper: 10, indie: 10],
   crontab: [
     {"* * * * *", Listens.Workers.Listenbrainz, args: %{user: "inhji"}},
     {"* * * * *", Listens.Workers.DiscogsArtist, args: %{}},
