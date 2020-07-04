@@ -6,6 +6,7 @@ defmodule TomieWeb.JobView do
   def job_duration(%{state: "discarded"} = _job), do: "Discarded"
   def job_duration(%{state: "available"} = _job), do: "Available"
   def job_duration(%{state: "retryable"} = _job), do: "Retryable"
+
   def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at} = job) do
     IO.inspect(job)
 

@@ -33,7 +33,7 @@ defmodule Bookmarks.MixProject do
       {:mock, "~> 0.3.0", only: :test},
       {:db, in_umbrella: true},
       {:tags, in_umbrella: true},
-      {:http, in_umbrella: true},
+      {:http, in_umbrella: true}
     ]
   end
 end
