@@ -17,7 +17,7 @@ defmodule Listens.Workers.DiscogsAlbum do
   @rate_limit :rate_limit
 
   @impl Oban.Worker
-  def perform(%{"action" => "fetch_cover"}, _job) do
+  def perform(%Oban.Job{args: %{"action" => "fetch_cover"}}) do
     Albums.list_albums_without_cover(log: false)
     |> Enum.each(&fetch_album_cover/1)
 
@@ -27,7 +27,7 @@ defmodule Listens.Workers.DiscogsAlbum do
     :ok
   end
 
-  def perform(%{"action" => "fetch_genres"}, _job) do
+  def perform(%Oban.Job{args: %{"action" => "fetch_genres"}}) do
     Albums.list_albums_without_genres(log: false)
     |> Enum.each(&fetch_album_genres_styles/1)
 
@@ -38,7 +38,7 @@ defmodule Listens.Workers.DiscogsAlbum do
   end
 
   @impl Oban.Worker
-  def perform(%{"action" => "search_id"}, _job) do
+  def perform(%Oban.Job{args: %{"action" => "search_id"}}) do
     Albums.list_albums_without_discogs_id(log: false)
     |> Enum.each(&search_discogs_id/1)
 

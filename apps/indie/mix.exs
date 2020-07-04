@@ -27,7 +27,6 @@ defmodule Indie.MixProject do
     [
       {:bookmarks, in_umbrella: true},
       {:http, in_umbrella: true},
-      {:oban, "~> 1.2"},
       {:plug_micropub, "~> 0.1.0"},
       {:webmentions, "~> 0.4.2"}
     ]

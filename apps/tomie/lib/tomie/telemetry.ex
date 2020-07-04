@@ -39,8 +39,9 @@ defmodule Tomie.Telemetry do
       summary("vm.total_run_queue_lengths.io"),
 
       # Oban Metrics
-      summary("oban.success.duration", unit: {:native, :millisecond}),
-      summary("oban.failure.duration", unit: {:native, :millisecond})
+      summary("oban.job.start.duration", unit: {:native, :millisecond}),
+      summary("oban.job.stop.duration", unit: {:native, :millisecond}),
+      summary("oban.job.exception.duration", unit: {:native, :millisecond})
     ]
   end
 

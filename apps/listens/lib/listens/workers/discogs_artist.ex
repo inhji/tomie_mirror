@@ -18,7 +18,7 @@ defmodule Listens.Workers.DiscogsArtist do
   @rate_limit :rate_limit
 
   @impl Oban.Worker
-  def perform(_args, _job) do
+  def perform(_job) do
     Artists.list_artists_without_image(log: false)
     |> Enum.each(&fetch_artist_image/1)
 

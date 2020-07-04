@@ -29,7 +29,6 @@ defmodule Http.MixProject do
       {:cachex, "~> 3.2"},
       {:floki, "~> 0.26.0"},
       {:httpoison, "~> 1.6"},
-      {:oban, "~> 1.2"},
       {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"}
     ]
   end

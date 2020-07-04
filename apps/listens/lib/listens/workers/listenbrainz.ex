@@ -17,7 +17,7 @@ defmodule Listens.Workers.Listenbrainz do
   @rate_limit :rate_limit
 
   @impl Oban.Worker
-  def perform(%{"user" => user}, _job) do
+  def perform(%Oban.Job{args: %{"user" => user}}) do
     count = Listens.Cache.try_get(@cache, @fetch_listen_count, @default_listen_count)
     last_ts = Handler.last_listen_timestamp()
     url = "#{@base_url}/#{user}/listens?min_ts=#{last_ts}&count=#{count}"

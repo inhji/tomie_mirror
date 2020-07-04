@@ -1,12 +1,12 @@
 defmodule TomieWeb.BookmarkWorker do
-	 use Oban.Worker,
+  use Oban.Worker,
     queue: :bookmarks,
     max_attempts: 5
 
   alias Bookmarks.Bookmark
 
   @impl Oban.Worker
-  def perform(%{"id" => id, "url" => url}, _job) do
+  def perform(%Oban.Job{args: %{"id" => id, "url" => url}}) do
     bookmark = Bookmarks.get_bookmark!(id)
 
     with :ok <- scrape_bookmark_url(bookmark),
