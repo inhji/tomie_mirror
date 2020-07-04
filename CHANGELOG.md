@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.70.1](https://git.inhji.de/inhji/tomie/compare/0.70.0...v0.70.1) (2020-07-04)
+
+
+
+
+### Bug Fixes:
+
+* make sure tesla is available in release
+
+* update deploy script
+
+### Refactors:
+
+* put nginx and system configs into install folder
+
 ## [v0.70.0](https://git.inhji.de/inhji/tomie/compare/0.69.1...v0.70.0) (2020-07-02)
 
 
