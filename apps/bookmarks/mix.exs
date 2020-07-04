@@ -20,23 +20,20 @@ defmodule Bookmarks.MixProject do
   def application do
     [
       mod: {Bookmarks.Application, []},
-      extra_applications: [:logger, :tesla]
+      extra_applications: [:logger]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:oban, "~> 1.2"},
       {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.1"},
       {:phoenix_pubsub, "~> 2.0"},
       {:mock, "~> 0.3.0", only: :test},
-      {:excoveralls, "~> 0.13.0", only: :test},
       {:db, in_umbrella: true},
       {:tags, in_umbrella: true},
-      {:scraper, in_umbrella: true},
-      {:webmentions, "~> 0.4.2"}
+      {:http, in_umbrella: true},
     ]
   end
 end

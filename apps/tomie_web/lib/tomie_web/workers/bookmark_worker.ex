@@ -1,5 +1,5 @@
-defmodule Bookmarks.Worker do
-  use Oban.Worker,
+defmodule TomieWeb.BookmarkWorker do
+	 use Oban.Worker,
     queue: :bookmarks,
     max_attempts: 5
 
@@ -18,8 +18,8 @@ defmodule Bookmarks.Worker do
   end
 
   def scrape_bookmark_url(%Bookmark{source: source} = bookmark) do
-    with {:ok, html} <- Scraper.Html.get_html(source),
-         {:ok, result} <- Scraper.Html.parse(html),
+    with {:ok, html} <- Http.Html.get_html(source),
+         {:ok, result} <- Http.Html.parse(html),
          {:ok, updated_bookmark} <- Bookmarks.update_bookmark(bookmark, %{title: result.title}) do
       {:ok, updated_bookmark} =
         Tags.list_tags_with_rules()

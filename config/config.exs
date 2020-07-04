@@ -19,7 +19,7 @@ config :tomie,
 config :listens,
   discogs_token: "kRIDCYTMRucJojWzQKlXlDAnDlQSgmXboMEZiUBT"
 
-config :scraper, :weather,
+config :http, :weather,
   api_key: "5e8d6569a828fd7860acf87bf1113a9e",
   latitude: 50.583832,
   longitude: 8.677890,
@@ -53,7 +53,7 @@ config :tomie, Oban,
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "search_id"}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_cover"}},
     {"* * * * *", Listens.Workers.DiscogsAlbum, args: %{action: "fetch_genres"}},
-    {"*/5 * * * *", Scraper.Workers.Weather, args: %{}}
+    {"*/5 * * * *", TomieWeb.WeatherWorker, args: %{}}
   ]
 
 config :tomie_web,

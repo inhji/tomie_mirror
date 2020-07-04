@@ -18,6 +18,7 @@ defmodule Http.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Http.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -25,7 +26,11 @@ defmodule Http.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.6"}
+      {:cachex, "~> 3.2"},
+      {:floki, "~> 0.26.0"},
+      {:httpoison, "~> 1.6"},
+      {:oban, "~> 1.2"},
+      {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"}
     ]
   end
 end

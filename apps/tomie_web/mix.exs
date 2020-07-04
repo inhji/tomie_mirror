@@ -25,7 +25,7 @@ defmodule TomieWeb.MixProject do
   def application do
     [
       mod: {TomieWeb.Application, []},
-      extra_applications: [:logger, :runtime_tools, :uuid, :mnesia]
+      extra_applications: [:logger, :runtime_tools, :uuid, :mnesia, :tesla]
     ]
   end
 
@@ -47,6 +47,7 @@ defmodule TomieWeb.MixProject do
       {:indie, in_umbrella: true},
       {:jason, "~> 1.0"},
       {:listens, in_umbrella: true},
+      {:oban, "~> 1.2.0"},
       {:phoenix, "~> 1.5.0"},
       {:phoenix_active_link, "~> 0.3.0"},
       {:phoenix_ecto, "~> 4.0"},
