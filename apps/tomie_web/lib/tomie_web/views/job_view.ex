@@ -2,19 +2,13 @@ defmodule TomieWeb.JobView do
   use TomieWeb, :view
   alias TomieWeb.JobLive
 
-  def job_duration(%{state: "executing"} = _job) do
-    "Running"
-  end
+  def job_duration(%{state: "executing"} = _job), do: "Running"
+  def job_duration(%{state: "discarded"} = _job), do: "Discarded"
+  def job_duration(%{state: "available"} = _job), do: "Available"
+  def job_duration(%{state: "retryable"} = _job), do: "Retryable"
+  def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at} = job) do
+    IO.inspect(job)
 
-  def job_duration(%{state: "discarded"} = _job) do
-    "Discarded"
-  end
-
-  def job_duration(%{state: "available"} = _job) do
-    "Available"
-  end
-
-  def job_duration(%{scheduled_at: scheduled_at, completed_at: completed_at}) do
     to_string(Timex.diff(completed_at, scheduled_at, :milliseconds)) <> "ms"
   end
 
