@@ -35,7 +35,7 @@ defmodule TomieWeb.BookmarkLive.New do
       {:ok, bookmark} ->
         Bookmarks.set_tags(tags, bookmark)
 
-        Bookmarks.Worker.new(%{
+        TomieWeb.BookmarkWorker.new(%{
           id: bookmark.id,
           url: Routes.home_url(TomieWeb.Endpoint, :bookmark, bookmark)
         })
