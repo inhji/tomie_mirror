@@ -20,7 +20,7 @@ defmodule Bookmarks.MixProject do
   def application do
     [
       mod: {Bookmarks.Application, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger, :tesla]
     ]
   end
 
