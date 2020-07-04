@@ -5,6 +5,27 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.71.0](https://git.inhji.de/inhji/tomie/compare/0.70.1...v0.71.0) (2020-07-04)
+
+
+
+
+### Features:
+
+* update to oban 2.0.0-rc3
+
+### Bug Fixes:
+
+* use TomieWeb.BookmarkWorker
+
+* handle job duration for retryable jobs
+
+### Refactors:
+
+* move scraper functionality to http, move most workers to tomie_web
+
+* remove scrape app
+
 ## [v0.70.1](https://git.inhji.de/inhji/tomie/compare/0.70.0...v0.70.1) (2020-07-04)
 
 
