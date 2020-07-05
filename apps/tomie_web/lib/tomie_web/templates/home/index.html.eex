@@ -10,28 +10,26 @@
 	<h2 class="p-note"><%= @user.tagline %></h2>
 </header>
 
-<div class="flex-container">
-	<div>
-		<h3>Bookmarks</h3>
+<div>
+	<h3>Bookmarks</h3>
 
-		<dl>
-			<%= for b <- @bookmarks do %>
-			<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"></small></dt>
-			<dd><%= Timex.from_now(b.inserted_at) %> • <%= tag_string(b.tags) %></dd>
-			<% end %>
-		</dl>
-	</div>
+	<dl>
+		<%= for b <- @bookmarks do %>
+		<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"></small></dt>
+		<dd><%= Timex.from_now(b.inserted_at) %> • <%= tag_string(b.tags) %></dd>
+		<% end %>
+	</dl>
+</div>
 
-	<div>
-		<h3>Listens</h3>
+<div>
+	<h3>Listens</h3>
 
-		<dl>
-			<%= for l <- @listens do %>
-			<dt><%= l.track.name %> <small class="brackets"></small></dt>
-			<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
-			<% end %>
-		</dl>
-	</div>
+	<dl>
+		<%= for l <- @listens do %>
+		<dt><%= l.track.name %> <small class="brackets"></small></dt>
+		<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
+		<% end %>
+	</dl>
 </div>
 
 <h3>Projects</h3>

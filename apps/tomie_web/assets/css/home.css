@@ -42,8 +42,8 @@ p, ul, dl {
   font-family: 'Open Sans', serif; 
 }
 
-ul > li {
-  margin-bottom: 0.3rem;
+ul > li, dl > dd {
+  margin-bottom: 1rem;
 }
 
 ul > li::before {
@@ -57,10 +57,6 @@ dl > dt {
 
 dl > dt > small {
   font-weight: normal;
-}
-
-dl > dd {
-  margin-bottom: 0.3rem;
 }
 
 h1, h2, h3 {
