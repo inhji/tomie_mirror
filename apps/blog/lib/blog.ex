@@ -1,0 +1,38 @@
+defmodule Blog do
+  @moduledoc """
+  Documentation for `Blog`.
+  """
+
+  import Ecto.Query, warn: false
+  alias Blog.Post
+
+  @preloads [:tags]
+
+  def create_post(attrs \\ %{}) do
+    %Post{}
+    |> Post.changeset(attrs)
+    |> Db.Repo.insert()
+  end
+
+  def update_post(post, attrs) do
+    post
+    |> Db.Repo.preload(@preloads)
+    |> Post.changeset(attrs)
+    |> Db.Repo.update()
+  end
+
+  def get_post!(id),
+    do:
+      Db.Repo.get!(Post, id)
+      |> Db.Repo.preload(@preloads)
+
+  def list_posts() do
+    %Post{}
+    |> Db.Repo.all()
+    |> Db.Repo.preload(@preloads)
+  end
+
+  def delete_post(post) do
+    Db.Repo.delete(post)
+  end
+end

@@ -1,9 +1,9 @@
-defmodule Wiki.Page do
+defmodule Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "posts" do
-    field :type, :string, default: "page"
+    field :type, :string, default: "post"
 
     field :source, :string
     field :title, :string
@@ -28,8 +28,8 @@ defmodule Wiki.Page do
     timestamps()
   end
 
-  def changeset(bookmark, attrs \\ %{}) do
-    bookmark
+  def changeset(post, attrs \\ %{}) do
+    post
     |> cast(attrs, [
       :source,
       :title,

@@ -12,6 +12,7 @@ defmodule Tomie.Umbrella.MixProject do
       releases: [
         tomie: [
           applications: [
+            blog: :permanent,
             bookmarks: :permanent,
             db: :permanent,
             http: :permanent,
@@ -19,8 +20,7 @@ defmodule Tomie.Umbrella.MixProject do
             listens: :permanent,
             tags: :permanent,
             tomie: :permanent,
-            tomie_web: :permanent,
-            wiki: :permanent
+            tomie_web: :permanent
           ]
         ]
       ]
