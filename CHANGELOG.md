@@ -5,6 +5,31 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.72.0](https://git.inhji.de/inhji/tomie/compare/0.71.0...v0.72.0) (2020-07-06)
+
+
+
+
+### Features:
+
+* show posts on homepage
+
+* customize trix editor
+
+* first version of blog posts and notes
+
+### Bug Fixes:
+
+* filter bookmarks by type
+
+### Refactors:
+
+* rename wiki app to blog
+
+### Tweaks:
+
+* homepage styles
+
 ## [v0.71.0](https://git.inhji.de/inhji/tomie/compare/0.70.1...v0.71.0) (2020-07-04)
 
 
