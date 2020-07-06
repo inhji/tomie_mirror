@@ -18,7 +18,7 @@ defmodule TomieWeb.BlogController do
   	post = Blog.get_post!(id)
 
   	case Blog.update_post(post, post_params) do
-  		{:ok, post} ->
+  		{:ok, _post} ->
   			conn
   			|> redirect(to: Routes.blog_path(conn, :index))
 
@@ -35,7 +35,7 @@ defmodule TomieWeb.BlogController do
 
   def create(conn, %{"post" => post_params}) do
   	case Blog.create_post(post_params) do
-  		{:ok, post} ->
+  		{:ok, _post} ->
   			conn
   			|> redirect(to: Routes.blog_path(conn, :index))
 
