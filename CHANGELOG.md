@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.73.0](https://git.inhji.de/inhji/tomie/compare/0.72.0...v0.73.0) (2020-07-06)
+
+
+
+
+### Features:
+
+* add link to public page from admin
+
+### Refactors:
+
+* refactor homepage styles
+
+* load notes and articles separately
+
 ## [v0.72.0](https://git.inhji.de/inhji/tomie/compare/0.71.0...v0.72.0) (2020-07-06)
 
 
