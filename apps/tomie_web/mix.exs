@@ -38,6 +38,7 @@ defmodule TomieWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:blog, in_umbrella: true},
       {:bookmarks, in_umbrella: true},
       {:chartkick, "~> 0.4.0"},
       {:db, in_umbrella: true},

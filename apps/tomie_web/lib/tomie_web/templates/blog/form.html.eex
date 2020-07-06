@@ -1,0 +1,12 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <fieldset>
+    <%= text_input f, :title %>
+  </fieldset>
+
+  <fieldset>
+    <%= hidden_input f, :content_html %>
+    <trix-editor input="post_content_html" class="trix-content"></trix-editor>
+  </fieldset>
+
+  <%= submit "submit", class: "button" %>
+<% end %>

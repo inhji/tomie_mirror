@@ -7,6 +7,13 @@
         </span>
       <% end %>
     </li>
+    <li><%= active_link @conn, to: Routes.blog_path(@conn, :index) do %>
+      <span class="icon">
+        <%= IconView.icon(:blog) %>
+      </span>
+      <span>Blog</span>
+      <% end %>
+    </li>
     <li><%= active_link @conn, to: Routes.live_path(TomieWeb.Endpoint, TomieWeb.BookmarkLive.Index) do %>
       <span class="icon">
         <%= IconView.icon(:bookmark) %>

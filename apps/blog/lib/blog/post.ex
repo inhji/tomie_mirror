@@ -33,7 +33,7 @@ defmodule Blog.Post do
     |> cast(attrs, [
       :source,
       :title,
-      :content,
+      :content_html,
       :views,
       :viewed_at,
       :is_favorite,
@@ -41,7 +41,14 @@ defmodule Blog.Post do
       :is_archived
     ])
     |> maybe_set_tag_string()
-    |> validate_required([:source, :type])
+    |> validate_required([:content_html, :type])
+  end
+
+  def subtype(post) do
+    case post.title do
+      nil -> :note
+      _ -> :article
+    end
   end
 
   # This function requires tags to be preloaded!

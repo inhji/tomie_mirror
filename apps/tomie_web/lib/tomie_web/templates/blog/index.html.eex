@@ -1,0 +1,28 @@
+<nav>
+  <ul>
+    <li>
+      <%= link to: Routes.blog_path(@conn, :new) do %>
+        <span class="icon">
+          <%= IconView.icon(:add_outline) %>
+        </span>
+        <span>New Post</span>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+
+<%= for post <- @posts do %>
+  <article class="card">
+    <div class="content trix-content">
+      <h3><%= post.title %></h3>
+      
+      <%= unless Blog.Post.subtype(post) === :article do %>
+      <%= raw(post.content_html) %>
+      <% end %>
+    </div>
+
+    <footer>
+      <%= link "Edit", to: Routes.blog_path(@conn, :edit, post.id), class: "button" %>
+    </footer>  
+  </article>
+<% end %>

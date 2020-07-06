@@ -26,8 +26,10 @@ defmodule Blog do
       Db.Repo.get!(Post, id)
       |> Db.Repo.preload(@preloads)
 
-  def list_posts() do
-    %Post{}
+  def list_posts(limit \\ 10) do
+    Post
+    |> where(type: "post")
+    |> limit(^limit)
     |> Db.Repo.all()
     |> Db.Repo.preload(@preloads)
   end
