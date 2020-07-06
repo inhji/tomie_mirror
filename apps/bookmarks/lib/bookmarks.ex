@@ -64,6 +64,7 @@ defmodule Bookmarks do
     query =
       from b in Bookmark,
         left_join: t in assoc(b, :tags),
+        where: b.type == "bookmark",
         distinct: true,
         preload: ^@preloads,
         select: b,
