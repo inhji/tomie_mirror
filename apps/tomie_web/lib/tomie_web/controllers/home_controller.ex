@@ -10,7 +10,8 @@ defmodule TomieWeb.HomeController do
 
   def index(conn, _params) do
     bookmarks = Bookmarks.list_bookmarks("", "recent", 3)
-    posts = Blog.list_posts(3)
+    posts = Blog.list_posts(1)
+    articles = Blog.list_articles(3)
     listens = Listens.Listens.list_listens(3)
     user = Tomie.Users.get_user!(1)
 
@@ -18,6 +19,7 @@ defmodule TomieWeb.HomeController do
     |> render("index.html",
       bookmarks: bookmarks,
       posts: posts,
+      articles: articles,
       listens: listens,
       page_title: "Home",
       user: user

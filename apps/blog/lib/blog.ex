@@ -26,12 +26,23 @@ defmodule Blog do
       Db.Repo.get!(Post, id)
       |> Db.Repo.preload(@preloads)
 
+
   def list_posts(limit \\ 10) do
     Post
     |> where(type: "post")
+    |> where([p], is_nil(p.title))
     |> limit(^limit)
     |> Db.Repo.all()
     |> Db.Repo.preload(@preloads)
+  end
+
+  def list_articles(limit \\ 10) do
+    Post
+    |> where(type: "post")
+    |> where([p], not is_nil(p.title))
+    |> limit(^limit)
+    |> Db.Repo.all()
+    |> Db.Repo.preload(@preloads) 
   end
 
   def delete_post(post) do
