@@ -10,6 +10,7 @@
 :root {
   --primary-color: #d34;
   --main-bg-color: #fefefe;
+  --divider-color: #ccc;
 }
 
 body {
@@ -37,6 +38,54 @@ main#wrapper a:hover {
   background: #333;
 }
 
+section.articles {
+  border-bottom: 1px solid var(--divider-color);
+  padding: 0 1rem 0.75rem 1rem;
+  margin-bottom: 4rem;
+}
+
+section.articles article {
+  margin-bottom: 2rem;
+}
+
+section.articles article header .title {
+  font-weight: 500;
+}
+
+section.articles article header .date {
+  background: var(--primary-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: 10rem;
+  color: var(--main-bg-color);
+  margin-right: 0.5rem;
+}
+
+.feed-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.feed-container div {
+  flex: 1;
+}
+
+.feed-container .spacer {
+  flex-grow: 0;
+  flex-basis: auto;
+  width: 1rem;
+}
+
+.feed h3 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feed h3::after {
+  color: var(--primary-color);
+  content: ' !';
+  font-weight: 800;
+}
 
 p, ul, dl {
   font-family: 'Open Sans', serif; 
@@ -55,15 +104,11 @@ dl > dt {
   color: #444;
 }
 
-dl > dt > small {
-  font-weight: normal;
-}
-
 h1, h2, h3 {
   color: #333;
 }
 
-h1 {
+/*h1 {
   font-size: 1.8em;
   font-weight: 800;
   margin: 3rem 0 2rem;
@@ -71,16 +116,11 @@ h1 {
 
 h2 {
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 h3 {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
   margin: 3rem 0 1rem;
-}
-
-h3::after {
-  color: var(--primary-color);
-  content: '.';
-}
+}*/

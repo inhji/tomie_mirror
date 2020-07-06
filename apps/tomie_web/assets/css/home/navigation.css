@@ -10,7 +10,7 @@ nav#main-navigation {
 	margin-top: 1rem;
 
 	padding: 0 1rem 1rem;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid var(--divider-color);
 }
 
 nav#main-navigation span {}

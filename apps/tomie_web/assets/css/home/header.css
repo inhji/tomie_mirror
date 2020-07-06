@@ -1,11 +1,16 @@
 header.site-header {
   margin: 3rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
+
 }
 
 header.site-header h1 {
   text-align: center;
   border: none;
   margin: 2rem 0 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 header.site-header h1 span {
