@@ -22,22 +22,43 @@
 </div>
 
 <div>
-	<h3>Listens</h3>
+	<h3>Posts</h3>
 
 	<dl>
-		<%= for l <- @listens do %>
-		<dt><%= l.track.name %> <small class="brackets"></small></dt>
-		<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
+		<%= for p <- @posts do %>
+			<%= if Blog.Post.subtype(p) == :article do %>
+				<dt><%= p.title %></dt>
+			<% else %>
+				<dt><%= raw p.content_html %></dt>
+			<% end %>
+			<dd><%= Timex.from_now(p.inserted_at) %></dd>
 		<% end %>
 	</dl>
 </div>
 
-<h3>Projects</h3>
+<div class="flex-container">
+	<div>
+		<h3>Listens</h3>
 
-<dl>
-	<dt><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <small class="brackets">2013 - 2020</small></dt>
-	<dd>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</dd>	
+		<dl>
+			<%= for l <- @listens do %>
+			<dt><%= l.track.name %> <small class="brackets"></small></dt>
+			<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
+			<% end %>
+		</dl>
+	</div>
 
-	<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
-	<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
-</dl>
+	<div>
+		<h3>Projects</h3>
+
+		<dl>
+			<dt><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <small class="brackets">2013 - 2020</small></dt>
+			<dd>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</dd>	
+
+			<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
+			<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
+		</dl>
+	</div>
+</div>
+
+
