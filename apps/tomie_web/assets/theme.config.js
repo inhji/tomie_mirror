@@ -24,7 +24,9 @@ const mainTheme = new Theme()
     'danger': '#FED7D7',
     'on-danger': '#C53030',
     'success': '#C6F6D5',
-    'on-success': '#48BB78'
+    'on-success': '#48BB78',
+
+    'white': '#fefefe'
   })
   .opacityVariant('muted', .8)
   .opacityVariant('barely', .4)

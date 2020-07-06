@@ -7,6 +7,7 @@
 /* Plugins */
 @import "vendor/nprogress";
 @import "vendor/trix";
+@import "vendor/trix-custom";
 
 /*! purgecss start ignore */
 @import "vendor/prismjs-light";
@@ -87,21 +88,12 @@ a {
 	@apply transition duration-300;
 }
 
-.card footer.focusable {
-	@apply hidden border-none;
-}
-
-/* This only takes effect if tabindex is used on the .card */
-.card:focus, .card:focus-within {
-	@apply outline-none;
-}
-
-.card:focus footer.focusable, .card:focus-within footer.focusable {
-	@apply block border-divider border-solid border-t;
+.card footer {
+	@apply border-t border-divider;
 }
 
 .card footer .button {
-	@apply rounded-none bg-surface-alt text-on-surface;
+	@apply rounded-none bg-surface-alt text-on-surface border-none;
 }
 
 .card.bg-danger {

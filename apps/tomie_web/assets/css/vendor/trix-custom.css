@@ -1,0 +1,15 @@
+trix-editor {
+	@apply bg-surface-alt border-none p-3;
+}
+
+trix-toolbar .trix-button-group {
+	@apply border-none;
+}
+
+trix-toolbar .trix-button{
+	@apply bg-white border-none mr-1 rounded;
+}
+
+trix-toolbar .trix-button.trix-active{
+	@apply bg-primary;
+}
