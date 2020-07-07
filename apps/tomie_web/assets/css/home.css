@@ -7,22 +7,38 @@
 @import "home/footer";
 @import "home/homepage";
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../static/fonts/open_sans.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../static/fonts/manrope.woff') format('woff');
+}
+
 :root {
   --primary-color: #d34;
   --main-bg-color: #fefefe;
   --divider-color: #ccc;
-  --body-family: 'Manrope', sans-serif;
+  --body-family: 'Open Sans', sans-serif;
+  --heading-family: 'Manrope', sans-serif;
 }
 
 body {
   color: #555;
   background: var(--main-bg-color);
   font-family: var(--body-family);
+  font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
+  font-kerning: normal;
   font-size: 17px;
+  letter-spacing: 0.015em;
+  word-spacing: 0.001em;
 }
 
 h1, h2, h3 {
   color: #333;
+  font-family: var(--heading-family);
 }
 
 main#wrapper {

@@ -7,7 +7,6 @@
 
 		<%= live_title_tag @page_title, suffix: " • Inhji.de" %>
 
-		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/home.css") %>"/>
 		<link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/images/apple-touch-icon.png") %>">
 		<link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/images/favicon-32x32.png") %>">

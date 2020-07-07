@@ -47,10 +47,6 @@
   font-weight: bold;
 }
 
-.home-wrapper dl {
-  font-family: 'Open Sans', serif; 
-}
-
 .home-wrapper dl > dd {
   margin-bottom: 1rem;
 }
