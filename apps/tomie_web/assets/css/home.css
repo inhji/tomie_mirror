@@ -5,20 +5,24 @@
 @import "home/navigation";
 @import "home/article";
 @import "home/footer";
-@import "home/helpers";
+@import "home/homepage";
 
 :root {
   --primary-color: #d34;
   --main-bg-color: #fefefe;
   --divider-color: #ccc;
+  --body-family: 'Manrope', sans-serif;
 }
 
 body {
   color: #555;
   background: var(--main-bg-color);
-  
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--body-family);
   font-size: 17px;
+}
+
+h1, h2, h3 {
+  color: #333;
 }
 
 main#wrapper {
@@ -38,89 +42,8 @@ main#wrapper a:hover {
   background: #333;
 }
 
-section.articles {
-  border-bottom: 1px solid var(--divider-color);
-  padding: 0 1rem 0.75rem 1rem;
-  margin-bottom: 4rem;
-}
-
-section.articles article {
-  margin-bottom: 2rem;
-}
-
-section.articles article header .title {
-  font-weight: 500;
-}
-
-section.articles article header .date {
-  background: var(--primary-color);
-  padding: 0.35rem 0.75rem;
-  border-radius: 10rem;
-  color: var(--main-bg-color);
-  margin-right: 0.5rem;
-}
-
-.feed-container {
-  display: flex;
-  margin-bottom: 2rem;
-}
-
-.feed-container div {
-  flex: 1;
-}
-
-.feed-container .spacer {
-  flex-grow: 0;
-  flex-basis: auto;
-  width: 1rem;
-}
-
-.feed h3 {
-  font-weight: 500;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-}
-
-.feed h3::after {
-  color: var(--primary-color);
-  content: ' !';
-  font-weight: 800;
-}
-
-p, ul, dl {
-  font-family: 'Open Sans', serif; 
-}
-
-ul > li, dl > dd {
-  margin-bottom: 1rem;
-}
-
-ul > li::before {
-  content: "• ";
-}
-
-dl > dt {
-  font-weight: bold;
-  color: #444;
-}
-
-h1, h2, h3 {
-  color: #333;
-}
-
-/*h1 {
+article h1 {
   font-size: 1.8em;
   font-weight: 800;
-  margin: 3rem 0 2rem;
+  margin: 2rem 0 2rem;
 }
-
-h2 {
-  font-size: 1.4rem;
-  font-weight: 800;
-}
-
-h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin: 3rem 0 1rem;
-}*/

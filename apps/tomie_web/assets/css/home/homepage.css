@@ -1,0 +1,66 @@
+.home-wrapper section.articles {
+  border-bottom: 1px solid var(--divider-color);
+  padding: 0 1rem 0.75rem 1rem;
+  margin-bottom: 4rem;
+}
+
+.home-wrapper section.articles article {
+  margin-bottom: 2rem;
+}
+
+.home-wrapper section.articles article header .title {
+  font-weight: 500;
+}
+
+.home-wrapper section.articles article header .date {
+  background: var(--primary-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: 10rem;
+  color: var(--main-bg-color);
+  margin-right: 0.5rem;
+}
+
+.home-wrapper .feed-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.home-wrapper .feed-container div {
+  flex: 1;
+}
+
+.home-wrapper .feed-container .spacer {
+  flex-grow: 0;
+  flex-basis: auto;
+  width: 1rem;
+}
+
+.home-wrapper .feed h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.home-wrapper .feed h3::after {
+  color: var(--primary-color);
+  content: ' !';
+  font-weight: bold;
+}
+
+.home-wrapper dl {
+  font-family: 'Open Sans', serif; 
+}
+
+.home-wrapper dl > dd {
+  margin-bottom: 1rem;
+}
+
+.home-wrapper dl > dt {
+  color: #444;
+}
+
+.home-wrapper .feed.bookmarks dl dt,
+.home-wrapper .feed.projects dl dt,
+.home-wrapper .feed.listens dl dt{
+  font-weight: 700;
+}

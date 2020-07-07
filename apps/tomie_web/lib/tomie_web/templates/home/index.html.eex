@@ -10,70 +10,75 @@
 	<h2 class="p-note"><%= @user.tagline %></h2>
 </header>
 
-<%= if not Enum.empty?(@articles) do %>
-<section class="articles">
-	<%= for a <- @articles do %>
-	<article>
-		<header>
-			<h3>
-				<span class="date"><%= Timex.format!(a.inserted_at, "{D}") %></span>
-				<span class="title"><%= a.title %></span>
-			</h3>	
-		</header>
-	</article>
+<div class="home-wrapper">
+
+	<%= if not Enum.empty?(@articles) do %>
+	<section class="articles">
+		<%= for a <- @articles do %>
+		<article>
+			<header>
+				<h3>
+					<span class="date"><%= Timex.format!(a.inserted_at, "{D}") %></span>
+					<span class="title"><%= a.title %></span>
+				</h3>	
+			</header>
+		</article>
+		<% end %>
+	</section>
 	<% end %>
-</section>
-<% end %>
 
-<div class="feed-container">
-	<div class="feed bookmarks">
-		<h3>Bookmarks</h3>
+	<div class="feed-container">
+		<div class="feed bookmarks">
+			<h3>Bookmarks</h3>
 
-		<dl>
-			<%= for b <- @bookmarks do %>
-			<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"></small></dt>
-			<dd><%= Timex.from_now(b.inserted_at) %> • <%= tag_string(b.tags) %></dd>
-			<% end %>
-		</dl>
+			<dl>
+				<%= for b <- @bookmarks do %>
+				<dt><%= link b.title, to: Routes.home_path(@conn, :bookmark, b) %> <small class="brackets"></small></dt>
+				<dd><%= Timex.from_now(b.inserted_at) %> • <%= tag_string(b.tags) %></dd>
+				<% end %>
+			</dl>
+		</div>
+
+		<div class="spacer"></div>
+
+		<div class="feed notes">
+			<h3>Notes</h3>
+			
+			<dl>
+				<%= for p <- @posts do %>
+				<dt><%= raw p.content_html %></dt>
+				<dd><%= Timex.from_now(p.inserted_at) %></dd>
+				<% end %>
+			</dl>
+		</div>
 	</div>
 
-	<div class="spacer"></div>
+	<div class="feed-container">
+		<div class="feed listens">
+			<h3>Listens</h3>
 
-	<div class="feed notes">
-		<h3>Notes</h3>
-		
-		<dl>
-			<%= for p <- @posts do %>
-			<dt><%= raw p.content_html %></dt>
-			<dd><%= Timex.from_now(p.inserted_at) %></dd>
-			<% end %>
-		</dl>
+			<dl>
+				<%= for l <- @listens do %>
+				<dt><%= l.track.name %> <small class="brackets"></small></dt>
+				<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
+				<% end %>
+			</dl>
+		</div>
+
+		<div class="feed projects">
+			<h3>Projects</h3>
+
+			<dl>
+				<dt><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <small class="brackets">2013 - 2020</small></dt>
+				<dd>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</dd>	
+
+				<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
+				<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
+			</dl>
+		</div>
 	</div>
 </div>
 
-<div class="feed-container">
-	<div class="feed listens">
-		<h3>Listens</h3>
 
-		<dl>
-			<%= for l <- @listens do %>
-			<dt><%= l.track.name %> <small class="brackets"></small></dt>
-			<dd>by <%= l.artist.name %> • <%= Timex.from_now(l.listened_at) %></dd>
-			<% end %>
-		</dl>
-	</div>
-
-	<div class="feed projects">
-		<h3>Projects</h3>
-
-		<dl>
-			<dt><%= link "Tomie", to: Routes.home_path(@conn, :project, :tomie) %> <small class="brackets">2013 - 2020</small></dt>
-			<dd>Tomie is one of many attempts to build a selfhosted, universal platform for my content.</dd>	
-
-			<dt><%= link "Eurorack", to: Routes.home_path(@conn, :project, :eurorack) %> <small class="brackets">2018 - 2020</small></dt>
-			<dd>My Eurorack system aims to be a lifelong experiment on music-making as a process, not a goal.</dd>	
-		</dl>
-	</div>
-</div>
 
 
