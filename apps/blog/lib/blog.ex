@@ -26,12 +26,21 @@ defmodule Blog do
       Db.Repo.get!(Post, id)
       |> Db.Repo.preload(@preloads)
 
-
   def list_posts(limit \\ 10) do
+    Post
+    |> where(type: "post") 
+    |> limit(^limit)
+    |> order_by([p], desc: p.inserted_at)
+    |> Db.Repo.all()
+    |> Db.Repo.preload(@preloads)
+  end
+
+  def list_notes(limit \\ 10) do
     Post
     |> where(type: "post")
     |> where([p], is_nil(p.title))
     |> limit(^limit)
+    |> order_by([p], desc: p.inserted_at)
     |> Db.Repo.all()
     |> Db.Repo.preload(@preloads)
   end
@@ -41,6 +50,7 @@ defmodule Blog do
     |> where(type: "post")
     |> where([p], not is_nil(p.title))
     |> limit(^limit)
+    |> order_by([p], desc: p.inserted_at)
     |> Db.Repo.all()
     |> Db.Repo.preload(@preloads) 
   end

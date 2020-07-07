@@ -45,9 +45,9 @@
 			<h3>Notes</h3>
 			
 			<dl>
-				<%= for p <- @posts do %>
-				<dt><%= raw p.content_html %></dt>
-				<dd><%= Timex.from_now(p.inserted_at) %></dd>
+				<%= for n <- @notes do %>
+				<dt><%= raw n.content_html %></dt>
+				<dd><%= Timex.from_now(n.inserted_at) %></dd>
 				<% end %>
 			</dl>
 		</div>
