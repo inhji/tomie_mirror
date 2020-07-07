@@ -28,7 +28,7 @@ defmodule Blog do
 
   def list_posts(limit \\ 10) do
     Post
-    |> where(type: "post") 
+    |> where(type: "post")
     |> limit(^limit)
     |> order_by([p], desc: p.inserted_at)
     |> Db.Repo.all()
@@ -52,7 +52,7 @@ defmodule Blog do
     |> limit(^limit)
     |> order_by([p], desc: p.inserted_at)
     |> Db.Repo.all()
-    |> Db.Repo.preload(@preloads) 
+    |> Db.Repo.preload(@preloads)
   end
 
   def delete_post(post) do
