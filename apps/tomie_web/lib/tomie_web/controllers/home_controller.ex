@@ -30,6 +30,13 @@ defmodule TomieWeb.HomeController do
     render(conn, "about.html", page_title: "About")
   end
 
+  def menu(%{request_path: path, req_headers: headers} = conn, _params) do
+    IO.inspect(path)
+    IO.inspect(headers)
+
+    render(conn, "menu.html", page_title: "Menu")
+  end
+
   def project(conn, %{"name" => name}) do
     pretty_name = String.capitalize(name)
 

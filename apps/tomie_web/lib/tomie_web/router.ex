@@ -13,6 +13,7 @@ defmodule TomieWeb.Router do
 
   pipeline :home do
     plug :accepts, ["html"]
+    plug TomieWeb.MenuPathPlug
   end
 
   pipeline :api do
@@ -39,6 +40,7 @@ defmodule TomieWeb.Router do
 
     get "/", HomeController, :index
     get "/about", HomeController, :about
+    get "/menu", HomeController, :menu
 
     get "/project/:name", HomeController, :project
     get "/bookmark/:id", HomeController, :bookmark

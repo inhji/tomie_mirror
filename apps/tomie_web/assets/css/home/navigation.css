@@ -20,7 +20,6 @@ nav#main-navigation a {
 	color: #333;
 }
 
-
 nav#main-navigation .brand {
 	font-weight: bold;
 	color: #333;
@@ -29,4 +28,15 @@ nav#main-navigation .brand {
 nav#main-navigation .brand::after {
 	content: '.';
 	color: var(--primary-color);
+}
+
+nav#main-navigation .menu {
+	font-size: 1.5rem;
+	padding: 0.25rem 0.5rem;
+	background: var(--primary-color);
+}
+
+nav#main-navigation .menu a {
+	color: var(--main-bg-color);
+
 }

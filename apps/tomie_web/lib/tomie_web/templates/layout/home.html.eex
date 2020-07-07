@@ -22,8 +22,8 @@
 	</head>
 	<body>
 		<nav id="main-navigation">
-			<span class="brand"><a href="/">Inhji</a></span>
-			<span><a href="/about">About</a></span>
+			<span class="brand"><%= link "Inhji", to: Routes.home_path(@conn, :index) %></span>
+			<span class="menu"><%= link "Menu", to: @menu_path %></span>
 		</nav>
 
 		<main id="wrapper">
