@@ -6,10 +6,10 @@
 
 /* Plugins */
 @import "vendor/nprogress";
-@import "vendor/trix";
-@import "vendor/trix-custom";
 
 /*! purgecss start ignore */
+@import "vendor/trix";
+@import "vendor/trix-custom";
 @import "vendor/prismjs-light";
 @import "vendor/prismjs-dark";
 /*! purgecss end ignore */
