@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.75.0](https://git.inhji.de/inhji/tomie/compare/0.74.0...v0.75.0) (2020-07-07)
+
+
+
+
+### Features:
+
+* add menu
+
+* delete posts
+
+### Tweaks:
+
+* styles
+
 ## [v0.74.0](https://git.inhji.de/inhji/tomie/compare/0.73.2...v0.74.0) (2020-07-07)
 
 
