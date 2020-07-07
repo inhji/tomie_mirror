@@ -1,3 +1,7 @@
+.home-wrapper a {
+  border: none;
+}
+
 .home-wrapper section.articles {
   border-bottom: 1px solid var(--divider-color);
   padding: 0 1rem 0.75rem 1rem;
@@ -41,22 +45,21 @@
   font-weight: 500;
 }
 
-.home-wrapper .feed h3::after {
-  color: var(--primary-color);
-  content: ' !';
-  font-weight: bold;
+.home-wrapper dl > dt {
+  color: #444;
 }
 
 .home-wrapper dl > dd {
   margin-bottom: 1rem;
-}
-
-.home-wrapper dl > dt {
-  color: #444;
+  margin-top: 0.25rem;
 }
 
 .home-wrapper .feed.bookmarks dl dt,
 .home-wrapper .feed.projects dl dt,
 .home-wrapper .feed.listens dl dt{
   font-weight: 700;
+}
+
+.home-wrapper .feed.notes a {
+  border-bottom: 1px solid var(--primary-color);
 }

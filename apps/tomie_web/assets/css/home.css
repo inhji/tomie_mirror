@@ -41,19 +41,25 @@ h1, h2, h3 {
   font-family: var(--heading-family);
 }
 
-main#wrapper {
+h1 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+main {
   padding: 0 2rem;
   line-height: 1.3em;
   max-width: 50rem;
   margin: 0 auto;
 }
 
-main#wrapper a {
+main a {
   color: #333;
-  text-decoration: none;
+  text-decoration: none; 
 }
 
-main#wrapper a:hover {
+main a:hover {
   color: white;
   background: #333;
 }
@@ -62,4 +68,8 @@ article h1 {
   font-size: 1.8em;
   font-weight: 800;
   margin: 2rem 0 2rem;
+}
+
+article .markdown a {
+  border-bottom: 1px solid var(--primary-color);
 }

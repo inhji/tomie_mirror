@@ -2,7 +2,10 @@ header.site-header {
   margin: 3rem 0;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--divider-color);
+}
 
+header.site-header a {
+  border: none;
 }
 
 header.site-header h1 {
