@@ -23,6 +23,7 @@
 
     <footer>
       <%= link "Edit", to: Routes.blog_path(@conn, :edit, post.id), class: "button" %>
+      <%= link "Delete", to: Routes.blog_path(@conn, :delete, post.id), method: :delete, data: [confirm: "Are you sure?"], class: "button" %>
     </footer>  
   </article>
 <% end %>

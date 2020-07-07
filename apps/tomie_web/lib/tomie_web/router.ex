@@ -72,6 +72,7 @@ defmodule TomieWeb.Router do
     get "/posts/:id/edit", BlogController, :edit
     post "/posts/:id/edit", BlogController, :update
     put "/posts/:id/edit", BlogController, :update
+    delete "/posts/:id", BlogController, :delete
 
     live "/bookmarks", BookmarkLive.Index
     live "/bookmarks/new", BookmarkLive.New

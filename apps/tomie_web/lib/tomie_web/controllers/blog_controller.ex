@@ -43,4 +43,13 @@ defmodule TomieWeb.BlogController do
   			render(conn, "new.html", changeset: changeset)
   	end
   end
+
+  def delete(conn, %{"id" => id}) do
+    post = Blog.get_post!(id)
+    {:ok, _post} = Blog.delete_post(post)
+
+    conn
+    |> put_flash(:info, "Post deleted!")
+    |> redirect(to: Routes.blog_path(conn, :index))
+  end
 end
