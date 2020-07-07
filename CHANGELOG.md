@@ -5,6 +5,17 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.73.2](https://git.inhji.de/inhji/tomie/compare/0.73.1...v0.73.2) (2020-07-07)
+
+
+
+
+### Bug Fixes:
+
+* whitelist trix classes
+
+* improve deploy script to actually restart service after deploy
+
 ## [v0.73.1](https://git.inhji.de/inhji/tomie/compare/0.73.0...v0.73.1) (2020-07-07)
 
 
