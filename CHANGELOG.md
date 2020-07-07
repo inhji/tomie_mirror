@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.74.0](https://git.inhji.de/inhji/tomie/compare/0.73.2...v0.74.0) (2020-07-07)
+
+
+
+
+### Features:
+
+* self-host fonts
+
+### Bug Fixes:
+
+* order posts by date desc
+
 ## [v0.73.2](https://git.inhji.de/inhji/tomie/compare/0.73.1...v0.73.2) (2020-07-07)
 
 
