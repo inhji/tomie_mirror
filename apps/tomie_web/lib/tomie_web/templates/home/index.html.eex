@@ -1,6 +1,6 @@
 <header class="site-header h-card">
 	<div class="avatar">
-		<img src="<%= Routes.static_path(@conn, Tomie.Users.User.avatar(@user, :thumb)) %>" class="u-photo" width="150">
+		<img src="<%= Routes.static_path(@conn, Tomie.Users.User.avatar(@user, :thumb)) %>" class="u-photo" width="150" alt="Photo of me">
 	</div>
 	<h1>
 		<a href="/" class="u-url u-uid">
