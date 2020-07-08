@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.75.1](https://git.inhji.de/inhji/tomie/compare/0.75.0...v0.75.1) (2020-07-08)
+
+
+
+
+### Bug Fixes:
+
+* add avatar alt tag
+
+* remove inspect calls
+
+### Refactors:
+
+* rename blogcontroller to postcontroller
+
 ## [v0.75.0](https://git.inhji.de/inhji/tomie/compare/0.74.0...v0.75.0) (2020-07-07)
 
 
