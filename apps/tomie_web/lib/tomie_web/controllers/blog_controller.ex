@@ -1,4 +1,4 @@
-defmodule TomieWeb.BlogController do
+defmodule TomieWeb.PostController do
   use TomieWeb, :controller
 
   def index(conn, _params) do
@@ -20,7 +20,7 @@ defmodule TomieWeb.BlogController do
     case Blog.update_post(post, post_params) do
       {:ok, _post} ->
         conn
-        |> redirect(to: Routes.blog_path(conn, :index))
+        |> redirect(to: Routes.post_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "edit.html", changeset: changeset)
@@ -37,7 +37,7 @@ defmodule TomieWeb.BlogController do
     case Blog.create_post(post_params) do
       {:ok, _post} ->
         conn
-        |> redirect(to: Routes.blog_path(conn, :index))
+        |> redirect(to: Routes.post_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -50,6 +50,6 @@ defmodule TomieWeb.BlogController do
 
     conn
     |> put_flash(:info, "Post deleted!")
-    |> redirect(to: Routes.blog_path(conn, :index))
+    |> redirect(to: Routes.post_path(conn, :index))
   end
 end

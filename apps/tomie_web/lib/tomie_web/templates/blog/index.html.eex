@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li>
-      <%= link to: Routes.blog_path(@conn, :new) do %>
+      <%= link to: Routes.post_path(@conn, :new) do %>
         <span class="icon">
           <%= IconView.icon(:add_outline) %>
         </span>
@@ -22,8 +22,8 @@
     </div>
 
     <footer>
-      <%= link "Edit", to: Routes.blog_path(@conn, :edit, post.id), class: "button" %>
-      <%= link "Delete", to: Routes.blog_path(@conn, :delete, post.id), method: :delete, data: [confirm: "Are you sure?"], class: "button" %>
+      <%= link "Edit", to: Routes.post_path(@conn, :edit, post.id), class: "button" %>
+      <%= link "Delete", to: Routes.post_path(@conn, :delete, post.id), method: :delete, data: [confirm: "Are you sure?"], class: "button" %>
     </footer>  
   </article>
 <% end %>

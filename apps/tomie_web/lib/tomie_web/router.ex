@@ -68,13 +68,14 @@ defmodule TomieWeb.Router do
 
     live "/", PageLive.Index
 
-    get "/posts", BlogController, :index
-    get "/posts/new", BlogController, :new
-    post "/posts/new", BlogController, :create
-    get "/posts/:id/edit", BlogController, :edit
-    post "/posts/:id/edit", BlogController, :update
-    put "/posts/:id/edit", BlogController, :update
-    delete "/posts/:id", BlogController, :delete
+    get "/posts", PostController, :index
+    get "/posts/new", PostController, :new
+    post "/posts/new", PostController, :create
+    get "/posts/:id/edit", PostController, :edit
+    post "/posts/:id/edit", PostController, :update
+    put "/posts/:id/edit", PostController, :update
+    put "/posts/:id/edit", PostController, :update
+    delete "/posts/:id", PostController, :delete
 
     live "/bookmarks", BookmarkLive.Index
     live "/bookmarks/new", BookmarkLive.New
