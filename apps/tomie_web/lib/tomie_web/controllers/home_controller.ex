@@ -31,9 +31,6 @@ defmodule TomieWeb.HomeController do
   end
 
   def menu(%{request_path: path, req_headers: headers} = conn, _params) do
-    IO.inspect(path)
-    IO.inspect(headers)
-
     render(conn, "menu.html", page_title: "Menu")
   end
 
