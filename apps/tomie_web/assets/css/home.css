@@ -9,11 +9,13 @@
 
 @font-face {
   font-family: 'Open Sans';
+  font-display: optional;
   src: url('../static/fonts/open_sans.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Manrope';
+  font-display: swap;
   src: url('../static/fonts/manrope.woff') format('woff');
 }
 
