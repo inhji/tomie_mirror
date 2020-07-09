@@ -5,6 +5,21 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.75.2](https://git.inhji.de/inhji/tomie/compare/0.75.1...v0.75.2) (2020-07-09)
+
+
+
+
+### Bug Fixes:
+
+* add spacer for second row
+
+### Tweaks:
+
+* add font-display
+
+* improve nginx config
+
 ## [v0.75.1](https://git.inhji.de/inhji/tomie/compare/0.75.0...v0.75.1) (2020-07-08)
 
 
