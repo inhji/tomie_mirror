@@ -1,3 +1,7 @@
+<img src="media/logo_smol.png" alt="drawing" width="200"/>
+
+*can't resist*
+
 # Tomie.Umbrella
 
 ## Development
