@@ -1,4 +1,4 @@
-<img src="media/logo_smol.png" alt="drawing" width="200"/>
+<img src="media/logo_smol.png" alt="drawing" width="200" style="border-radius:10px;"/>
 
 *can't resist*
 
