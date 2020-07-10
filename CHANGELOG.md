@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.75.3](https://git.inhji.de/inhji/tomie/compare/0.75.2...v0.75.3) (2020-07-10)
+
+
+
+
+### Bug Fixes:
+
+* rename template dir, view
+
 ## [v0.75.2](https://git.inhji.de/inhji/tomie/compare/0.75.1...v0.75.2) (2020-07-09)
 
 
