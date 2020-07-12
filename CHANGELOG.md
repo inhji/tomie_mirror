@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.76.0](https://git.inhji.de/inhji/tomie/compare/0.75.3...v0.76.0) (2020-07-12)
+
+
+
+
+### Features:
+
+* add meta tag for csp nonce
+
 ## [v0.75.3](https://git.inhji.de/inhji/tomie/compare/0.75.2...v0.75.3) (2020-07-10)
 
 
