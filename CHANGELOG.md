@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.76.1](https://git.inhji.de/inhji/tomie/compare/0.76.0...v0.76.1) (2020-07-12)
+
+
+
+
+### Bug Fixes:
+
+* also add nonce in admin layout
+
 ## [v0.76.0](https://git.inhji.de/inhji/tomie/compare/0.75.3...v0.76.0) (2020-07-12)
 
 
