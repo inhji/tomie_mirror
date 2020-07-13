@@ -30,7 +30,7 @@ defmodule Listens.MixProject do
       {:db, in_umbrella: true},
       {:ecto_sql, "~> 3.1"},
       {:http, in_umbrella: true},
-      {:oban, "2.0.0-rc.3"},
+      {:oban, "2.0.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:waffle, "~> 1.1"},
       {:waffle_ecto, "~> 0.0.9"}
