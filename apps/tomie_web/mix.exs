@@ -48,7 +48,7 @@ defmodule TomieWeb.MixProject do
       {:indie, in_umbrella: true},
       {:jason, "~> 1.0"},
       {:listens, in_umbrella: true},
-      {:oban, "2.0.0-rc.3"},
+      {:oban, "~> 2.0"},
       {:phoenix, "~> 1.5.0"},
       {:phoenix_active_link, "~> 0.3.0"},
       {:phoenix_ecto, "~> 4.0"},
