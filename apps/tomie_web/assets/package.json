@@ -14,7 +14,7 @@
     "phoenix_live_view": "file:../../../deps/phoenix_live_view",
     "prismjs": "^1.20.0",
     "tailwindcss": "^1.5.1",
-    "trix": "^1.2.3"
+    "trix": "^1.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
