@@ -7,19 +7,19 @@
   },
   "dependencies": {
     "chart.js": "^2.9.3",
-    "chartkick": "^3.2.0",
+    "chartkick": "^3.2.1",
     "nprogress": "^0.2.0",
     "phoenix": "file:../../../deps/phoenix",
     "phoenix_html": "file:../../../deps/phoenix_html",
     "phoenix_live_view": "file:../../../deps/phoenix_live_view",
-    "prismjs": "^1.20.0",
-    "tailwindcss": "^1.5.1",
-    "trix": "^1.2.3"
+    "prismjs": "^1.21.0",
+    "tailwindcss": "^1.6.2",
+    "trix": "^1.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
+    "@babel/core": "^7.11.1",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-prismjs": "^2.0.1",
     "copy-webpack-plugin": "^6.0.3",
@@ -31,8 +31,8 @@
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.2.3",
     "tailwindcss-theming": "^2.4.3",
-    "terser-webpack-plugin": "^3.0.7",
-    "webpack": "^4.43.0",
+    "terser-webpack-plugin": "^3.1.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
 }
