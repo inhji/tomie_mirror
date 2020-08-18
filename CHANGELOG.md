@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.76.3](https://git.inhji.de/inhji/tomie/compare/v0.76.2...v0.76.3) (2020-08-18)
+
+
+
+
+### Bug Fixes:
+
+* safer metadata
+
 ## [v0.76.2](https://git.inhji.de/inhji/tomie/compare/0.76.1...v0.76.2) (2020-07-17)
 
 
