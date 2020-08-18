@@ -71,15 +71,15 @@ defmodule Listens.Workers.Listenbrainz.Handler do
 
   def prepare_listen(listen, state) do
     %{
-      additional_info: info,
+      additional_info: additional_info,
       artist_name: artist_name,
       release_name: release_name,
       track_name: track_name
     } = get_track_metadata(listen)
 
-    with {:ok, artist, new: new_artist} <- maybe_create_artist(artist_name, info.artist_msid),
+    with {:ok, artist, new: new_artist} <- maybe_create_artist(artist_name, additional_info.artist_msid),
          {:ok, album, new: new_album} <-
-           maybe_create_album(release_name, info.release_msid, artist),
+           maybe_create_album(release_name, additional_info.release_msid, artist),
          {:ok, track, new: new_track} <- maybe_create_track(track_name, artist, album) do
       changeset =
         Listen.changeset(%Listen{}, %{
@@ -109,9 +109,9 @@ defmodule Listens.Workers.Listenbrainz.Handler do
   def get_track_metadata(listen) do
     %{
       additional_info: Map.get(listen.track_metadata, :additional_info, nil),
-      artist_name: Map.get(listen.artist_name, :artist_name, nil),
-      release_name: Map.get(listen.release_name, :release_name, nil),
-      track_name: Map.get(listen.track_name, :track_name, nil)
+      artist_name: Map.get(listen.track_metadata, :artist_name, nil),
+      release_name: Map.get(listen.track_metadata, :release_name, nil),
+      track_name: Map.get(listen.track_metadata, :track_name, nil)
     }
   end
 
