@@ -75,7 +75,7 @@ defmodule Listens.Workers.Listenbrainz.Handler do
       artist_name: artist_name,
       release_name: release_name,
       track_name: track_name
-    } = listen.track_metadata
+    } = get_track_metadata(listen)
 
     with {:ok, artist, new: new_artist} <- maybe_create_artist(artist_name, info.artist_msid),
          {:ok, album, new: new_album} <-
@@ -104,6 +104,15 @@ defmodule Listens.Workers.Listenbrainz.Handler do
         Logger.warn(reason)
         state
     end
+  end
+
+  def get_track_metadata(listen) do
+    %{
+      additional_info: Map.get(listen.track_metadata, :additional_info, nil),
+      artist_name: Map.get(listen.artist_name, :artist_name, nil),
+      release_name: Map.get(listen.release_name, :release_name, nil),
+      track_name: Map.get(listen.track_name, :track_name, nil)
+    }
   end
 
   def bool_to_int(true), do: 1
