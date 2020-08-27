@@ -27,7 +27,7 @@ defmodule Http.MixProject do
   defp deps do
     [
       {:cachex, "~> 3.2"},
-      {:floki, "~> 0.27.0"},
+      {:floki, "~> 0.28.0"},
       {:httpoison, "~> 1.6"},
       {:open_graph_extended, git: "https://git.inhji.de/inhji/open_graph.git"}
     ]
